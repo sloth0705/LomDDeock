@@ -1,5 +1,5 @@
 import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
-import { Button, Stack, Nav, Navbar, NavDropdown, Form, InputGroup, Container, Row, Col } from 'react-bootstrap';
+import { Tab, Tabs, Button, Stack, Nav, Navbar, NavDropdown, Form, InputGroup, Container, Row, Col } from 'react-bootstrap';
 import '../../css/main/main.css';
 import blankImage from '../../images/blank.png';
 function Main() {
@@ -13,10 +13,9 @@ function Main() {
                 <Container>
                     <Nav
                         activeKey="/home"
-                        onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
                         className="flex-content-center">
                         <Nav.Item>
-                            <Nav.Link href="/home" >
+                            <Nav.Link href="/menu/menuList" >
                                 롬떡메뉴
                             </Nav.Link>
                         </Nav.Item>
