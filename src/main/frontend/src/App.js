@@ -1,23 +1,31 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, lazy, Suspense} from 'react';
 import axios from 'axios';
+import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
+import Header from './layout/Header';
+import Footer from './layout/Footer';
+const Main = lazy(() => import('./pages/main/Main'))
+
+function fallBackData() {
+    <div>로딩중</div>
+}
 
 function App() {
-   const [hello, setHello] = useState('')
-
-    useEffect(() => {
-        axios.get('/api/hello')
-        .then(response => {
-            setHello(response.data)
-        })
-        .catch(error => console.log(error))
-    }, []);
-
     return (
-        <>
-            <div>
-                백엔드에서 가져온 데이터입니다 : {hello}
-            </div>
-        </>
+        <BrowserRouter>
+            <Header/>
+            <Routes>
+                {/*메인 페이지*/}
+                <Route path="/" element={
+                <Suspense fallback={fallBackData()}>
+                    <Main />
+                </Suspense>} />
+                <Route path="/home" element={
+                <Suspense fallback={fallBackData()}>
+                    <Link to="/">Go to /</Link>
+                </Suspense>} />
+            </Routes>
+            <Footer/>
+        </BrowserRouter>
     );
 }
 

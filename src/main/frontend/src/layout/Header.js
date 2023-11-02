@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Button, Stack, Nav, Navbar, NavDropdown, Form, InputGroup, Container } from 'react-bootstrap';
 import '../css/layout.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,7 +7,11 @@ function Header() {
         <header>
             <Navbar expand="lg" className="bg-body-tertiary">
                 <Container>
-                    <Navbar.Brand href="#home">LomDDeock</Navbar.Brand>
+                    <Navbar.Brand>
+                        <Link to="/" className="reset-a">
+                            LomDDeock
+                        </Link>
+                    </Navbar.Brand>
                     <div className="w15p"/>
                     <InputGroup className="w35p">
                         <Form.Control
