@@ -23,7 +23,7 @@ function Header() {
                     </InputGroup>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="margin-left-auto">
-                            <Nav.Link href="#home">
+                            <Nav.Link href="/login">
                                 로그인
                             </Nav.Link>
                             <NavDropdown title="마이페이지" id="basic-nav-dropdown">

@@ -4,6 +4,7 @@ import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
 import Header from './layout/Header';
 import Footer from './layout/Footer';
 const Main = lazy(() => import('./pages/main/Main'))
+const Login = lazy(() => import('./pages/user/Login'))
 
 function fallBackData() {
     <div>로딩중</div>
@@ -19,9 +20,9 @@ function App() {
                 <Suspense fallback={fallBackData()}>
                     <Main />
                 </Suspense>} />
-                <Route path="/home" element={
+                <Route path="/login" element={
                 <Suspense fallback={fallBackData()}>
-                    <Link to="/">Go to /</Link>
+                    <Login />
                 </Suspense>} />
             </Routes>
             <Footer/>
