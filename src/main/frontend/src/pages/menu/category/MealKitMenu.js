@@ -1,7 +1,7 @@
 import { Button, Card } from 'react-bootstrap';
 import blank from '../../../images/menu/blank.svg';
 import spicy9 from '../../../images/menu/img_spicystep9.png';
-
+import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
 function MealKitMenu() {
     return (
         <section className="tabMenuList">
@@ -12,7 +12,9 @@ function MealKitMenu() {
                 <Card.Img variant="top" src={blank}/>
                 <Card.Body>
                     <Card.Title className="menuTitle">
-                        떡볶이
+                        <Link to="/menu/menuView" className="reset-a">
+                            떡볶이
+                        </Link>
                     </Card.Title>
                     <Card.Img src={spicy9} className="menuImg"/>
                     <Card.Text className="menuPrice">
@@ -24,7 +26,9 @@ function MealKitMenu() {
                 <Card.Img variant="top" src={blank}/>
                 <Card.Body>
                     <Card.Title className="menuTitle">
-                        떡볶이
+                        <Link to="/menu/menuView" className="reset-a">
+                            떡볶이
+                        </Link>
                     </Card.Title>
                     <Card.Img src={spicy9} className="menuImg"/>
                     <Card.Text className="menuPrice">
@@ -36,7 +40,9 @@ function MealKitMenu() {
                 <Card.Img variant="top" src={blank}/>
                 <Card.Body>
                     <Card.Title className="menuTitle">
-                        떡볶이
+                        <Link to="/menu/menuView" className="reset-a">
+                            떡볶이
+                        </Link>
                     </Card.Title>
                     <Card.Img src={spicy9} className="menuImg"/>
                     <Card.Text className="menuPrice">
@@ -48,7 +54,9 @@ function MealKitMenu() {
                 <Card.Img variant="top" src={blank}/>
                 <Card.Body>
                     <Card.Title className="menuTitle">
-                        떡볶이
+                        <Link to="/menu/menuView" className="reset-a">
+                            떡볶이
+                        </Link>
                     </Card.Title>
                     <Card.Img src={spicy9} className="menuImg"/>
                     <Card.Text className="menuPrice">
@@ -60,7 +68,9 @@ function MealKitMenu() {
                 <Card.Img variant="top" src={blank}/>
                 <Card.Body>
                     <Card.Title className="menuTitle">
-                        떡볶이
+                        <Link to="/menu/menuView" className="reset-a">
+                            떡볶이
+                        </Link>
                     </Card.Title>
                     <Card.Img src={spicy9} className="menuImg"/>
                     <Card.Text className="menuPrice">
@@ -72,7 +82,9 @@ function MealKitMenu() {
                 <Card.Img variant="top" src={blank}/>
                 <Card.Body>
                     <Card.Title className="menuTitle">
-                        떡볶이
+                        <Link to="/menu/menuView" className="reset-a">
+                            떡볶이
+                        </Link>
                     </Card.Title>
                     <Card.Img src={spicy9} className="menuImg"/>
                     <Card.Text className="menuPrice">
