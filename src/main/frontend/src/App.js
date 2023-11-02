@@ -5,6 +5,7 @@ import Header from './layout/Header';
 import Footer from './layout/Footer';
 const Main = lazy(() => import('./pages/main/Main'))
 const MenuList = lazy(() => import('./pages/menu/MenuList'))
+const MenuView = lazy(() => import('./pages/menu/MenuView'))
 
 function fallBackData() {
     <div>로딩중</div>
@@ -23,6 +24,10 @@ function App() {
                 <Route path="/menu/menuList" element={
                 <Suspense fallback={fallBackData()}>
                     <MenuList/>
+                </Suspense>} />
+                <Route path="/menu/menuView" element={
+                <Suspense fallback={fallBackData()}>
+                    <MenuView/>
                 </Suspense>} />
             </Routes>
             <Footer/>
