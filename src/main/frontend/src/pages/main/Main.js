@@ -57,9 +57,75 @@ function Main() {
             {/* subMenu 끝 */}
             {/* 인기상품 시작 */}
             <section className="hit">
-                <span>
-                    인기상품
-                </span>
+                <div className="description">
+                    <span>
+                        인기상품
+                    </span>
+                </div>
+                <article className="hit-item">
+                    <Link to="/" className="reset-a">
+                        <img src={blankImage} className="thumb"/>
+                        <div className="item-info">
+                            <h5 className="item-name">
+                                떡볶이
+                            </h5>
+                            <p className="item-etc">
+                                Lorem ipsum to sola sola sute snae
+                            </p>
+                            <p className="item-price">
+                                30000원
+                            </p>
+                        </div>
+                    </Link>
+                </article>
+                <article className="hit-item">
+                    <Link to="/" className="reset-a">
+                        <img src={blankImage} className="thumb"/>
+                        <div className="item-info">
+                            <h5 className="item-name">
+                                떡볶이
+                            </h5>
+                            <p className="item-etc">
+                                Lorem ipsum to sola sola sute snae
+                            </p>
+                            <p className="item-price">
+                                30000원
+                            </p>
+                        </div>
+                    </Link>
+                </article>
+                <article className="hit-item">
+                    <Link to="/" className="reset-a">
+                        <img src={blankImage} className="thumb"/>
+                        <div className="item-info">
+                            <h5 className="item-name">
+                                떡볶이
+                            </h5>
+                            <p className="item-etc">
+                                Lorem ipsum to sola sola sute snae
+                            </p>
+                            <p className="item-price">
+                                30000원
+                            </p>
+                        </div>
+                    </Link>
+                </article>
+                <article className="hit-item">
+                    <Link to="/" className="reset-a">
+                        <img src={blankImage} className="thumb"/>
+                        <div className="item-info">
+                            <h5 className="item-name">
+                                떡볶이
+                            </h5>
+                            <p className="item-etc">
+                                Lorem ipsum to sola sola sute snae
+                            </p>
+                            <p className="item-price">
+                                30000원
+                            </p>
+                        </div>
+                    </Link>
+                </article>
             </section>
             {/* 인기상품 끝 */}
         </section>
