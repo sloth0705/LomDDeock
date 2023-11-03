@@ -4,12 +4,9 @@ import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
 import Header from './layout/Header';
 import Footer from './layout/Footer';
 const Main = lazy(() => import('./pages/main/Main'))
-<<<<<<< HEAD
 const Login = lazy(() => import('./pages/user/Login'))
-=======
 const MenuList = lazy(() => import('./pages/menu/MenuList'))
 const MenuView = lazy(() => import('./pages/menu/MenuView'))
->>>>>>> main
 
 function fallBackData() {
     <div>로딩중</div>
@@ -25,9 +22,11 @@ function App() {
                 <Suspense fallback={fallBackData()}>
                     <Main />
                 </Suspense>} />
+
                 <Route path="/login" element={
                 <Suspense fallback={fallBackData()}>
                     <Login />
+                </Suspense>} />
                 <Route path="/menu/menuList" element={
                 <Suspense fallback={fallBackData()}>
                     <MenuList/>
