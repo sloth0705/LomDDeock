@@ -4,6 +4,7 @@ import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
 import Header from './layout/Header';
 import Footer from './layout/Footer';
 const Main = lazy(() => import('./pages/main/Main'))
+const MyInfo = lazy(() => import('./pages/my/Info'))
 const Login = lazy(() => import('./pages/user/Login'))
 const MenuList = lazy(() => import('./pages/menu/MenuList'))
 const MenuView = lazy(() => import('./pages/menu/MenuView'))
@@ -34,6 +35,10 @@ function App() {
                 <Route path="/menu/menuView" element={
                 <Suspense fallback={fallBackData()}>
                     <MenuView/>
+                </Suspense>} />
+                <Route path="/myInfo" element={
+                <Suspense fallback={fallBackData()}>
+                    <MyInfo />
                 </Suspense>} />
             </Routes>
             <Footer/>
