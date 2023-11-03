@@ -8,7 +8,14 @@ function MenuView() {
     const radios = [
         { name: 'L 40,000', value: '1' },
         { name: 'M 35,000', value: '2' },
-      ];
+    ];
+    const spicyLevels = [
+        {name: '어린이맛', value: '1'},
+        {name: '착한맛', value: '2'},
+        {name: '오리지널', value: '3'},
+        {name: '쏘핫', value: '4'},
+        {name: '쏘쏘핫', value: '5'}
+    ];
 
     return (
         <section className="menuView">
@@ -40,6 +47,26 @@ function MenuView() {
                             </ToggleButton>
                         ))}
                     </ButtonGroup>
+                </article>
+                <article className="selectSpicy">
+                    <p className="spicyDescription">
+                        맵기 선택
+                    </p>
+                    <Form>
+                        {spicyLevels.map((spicy) => (
+                            <Form.Check
+                                type={'radio'}
+                                id={'spicy-' + spicy.value}
+                                name='spicyLevel'
+                                label={spicy.name}>
+                            </Form.Check>
+                        ))}
+                    </Form>
+                </article>
+                <article className="selectTopping">
+                    <p className="toppingDescription">
+                        토핑 선택
+                    </p>
                 </article>
             </section>
         </section>
