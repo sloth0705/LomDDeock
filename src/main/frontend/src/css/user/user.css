@@ -1,5 +1,30 @@
-li, ul, ol {list-style: none}
+/* 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,li,ol {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #111;
+}
+input,
+textarea {
+    outline: none;
+}
+
+#wrapper {
+    width: 100%;
+}
+
+.container {padding-bottom: 20px;}
+
+
 .title {height:74px; line-height:74px; margin-bottom:10px; padding-bottom:0;}
+h2 {text-align: center; display:block; padding:0 2px 20px; margin-top:15px; line-height:18px; font-weight:bold; border-bottom:2px solid #545557;}
 strong{text-align: center; display:block; padding:0 2px 8px; margin-top:15px; font-size:15px; line-height:18px; font-weight:bold; border-bottom:2px solid #545557;}
 li#kkLoginBtn a {display:block;  height:56px; padding-left:35px; background:#ffe812 url("../../images/user/ic-kakao-02.png") no-repeat 120px 21px; background-size:18px 17px; color:#262626; box-sizing:border-box; font-size:16px; line-height:56px; text-align:center;}
 li#kkLoginBtn a img{display:inline-block; margin-right:3px; margin-left:-20px; margin-bottom:2px;}
@@ -11,3 +36,8 @@ li#ggLoginBtn a {display:block;  height:56px; padding-left:35px; background:url(
 #loginCol > Form span a{margin-top: 10px;}
 #loginCol > Form span a:nth-child(1) {float:left;}
 #loginCol > Form span a:nth-child(2) {float:right;}
+h2 {text-align: center; display:block; padding:0 2px 20px; margin-top:15px; line-height:18px; font-weight:bold; border-bottom:2px solid #545557;}
+.card {margin: 20px;}
+.form-check-reverse {
+    padding-right: 2.5em;
+}

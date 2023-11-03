@@ -6,6 +6,8 @@ import Footer from './layout/Footer';
 const Main = lazy(() => import('./pages/main/Main'))
 const MyInfo = lazy(() => import('./pages/my/Info'))
 const Login = lazy(() => import('./pages/user/Login'))
+const Signup = lazy(() => import('./pages/user/Signup'))
+const Register = lazy(() => import('./pages/user/Register'))
 const MenuList = lazy(() => import('./pages/menu/MenuList'))
 const MenuView = lazy(() => import('./pages/menu/MenuView'))
 
@@ -27,6 +29,14 @@ function App() {
                 <Route path="/login" element={
                 <Suspense fallback={fallBackData()}>
                     <Login />
+                </Suspense>} />
+                <Route path="/signup" element={
+                <Suspense fallback={fallBackData()}>
+                    <Signup />
+                </Suspense>} />
+                <Route path="/register" element={
+                <Suspense fallback={fallBackData()}>
+                    <Register />
                 </Suspense>} />
                 <Route path="/menu/menuList" element={
                 <Suspense fallback={fallBackData()}>

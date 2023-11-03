@@ -3,7 +3,7 @@ import {Navbar} from "react-bootstrap";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import '../../css/user/login.css';
+import '../../css/user/user.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
@@ -52,7 +52,7 @@ function Login() {
                         </div>
                         <span>
                             <a href="#">비밀번호 재설정</a>
-                            <a href="#">회원가입</a>
+                            <a href="/signup">회원가입</a>
                         </span>
                     </Form>
 
