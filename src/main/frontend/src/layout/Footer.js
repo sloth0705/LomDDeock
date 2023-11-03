@@ -2,7 +2,7 @@ import { Button, Stack, Nav, Navbar, NavDropdown, Form, InputGroup, Container, R
 import '../css/layout.css';
 import '../css/footer.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from '../images/logo.png';
+import logo from '../images/LomDDeock_logo.jpg';
 function Footer() {
     return(
         <footer className="bg-body-tertiary">
@@ -34,7 +34,7 @@ function Footer() {
                 </Nav>
                 <Row>
                     <Col xs={3}>
-                        <img src={logo} alt="로고"/>
+                        <img src={logo} alt="로고" className="footerLogo"/>
                     </Col>
                     <Col xs={9} className="pt50px">
                         <p>
