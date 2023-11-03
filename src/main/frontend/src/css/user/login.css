@@ -1,0 +1,13 @@
+li, ul, ol {list-style: none}
+.title {height:74px; line-height:74px; margin-bottom:10px; padding-bottom:0;}
+strong{text-align: center; display:block; padding:0 2px 8px; margin-top:15px; font-size:15px; line-height:18px; font-weight:bold; border-bottom:2px solid #545557;}
+li#kkLoginBtn a {display:block;  height:56px; padding-left:35px; background:#ffe812 url("../../images/user/ic-kakao-02.png") no-repeat 120px 21px; background-size:18px 17px; color:#262626; box-sizing:border-box; font-size:16px; line-height:56px; text-align:center;}
+li#kkLoginBtn a img{display:inline-block; margin-right:3px; margin-left:-20px; margin-bottom:2px;}
+li#nvLoginBtn a {display:block;  height:56px; padding-left:35px; background:url("../../images/user/ic-naver-02.png") no-repeat 125px center / 16px 14px #57b04b; color:#fff; box-sizing:border-box; font-size:16px; line-height:56px; text-align:center; margin-top: 8px; margin-bottom: 8px;}
+li#ggLoginBtn a {display:block;  height:56px; padding-left:35px; background:url("../../images/user/ic-google-02.png") no-repeat 120px center / 30px 30px #EFEDEF; color:#262626; box-sizing:border-box; font-size:16px; line-height:56px; text-align:center;}
+#loginCol {margin-bottom:50px}
+#loginCol > Form {margin:20px}
+#loginCol > Form button {margin-top:10px;}
+#loginCol > Form span a{margin-top: 10px;}
+#loginCol > Form span a:nth-child(1) {float:left;}
+#loginCol > Form span a:nth-child(2) {float:right;}
