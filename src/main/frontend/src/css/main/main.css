@@ -27,6 +27,56 @@
 }
 
 .hit {
+    width: 100%;
+    height: auto;
     margin-top: 20px;
     text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.description {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.hit-item {
+    width: 400px;
+    height: 200px;
+    margin-right: 70px;
+    float: left;
+    position: relative;
+}
+
+.thumb {
+    float: left;
+    width: 150px;
+    height: 150px;
+}
+
+.item-info {
+    float: left;
+    margin-left: 10px;
+    width: 240px;
+    height: 150px;
+    position: relative;
+}
+
+.item-name {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.item-etc {
+    position: absolute;
+    top: 30px;
+    left: 5px;
+}
+
+.item-price {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    margin: 0;
 }

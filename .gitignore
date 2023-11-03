@@ -38,3 +38,22 @@ out/
 
 ### React ###
 .cache/
+
+# Node.js
+node_modules/
+
+# Build Files
+dist/
+
+# Environment Variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE-specific Files (adjust to your IDE)
+.idea/
+
+# Package Manager Logs
+yarn-error.log
+npm-debug.log

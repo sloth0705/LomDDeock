@@ -1,5 +1,5 @@
 import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
-import { Button, Stack, Nav, Navbar, NavDropdown, Form, InputGroup, Container, Row, Col } from 'react-bootstrap';
+import { Tab, Tabs, Button, Stack, Nav, Navbar, NavDropdown, Form, InputGroup, Container, Row, Col } from 'react-bootstrap';
 import '../../css/main/main.css';
 import blankImage from '../../images/blank.png';
 function Main() {
@@ -13,10 +13,9 @@ function Main() {
                 <Container>
                     <Nav
                         activeKey="/home"
-                        onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
                         className="flex-content-center">
                         <Nav.Item>
-                            <Nav.Link href="/home" >
+                            <Nav.Link href="/menu/menuList" >
                                 롬떡메뉴
                             </Nav.Link>
                         </Nav.Item>
@@ -57,9 +56,75 @@ function Main() {
             {/* subMenu 끝 */}
             {/* 인기상품 시작 */}
             <section className="hit">
-                <span>
-                    인기상품
-                </span>
+                <div className="description">
+                    <span>
+                        인기상품
+                    </span>
+                </div>
+                <article className="hit-item">
+                    <Link to="/" className="reset-a">
+                        <img src={blankImage} className="thumb"/>
+                        <div className="item-info">
+                            <h5 className="item-name">
+                                떡볶이
+                            </h5>
+                            <p className="item-etc">
+                                Lorem ipsum to sola sola sute snae
+                            </p>
+                            <p className="item-price">
+                                30000원
+                            </p>
+                        </div>
+                    </Link>
+                </article>
+                <article className="hit-item">
+                    <Link to="/" className="reset-a">
+                        <img src={blankImage} className="thumb"/>
+                        <div className="item-info">
+                            <h5 className="item-name">
+                                떡볶이
+                            </h5>
+                            <p className="item-etc">
+                                Lorem ipsum to sola sola sute snae
+                            </p>
+                            <p className="item-price">
+                                30000원
+                            </p>
+                        </div>
+                    </Link>
+                </article>
+                <article className="hit-item">
+                    <Link to="/" className="reset-a">
+                        <img src={blankImage} className="thumb"/>
+                        <div className="item-info">
+                            <h5 className="item-name">
+                                떡볶이
+                            </h5>
+                            <p className="item-etc">
+                                Lorem ipsum to sola sola sute snae
+                            </p>
+                            <p className="item-price">
+                                30000원
+                            </p>
+                        </div>
+                    </Link>
+                </article>
+                <article className="hit-item">
+                    <Link to="/" className="reset-a">
+                        <img src={blankImage} className="thumb"/>
+                        <div className="item-info">
+                            <h5 className="item-name">
+                                떡볶이
+                            </h5>
+                            <p className="item-etc">
+                                Lorem ipsum to sola sola sute snae
+                            </p>
+                            <p className="item-price">
+                                30000원
+                            </p>
+                        </div>
+                    </Link>
+                </article>
             </section>
             {/* 인기상품 끝 */}
         </section>
