@@ -1,3 +1,17 @@
+/* 폰트설정 */
+@font-face {
+    font-family: 'ONE-Mobile-POP';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SUITE-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
 /* a 태그 밑줄과 색 초기화 */
 .reset-a {
     text-decoration: none;
@@ -6,11 +20,11 @@
 
 /* width % 옵션 */
 .w50p {
-    width : 50% !important !important;
+    width : 50% !important;
 }
 
 .w45p {
-    width : 45% !important !important;
+    width : 45% !important;
 }
 
 .w40p {
@@ -58,4 +72,30 @@
 /* flex 자식요소들 가운데 정렬 */
 .flex-content-center {
     justify-content: center;
+}
+
+/* admin header */
+.adminHeader {
+    border-bottom: 4px solid #FF5B2D;
+}
+.adminHeader img {
+    width: 100px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.adminFontLogo {
+    display: inline-block;
+    position: absolute;
+    font-size: 35px;
+    top: 30px;
+    left: 120px;
+    font-family: ONE-Mobile-POP;
+    color: #A21A24;
+}
+.adminLogout {
+    display: inline-block;
+    position: absolute;
+    right: 8px;
+    top: 83px;
+    font-family: SUITE-Regular;
 }
