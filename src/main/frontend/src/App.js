@@ -1,7 +1,8 @@
 import React, {useEffect, useState, lazy, Suspense} from 'react';
 import axios from 'axios';
-import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
+import { Routes, Route, BrowserRouter, Link, useLocation } from "react-router-dom";
 import Header from './layout/Header';
+import AdminHeader from './layout/AdminHeader';
 import Footer from './layout/Footer';
 const Main = lazy(() => import('./pages/main/Main'))
 const MyInfo = lazy(() => import('./pages/my/Info'))
@@ -11,17 +12,22 @@ const Register = lazy(() => import('./pages/user/Register'))
 const ConfirmEmail = lazy(() => import('./pages/user/ConfirmEmail'))
 const MenuList = lazy(() => import('./pages/menu/MenuList'))
 const MenuView = lazy(() => import('./pages/menu/MenuView'))
+const AdminIndex = lazy(() => import('./pages/admin/adminIndex'))
 const MenuCart = lazy(() => import('./pages/menu/MenuCart'))
 const MenuOrder = lazy(() => import('./pages/menu/MenuOrder'))
 
 function fallBackData() {
-    <div>로딩중</div>
+    return <div>로딩중</div>;
 }
 
 function App() {
+    let currentPath = window.location.pathname;
+    console.log("currentPath : ",currentPath);
+    let isAdminPage = currentPath.startsWith('/admin/');
+
     return (
         <BrowserRouter>
-            <Header/>
+            {isAdminPage ? <AdminHeader /> : <Header />}
             <Routes>
                 {/*메인 페이지*/}
                 <Route path="/" element={
@@ -64,6 +70,12 @@ function App() {
                 <Route path="/myInfo" element={
                 <Suspense fallback={fallBackData()}>
                     <MyInfo />
+                </Suspense>} />
+
+                {/* 관리자 페이지 */}
+                <Route path="/admin/adminIndex" element={
+                <Suspense fallback={fallBackData()}>
+                    <AdminIndex/>
                 </Suspense>} />
             </Routes>
             <Footer/>
