@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Button, ButtonGroup, ToggleButton, Form, Image, InputGroup, Table, Tabs, Tab } from 'react-bootstrap';
+import { Link } from "react-router-dom";
+import { Button, ButtonGroup, ToggleButton, Form, Image, InputGroup, Table } from 'react-bootstrap';
 import '../../css/menu/menuView.css';
 import blank from '../../images/blank.png';
 import topping1 from '../../images/menu/Topping1.jpg';
@@ -252,7 +253,11 @@ function MenuView() {
                                 없음
                             </td>
                             <td>
-                                <Button variant="danger" className="orderButton">주문하기</Button>
+                                <Link to="/menu/menuCart">
+                                    <Button variant="danger" className="orderButton">
+                                        주문하기
+                                    </Button>
+                                </Link>
                             </td>
                         </tr>
                     </tbody>
