@@ -9,9 +9,12 @@ const MyInfo = lazy(() => import('./pages/my/Info'))
 const Login = lazy(() => import('./pages/user/Login'))
 const Signup = lazy(() => import('./pages/user/Signup'))
 const Register = lazy(() => import('./pages/user/Register'))
+const ConfirmEmail = lazy(() => import('./pages/user/ConfirmEmail'))
 const MenuList = lazy(() => import('./pages/menu/MenuList'))
 const MenuView = lazy(() => import('./pages/menu/MenuView'))
 const AdminIndex = lazy(() => import('./pages/admin/adminIndex'))
+const MenuCart = lazy(() => import('./pages/menu/MenuCart'))
+const MenuOrder = lazy(() => import('./pages/menu/MenuOrder'))
 
 function fallBackData() {
     return <div>로딩중</div>;
@@ -44,6 +47,10 @@ function App() {
                 <Suspense fallback={fallBackData()}>
                     <Register />
                 </Suspense>} />
+                <Route path="/confirmemail" element={
+                <Suspense fallback={fallBackData()}>
+                    <ConfirmEmail />
+                </Suspense>} />
                 <Route path="/menu/menuList" element={
                 <Suspense fallback={fallBackData()}>
                     <MenuList/>
@@ -51,6 +58,14 @@ function App() {
                 <Route path="/menu/menuView" element={
                 <Suspense fallback={fallBackData()}>
                     <MenuView/>
+                </Suspense>} />
+                <Route path="/menu/menuCart" element={
+                <Suspense fallback={fallBackData()}>
+                    <MenuCart/>
+                </Suspense>} />
+                <Route path="/menu/menuOrder" element={
+                <Suspense fallback={fallBackData()}>
+                    <MenuOrder/>
                 </Suspense>} />
                 <Route path="/myInfo" element={
                 <Suspense fallback={fallBackData()}>

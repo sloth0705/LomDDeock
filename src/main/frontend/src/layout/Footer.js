@@ -2,7 +2,7 @@ import { Button, Stack, Nav, Navbar, NavDropdown, Form, InputGroup, Container, R
 import '../css/layout.css';
 import '../css/footer.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from '../images/LomDDeock_logo.jpg';
+import logo from '../images/LomDDeock_logo-removebg-preview.png';
 function Footer() {
     return(
         <footer className="bg-body-tertiary">
