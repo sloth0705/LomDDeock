@@ -8,11 +8,11 @@ function Footer() {
         <footer className="bg-body-tertiary">
             <Container>
                 <Nav
-                    activeKey="/home"
-                    onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
+                    activeKey="/introduce"
+                    /*onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}*/
                     className="flex-content-center footer-nav">
                     <Nav.Item>
-                        <Nav.Link href="/home">
+                        <Nav.Link href="/introduce">
                             회사소개
                         </Nav.Link>
                     </Nav.Item>

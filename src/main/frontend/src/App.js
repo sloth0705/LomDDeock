@@ -12,6 +12,7 @@ const ConfirmEmail = lazy(() => import('./pages/user/ConfirmEmail'))
 const MenuList = lazy(() => import('./pages/menu/MenuList'))
 const MenuView = lazy(() => import('./pages/menu/MenuView'))
 const MenuCart = lazy(() => import('./pages/menu/MenuCart'))
+const Introduce = lazy(() => import('./pages/brand/Introduce'))
 
 function fallBackData() {
     <div>로딩중</div>
@@ -59,6 +60,10 @@ function App() {
                 <Route path="/myInfo" element={
                 <Suspense fallback={fallBackData()}>
                     <MyInfo />
+                </Suspense>} />
+                <Route path="/introduce" element={
+                <Suspense fallback={fallBackData()}>
+                    <Introduce />
                 </Suspense>} />
             </Routes>
             <Footer/>
