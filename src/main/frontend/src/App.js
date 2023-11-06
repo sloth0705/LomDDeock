@@ -8,6 +8,7 @@ const MyInfo = lazy(() => import('./pages/my/Info'))
 const Login = lazy(() => import('./pages/user/Login'))
 const Signup = lazy(() => import('./pages/user/Signup'))
 const Register = lazy(() => import('./pages/user/Register'))
+const ConfirmEmail = lazy(() => import('./pages/user/ConfirmEmail'))
 const MenuList = lazy(() => import('./pages/menu/MenuList'))
 const MenuView = lazy(() => import('./pages/menu/MenuView'))
 
@@ -37,6 +38,10 @@ function App() {
                 <Route path="/register" element={
                 <Suspense fallback={fallBackData()}>
                     <Register />
+                </Suspense>} />
+                <Route path="/confirmemail" element={
+                <Suspense fallback={fallBackData()}>
+                    <ConfirmEmail />
                 </Suspense>} />
                 <Route path="/menu/menuList" element={
                 <Suspense fallback={fallBackData()}>

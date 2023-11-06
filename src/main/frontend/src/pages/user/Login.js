@@ -6,14 +6,19 @@ import Col from 'react-bootstrap/Col';
 import '../../css/user/user.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Image from "react-bootstrap/Image";
+import logo from "../../images/LomDDeock_logo.jpg";
+import React from "react";
 
 
 function Login() {
     return (
-        <Container>
+        <Container className="mt-4">
             <Row>
-                <Col></Col>
-                <Col xs={5} id="loginCol">
+                <Col md={{ span: 5, offset: 3 }} id="loginCol">
+                    <div className="d-flex justify-content-center">
+                        <Image src={logo} alt="로고" className="logo"/>
+                    </div>
                     <h2 class="title">로그인</h2>
 
                     <div>
@@ -46,12 +51,12 @@ function Login() {
                             <Form.Check type="checkbox" label="자동로그인" />
                         </Form.Group>
                         <div className="d-grid gap-2">
-                            <Button variant="primary" type="submit">
+                            <Button variant="danger" type="submit">
                                 로그인
                             </Button>
                         </div>
                         <span>
-                            <a href="#">비밀번호 재설정</a>
+                            <a href="/confirmemail">비밀번호 재설정</a>
                             <a href="/signup">회원가입</a>
                         </span>
                     </Form>

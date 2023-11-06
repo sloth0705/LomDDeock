@@ -2,11 +2,16 @@ import React from 'react';
 import '../../css/user/user.css';
 import { Form, Button, Col, Container, Row } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
+import Image from "react-bootstrap/Image";
+import logo from "../../images/LomDDeock_logo.jpg";
 function Register(){
     return(
         <Container className="mt-4">
             <Row>
-                <Col md={{ span: 6, offset: 3 }}>
+                <Col md={{ span: 7, offset: 3 }}>
+                    <div className="d-flex justify-content-center">
+                        <Image src={logo} alt="로고" className="logo"/>
+                    </div>
                     <h2>회원가입</h2>
                     <Form>
                         <Form.Label>이메일 아이디</Form.Label>
@@ -16,10 +21,11 @@ function Register(){
                                 aria-label="Recipient's username"
                                 aria-describedby="basic-addon2"
                             />
+                            <InputGroup.Text>@</InputGroup.Text>
                             <Form.Select id="basic-addon2">
-                                <option value="@naver.com">@naver.com</option>
-                                <option value="@gmail.com">@gmail.com</option>
-                                <option value="@daum.net">@daum.net</option>
+                                <option value="naver.com">naver.com</option>
+                                <option value="gmail.com">gmail.com</option>
+                                <option value="daum.net">daum.net</option>
                                 {/* 다른 이메일 옵션들을 추가할 수 있습니다 */}
                             </Form.Select>
                             <Button variant="outline-secondary" id="button-addon2">
