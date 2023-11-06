@@ -21,6 +21,9 @@ textarea {
 }
 
 .container {padding-bottom: 20px;}
+.logo {
+    width:150px;
+}
 
 
 .title {height:74px; line-height:74px; margin-bottom:10px; padding-bottom:0;}
@@ -40,4 +43,14 @@ h2 {text-align: center; display:block; padding:0 2px 20px; margin-top:15px; line
 .card {margin: 20px;}
 .form-check-reverse {
     padding-right: 2.5em;
+}
+.input-group> .form-control {width:30%;}
+#mailAt {width: 1%;}
+.confirmEmailForm {
+    line-height:50px;
+    margin-bottom: 50px;
+}
+.resetPass {
+    line-height:50px;
+    margin-bottom: 50px;
 }
