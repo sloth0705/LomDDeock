@@ -9,7 +9,7 @@ function Footer() {
         <footer className="bg-body-tertiary">
             <Container>
                 <Nav
-                    activeKey="/introduce"
+                    /*activeKey="/introduce"*/
                     /*onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}*/
                     className="flex-content-center footer-nav">
                     <Nav.Item>

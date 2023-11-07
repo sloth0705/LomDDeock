@@ -25,6 +25,7 @@ const MenuLayout = lazy(() => import('./layout/MenuLayout'))
 const UserLayout = lazy(() => import('./layout/UserLayout'))
 const MyLayout = lazy(() => import('./layout/MyLayout'))
 const AdminLayout = lazy(() => import('./layout/AdminLayout'))
+
 function fallBackData() {
     return <div>로딩중</div>;
 }
