@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'react-bootstrap/Image'; // 이미지를 위한 React Bootstrap 컴포넌트 가져오기
 import '../../css/user/user.css';
 import { Form, Button, Col, Container, Row } from 'react-bootstrap';
-import logo from '../../images/LomDDeock_logo.jpg';
+import logo from '../../images/LomDDeock-letterlogo-korean.png';
 import InputGroup from "react-bootstrap/InputGroup";
 
 function ConfirmEmail (){

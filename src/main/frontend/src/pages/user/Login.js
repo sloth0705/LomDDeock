@@ -7,7 +7,7 @@ import '../../css/user/user.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Image from "react-bootstrap/Image";
-import logo from "../../images/LomDDeock_logo.jpg";
+import logo from "../../images/LomDDeock-letterlogo-korean.png";
 import React from "react";
 
 
