@@ -1,10 +1,11 @@
-import { Button, Stack, Nav, Navbar, NavDropdown, Form, InputGroup, Container, Row, Col } from 'react-bootstrap';
+import {Button, Stack, Nav, Navbar, NavDropdown, Form, InputGroup, Container, Row, Col} from 'react-bootstrap';
 import '../css/layout.css';
 import '../css/footer.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../images/LomDDeock-logo-removebg.png';
+
 function Footer() {
-    return(
+    return (
         <footer className="bg-body-tertiary">
             <Container>
                 <Nav

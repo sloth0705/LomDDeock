@@ -3,7 +3,7 @@ import '../../css/user/user.css';
 import { Form, Button, Col, Container, Row } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Image from "react-bootstrap/Image";
-import logo from "../../images/LomDDeock_logo.jpg";
+import logo from "../../images/LomDDeock-letterlogo-korean.png";
 function Register(){
     return(
         <Container className="mt-4">

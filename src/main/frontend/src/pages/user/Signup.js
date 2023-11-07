@@ -3,7 +3,7 @@ import { Row, Col, Form, Container, Card } from 'react-bootstrap';
 import '../../css/user/user.css';
 import Button from 'react-bootstrap/Button';
 import Image from "react-bootstrap/Image";
-import logo from "../../images/LomDDeock_logo.jpg";
+import logo from "../../images/LomDDeock-letterlogo-korean.png";
 function Signup () {
     return (
         <Container className="mt-4">
