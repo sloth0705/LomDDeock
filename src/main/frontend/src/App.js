@@ -49,7 +49,7 @@ function fallBackData() {
 
 function App() {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename="/">
             <Routes>
                 {/* 메인 페이지 */}
                 <Route path="/" element={
