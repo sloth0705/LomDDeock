@@ -3,13 +3,14 @@ import '../css/layout.css';
 import '../css/footer.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../images/LomDDeock-logo-removebg.png';
-
+import letterLogo from '../images/LomDDeock-letterlogo-english.png';
+import pepperImg from '../images/pepper.png';
 function Footer() {
     return (
         <footer className="bg-body-tertiary">
             <Container>
                 <Nav
-                    activeKey="/introduce"
+                    /*activeKey="/introduce"*/
                     /*onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}*/
                     className="flex-content-center footer-nav">
                     <Nav.Item>
@@ -33,10 +34,13 @@ function Footer() {
                         </Nav.Link>
                     </Nav.Item>
                 </Nav>
-                <Row className="flex-content-center">
-                    <img src={logo} alt="로고" className="footerLogo"/>
-                    <Col xs={7} className="pt50px">
-                        <p>
+                <Row className="d-flex justify-content-center">
+                    <img src={letterLogo} alt="로고" className="footerLetterLogo"/>
+                </Row>
+                <Row className="d-flex justify-content-center">
+                    <img src={pepperImg} alt="로고" className="footerPepperImg"/>
+                    <Col xs={6}>
+                        <p className="footerMent">
                             ㈜롬복떡볶이 부산시 부산진구 서면로12-1  |  사업자등록번호 : 1234-1232-1234  |  대표이사 : 김롬볶<br/>
                             대표번호 : 070-1234-4321  |  고객센터 : 1234-4321  |  Email : lomddeock@lombok.com<br/>
                             Copyright © LOMBOK FOOD SYS All rights reserved.<br/>
