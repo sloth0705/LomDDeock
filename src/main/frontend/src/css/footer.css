@@ -10,7 +10,7 @@
     color: #999;
 }
 .footer-nav a:hover {
-    color: #303130;
+    color: #FF5B2D;
 }
 
 .footer-nav > div {
@@ -18,5 +18,11 @@
 }
 
 .footerLogo {
-    width: 150px;
+    margin-left: 40px;
+    width: 186px;
+    height: 167px;
+}
+.pt50px > p {
+    margin-top: -7px;
+    margin-bottom: 2rem;
 }
