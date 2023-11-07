@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import {Navbar} from "react-bootstrap";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -56,8 +56,8 @@ function Login() {
                             </Button>
                         </div>
                         <span>
-                            <a href="/confirmemail">비밀번호 재설정</a>
-                            <a href="/signup">회원가입</a>
+                            <Link to="/user/confirmEmail">비밀번호 재설정</Link>
+                            <Link to="/user/signup">회원가입</Link>
                         </span>
                     </Form>
 
