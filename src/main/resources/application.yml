@@ -51,12 +51,6 @@ spring:
     user:
       name: users
       password: 1234
-  thymeleaf:
-    cache: false
-    # ??
-    #prefix : file:src/main/resources/templates
-    # ??
-    prefix: classpath:/templates
   mail:
     host: smtp.gmail.com
     port: 465
