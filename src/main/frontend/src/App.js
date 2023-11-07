@@ -121,12 +121,12 @@ function App() {
                 {/* 브랜드 페이지 */}
                 <Route path="/brand/*" element={
                     <Suspense fallback={fallBackData()}>
-                        <AdminHeader/>
-                        <AdminLayout>
+                        <Header/>
+                        <BrandLayout>
                             <Routes>
                                 <Route path="/introduce" element={<Introduce />} />
                             </Routes>
-                        </AdminLayout>
+                        </BrandLayout>
                         <Footer/>
                     </Suspense>
                   } />
