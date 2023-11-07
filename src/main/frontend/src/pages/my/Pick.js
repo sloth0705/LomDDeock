@@ -15,7 +15,7 @@ function Pick(){
                             <ListGroup.Item action variant="light" href="/my/myInfo">내 정보</ListGroup.Item>
                             <ListGroup.Item action variant="light" href="/my/myCoupon">쿠폰함</ListGroup.Item>
                             <ListGroup.Item action variant="light" href="/my/myOrder">주문내역</ListGroup.Item>
-                            <ListGroup.Item action variant="light" href="/my/myPick">나의 찜</ListGroup.Item>
+                            <ListGroup.Item action variant="light" active href="/my/myPick">나의 찜</ListGroup.Item>
                             <ListGroup.Item action variant="light" href="/my/myQnaList">나의 문의내역</ListGroup.Item>
                         </ListGroup>
                     </Col>
