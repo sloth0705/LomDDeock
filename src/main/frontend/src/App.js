@@ -6,6 +6,11 @@ import AdminHeader from './layout/AdminHeader';
 import Footer from './layout/Footer';
 const Main = lazy(() => import('./pages/main/Main'))
 const MyInfo = lazy(() => import('./pages/my/Info'))
+const MyCoupon = lazy(() => import('./pages/my/Coupon'))
+const MyOrder = lazy(() => import('./pages/my/Order'))
+const MyPick = lazy(() => import('./pages/my/Pick'))
+const MyQnaList = lazy(() => import('./pages/my/QnaList'))
+const MyQnaView = lazy(() => import('./pages/my/QnaView'))
 const Login = lazy(() => import('./pages/user/Login'))
 const Signup = lazy(() => import('./pages/user/Signup'))
 const Register = lazy(() => import('./pages/user/Register'))
@@ -67,6 +72,34 @@ function App() {
                 <Suspense fallback={fallBackData()}>
                     <MenuOrder/>
                 </Suspense>} />
+                <Route path="/my/myInfo" element={
+                <Suspense fallback={fallBackData()}>
+                    <MyInfo />
+                </Suspense>} />
+                <Route path="/my/myCoupon" element={
+                    <Suspense fallback={fallBackData()}>
+                        <MyCoupon />
+                    </Suspense>} />
+                <Route path="/my/myOrder" element={
+                    <Suspense fallback={fallBackData()}>
+                        <MyOrder />
+                    </Suspense>} />
+                <Route path="/my/myOrder" element={
+                    <Suspense fallback={fallBackData()}>
+                        <MyOrder />
+                    </Suspense>} />
+                <Route path="/my/myPick" element={
+                    <Suspense fallback={fallBackData()}>
+                        <MyPick />
+                    </Suspense>} />
+                <Route path="/my/myQnaList" element={
+                    <Suspense fallback={fallBackData()}>
+                        <MyQnaList />
+                    </Suspense>} />
+                <Route path="/my/MyQnaView" element={
+                    <Suspense fallback={fallBackData()}>
+                        <MyQnaView />
+                    </Suspense>} />
                 <Route path="/myInfo" element={
                 <Suspense fallback={fallBackData()}>
                     <MyInfo />

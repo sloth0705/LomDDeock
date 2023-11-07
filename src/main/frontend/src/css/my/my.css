@@ -3,11 +3,16 @@
     font-size: 13px;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .my {
     display: flex;
     flex-direction: column;
     min-height: 70vh;
-    width: 1000px;
+    width: 1200px;
     height: auto;
     margin-left: auto;
     margin-right: auto;
@@ -17,18 +22,32 @@
 
 .myBanner {
     position: relative;
-    left: 305px;
-    width: 470px;
+    left: 227px;
+    width: 855px;
     height: 100px;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid #A21A24;
     margin-bottom: 10px;
 }
 .myBanner > h2 {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 10px;
+    left: 5px;
+    font-weight: bolder;
 }
 
+/* Paging ul li */
+ul.pagination {
+    justify-content: center;
+    align-items: center;
+}
+ul.pagination .active .page-link {
+    background-color: #FF5B2D;
+    color: white;
+    border-color: #FF5B2D;
+}
+ul.pagination .page-link {
+    color: black;
+}
 /* info */
 #info .myAccount {
     margin-top: 10px;
@@ -42,8 +61,137 @@
     width: 300px;
 }
 
-/*  */
+/* coupon */
+#coupon .pointBanner {
+    width: 800px;
+    height: auto;
+    border: 1px solid rgb(128, 128, 128);
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+#coupon .pointBanner > p:nth-of-type(1) > span {font-size: 16px}
+#coupon .pointBanner > p:nth-of-type(1) > h3 {font-size: 28px; font-weight: bolder}
+#coupon .pointBanner > p:nth-of-type(2) > .coup-expires { font-weight: bold }
 
+#coupon div > .sort {
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    text-align: center;
+}
+#coupon div > .sort > button {
+    width: 60px;
+    height: 60px;
+    background-color: #ff8282;
+    border: none;
+    margin-right: 10px;
+    border-radius: 90px;
+    font-size: 12px;
+    text-align: center;
+}
+#coupon div > .sort > button:hover { background-color: #e03535;}
+#coupon div > .point-list > table th {
+    background-color: #f1f1f1;
+}
+#coupon div > .point-list > table td {
+    width: auto;
+    height: 50px;
+    line-height: 50px;
+}
+#coupon div > .point-list > table .coup {font-weight: bolder}
+#coupon div > .point-list > table .coup.available {color: #3c8aff;}
+#coupon div > .point-list > table .coup.use {color: #8DC93A;}
+#coupon div > .point-list > table .coup.expiration {color: #FF5B2D;}
+/* order */
+#order .card {
+    display: flex;
+    flex-direction: row; /* 수평 배치 */
+    width: 800px;
+    height: auto;
+    margin-bottom: 10px;
+}
+#order .card > .my-order-img {
+    width: 200px;
+    height: 200px;
+}
+
+#order .card > .card-body { position: relative }
+#order .card > .card-body > .card-title {
+    font-weight: bold;
+    font-size: 18px;
+}
+#order .card > .card-body > .card-text > span {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: bolder;
+}
+#order .card > .card-body > .card-text > .delivery-complete {color: #3c8aff}
+#order .card > .card-body > .card-text > .delivery-ing {color: #FF5B2D}
+
+#order .card > .card-body > .card-text > .order-details {
+    padding-top: 10px;
+    color: #9d9d9d;
+
+}
+#order .card > .card-body > button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #FF5B2D;
+    border: none;
+}
+#order .card > .card-body > button:hover {background-color: #e13f10;}
+
+/* pick */
+#pick .card {
+    display: flex;
+    flex-direction: row; /* 수평 배치 */
+    width: 700px;
+    height: auto;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+#pick .card > .card-img-top {
+    width: 150px;
+    height: 150px;
+}
+#pick .card > .card-body { position: relative;}
+#pick .card > .card-body > .card-title {font-weight: bolder}
+#pick .card > .card-body > .card-text > .detail-manu {
+    color: #9d9d9d;
+}
+#pick .card > .card-body > .card-text > .price {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 15px;
+}
+
+/* Qna */
+#QnaList .find-myQna {
+    width: 100%;
+    height: 60px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+#QnaList .find-myQna > select {
+    width: 150px;
+    height: 35px;
+    padding: 5px 30px 5px 10px;
+    border-radius: 4px;
+    outline: 0 none;
+}
+#QnaList .myQna-list > table { border-top: 1px solid black }
+#QnaList .myQna-list > table td {
+    width: auto;
+    height: 60px;
+    line-height: 60px;
+}
+#QnaList .answer-complete {
+    color: red;
+    font-weight: bold;
+}
 /* footer */
 footer {
     flex-shrink: 0;
