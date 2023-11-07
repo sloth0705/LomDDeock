@@ -10,6 +10,7 @@
     color: #999;
 }
 .footer-nav a:hover {
+    text-decoration: none;
     color: #FF5B2D;
 }
 

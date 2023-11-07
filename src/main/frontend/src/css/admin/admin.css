@@ -1,0 +1,96 @@
+* {
+    font-size: 13px;
+}
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+}
+#admin {
+    display: flex;
+    flex-direction: column;
+    min-height: 70vh;
+    width: 1200px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 30px;
+    box-sizing: border-box;
+}
+
+/* ========== 메인페이지(adminIndex) ========== */
+#adminIndex {
+    font-family: SUITE-Regular;
+}
+
+/* aside menu */
+.asideMenu, .asideMenu > a {
+    font-size: 15px;
+}
+#adminIndex > div > div.col-sm-2 > div:nth-child(1) > h2 {
+    font-family: "SUITE-Regular";
+    font-weight: bold;
+    margin-left: 14px;
+    color: dimgray;
+}
+#adminIndex > div > div > div > button > ul {
+    display: none;
+}
+#adminIndex > div > div > div > button:hover > ul {
+    display: block;
+}
+#adminIndex > div > div > div > button > ul > li {
+    padding-top: 6px;
+}
+
+/* 운영현황(OperationStatus) */
+.OperationStatus {
+    width: auto;
+    height: 200px;
+    background-color: #F5F5F5;
+}
+.OperationStatus > h5 {
+    padding: 27px 34px 14px;
+    font-weight: bold;
+}
+.OperationStatus > div {
+    width: 115px;
+    height: 95px;
+    float: left;
+    margin: 0 35px;
+}
+.OperationStatus > div > strong {
+    display: block;
+    height: 30%;
+    text-align: center;
+    padding-top: 5px;
+    background-color: #DCDCDC;
+}
+.OperationStatus > div > span {
+    height: 70%;
+    display: block;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    background-color: #E6E6E6;
+}
+
+/* 매출현황(SalesStatus) */
+.SalesStatus {
+    width: auto;
+    height: 400px;
+    margin-top: 15px;
+    background-color: #F5F5F5;
+}
+.SalesStatus > h5 {
+    padding: 27px 34px 14px;
+    font-weight: bold;
+}
