@@ -12,30 +12,37 @@ const MenuLayout = lazy(() => import('./layout/MenuLayout'))
 const UserLayout = lazy(() => import('./layout/UserLayout'))
 const MyLayout = lazy(() => import('./layout/MyLayout'))
 const AdminLayout = lazy(() => import('./layout/AdminLayout'))
+const BrandLayout = lazy(() => import('./layout/BrandLayout'))
 
 /* 메인 페이지 */
 const Main = lazy(() => import('./pages/main/Main'))
+
+/* 마이페이지 */
 const MyInfo = lazy(() => import('./pages/my/Info'))
 const MyCoupon = lazy(() => import('./pages/my/Coupon'))
 const MyOrder = lazy(() => import('./pages/my/Order'))
 const MyPick = lazy(() => import('./pages/my/Pick'))
 const MyQnaList = lazy(() => import('./pages/my/QnaList'))
 const MyQnaView = lazy(() => import('./pages/my/QnaView'))
+
+/* 사용자 페이지 */
 const Login = lazy(() => import('./pages/user/Login'))
 const Signup = lazy(() => import('./pages/user/Signup'))
 const Register = lazy(() => import('./pages/user/Register'))
 const ConfirmEmail = lazy(() => import('./pages/user/ConfirmEmail'))
+
+/* 상품 메뉴 페이지 */
 const MenuList = lazy(() => import('./pages/menu/MenuList'))
 const MenuView = lazy(() => import('./pages/menu/MenuView'))
 const AdminIndex = lazy(() => import('./pages/admin/adminIndex'))
 const MenuCart = lazy(() => import('./pages/menu/MenuCart'))
-const Introduce = lazy(() => import('./pages/brand/Introduce'))
 const MenuOrder = lazy(() => import('./pages/menu/MenuOrder'))
 const MenuComplete = lazy(() => import('./pages/menu/MenuComplete'))
-const MenuLayout = lazy(() => import('./layout/MenuLayout'))
-const UserLayout = lazy(() => import('./layout/UserLayout'))
-const MyLayout = lazy(() => import('./layout/MyLayout'))
-const AdminLayout = lazy(() => import('./layout/AdminLayout'))
+
+/* 브랜드 페이지 */
+const Introduce = lazy(() => import('./pages/brand/Introduce'))
+
+/* 로딩중 표시 */
 function fallBackData() {
     return <div>로딩중</div>;
 }
@@ -50,10 +57,6 @@ function App() {
                     <Header />
                     <Main />
                     <Footer />
-                </Suspense>} />
-                <Route path="/introduce" element={
-                <Suspense fallback={fallBackData()}>
-                    <Introduce />
                 </Suspense>} />
                 {/* 메뉴 페이지 */}
                 <Route path="/menu/*" element={
@@ -110,6 +113,18 @@ function App() {
                         <AdminLayout>
                             <Routes>
                                 <Route path="/adminIndex" element={<AdminIndex />} />
+                            </Routes>
+                        </AdminLayout>
+                        <Footer/>
+                    </Suspense>
+                  } />
+                {/* 브랜드 페이지 */}
+                <Route path="/brand/*" element={
+                    <Suspense fallback={fallBackData()}>
+                        <AdminHeader/>
+                        <AdminLayout>
+                            <Routes>
+                                <Route path="/introduce" element={<Introduce />} />
                             </Routes>
                         </AdminLayout>
                         <Footer/>
