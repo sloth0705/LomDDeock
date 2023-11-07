@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col, Form, Container, Card } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 import '../../css/user/user.css';
 import Button from 'react-bootstrap/Button';
 import Image from "react-bootstrap/Image";
@@ -72,7 +73,7 @@ function Signup () {
                         </div>
                     </Card>
                     <div className="text-center">
-                        <Button variant="danger"><a href="/register">동의하기</a></Button>{' '}
+                        <Button variant="danger"><Link to="/user/register">동의하기</Link></Button>{' '}
                     </div>
                 </Col>
             </Row>
