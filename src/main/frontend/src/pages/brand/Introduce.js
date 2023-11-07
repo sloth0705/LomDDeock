@@ -3,14 +3,20 @@ import { Container } from 'react-bootstrap';
 import Image from "react-bootstrap/Image";
 import logo from '../../images/LomDDeock-logo-removebg.png';
 import {Map, MapMarker} from "react-kakao-maps-sdk";
+import '../../css/brand/introduce.css';
 
 function Introduce (){
     return(
-        <Container>
-            <div>
-                <h3>브랜드 소개</h3>
+        <Container class="container">
+            <div className="link_menu">
+                <ul>
+                    <li><a href="#">브랜드 소개</a></li>
+                    <li><a href="#">BI</a></li>
+                    <li><a href="#">오시는 길</a></li>
+                </ul>
             </div>
-            <div>
+            <div className="brandIntro">
+                <h3>브랜드 소개</h3>
                 <p>롬복떡복이 LomDDeock</p>
                 <p>
                     세상에 떡볶이는 많습니다.<br/>
@@ -24,7 +30,7 @@ function Introduce (){
                     <strong>롬복떡볶이</strong>입니다.
                 </p>
             </div>
-            <div>
+            <div className="BI">
                 <h3>BI(BRAND IDENTITY)</h3>
                 <Image src={logo} alt="로고" className="logo"/>
                 <p>
@@ -34,10 +40,8 @@ function Introduce (){
                     사용하여야 합니다.
                 </p>
             </div>
-            <div>
+            <div className="map">
                 <h3>오시는 길</h3>
-            </div>
-            <div>
                 <Map // 지도를 표시할 Container
                     center={{
                         // 지도의 중심좌표
@@ -46,7 +50,7 @@ function Introduce (){
                     }}
                     style={{
                         // 지도의 크기
-                        width: "100%",
+                        width: "80%",
                         height: "450px",
                     }}
                     level={4} // 지도의 확대 레벨

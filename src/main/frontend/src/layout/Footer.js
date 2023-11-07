@@ -14,7 +14,7 @@ function Footer() {
                     /*onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}*/
                     className="flex-content-center footer-nav">
                     <Nav.Item>
-                        <Nav.Link href="/introduce">
+                        <Nav.Link href="/brand/introduce">
                             회사소개
                         </Nav.Link>
                     </Nav.Item>

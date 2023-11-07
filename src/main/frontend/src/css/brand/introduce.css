@@ -1,0 +1,37 @@
+/* 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: SUITE-Regular;
+}
+
+ul,li,ol {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #111;
+}
+input,
+textarea {
+    outline: none;
+}
+h3 {
+    font-family: ONE-Mobile-POP;
+    margin-top:30px;
+}
+#wrapper {
+    width: 100%;
+}
+
+div.BI, div.brandIntro {
+    padding: 20px;
+}
+.container {padding-bottom: 20px;}
+
+.link_menu {
+    position: fixed;
+    right:1.5rem;
+    z-index: 25;
+    bottom:calc(100% - 700px);
+}
