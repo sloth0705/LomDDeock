@@ -1,25 +1,27 @@
+import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import { Container,ListGroup, Col, Row, Figure, Button , Table } from 'react-bootstrap';
 import '../../css/my/my.css';
 function Info() {
     return (
         <section className="my">
-            {/*<div className="myBanner"></div>*/}
             <div className="myBanner">
-                <h2>MyPage</h2>
+                <h2>내 정보</h2>
             </div>
             <Container id="info">
                 <Row className="justify-content-center">
+                    {/* aside */}
                     <Col sm={2}>
                         <ListGroup variant="flush">
-                            <ListGroup.Item action variant="light">내 정보</ListGroup.Item>
-                            <ListGroup.Item action variant="light">포인트</ListGroup.Item>
-                            <ListGroup.Item action variant="light">쿠폰함</ListGroup.Item>
-                            <ListGroup.Item action variant="light">주문내역</ListGroup.Item>
-                            <ListGroup.Item action variant="light">나의 찜</ListGroup.Item>
-                            <ListGroup.Item action variant="light">나의 문의내역</ListGroup.Item>
+                            <ListGroup.Item action variant="light" href="/my/myInfo">내 정보</ListGroup.Item>
+                            <ListGroup.Item action variant="light" href="/my/myCoupon">쿠폰함</ListGroup.Item>
+                            <ListGroup.Item action variant="light" href="/my/myOrder">주문내역</ListGroup.Item>
+                            <ListGroup.Item action variant="light" href="/my/myPick">나의 찜</ListGroup.Item>
+                            <ListGroup.Item action variant="light" href="/my/myQnaList">나의 문의내역</ListGroup.Item>
                         </ListGroup>
                     </Col>
-                    <Col sm={6}>
+                    {/* content */}
+                    <Col sm={9}>
 
                         <Figure>
                             <Figure.Image roundedCircle
@@ -66,6 +68,7 @@ function Info() {
                             탈퇴
                         </Button>
                     </Col>
+                    {/* content end */}
                 </Row>
             </Container>
         </section>

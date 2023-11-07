@@ -23,26 +23,23 @@ function Header() {
                     </InputGroup>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="margin-left-auto">
-                            <Nav.Link href="/login">
+                            <Nav.Link href="/user/login">
                                 로그인
                             </Nav.Link>
                             <NavDropdown title="마이페이지" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="/myInfo">
+                                <NavDropdown.Item href="/my/myInfo">
                                     나의 정보
-                                </NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">
-                                    포인트
                                 </NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.3">
                                     쿠폰함
                                 </NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.4">
+                                <NavDropdown.Item href="/my/myOrder">
                                     주문내역
                                 </NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.4">
+                                <NavDropdown.Item href="/my/myPick">
                                     나의 찜
                                 </NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.4">
+                                <NavDropdown.Item href="/my/myQnaList">
                                     나의 문의내역
                                 </NavDropdown.Item>
                             </NavDropdown>

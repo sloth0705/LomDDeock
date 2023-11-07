@@ -9,7 +9,7 @@ function MenuOrder() {
         <section className="menuOrder">
             <section className="cartArea">
                 <h2 className="cartText">
-                    장바구니
+                    주문하기
                 </h2>
                 <Table className="cartInfoTable">
                     <thead>
@@ -219,12 +219,12 @@ function MenuOrder() {
                         />
                     </article>
                 </article>
-                <section className="cartOrderArea">
-                    <h5 className="cartOrderText">
+                <section className="menuOrderArea">
+                    <h5 className="menuOrderText">
                         전체합계
                     </h5>
-                    <article className="cartOrderForm">
-                        <Table className="cartOrderTable">
+                    <article className="menuOrderForm">
+                        <Table className="menuOrderTable">
                             <tbody>
                                 <tr>
                                     <td>
@@ -237,6 +237,14 @@ function MenuOrder() {
                                 <tr>
                                     <td>
                                         할인금액
+                                    </td>
+                                    <td>
+                                        (-) 4,000원
+                                    </td>
+                                </tr>
+                                <tr className="gray-font">
+                                    <td>
+                                        ㄴ 쿠폰
                                     </td>
                                     <td>
                                         (-) 4,000원
@@ -264,7 +272,7 @@ function MenuOrder() {
                             </tbody>
                         </Table>
                         <Link to="/menu/menuOrder">
-                            <Button variant="danger" className="cartOrderButton">
+                            <Button variant="danger" className="menuOrderButton">
                                 주문하기
                             </Button>
                         </Link>
