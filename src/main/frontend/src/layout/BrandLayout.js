@@ -1,8 +1,8 @@
-function MenuLayout({ children }) {
+function BrandLayout({ children }) {
     return (
         <>
             {children}
         </>
     )
 }
-export default MenuLayout;
+export default BrandLayout;
