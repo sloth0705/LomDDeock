@@ -76,26 +76,25 @@
 
 /* admin header */
 .adminHeader {
+    height: 95px;
     border-bottom: 4px solid #FF5B2D;
 }
 .adminHeader img {
-    width: 100px;
-    margin-left: 10px;
-    margin-top: 10px;
+    width: 193px;
+    margin-left: 20px;
+    margin-top: 17px;
 }
 .adminFontLogo {
     display: inline-block;
-    position: absolute;
-    font-size: 35px;
-    top: 30px;
-    left: 120px;
     font-family: ONE-Mobile-POP;
-    color: #A21A24;
+    color: #FF5B2D;
+    font-size: 30px;
+    margin-top: 24px;
 }
 .adminLogout {
     display: inline-block;
     position: absolute;
-    right: 8px;
-    top: 83px;
+    right: 30px;
+    top: 60px;
     font-family: SUITE-Regular;
 }
