@@ -1,9 +1,19 @@
 import React, {useEffect, useState, lazy, Suspense} from 'react';
 import axios from 'axios';
 import { Routes, Route, BrowserRouter, Link, useLocation } from "react-router-dom";
+
+/* 헤더, 푸터 */
 import Header from './layout/Header';
 import AdminHeader from './layout/AdminHeader';
 import Footer from './layout/Footer';
+
+/* 페이지 레이아웃 */
+const MenuLayout = lazy(() => import('./layout/MenuLayout'))
+const UserLayout = lazy(() => import('./layout/UserLayout'))
+const MyLayout = lazy(() => import('./layout/MyLayout'))
+const AdminLayout = lazy(() => import('./layout/AdminLayout'))
+
+/* 메인 페이지 */
 const Main = lazy(() => import('./pages/main/Main'))
 const MyInfo = lazy(() => import('./pages/my/Info'))
 const MyCoupon = lazy(() => import('./pages/my/Coupon'))
@@ -21,6 +31,7 @@ const AdminIndex = lazy(() => import('./pages/admin/adminIndex'))
 const MenuCart = lazy(() => import('./pages/menu/MenuCart'))
 const Introduce = lazy(() => import('./pages/brand/Introduce'))
 const MenuOrder = lazy(() => import('./pages/menu/MenuOrder'))
+const MenuComplete = lazy(() => import('./pages/menu/MenuComplete'))
 const MenuLayout = lazy(() => import('./layout/MenuLayout'))
 const UserLayout = lazy(() => import('./layout/UserLayout'))
 const MyLayout = lazy(() => import('./layout/MyLayout'))
@@ -54,6 +65,7 @@ function App() {
                                 <Route path="/menuView" element={<MenuView />} />
                                 <Route path="/menuCart" element={<MenuCart />} />
                                 <Route path="/menuOrder" element={<MenuOrder />} />
+                                <Route path="/menuComplete" element={<MenuComplete />} />
                             </Routes>
                         </MenuLayout>
                         <Footer />
