@@ -271,7 +271,7 @@ function MenuOrder() {
                                 </tr>
                             </tbody>
                         </Table>
-                        <Link to="/menu/menuOrder">
+                        <Link to="/menu/menuComplete">
                             <Button variant="danger" className="menuOrderButton">
                                 주문하기
                             </Button>
