@@ -19,12 +19,12 @@ const MenuList = lazy(() => import('./pages/menu/MenuList'))
 const MenuView = lazy(() => import('./pages/menu/MenuView'))
 const AdminIndex = lazy(() => import('./pages/admin/adminIndex'))
 const MenuCart = lazy(() => import('./pages/menu/MenuCart'))
+const Introduce = lazy(() => import('./pages/brand/Introduce'))
 const MenuOrder = lazy(() => import('./pages/menu/MenuOrder'))
 const MenuLayout = lazy(() => import('./layout/MenuLayout'))
 const UserLayout = lazy(() => import('./layout/UserLayout'))
 const MyLayout = lazy(() => import('./layout/MyLayout'))
 const AdminLayout = lazy(() => import('./layout/AdminLayout'))
-
 function fallBackData() {
     return <div>로딩중</div>;
 }
@@ -39,6 +39,10 @@ function App() {
                     <Header />
                     <Main />
                     <Footer />
+                </Suspense>} />
+                <Route path="/introduce" element={
+                <Suspense fallback={fallBackData()}>
+                    <Introduce />
                 </Suspense>} />
                 {/* 메뉴 페이지 */}
                 <Route path="/menu/*" element={
