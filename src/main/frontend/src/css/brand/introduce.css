@@ -16,22 +16,121 @@ input,
 textarea {
     outline: none;
 }
-h3 {
+.divContainer {
+    padding-bottom: 20px;
+    width:100%;
+    height:1600px;
+}
+#root div > h3 {
     font-family: ONE-Mobile-POP;
     margin-top:30px;
+    text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;
 }
-#wrapper {
-    width: 100%;
+strong {
+    font-family: ONE-Mobile-POP;
+    font-weight: normal;
+    color: #A21A24;
+}
+.brandIntro {
+    position: relative;
+    padding: 50px;
+    width: 1400px;
+    height:550px;
+}
+.brandIntro p {
+    line-height: 75px;
+    font-size: 25px;
+    color:black;
+    font-weight: bold;
+    text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;
+    position: relative;
+}
+.brandIntro .character {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width:200px;
 }
 
-div.BI, div.brandIntro {
+.BI {
+    position: relative;
     padding: 20px;
+    width: 100%;
+    height:850px;
 }
-.container {padding-bottom: 20px;}
+.BI p, .logo {
+    line-height: 75px;
+    font-size: 20px;
+    color:black;
+    font-weight: bold;
+    text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;
+    position: relative;
+}
+.BI p {
+    position: absolute;
+    bottom: 10px;
+    left: 50px;
+}
+.BI .logo {
+    position: absolute;
+    top: 10px;
+    right: 500px;
+    width:500px;
+}
+.map {
+    background-color: white;
+    padding: 20px;
+    width: 1440px;
+    height:700px;
+}
+
 
 .link_menu {
     position: fixed;
     right:1.5rem;
     z-index: 25;
     bottom:calc(100% - 700px);
+}
+table {
+    border-top:2px solid #A21A24;
+    border-bottom:2px solid #A21A24;
+    margin-top:20px;
+    width:1400px;
+    height:150px;
+}
+table > tr >td{
+    border: 1px solid #cbbeb5;
+    padding: 10px;
+
+}
+.pin-spacer {
+    width:100%;
+    height:952px;
+    padding: 0px;
+    z-index:-1;
+    float:none;
+    flex-shrink:1;
+    display:block;
+    margin:0px;
+    inset:0px 0px 4720.72px;
+    position:absolute;
+    overflow:visible;
+    box-sizing: border-box;
+}
+.bg {
+    traslate:none;
+    rotate:none;
+    scale: none;
+    transform:translate(0px, 0px);
+    left:0px;
+    top:0.140625px;
+    margin:0px;
+    max-width:2840px;
+    width:2840px;
+    max-height:952px;
+    height:952px;
+    padding: 0px;
+    box-sizing:border-box;
+    position:fixed;
+    background:url(../../images/brand/history_bg.png) no-repeat;
 }
