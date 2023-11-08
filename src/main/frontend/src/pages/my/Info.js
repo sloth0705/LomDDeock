@@ -72,13 +72,13 @@ function Info() {
                             </Figure> <br/>
                             <div className="social-sign-in">
                                 <Link className="social" id="naver-login" to="https://nid.naver.com/nidlogin.login">
-                                    네이버 회원으로 로그인
+                                    네이버 계정 연동
                                 </Link>
                                 <Link className="social" id="kakao-login" to="https://accounts.kakao.com/login/?continue=https%3A%2F%2Fcs.kakao.com%2F#login">
-                                    카카오 회원으로 로그인
+                                    카카오 계정 연동
                                 </Link>
                                 <Link className="social" id="google-login" to="#">
-                                     구글 회원으로 로그인
+                                     구글 계정 연동
                                 </Link>
                             </div>
                             <table className="myAccount">

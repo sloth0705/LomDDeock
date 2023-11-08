@@ -42,6 +42,9 @@ const MenuComplete = lazy(() => import('./pages/menu/MenuComplete'))
 /* 브랜드 페이지 */
 const Introduce = lazy(() => import('./pages/brand/Introduce'))
 
+/* 고객센터 페이지 */
+const CsNotice = lazy(() => import('./pages/cs/CsNotice'))
+const CsEventList = lazy(() => import('./pages/cs/CsEventList'))
 /* 로딩중 표시 */
 function fallBackData() {
     return <div>로딩중</div>;
@@ -125,6 +128,19 @@ function App() {
                         <BrandLayout>
                             <Routes>
                                 <Route path="/introduce" element={<Introduce />} />
+                            </Routes>
+                        </BrandLayout>
+                        <Footer/>
+                    </Suspense>
+                  } />
+                {/* 고객센터 페이지 */}
+                <Route path="/cs/*" element={
+                    <Suspense fallback={fallBackData()}>
+                        <Header/>
+                        <BrandLayout>
+                            <Routes>
+                                <Route path="/CsNotice" element={<CsNotice />} />
+                                <Route path="/CsEventList" element={<CsEventList />} />
                             </Routes>
                         </BrandLayout>
                         <Footer/>
