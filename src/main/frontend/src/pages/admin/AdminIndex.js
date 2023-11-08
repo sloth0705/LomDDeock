@@ -1,10 +1,13 @@
 import '../../css/admin/admin.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Col, ListGroup, Row, Accordion, Container} from "react-bootstrap";
+import {Col, ListGroup, Row, Container} from "react-bootstrap";
 import React from "react";
-import data from "./chart/MenuSalesStatusChartData";
+import MenuSalesStatusData from "./chart/MenuSalesStatusChartData";
+import SideSalesStatusData from "./chart/SideSalesStatusChartData";
+import ToppingSalesStatusData from "./chart/ToppingSalesStatusChartData";
 import MenuSalesStatusChart from "./chart/MenuSalesStatusChart";
 import SideSalesStatusChart from "./chart/SideSalesStatusChart";
+import ToppingSalesStatusChart from "./chart/ToppingSalesStatusChart";
 
 function adminIndex() {
     return (
@@ -67,14 +70,18 @@ function adminIndex() {
                         </article>
                         {/* 매출현황 */}
                         <div className="SalesStatus">
-                            <h5>✔ 매출현황</h5>
                             <div className="menuSalesStatus">
-                                <MenuSalesStatusChart data={data}/>
+                                <h5>✔ 매출현황</h5>
+                                <MenuSalesStatusChart data={MenuSalesStatusData}/>
                             </div>
                             <div className="sideSalesStatus">
-                                <SideSalesStatusChart data={data}/>
+                                <h6>- 사이드디시 매출현황</h6>
+                                <SideSalesStatusChart data={SideSalesStatusData}/>
                             </div>
-                            <div className="toppingSalesStatus"></div>
+                            <div className="toppingSalesStatus">
+                                <h6>- 11월 토핑 매출현황</h6>
+                                <ToppingSalesStatusChart data={ToppingSalesStatusData}/>
+                            </div>
                         </div>
                     </Col>
                 </Row>

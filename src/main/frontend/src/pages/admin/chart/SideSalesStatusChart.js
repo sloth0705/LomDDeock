@@ -18,18 +18,7 @@ const SideSalesStatusChart = ({data})=>(
         valueScale={{ type: 'linear' }}
         indexScale={{ type: 'band', round: true }}
         valueFormat=" >-,.0d"
-        colors={{ scheme: 'oranges' }}
-        defs={[
-            {
-                id: 'lines',
-                type: 'patternLines',
-                background: 'inherit',
-                color: '#eed312',
-                rotation: -45,
-                lineWidth: 6,
-                spacing: 10
-            }
-        ]}
+        colors={{ scheme: 'purple_red' }}
         fill={[
             {
                 match: {
