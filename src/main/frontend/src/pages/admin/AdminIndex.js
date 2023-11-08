@@ -2,6 +2,9 @@ import '../../css/admin/admin.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Col, ListGroup, Row, Accordion, Container} from "react-bootstrap";
 import React from "react";
+import data from "./chart/MenuSalesStatusChartData";
+import MenuSalesStatusChart from "./chart/MenuSalesStatusChart";
+import SideSalesStatusChart from "./chart/SideSalesStatusChart";
 
 function adminIndex() {
     return (
@@ -65,6 +68,13 @@ function adminIndex() {
                         {/* 매출현황 */}
                         <div className="SalesStatus">
                             <h5>✔ 매출현황</h5>
+                            <div className="menuSalesStatus">
+                                <MenuSalesStatusChart data={data}/>
+                            </div>
+                            <div className="sideSalesStatus">
+                                <SideSalesStatusChart data={data}/>
+                            </div>
+                            <div className="toppingSalesStatus"></div>
                         </div>
                     </Col>
                 </Row>

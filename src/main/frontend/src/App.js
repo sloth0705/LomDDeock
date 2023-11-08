@@ -34,7 +34,7 @@ const ConfirmEmail = lazy(() => import('./pages/user/ConfirmEmail'))
 /* 상품 메뉴 페이지 */
 const MenuList = lazy(() => import('./pages/menu/MenuList'))
 const MenuView = lazy(() => import('./pages/menu/MenuView'))
-const AdminIndex = lazy(() => import('./pages/admin/adminIndex'))
+const AdminIndex = lazy(() => import('./pages/admin/AdminIndex'))
 const MenuCart = lazy(() => import('./pages/menu/MenuCart'))
 const MenuOrder = lazy(() => import('./pages/menu/MenuOrder'))
 const MenuComplete = lazy(() => import('./pages/menu/MenuComplete'))
