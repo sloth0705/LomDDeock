@@ -94,3 +94,29 @@ a:hover {
     padding: 27px 34px 14px;
     font-weight: bold;
 }
+/* 메뉴 매출현황 그래프 */
+.SalesStatus > .menuSalesStatus {
+    display: inline-block;
+    float: left;
+    width: 45%;
+    height: 80%;
+    border: 1px solid red;
+}
+
+/* 사이드디시 매출현황 그래프 */
+.SalesStatus > .sideSalesStatus {
+    display: inline-block;
+    margin-left: 10%;
+    width: 30%;
+    height: 40%;
+    border: 1px solid red;
+}
+
+/* 토핑 매출현황 그래프 */
+.SalesStatus > .toppingSalesStatus {
+    display: inline-block;
+    margin-left: 10%;
+    width: 40%;
+    height: 40%;
+    border: 1px solid red;
+}
