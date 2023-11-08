@@ -15,7 +15,7 @@ function Order() {
                         <ListGroup variant="flush">
                             <ListGroup.Item action variant="light" href="/my/myInfo">내 정보</ListGroup.Item>
                             <ListGroup.Item action variant="light" href="/my/myCoupon">쿠폰함</ListGroup.Item>
-                            <ListGroup.Item action variant="light" href="/my/myOrder">주문내역</ListGroup.Item>
+                            <ListGroup.Item action variant="light" active href="/my/myOrder">주문내역</ListGroup.Item>
                             <ListGroup.Item action variant="light" href="/my/myPick">나의 찜</ListGroup.Item>
                             <ListGroup.Item action variant="light" href="/my/myQnaList">나의 문의내역</ListGroup.Item>
                         </ListGroup>
@@ -39,7 +39,7 @@ function Order() {
 
                                         </div>
                                     </Card.Text>
-                                    <Button size="lg">재주문</Button>
+                                    <Button size="lg" className="btn success">재주문</Button>
                                 </Card.Body>
                             </Card>
                             <Card>
@@ -57,7 +57,7 @@ function Order() {
                                             · 음료 : 쿨피스 (1L), 스프라이트(355ml) <br/>
                                         </div>
                                     </Card.Text>
-                                    <Button size="lg">재주문</Button>
+                                    <Button size="lg" className="btn success">재주문</Button>
                                 </Card.Body>
                             </Card>
                         </div>
