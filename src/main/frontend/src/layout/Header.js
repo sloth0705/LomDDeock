@@ -30,7 +30,7 @@ function Header() {
                                 <NavDropdown.Item href="/my/myInfo">
                                     나의 정보
                                 </NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">
+                                <NavDropdown.Item href="/my/myCoupon">
                                     쿠폰함
                                 </NavDropdown.Item>
                                 <NavDropdown.Item href="/my/myOrder">
