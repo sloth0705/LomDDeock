@@ -34,7 +34,6 @@ const ConfirmEmail = lazy(() => import('./pages/user/ConfirmEmail'))
 /* 상품 메뉴 페이지 */
 const MenuList = lazy(() => import('./pages/menu/MenuList'))
 const MenuView = lazy(() => import('./pages/menu/MenuView'))
-const AdminIndex = lazy(() => import('./pages/admin/AdminIndex'))
 const MenuCart = lazy(() => import('./pages/menu/MenuCart'))
 const MenuOrder = lazy(() => import('./pages/menu/MenuOrder'))
 const MenuComplete = lazy(() => import('./pages/menu/MenuComplete'))
@@ -46,6 +45,11 @@ const Terms = lazy(() => import('./pages/brand/Terms'))
 /* 고객센터 페이지 */
 const CsNotice = lazy(() => import('./pages/cs/CsNotice'))
 const CsEventList = lazy(() => import('./pages/cs/CsEventList'))
+
+/* 관리자 페이지 */
+const AdminIndex = lazy(() => import('./pages/admin/AdminIndex'))
+const AdminMenuRegister = lazy(()=>import('./pages/admin/AdminMenuRegister'))
+
 /* 로딩중 표시 */
 function fallBackData() {
     return <div>로딩중</div>;
@@ -117,6 +121,7 @@ function App() {
                         <AdminLayout>
                             <Routes>
                                 <Route path="/adminIndex" element={<AdminIndex />} />
+                                <Route path="/AdminMenuRegister" element={<AdminMenuRegister />} />
                             </Routes>
                         </AdminLayout>
                         <Footer/>
