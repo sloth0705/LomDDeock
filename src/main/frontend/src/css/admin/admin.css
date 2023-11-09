@@ -31,7 +31,11 @@ a:hover {
     width: 1200px !important;
     margin: 0 auto;
 }
-#adminMenuRegister > div {
+#adminMenuManagement > div {
+    width: 1200px !important;
+    margin: 0 auto;
+}
+#adminMenuList > div {
     width: 1200px !important;
     margin: 0 auto;
 }
@@ -182,58 +186,58 @@ a:hover {
     margin-left: 20px;
 }
 
-/* ========== 메뉴등록(adminMenuRegister) ========== */
-#adminMenuRegister > div > div.col {
+/* ========== 메뉴등록 & 수정(adminMenuManagement) ========== */
+#adminMenuManagement > div > div.col {
     margin-top: 33px;
 }
-#adminMenuRegister > div > div.col > select {
+#adminMenuManagement > div > div.col > select {
     /* 유형선택 */
     width: 150px;
     margin-bottom: 10px;
     font-weight: bold;
 }
-#adminMenuRegister > div > div.col > div:nth-child(2) {
+#adminMenuManagement > div > div.col > div:nth-child(2) {
     /* 메뉴명 필드 */
     width: 350px;
 }
-#adminMenuRegister #formFile {
+#adminMenuManagement #formFile {
     /* 파일첨부 필드 */
     width: 200px;
 }
-#adminMenuRegister > div > div.col > div:nth-child(4) {
+#adminMenuManagement > div > div.col > div:nth-child(4) {
     /* 메뉴설명 필드 */
     width: 350px;
 }
-#adminMenuRegister > div > div.col > div:nth-child(5) {
+#adminMenuManagement > div > div.col > div:nth-child(5) {
     /* 사이즈옵션 필드 */
     width: 200px;
 }
-#adminMenuRegister > div > div.col > div:nth-child(6) {
+#adminMenuManagement > div > div.col > div:nth-child(6) {
     /* 사이즈입력 필드 */
     width: 200px;
 }
-#adminMenuRegister > div > div.col > div:nth-child(7) {
+#adminMenuManagement > div > div.col > div:nth-child(7) {
     /* 맵기옵션 필드 */
     width: 200px;
     float: left;
     margin-right: 15px;
 }
-#adminMenuRegister > div > div.col > div:nth-child(8) {
+#adminMenuManagement > div > div.col > div:nth-child(8) {
     /* 맵기 맛 입력 필드 */
     width: 730px;
 }
 
 /* 선택옵션 */
-#adminMenuRegister .addOption {
+#adminMenuManagement .addOption {
     background-color: #F5F5F5;
     padding: 10px;
     margin-top: 25px;
 }
-#adminMenuRegister .addOption > p {
+#adminMenuManagement .addOption > p {
     display: inline-block;
     font-weight: bold;
 }
-#adminMenuRegister .addOption > button {
+#adminMenuManagement .addOption > button {
     width: 22px;
     border: none;
     border-radius: 20px;
@@ -243,36 +247,37 @@ a:hover {
     float: right;
     margin-left: 2px;
 }
-#adminMenuRegister > div > div.col > button {
+#adminMenuManagement > div > div.col > button {
     /* 최종등록 버튼 */
+    height: 55px;
     font-size: 15px;
     display: block;
-    margin: 30px auto;
+    margin: 40px auto;
     border: none;
     padding: 10px 30px;
-    border-radius: 15px;
+    border-radius: 20px;
 }
-#adminMenuRegister > div > div.col > button:hover {
+#adminMenuManagement > div > div.col > button:hover {
     background-color: #c9c8c8;
     color: white;
 }
 
 /* 중분류 */
-#adminMenuRegister .classification {
+#adminMenuManagement .classification {
     background-color: #ececec;
     padding: 10px;
 }
-#adminMenuRegister > div > div.col > article > div > div:nth-child(2) {
+#adminMenuManagement > div > div.col > article > div > div:nth-child(2) {
     /* 소분류 개수 input필드 */
     width: 200px;
 }
-#adminMenuRegister .classification > .subcate > .formFile {
+#adminMenuManagement .classification > .subcate > .formFile {
     /* 소분류 파일첨부 */
     width: 200px;
     float: left;
     margin-right: 7px;
 }
-#adminMenuRegister .classification > .subcate > .inputSubcate {
+#adminMenuManagement .classification > .subcate > .inputSubcate {
     /* 소분류 input필드 */
     width: 300px;
 }

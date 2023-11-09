@@ -8,7 +8,7 @@ import AdminAsideMenu from "./AdminAsideMenu";
 function adminMenuRegister() {
     return (
         <section id="admin">
-            <Container id="adminMenuRegister">
+            <Container id="adminMenuManagement">
                 <Row className="justify-content-center">
                     {/* aside menu */}
                     <AdminAsideMenu/>
