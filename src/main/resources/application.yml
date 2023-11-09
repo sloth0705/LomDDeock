@@ -20,9 +20,9 @@ server:
     context-path: /
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
     password: a1s2d3F$
-    url: jdbc:mysql://13.209.17.103:3306/LotteON
+    url: jdbc:log4jdbc:mysql://13.209.17.103:3306/LotteON
     username: lotte
   devtools:
     livereload:
@@ -32,8 +32,6 @@ spring:
         enabled: true
   resources:
     static-locations: file:/C:/Users/Java/Desktop/Workspace/LotteON2/files/
-
-
 
   jpa:
     database: mysql
@@ -71,6 +69,8 @@ upload:
     files: files/
     thumbs: thumbs/
     banners: banners/
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
 
 app:
   version: 0.0.12-SNAPSHOT
