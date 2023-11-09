@@ -1,0 +1,41 @@
+ul,li,ol {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #111;
+}
+.nav {
+    --bs-link-color: black;
+    --bs-nav-link-color: var(--bs-link-color);
+}
+#root > header > div > a > div {
+    width:440px;
+    height:160px;
+    position:relative;
+    margin:0 auto;
+}
+#basic-navbar-nav{
+    display:inline-block;
+}
+#root > header > div > a > div > img.logo{
+    width:400px;
+    position:absolute;
+    top:45px;
+}
+#root > header > div > a > div > img.character{
+    width: 130px;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+}
+#root > header > ul{
+    border-bottom: 1px solid #FF5B2D;
+}
+#root > header > ul > li {
+    margin: 0 auto;
+}
+#root > header > ul > li:nth-child(2) {
+    border-left: 1px solid #FF5B2D;
+    border-right: 1px solid #FF5B2D;
+}

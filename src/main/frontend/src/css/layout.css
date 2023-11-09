@@ -75,6 +75,13 @@
 }
 
 /* admin header */
+.mainHeader {
+    position: relative;
+    min-width: 1400px;
+    width: 100%;
+    height: 190px;
+    border-bottom: 4px solid #FF5B2D;
+}
 .adminHeader {
     position: relative;
     min-width: 1400px;
