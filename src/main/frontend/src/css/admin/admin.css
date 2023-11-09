@@ -15,7 +15,6 @@ a:hover {
     font-weight: bold;
 }
 #admin {
-    display: flex;
     flex-direction: column;
     min-height: 70vh;
     width: 1200px;
@@ -30,12 +29,20 @@ a:hover {
 #adminIndex {
     font-family: SUITE-Regular;
 }
+#adminIndex > div {
+    width: 1200px !important;
+    margin: 0 auto;
+}
 
 /* aside menu */
+#adminIndex > div > div.col-sm-2 {
+    width: 170px !important;
+}
 .asideMenu, .asideMenu > a {
     font-size: 15px;
 }
-#adminIndex > div > div.col-sm-2 > div:nth-child(1) > h2 {
+#adminIndex .todayDate > h2 {
+    font-size: 22px;
     font-family: "SUITE-Regular";
     font-weight: bold;
     margin-left: 14px;
@@ -53,7 +60,7 @@ a:hover {
 
 /* 운영현황(OperationStatus) */
 .OperationStatus {
-    width: auto;
+    width: 970px !important;
     height: 200px;
     background-color: #F5F5F5;
 }
@@ -85,8 +92,8 @@ a:hover {
 
 /* 매출현황(SalesStatus) */
 .SalesStatus {
-    width: auto;
-    height: auto;
+    width: 970px !important;
+    height: 560px;
     margin-top: 15px;
     background-color: #F5F5F5;
 }
@@ -96,10 +103,11 @@ a:hover {
     margin: 30px;
     float: left;
     width: 45%;
-    height: 80%;
+    height: 275px;
 }
 .SalesStatus > .menuSalesStatus > h5 {
     font-weight: bold;
+    margin-bottom: 14px;
 }
 
 /* 사이드디시 매출현황 그래프 */
@@ -107,7 +115,7 @@ a:hover {
     display: inline-block;
     margin: 30px;
     width: 40%;
-    height: 40%;
+    height: 205px;
 }
 .SalesStatus > .sideSalesStatus > h6 {
     padding-bottom: 10px;
@@ -117,10 +125,10 @@ a:hover {
 /* 토핑 매출현황 그래프 */
 .SalesStatus > .toppingSalesStatus {
     display: inline-block;
-    margin-left: 30px;
+    margin: 30px;
     padding-bottom: 20px;
     width: 40%;
-    height: 50%;
+    height: 250px;
 }
 .SalesStatus > .toppingSalesStatus > h6 {
     padding-bottom: 10px;

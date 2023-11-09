@@ -16,7 +16,7 @@ function adminIndex() {
                 <Row className="justify-content-center">
                     {/* aside menu */}
                     <Col sm={2}>
-                        <div>
+                        <div className="todayDate">
                             <h2>2023-11-07</h2>
                         </div>
                         <ListGroup className="asideMenu">
@@ -43,7 +43,7 @@ function adminIndex() {
                             <ListGroup.Item action variant="light" href="/admin/adminQna">고객의소리</ListGroup.Item>
                         </ListGroup>
                     </Col>
-                    <Col>
+                    <Col className="statusArea">
                         {/* 운영현황 */}
                         <article className="OperationStatus">
                             <h5>✔ 운영현황</h5>
