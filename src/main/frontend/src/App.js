@@ -53,7 +53,9 @@ const CsQnaView = lazy(() => import('./pages/cs/CsQnaView'))
 
 /* 관리자 페이지 */
 const AdminIndex = lazy(() => import('./pages/admin/AdminIndex'))
+const AdminMenuList = lazy(() => import('./pages/admin/AdminMenuList'))
 const AdminMenuRegister = lazy(()=>import('./pages/admin/AdminMenuRegister'))
+const AdminMenuModify = lazy(() => import('./pages/admin/AdminMenuModify'))
 
 /* 로딩중 표시 */
 function fallBackData() {
@@ -126,7 +128,9 @@ function App() {
                         <AdminLayout>
                             <Routes>
                                 <Route path="/adminIndex" element={<AdminIndex />} />
+                                <Route path="/AdminMenuList" element={<AdminMenuList />} />
                                 <Route path="/AdminMenuRegister" element={<AdminMenuRegister />} />
+                                <Route path="/AdminMenuModify" element={<AdminMenuModify />} />
                             </Routes>
                         </AdminLayout>
                         <Footer/>
