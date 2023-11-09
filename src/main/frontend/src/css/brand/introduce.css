@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     font-family: SUITE-Regular;
+    color:#FF5B2D;
 }
 
 ul,li,ol {
@@ -18,19 +19,21 @@ textarea {
 }
 #introduce {
     padding-bottom: 20px;
-    width:2900px;
+    width:100%;
     height:auto;
 }
 
 #root div > h3 {
     font-family: ONE-Mobile-POP;
+    font-size: 100px;
     margin-top:30px;
-    text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;
+    text-shadow: -2px 0px white, 0px 2px white, 2px 0px white, 0px -2px white;
 }
 strong {
     font-family: ONE-Mobile-POP;
     font-weight: normal;
     color: #A21A24;
+    text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;
 }
 .brandIntro {
     position: relative;
@@ -40,19 +43,15 @@ strong {
 }
 .brandIntro p {
     line-height: 75px;
-    font-size: 25px;
-    color:black;
+    font-size: 40px;
+    color:white;
     font-weight: bold;
-    text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;
     position: relative;
 }
-.brandIntro .character {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width:200px;
+.brandContent {
+    position :absolute;
+    top:300px;
 }
-
 .BI {
     position: relative;
     padding: 20px;
@@ -61,10 +60,9 @@ strong {
 }
 .BI p, .logo {
     line-height: 75px;
-    font-size: 20px;
-    color:black;
+    font-size: 30px;
+    color:white;
     font-weight: bold;
-    text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;
     position: relative;
 }
 .BI p {
@@ -74,17 +72,15 @@ strong {
 }
 .BI .logo {
     position: absolute;
-    top: 10px;
-    right: 500px;
-    width:500px;
-}
-.map {
-    background-color: white;
-    padding: 20px;
-    width: 1440px;
-    height:700px;
+    top: 200px;
+    right: 450px;
+    width:550px;
 }
 
+.brandIntro, .BI, .map {
+    height:1070px;
+    box-sizing: border-box;
+}
 
 .link_menu {
     position: fixed;
@@ -92,28 +88,37 @@ strong {
     z-index: 25;
     bottom:calc(100% - 700px);
 }
-table {
-    border-top:2px solid #A21A24;
-    border-bottom:2px solid #A21A24;
-    margin-top:20px;
+.link_menu a {
+    color:white;
+    font-size:20px;
+    text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+}
+#adress {
+    background-color: white;
+    border-top:3px solid #FF5B2D;
+    border-bottom:3px solid #FF5B2D;
+    margin-top:50px;
     width:1400px;
     height:150px;
 }
-table > tr >td{
+#adress > tr >td{
     border: 1px solid #cbbeb5;
     padding: 10px;
-
+    color:black;
+}
+.mapContainer {
+    margin-top: 30px;
+    border:3px solid #FF5B2D;
 }
 .pin-spacer {
     width:100%;
-    height:952px;
+    height:1070px;
     padding: 0px;
     z-index:-1;
     float:none;
     flex-shrink:1;
     display:block;
     margin:0px;
-    inset:0px 0px 4720.72px;
     position:absolute;
     overflow:visible;
     box-sizing: border-box;
@@ -123,15 +128,16 @@ table > tr >td{
     rotate:none;
     scale: none;
     transform:translate(0px, 0px);
+    top: 0px;
     left:0px;
-    top:0.140625px;
     margin:0px;
     max-width:2840px;
     width:2840px;
-    max-height:952px;
-    height:952px;
+    max-height:1070px;
+    height:1070px;
     padding: 0px;
     box-sizing:border-box;
     position:fixed;
-    background:url(../../images/brand/history_bg.png) no-repeat;
+    background:url(../../images/brand/history_bg.png);
+    background-size: cover;
 }
