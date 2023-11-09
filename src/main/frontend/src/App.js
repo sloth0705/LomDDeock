@@ -34,7 +34,7 @@ const ConfirmEmail = lazy(() => import('./pages/user/ConfirmEmail'))
 /* 상품 메뉴 페이지 */
 const MenuList = lazy(() => import('./pages/menu/MenuList'))
 const MenuView = lazy(() => import('./pages/menu/MenuView'))
-const AdminIndex = lazy(() => import('./pages/admin/adminIndex'))
+const AdminIndex = lazy(() => import('./pages/admin/AdminIndex'))
 const MenuCart = lazy(() => import('./pages/menu/MenuCart'))
 const MenuOrder = lazy(() => import('./pages/menu/MenuOrder'))
 const MenuComplete = lazy(() => import('./pages/menu/MenuComplete'))
@@ -43,6 +43,9 @@ const MenuComplete = lazy(() => import('./pages/menu/MenuComplete'))
 const Introduce = lazy(() => import('./pages/brand/Introduce'))
 const Terms = lazy(() => import('./pages/brand/Terms'))
 
+/* 고객센터 페이지 */
+const CsNotice = lazy(() => import('./pages/cs/CsNotice'))
+const CsEventList = lazy(() => import('./pages/cs/CsEventList'))
 /* 로딩중 표시 */
 function fallBackData() {
     return <div>로딩중</div>;
@@ -127,6 +130,19 @@ function App() {
                             <Routes>
                                 <Route path="/introduce" element={<Introduce />} />
                                 <Route path="/terms" element={<Terms />} />
+                            </Routes>
+                        </BrandLayout>
+                        <Footer/>
+                    </Suspense>
+                  } />
+                {/* 고객센터 페이지 */}
+                <Route path="/cs/*" element={
+                    <Suspense fallback={fallBackData()}>
+                        <Header/>
+                        <BrandLayout>
+                            <Routes>
+                                <Route path="/CsNotice" element={<CsNotice />} />
+                                <Route path="/CsEventList" element={<CsEventList />} />
                             </Routes>
                         </BrandLayout>
                         <Footer/>

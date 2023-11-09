@@ -1,0 +1,136 @@
+* {
+    font-size: 13px;
+}
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+}
+#admin {
+    flex-direction: column;
+    min-height: 70vh;
+    width: 1200px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 30px;
+    box-sizing: border-box;
+}
+
+/* ========== 메인페이지(adminIndex) ========== */
+#adminIndex {
+    font-family: SUITE-Regular;
+}
+#adminIndex > div {
+    width: 1200px !important;
+    margin: 0 auto;
+}
+
+/* aside menu */
+#adminIndex > div > div.col-sm-2 {
+    width: 170px !important;
+}
+.asideMenu, .asideMenu > a {
+    font-size: 15px;
+}
+#adminIndex .todayDate > h2 {
+    font-size: 22px;
+    font-family: "SUITE-Regular";
+    font-weight: bold;
+    margin-left: 14px;
+    color: dimgray;
+}
+#adminIndex > div > div > div > button > ul {
+    display: none;
+}
+#adminIndex > div > div > div > button:hover > ul {
+    display: block;
+}
+#adminIndex > div > div > div > button > ul > li {
+    padding-top: 6px;
+}
+
+/* 운영현황(OperationStatus) */
+.OperationStatus {
+    width: 970px !important;
+    height: 200px;
+    background-color: #F5F5F5;
+}
+.OperationStatus > h5 {
+    padding: 27px 34px 14px;
+    font-weight: bold;
+}
+.OperationStatus > div {
+    width: 115px;
+    height: 95px;
+    float: left;
+    margin: 0 35px;
+}
+.OperationStatus > div > strong {
+    display: block;
+    height: 30%;
+    text-align: center;
+    padding-top: 5px;
+    background-color: #DCDCDC;
+}
+.OperationStatus > div > span {
+    height: 70%;
+    display: block;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    background-color: #E6E6E6;
+}
+
+/* 매출현황(SalesStatus) */
+.SalesStatus {
+    width: 970px !important;
+    height: 560px;
+    margin-top: 15px;
+    background-color: #F5F5F5;
+}
+/* 메뉴 매출현황 그래프 */
+.SalesStatus > .menuSalesStatus {
+    display: inline-block;
+    margin: 30px;
+    float: left;
+    width: 45%;
+    height: 275px;
+}
+.SalesStatus > .menuSalesStatus > h5 {
+    font-weight: bold;
+    margin-bottom: 14px;
+}
+
+/* 사이드디시 매출현황 그래프 */
+.SalesStatus > .sideSalesStatus {
+    display: inline-block;
+    margin: 30px;
+    width: 40%;
+    height: 205px;
+}
+.SalesStatus > .sideSalesStatus > h6 {
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+/* 토핑 매출현황 그래프 */
+.SalesStatus > .toppingSalesStatus {
+    display: inline-block;
+    margin: 30px;
+    padding-bottom: 20px;
+    width: 40%;
+    height: 250px;
+}
+.SalesStatus > .toppingSalesStatus > h6 {
+    padding-bottom: 10px;
+    font-weight: bold;
+}

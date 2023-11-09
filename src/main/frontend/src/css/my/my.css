@@ -34,9 +34,49 @@ a {
     left: 5px;
     font-weight: bolder;
 }
-
+/* button */
+.btn.success {
+    background-color: #FF5B2D;
+    border: 1px solid #FF5B2D;
+}
+.btn.success:hover {
+    background-color: #e13f10;
+}
+.social {
+    display: inline-block;
+    width: 200px;
+    height:30px;
+    border-radius: 10px;
+    padding-left: 20px;
+    box-sizing:border-box;
+    line-height:30px;
+    text-align:center;
+}
+#naver-login {
+    background:url("../../images/user/ic-naver-02.png") no-repeat 12px center / 16px 14px #57b04b;
+    color:#fff;
+}
+#kakao-login {
+    background:#ffe812 url("../../images/user/ic-kakao-02.png") no-repeat 13px 7px;
+    background-size:18px 17px;
+    color:#262626;
+}
+#google-login {
+    background:url("../../images/user/ic-google-02.png") no-repeat 12px center / 30px 30px #EFEDEF;
+    color:#262626;
+}
+.btn.modify {
+    width: 50px;
+    border: 1px solid transparent;
+    background-color: #b6b6b6;
+    color: white;
+}
+.btn.modify:hover {
+    background-color: #949494;
+}
 /* Paging ul li */
 ul.pagination {
+    margin: 0;
     justify-content: center;
     align-items: center;
 }
@@ -49,18 +89,41 @@ ul.pagination .page-link {
     color: black;
 }
 /* info */
+#info .myInfo-base {
+    width: 97%;
+    background-color: #fff7f3;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+#info .social-sign-in > a {
+    margin-right: 5px;
+}
 #info .myAccount {
     margin-top: 10px;
 }
-
 #info .myAccount > tr > td {
-    width: 100px;
+    width: 120px;
     height: 50px;
 }
-#info .myAccount > tr > td:nth-of-type(2) {
-    width: 300px;
+#info .myAccount > tr > td:nth-of-type(2) {width: 200px;}
+#info .myAccount > tr:nth-child(3) > td:nth-of-type(3) > button {
+    margin-right: 5px;
 }
-
+.withdraw-img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+.withdraw-body-base {
+    width: 90%;
+    height: auto;
+    background-color: #f1f1f1;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
 /* coupon */
 #coupon .pointBanner {
     width: 800px;
@@ -113,7 +176,7 @@ ul.pagination .page-link {
 }
 #order .card > .my-order-img {
     width: 200px;
-    height: 200px;
+    height: 204px;
 }
 
 #order .card > .card-body { position: relative }
@@ -138,10 +201,7 @@ ul.pagination .page-link {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    background-color: #FF5B2D;
-    border: none;
 }
-#order .card > .card-body > button:hover {background-color: #e13f10;}
 
 /* pick */
 #pick .card {
@@ -168,7 +228,7 @@ ul.pagination .page-link {
     font-size: 15px;
 }
 
-/* Qna */
+/* Qna - list */
 #QnaList .find-myQna {
     width: 100%;
     height: 60px;
@@ -191,6 +251,35 @@ ul.pagination .page-link {
 #QnaList .answer-complete {
     color: red;
     font-weight: bold;
+}
+/* Qna - view */
+#QnaView .view {
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+#QnaView .view table tr > td {
+    width: auto;
+    height: 40px;
+    line-height: 40px;
+}
+#QnaView .view table tr > td:nth-of-type(1){width: 140px}
+#QnaView .view table tr > .align-center {
+    vertical-align: middle;
+}
+#QnaView .view table tr > td > span {
+    display: block;
+    width: 100%;
+    height: 200px;
+    border: none;
+    resize: none;
+    outline: none;
+    caret-color: transparent;
+}
+#QnaView .btn-qna {
+    float: right;
+}
+#QnaView .btn-qna > button {
+    margin-right: 5px;
 }
 /* footer */
 footer {

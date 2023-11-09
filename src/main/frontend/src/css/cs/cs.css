@@ -1,0 +1,112 @@
+* {
+    font-size: 13px;
+    color: black;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+ul, ol {
+    list-style: none;
+}
+.cs {
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    min-height: 78vh;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 30px;
+    box-sizing: border-box;
+}
+/* aside */
+#notice .list-group {
+    margin-top: 30px;
+}
+
+/* title */
+.cs-title {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
+}
+.cs-title > h3 {
+    font-family: SUITE-Regular;
+    font-weight: bolder;
+    text-align: center;
+    line-height: 100px;
+    font-size: 32px;
+    color: #ff744d;
+}
+.location {
+    display: block;
+    width: 100%;
+    height: 30px;
+}
+.location > span {
+    float: right;
+    margin-right: 10px;
+}
+/* paging */
+.paging {
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 60px;
+}
+.paging > .num.on > a {
+    color: #ff744d;
+    font-weight: bold;
+}
+.paging > .num > a {
+    font-family: SUITE-Regular;
+    font-size: 20px;
+    margin-left: 20px;
+}
+/* notice */
+#notice .accordion .accordion-header {
+    line-height: 30px;
+}
+#notice .accordion h2 > button > .date {
+    position: absolute;
+    right: 48px;
+    color: #818181;
+}
+#notice .accordion .accordion-button:focus { box-shadow: none;}
+#notice .accordion .accordion-button:not(.collapsed) {background-color: #ff744d; color: #fff;}
+#notice .accordion .accordion-button:not(.collapsed) .date {color: #fff;}
+#notice .accordion-body > p {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #fff7f3;
+}
+
+/* event - list */
+#event-list .event-div li {
+    width: 96%;
+    height: auto;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 15px;
+    box-sizing: border-box;
+}
+#event-list .event-div li > h3 a {
+    font-size: 20px;
+}
+#event-list .event-div li > .date {
+    display: block;
+    color: #818181;
+    margin: 10px 0;
+}
+#event-list .event-div li img {
+    width: 100%;
+    height: 120px;
+}

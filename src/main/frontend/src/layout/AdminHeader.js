@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import logo from '../images/LomDDeock-letterlogo-korean.png';
-import '../css/layout.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 function AdminHeader() {
     return (
