@@ -24,7 +24,7 @@ function Footer() {
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="link-2">
+                        <Nav.Link href="/brand/terms">
                             이용약관
                         </Nav.Link>
                     </Nav.Item>

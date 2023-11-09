@@ -41,6 +41,7 @@ const MenuComplete = lazy(() => import('./pages/menu/MenuComplete'))
 
 /* 브랜드 페이지 */
 const Introduce = lazy(() => import('./pages/brand/Introduce'))
+const Terms = lazy(() => import('./pages/brand/Terms'))
 
 /* 로딩중 표시 */
 function fallBackData() {
@@ -125,6 +126,7 @@ function App() {
                         <BrandLayout>
                             <Routes>
                                 <Route path="/introduce" element={<Introduce />} />
+                                <Route path="/terms" element={<Terms />} />
                             </Routes>
                         </BrandLayout>
                         <Footer/>

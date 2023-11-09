@@ -4,6 +4,9 @@ import Image from "react-bootstrap/Image";
 import logo from '../../images/LomDDeock-logo-removebg.png';
 import {Map, MapMarker} from "react-kakao-maps-sdk";
 import '../../css/brand/introduce.css';
+import Icon from '@mdi/react';
+import { mdiAlphaBBox, mdiDomain, mdiMap } from '@mdi/js';
+
 
 function Introduce (){
     return(
@@ -14,9 +17,9 @@ function Introduce (){
             <Container>
                 <div className="link_menu">
                     <ul>
-                        <li><a href="#brandIntro">브랜드 소개</a></li>
-                        <li><a href="#BI">BI</a></li>
-                        <li><a href="#map">오시는 길</a></li>
+                        <li><a href="#brandIntro"><Icon path={mdiDomain} size={3} /></a></li>
+                        <li><a href="#BI"><Icon path={mdiAlphaBBox} size={3} /></a></li>
+                        <li><a href="#map"><Icon path={mdiMap} size={3} /></a></li>
                     </ul>
                 </div>
                 <div className="brandIntro" id="brandIntro">
