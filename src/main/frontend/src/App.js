@@ -45,6 +45,11 @@ const Introduce = lazy(() => import('./pages/brand/Introduce'))
 /* 고객센터 페이지 */
 const CsNotice = lazy(() => import('./pages/cs/CsNotice'))
 const CsEventList = lazy(() => import('./pages/cs/CsEventList'))
+const CsEventView = lazy(() => import('./pages/cs/CsEventView'))
+const CsFaq = lazy(() => import('./pages/cs/CsFaq'))
+const CsQnaList = lazy(() => import('./pages/cs/CsQnaList'))
+const CsQnaWrite = lazy(() => import('./pages/cs/CsQnaWrite'))
+const CsQnaView = lazy(() => import('./pages/cs/CsQnaView'))
 /* 로딩중 표시 */
 function fallBackData() {
     return <div>로딩중</div>;
@@ -141,6 +146,11 @@ function App() {
                             <Routes>
                                 <Route path="/CsNotice" element={<CsNotice />} />
                                 <Route path="/CsEventList" element={<CsEventList />} />
+                                <Route path="/CsEventView" element={<CsEventView />} />
+                                <Route path="/CsFaq" element={<CsFaq />} />
+                                <Route path="/CsQnaList" element={<CsQnaList />} />
+                                <Route path="/CsQnaWrite" element={<CsQnaWrite />} />
+                                <Route path="/CsQnaView" element={<CsQnaView />} />
                             </Routes>
                         </BrandLayout>
                         <Footer/>

@@ -29,28 +29,28 @@ function EventList() {
                                 <li>
                                     <h3><Link to="#">떡볶이 랜덤추첨 13차</Link></h3>
                                     <span className="date">기간: 2023.11.01 ~ 2023.11.07</span>
-                                    <Link to="#">
+                                    <Link to="/cs/CsEventView">
                                         <img src="https://via.placeholder.com/171x180" alt="event_img" className="event-progress"/>
                                     </Link>
                                 </li>
                                 <li>
                                     <h3><Link to="#">떡볶이 랜덤추첨 13차</Link></h3>
                                     <span className="date">기간: 2023.11.01 ~ 2023.11.07</span>
-                                    <Link to="#">
+                                    <Link to="/cs/CsEventView">
                                         <img src="https://via.placeholder.com/171x180" alt="event_img" className="event-progress"/>
                                     </Link>
                                 </li>
                                 <li>
                                     <h3><Link to="#">떡볶이 랜덤추첨 13차</Link></h3>
                                     <span className="date">기간: 2023.11.01 ~ 2023.11.07</span>
-                                    <Link to="#">
+                                    <Link to="/cs/CsEventView">
                                         <img src="https://via.placeholder.com/171x180" alt="event_img" className="event-progress"/>
                                     </Link>
                                 </li>
                                 <li>
                                     <h3><Link to="#">떡볶이 랜덤추첨 13차</Link></h3>
                                     <span className="date">기간: 2023.11.01 ~ 2023.11.07</span>
-                                    <Link to="#">
+                                    <Link to="/cs/CsEventView">
                                         <img src="https://via.placeholder.com/171x180" alt="event_img" className="event-progress"/>
                                     </Link>
                                 </li>
