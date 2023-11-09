@@ -69,6 +69,7 @@ strong {
 .BI {
     position: relative;
     padding: 20px;
+    min-width: 1420px;
     width: 100%;
     height:850px;
 }

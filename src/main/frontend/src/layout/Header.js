@@ -1,31 +1,26 @@
 import { Link } from 'react-router-dom';
 import { Button, Stack, Nav, Navbar, NavDropdown, Form, InputGroup, Container } from 'react-bootstrap';
 import '../css/layout.css';
+import '../css/header.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import logo from '../images/LomDDeock-letterlogo-korean.png';
+import character from '../images/LomDDeock-character.png';
+import Image from "react-bootstrap/Image";
+import pepperImg from "../images/pepper.png";
 function Header() {
     return (
         <header>
-            <Navbar expand="lg" className="bg-body-tertiary">
-                <Container>
-                    <Navbar.Brand>
-                        <Link to="/" className="reset-a">
-                            LomDDeock
-                        </Link>
-                    </Navbar.Brand>
-                    <div className="w15p"/>
-                    <InputGroup className="w35p">
-                        <Form.Control
-                            placeholder=""
-                            aria-label="Search"
-                            aria-describedby="basic-addon1"
-                        />
-                        <InputGroup.Text id="basic-addon1">검색</InputGroup.Text>
-                    </InputGroup>
+            <div className="mainHeader d-flex justify-content-center">
+                <Link to="/">
+                    <div>
+                        <img src={logo} alt="로고" className="logo"/>
+                        <img src={character} alt="로고"  className="character"/>
+                    </div>
+                </Link>
+                <Navbar>
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="margin-left-auto">
-                            <Nav.Link href="/user/login">
-                                로그인
-                            </Nav.Link>
+                        <Nav className="me-auto">
+                            <Nav.Link href="/user/login">로그인</Nav.Link>
                             <NavDropdown title="마이페이지" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="/my/myInfo">
                                     나의 정보
@@ -43,13 +38,21 @@ function Header() {
                                     나의 문의내역
                                 </NavDropdown.Item>
                             </NavDropdown>
-                            <Nav.Link href="#link">
-                                상품권
-                            </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
-                </Container>
-            </Navbar>
+                </Navbar>
+            </div>
+            <Nav as="ul">
+                <Nav.Item as="li">
+                    <Nav.Link href="/home">Active</Nav.Link>
+                </Nav.Item>
+                <Nav.Item as="li">
+                    <Nav.Link eventKey="link-1">Link</Nav.Link>
+                </Nav.Item>
+                <Nav.Item as="li">
+                    <Nav.Link eventKey="link-2">Link</Nav.Link>
+                </Nav.Item>
+            </Nav>
         </header>
     )
 }
