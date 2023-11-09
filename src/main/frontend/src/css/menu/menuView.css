@@ -189,6 +189,7 @@
 
 .orderProgress {
     width: 100%;
+    min-width: 1200px;
     height: 205px;
     position: fixed;
     bottom: 0;
