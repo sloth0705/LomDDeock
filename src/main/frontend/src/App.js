@@ -41,6 +41,7 @@ const MenuComplete = lazy(() => import('./pages/menu/MenuComplete'))
 
 /* 브랜드 페이지 */
 const Introduce = lazy(() => import('./pages/brand/Introduce'))
+const Terms = lazy(() => import('./pages/brand/Terms'))
 
 /* 고객센터 페이지 */
 const CsNotice = lazy(() => import('./pages/cs/CsNotice'))
@@ -128,6 +129,7 @@ function App() {
                         <BrandLayout>
                             <Routes>
                                 <Route path="/introduce" element={<Introduce />} />
+                                <Route path="/terms" element={<Terms />} />
                             </Routes>
                         </BrandLayout>
                         <Footer/>

@@ -8,34 +8,33 @@ import pepperImg from '../images/pepper.png';
 function Footer() {
     return (
         <footer className="bg-body-tertiary">
-            <Nav
-                /*activeKey="/introduce"*/
-                /*onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}*/
-                className="flex-content-center footer-nav">
-                <Nav.Item>
-                    <Nav.Link href="/brand/introduce">
-                        회사소개
-                    </Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="link-1">
-                        공지사항
-                    </Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="link-2">
-                        이용약관
-                    </Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="disabled">
-                        개인정보처리방침
-                    </Nav.Link>
-                </Nav.Item>
-            </Nav>
-            <Row className="d-flex justify-content-center footerContent">
-                <img src={letterLogo} alt="로고" className="footerLetterLogo"/>
-            </Row>
+            <Container>
+                <Nav
+                    /*activeKey="/introduce"*/
+                    /*onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}*/
+                    className="flex-content-center footer-nav">
+                    <Nav.Item>
+                        <Nav.Link href="/brand/introduce">
+                            회사소개
+                        </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="link-1">
+                            공지사항
+                        </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link href="/brand/terms">
+                            이용약관
+                        </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="disabled">
+                            개인정보처리방침
+                        </Nav.Link>
+                    </Nav.Item>
+                </Nav>
+            </Container>
             <Row className="footerContent">
                 <Col>
                     <img src={pepperImg} alt="로고" className="footerPepperImg"/>
