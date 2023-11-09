@@ -24,7 +24,7 @@ function Footer() {
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="link-2">
+                        <Nav.Link href="/brand/terms">
                             이용약관
                         </Nav.Link>
                     </Nav.Item>
@@ -34,20 +34,17 @@ function Footer() {
                         </Nav.Link>
                     </Nav.Item>
                 </Nav>
-                <Row className="d-flex justify-content-center">
-                    <img src={letterLogo} alt="로고" className="footerLetterLogo"/>
-                </Row>
-                <Row className="d-flex justify-content-center">
-                    <img src={pepperImg} alt="로고" className="footerPepperImg"/>
-                    <Col xs={6}>
-                        <p className="footerMent">
-                            ㈜롬복떡볶이 부산시 부산진구 서면로12-1  |  사업자등록번호 : 1234-1232-1234  |  대표이사 : 김롬볶<br/>
-                            대표번호 : 070-1234-4321  |  고객센터 : 1234-4321  |  Email : lomddeock@lombok.com<br/>
-                            Copyright © LOMBOK FOOD SYS All rights reserved.<br/>
-                        </p>
-                    </Col>
-                </Row>
             </Container>
+            <Row className="footerContent">
+                <Col>
+                    <img src={pepperImg} alt="로고" className="footerPepperImg"/>
+                    <p className="footerMent">
+                        ㈜롬복떡볶이 부산시 부산진구 서면로12-1  |  사업자등록번호 : 1234-1232-1234  |  대표이사 : 김롬볶<br/>
+                        대표번호 : 070-1234-4321  |  고객센터 : 1234-4321  |  Email : lomddeock@lombok.com<br/>
+                        Copyright © LOMBOK FOOD SYS All rights reserved.<br/>
+                    </p>
+                </Col>
+            </Row>
         </footer>
     )
 }

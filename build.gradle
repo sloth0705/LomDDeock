@@ -27,6 +27,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web-services'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'  /* Log4JDBC */
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.mysql:mysql-connector-j'
@@ -43,26 +44,37 @@ def frontendDir = "$projectDir/src/main/frontend"
 
 sourceSets {
 	main {
-		resources { srcDirs = ["$projectDir/src/main/resources"]
+		resources {
+			srcDirs = ["$projectDir/src/main/resources"]
 		}
 	}
 }
 
-processResources { dependsOn "copyReactBuildFiles" }
+processResources {
+	// 개발 환경에서는 React 태스크들을 실행하지 않음
+	dependsOn project.hasProperty("developmentMode") ? [] : ["copyReactBuildFiles"]
+}
 
 task installReact(type: Exec) {
+	// 개발 환경에서는 실행하지 않음
+	onlyIf { !project.hasProperty("developmentMode") }
+
 	workingDir "$frontendDir"
 	inputs.dir "$frontendDir"
 	group = BasePlugin.BUILD_GROUP
 	if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
 		commandLine "npm.cmd", "audit", "fix"
-		commandLine 'npm.cmd', 'install' }
-	else {
-		commandLine "npm", "audit", "fix" commandLine 'npm', 'install'
+		commandLine 'npm.cmd', 'install'
+	} else {
+		commandLine "npm", "audit", "fix"
+		commandLine 'npm', 'install'
 	}
 }
 
 task buildReact(type: Exec) {
+	// 개발 환경에서는 실행하지 않음
+	onlyIf { !project.hasProperty("developmentMode") }
+
 	dependsOn "installReact"
 	workingDir "$frontendDir"
 	inputs.dir "$frontendDir"
@@ -75,6 +87,9 @@ task buildReact(type: Exec) {
 }
 
 task copyReactBuildFiles(type: Copy) {
+	// 개발 환경에서는 실행하지 않음
+	onlyIf { !project.hasProperty("developmentMode") }
+
 	dependsOn "buildReact"
 	from "$frontendDir/build"
 	into "$projectDir/src/main/resources/static"

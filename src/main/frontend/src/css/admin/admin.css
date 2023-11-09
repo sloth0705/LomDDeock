@@ -15,10 +15,10 @@ a:hover {
     font-weight: bold;
 }
 #admin {
-    display: flex;
+    font-family: SUITE-Regular;
     flex-direction: column;
     min-height: 70vh;
-    width: 1200px;
+    width: 1200px !important;
     height: auto;
     margin-left: auto;
     margin-right: auto;
@@ -26,34 +26,44 @@ a:hover {
     box-sizing: border-box;
 }
 
-/* ========== 메인페이지(adminIndex) ========== */
-#adminIndex {
-    font-family: SUITE-Regular;
+/* ========== 레이아웃 설정 ========== */
+#adminIndex > div {
+    width: 1200px !important;
+    margin: 0 auto;
+}
+#adminMenuRegister > div {
+    width: 1200px !important;
+    margin: 0 auto;
 }
 
-/* aside menu */
+/* ========== aside menu ========== */
+#admin div.col-sm-2 {
+    width: 170px !important;
+}
 .asideMenu, .asideMenu > a {
     font-size: 15px;
 }
-#adminIndex > div > div.col-sm-2 > div:nth-child(1) > h2 {
+#admin .todayDate > h2 {
+    font-size: 22px;
     font-family: "SUITE-Regular";
     font-weight: bold;
     margin-left: 14px;
     color: dimgray;
 }
-#adminIndex > div > div > div > button > ul {
+#admin div > div > div > button > ul {
     display: none;
 }
-#adminIndex > div > div > div > button:hover > ul {
+#admin div > div > div > button:hover > ul {
     display: block;
 }
-#adminIndex > div > div > div > button > ul > li {
+#admin div > div > div > button > ul > li {
     padding-top: 6px;
 }
 
+/* ========== 메인페이지(adminIndex) ========== */
 /* 운영현황(OperationStatus) */
 .OperationStatus {
-    width: auto;
+    width: 970px !important;
     height: 200px;
     background-color: #F5F5F5;
 }
@@ -85,8 +95,8 @@ a:hover {
 
 /* 매출현황(SalesStatus) */
 .SalesStatus {
-    width: auto;
-    height: auto;
+    width: 970px !important;
+    height: 560px;
     margin-top: 15px;
     background-color: #F5F5F5;
 }
@@ -96,10 +106,11 @@ a:hover {
     margin: 30px;
     float: left;
     width: 45%;
-    height: 80%;
+    height: 275px;
 }
 .SalesStatus > .menuSalesStatus > h5 {
     font-weight: bold;
+    margin-bottom: 14px;
 }
 
 /* 사이드디시 매출현황 그래프 */
@@ -107,7 +118,7 @@ a:hover {
     display: inline-block;
     margin: 30px;
     width: 40%;
-    height: 40%;
+    height: 205px;
 }
 .SalesStatus > .sideSalesStatus > h6 {
     padding-bottom: 10px;
@@ -117,12 +128,107 @@ a:hover {
 /* 토핑 매출현황 그래프 */
 .SalesStatus > .toppingSalesStatus {
     display: inline-block;
-    margin-left: 30px;
+    margin: 30px;
     padding-bottom: 20px;
     width: 40%;
-    height: 50%;
+    height: 250px;
 }
 .SalesStatus > .toppingSalesStatus > h6 {
     padding-bottom: 10px;
     font-weight: bold;
+}
+
+/* ========== 메뉴등록(adminMenuRegister) ========== */
+#adminMenuRegister > div > div.col {
+    margin-top: 33px;
+}
+#adminMenuRegister > div > div.col > select {
+    /* 유형선택 */
+    width: 150px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+#adminMenuRegister > div > div.col > div:nth-child(2) {
+    /* 메뉴명 필드 */
+    width: 350px;
+}
+#adminMenuRegister #formFile {
+    /* 파일첨부 필드 */
+    width: 200px;
+}
+#adminMenuRegister > div > div.col > div:nth-child(4) {
+    /* 메뉴설명 필드 */
+    width: 350px;
+}
+#adminMenuRegister > div > div.col > div:nth-child(5) {
+    /* 사이즈옵션 필드 */
+    width: 200px;
+}
+#adminMenuRegister > div > div.col > div:nth-child(6) {
+    /* 사이즈입력 필드 */
+    width: 200px;
+}
+#adminMenuRegister > div > div.col > div:nth-child(7) {
+    /* 맵기옵션 필드 */
+    width: 200px;
+    float: left;
+    margin-right: 15px;
+}
+#adminMenuRegister > div > div.col > div:nth-child(8) {
+    /* 맵기 맛 입력 필드 */
+    width: 730px;
+}
+
+/* 선택옵션 */
+#adminMenuRegister .addOption {
+    background-color: #F5F5F5;
+    padding: 10px;
+    margin-top: 25px;
+}
+#adminMenuRegister .addOption > p {
+    display: inline-block;
+    font-weight: bold;
+}
+#adminMenuRegister .addOption > button {
+    width: 22px;
+    border: none;
+    border-radius: 20px;
+    background-color: #dcdbdb;
+    font-weight: bold;
+    color: white;
+    float: right;
+    margin-left: 2px;
+}
+#adminMenuRegister > div > div.col > button {
+    /* 최종등록 버튼 */
+    font-size: 15px;
+    display: block;
+    margin: 30px auto;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 15px;
+}
+#adminMenuRegister > div > div.col > button:hover {
+    background-color: #c9c8c8;
+    color: white;
+}
+
+/* 중분류 */
+#adminMenuRegister .classification {
+    background-color: #ececec;
+    padding: 10px;
+}
+#adminMenuRegister > div > div.col > article > div > div:nth-child(2) {
+    /* 소분류 개수 input필드 */
+    width: 200px;
+}
+#adminMenuRegister .classification > .subcate > .formFile {
+    /* 소분류 파일첨부 */
+    width: 200px;
+    float: left;
+    margin-right: 7px;
+}
+#adminMenuRegister .classification > .subcate > .inputSubcate {
+    /* 소분류 input필드 */
+    width: 300px;
 }
