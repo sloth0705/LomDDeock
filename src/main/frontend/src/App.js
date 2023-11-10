@@ -54,8 +54,8 @@ const CsQnaView = lazy(() => import('./pages/cs/CsQnaView'))
 
 /* 관리자 페이지 */
 const AdminIndex = lazy(() => import('./pages/admin/AdminIndex'))
-const AdminNoticeList = lazy(()=>import('./pages/admin/AdminNoticeList'))
-const AdminNoticeWrite = lazy(()=>import('./pages/admin/AdminNoticeWrite'))
+const AdminNoticeList = lazy(()=>import('./pages/admin/notice/AdminNoticeList'))
+const AdminNoticeWrite = lazy(()=>import('./pages/admin/notice/AdminNoticeWrite'))
 const AdminMenuList = lazy(() => import('./pages/admin/menu/AdminMenuList'))
 const AdminMenuRegister = lazy(()=>import('./pages/admin/menu/AdminMenuRegister'))
 const AdminMenuModify = lazy(() => import('./pages/admin/menu/AdminMenuModify'))
