@@ -193,9 +193,6 @@ a:hover {
 }
 
 /* ========== 메뉴등록 & 수정(adminMenuManagement) ========== */
-#adminMenuManagement > div > div.col {
-    margin-top: 33px;
-}
 #adminMenuManagement > div > div.col > select {
     /* 유형선택 */
     width: 150px;
@@ -286,4 +283,59 @@ a:hover {
 #adminMenuManagement .classification > .subcate > .inputSubcate {
     /* 소분류 input필드 */
     width: 300px;
+}
+
+/* ========== 쿠폰지급(adminCouponPayment) ========== */
+#adminCouponPayment > div > div.col > div {
+    margin: 33px auto;
+}
+#adminCouponPayment > div > div.col > div:nth-child(1) {
+    /* 쿠폰명 입력 필드 */
+    width: 350px;
+}
+#adminCouponPayment > div > div.col > div > div:nth-child(1) > span {
+    /* 쿠폰명 제목 */
+    width: 97px;
+}
+#adminCouponPayment > div > div.col > div:nth-child(2) {
+    /* 지급사유 입력 필드 */
+    width: 350px;
+}
+#adminCouponPayment > div > div.col > div > div:nth-child(3) > input[type=date] {
+    /* 유효기한 입력 필드 */
+    border: 1px solid #ececec;
+    padding-left: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+}
+#adminCouponPayment > div > div.col > div:nth-child(4) {
+    /* 적용기준 입력 필드 */
+    width: 300px;
+}
+#adminCouponPayment > div > div.col > div:nth-child(5) {
+    /* 제한조건 입력 필드 */
+    width: 300px;
+}
+#adminCouponPayment > div > div.col > div > div:nth-child(6) > p {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+#adminCouponPayment > div > div.col > div:nth-child(7) {
+    /* 고객이메일아이디 입력 필드 */
+    width: 350px;
+    height: 20px;
+}
+#adminCouponPayment > div > div.col > button {
+    /* 지급하기 버튼 */
+    height: 55px;
+    font-size: 15px;
+    display: block;
+    margin: 40px auto;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 20px;
+}
+#adminCouponPayment > div > div.col > button:hover {
+    background-color: #c9c8c8;
+    color: white;
 }
