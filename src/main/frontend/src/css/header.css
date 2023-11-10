@@ -10,6 +10,7 @@ ul,li,ol {
     --bs-link-color: white;
     --bs-nav-link-color: var(--bs-link-color);
 }
+
 #header .nav-link:hover {
     color: #A21A24 !important;
 }
