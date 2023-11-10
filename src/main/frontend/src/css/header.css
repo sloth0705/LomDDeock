@@ -9,7 +9,7 @@ a {
     --bs-link-color: black;
     --bs-nav-link-color: var(--bs-link-color);
 }
-#root > header > div > a > div {
+#root > .indexHeader > div > a > div {
     width:440px;
     height:160px;
     position:relative;

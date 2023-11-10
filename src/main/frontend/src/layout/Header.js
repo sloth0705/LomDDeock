@@ -9,7 +9,7 @@ import Image from "react-bootstrap/Image";
 import pepperImg from "../images/pepper.png";
 function Header() {
     return (
-        <header>
+        <header className="indexHeader">
             <div className="mainHeader d-flex justify-content-center">
                 <Link to="/">
                     <div>
