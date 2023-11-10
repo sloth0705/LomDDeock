@@ -54,13 +54,21 @@ const CsQnaView = lazy(() => import('./pages/cs/CsQnaView'))
 
 /* 관리자 페이지 */
 const AdminIndex = lazy(() => import('./pages/admin/AdminIndex'))
-const AdminNoticeList = lazy(()=>import('./pages/admin/notice/AdminNoticeList'))
-const AdminNoticeWrite = lazy(()=>import('./pages/admin/notice/AdminNoticeWrite'))
 const AdminMenuList = lazy(() => import('./pages/admin/menu/AdminMenuList'))
 const AdminMenuRegister = lazy(()=>import('./pages/admin/menu/AdminMenuRegister'))
 const AdminMenuModify = lazy(() => import('./pages/admin/menu/AdminMenuModify'))
+const AdminBanner = lazy(()=>import('./pages/admin/banner/AdminBanner'))
+const AdminEventList = lazy(()=>import('./pages/admin/event/AdminEventList'))
+const AdminEventView = lazy(()=>import('./pages/admin/event/AdminEventView'))
+const AdminEventRegister = lazy(()=>import('./pages/admin/event/AdminEventRegister'))
+const AdminEventModify = lazy(()=>import('./pages/admin/event/AdminEventModify'))
 const AdminCouponList = lazy(()=>import('./pages/admin/coupon/AdminCouponList'))
 const AdminCouponPayment = lazy(()=>import('./pages/admin/coupon/AdminCouponPayment'))
+const AdminNoticeList = lazy(()=>import('./pages/admin/notice/AdminNoticeList'))
+const AdminNoticeWrite = lazy(()=>import('./pages/admin/notice/AdminNoticeWrite'))
+const AdminFaqList = lazy(()=>import('./pages/admin/faq/AdminFaqList'))
+const AdminFaqRegister = lazy(()=>import('./pages/admin/faq/AdminFaqRegister'))
+const AdminQna = lazy(()=>import('./pages/admin/qna/AdminQna'))
 
 /* 로딩중 표시 */
 function fallBackData() {
@@ -136,10 +144,18 @@ function App() {
                                 <Route path="/menu/AdminMenuList" element={<AdminMenuList />} />
                                 <Route path="/menu/AdminMenuRegister" element={<AdminMenuRegister />} />
                                 <Route path="/menu/AdminMenuModify" element={<AdminMenuModify />} />
+                                <Route path="/banner/AdminBanner" element={<AdminBanner />} />
+                                <Route path="/event/AdminEventList" element={<AdminEventList />} />
+                                <Route path="/event/AdminEventView" element={<AdminEventView />} />
+                                <Route path="/event/AdminEventRegister" element={<AdminEventRegister />} />
+                                <Route path="/event/AdminEventModify" element={<AdminEventModify />} />
                                 <Route path="/coupon/AdminCouponList" element={<AdminCouponList />} />
                                 <Route path="/coupon/AdminCouponPayment" element={<AdminCouponPayment />} />
                                 <Route path="/notice/AdminNoticeList" element={<AdminNoticeList />} />
                                 <Route path="/notice/AdminNoticeWrite" element={<AdminNoticeWrite />} />
+                                <Route path="/faq/AdminFaqList" element={<AdminFaqList />} />
+                                <Route path="/faq/AdminFaqRegister" element={<AdminFaqRegister />} />
+                                <Route path="/qna/AdminNoticeWrite" element={<AdminQna />} />
                             </Routes>
                         </AdminLayout>
                         <Footer/>
