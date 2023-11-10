@@ -129,10 +129,10 @@ function App() {
                         <AdminLayout>
                             <Routes>
                                 <Route path="/adminIndex" element={<AdminIndex />} />
-                                <Route path="/AdminMenuList" element={<AdminMenuList />} />
-                                <Route path="/AdminMenuRegister" element={<AdminMenuRegister />} />
-                                <Route path="/AdminMenuModify" element={<AdminMenuModify />} />
-                                <Route path="/AdminCouponList" element={<AdminCouponList />} />
+                                <Route path="/menu/AdminMenuList" element={<AdminMenuList />} />
+                                <Route path="/menu/AdminMenuRegister" element={<AdminMenuRegister />} />
+                                <Route path="/menu/AdminMenuModify" element={<AdminMenuModify />} />
+                                <Route path="/coupon/AdminCouponList" element={<AdminCouponList />} />
                             </Routes>
                         </AdminLayout>
                         <Footer/>
