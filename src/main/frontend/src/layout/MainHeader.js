@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
 import { Button, Stack, Nav, Navbar, NavDropdown, Form, InputGroup, Container } from 'react-bootstrap';
 import '../css/layout.css';
-import '../css/header.css';
+import '../css/mainHeader.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../images/LomDDeock-letterlogo-korean.png';
 import character from '../images/LomDDeock-character.png';
 import Image from "react-bootstrap/Image";
 import pepperImg from "../images/pepper.png";
-function Header() {
+function MainHeader() {
     return (
-        <header id="header">
+        <header id="mainHeader">
             <div className=" d-flex justify-content-center">
                 <Link to="/">
                     <div>
@@ -42,35 +42,8 @@ function Header() {
                     </Navbar.Collapse>
                 </Navbar>
             </div>
-            <Nav as="ul" className="justify-content-center">
-                <Nav.Item as="li">
-                    <Nav.Link href="/menu/menuList">롬떡 메뉴</Nav.Link>
-                </Nav.Item>
-                <Nav.Item as="li">
-                    <Nav.Link href="/cs/CsEventList">이벤트</Nav.Link>
-                </Nav.Item>
-                <Nav.Item as="li">
-                    <NavDropdown title="고객안내" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="/cs/CsNotice">
-                            공지사항
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="/cs/CsEventList">
-                            이벤트
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="/cs/CsFaq">
-                            자주묻는 질문
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="/cs/CsQnaList">
-                            고객의 소리
-                        </NavDropdown.Item>
-                    </NavDropdown>
-                </Nav.Item>
-                <Nav.Item as="li">
-                    <Nav.Link href="/brand/introduce">브랜드 소개</Nav.Link>
-                </Nav.Item>
-            </Nav>
         </header>
     )
 }
 
-export default Header;
+export default MainHeader;

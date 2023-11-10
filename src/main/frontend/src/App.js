@@ -4,6 +4,7 @@ import { Routes, Route, BrowserRouter, Link, useLocation } from "react-router-do
 
 /* 헤더, 푸터 */
 import Header from './layout/Header';
+import MainHeader from './layout/MainHeader';
 import AdminHeader from './layout/AdminHeader';
 import Footer from './layout/Footer';
 
@@ -53,11 +54,12 @@ const CsQnaView = lazy(() => import('./pages/cs/CsQnaView'))
 
 /* 관리자 페이지 */
 const AdminIndex = lazy(() => import('./pages/admin/AdminIndex'))
-const AdminMenuList = lazy(() => import('./pages/admin/AdminMenuList'))
-const AdminMenuRegister = lazy(()=>import('./pages/admin/AdminMenuRegister'))
-const AdminMenuModify = lazy(() => import('./pages/admin/AdminMenuModify'))
 const AdminNoticeList = lazy(()=>import('./pages/admin/AdminNoticeList'))
 const AdminNoticeWrite = lazy(()=>import('./pages/admin/AdminNoticeWrite'))
+const AdminMenuList = lazy(() => import('./pages/admin/menu/AdminMenuList'))
+const AdminMenuRegister = lazy(()=>import('./pages/admin/menu/AdminMenuRegister'))
+const AdminMenuModify = lazy(() => import('./pages/admin/menu/AdminMenuModify'))
+const AdminCouponList = lazy(()=>import('./pages/admin/coupon/AdminCouponList'))
 
 /* 로딩중 표시 */
 function fallBackData() {
@@ -71,7 +73,7 @@ function App() {
                 {/* 메인 페이지 */}
                 <Route path="/" element={
                 <Suspense fallback={fallBackData()}>
-                    <Header />
+                    <MainHeader />
                     <Main />
                     <Footer />
                 </Suspense>} />
@@ -135,6 +137,7 @@ function App() {
                                 <Route path="/AdminMenuModify" element={<AdminMenuModify />} />
                                 <Route path="/AdminNoticeList" element={<AdminNoticeList />} />
                                 <Route path="/AdminNoticeWrite" element={<AdminNoticeWrite />} />
+                                <Route path="/AdminCouponList" element={<AdminCouponList />} />
                             </Routes>
                         </AdminLayout>
                         <Footer/>

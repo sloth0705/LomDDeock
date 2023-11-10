@@ -1,24 +1,26 @@
 import {Button, Col, Container, InputGroup, Row, Table} from "react-bootstrap";
-import AdminAsideMenu from "./AdminAsideMenu";
+import AdminAsideMenu from "../AdminAsideMenu";
 import React from "react";
-import '../../css/admin/admin.css';
+import '../../../css/admin/admin.css';
 import {Link} from "react-router-dom";
 import Form from "react-bootstrap/Form";
 
 function adminMenuList() {
     return (
         <section id="admin">
-            <Container id="adminMenuList">
+            <Container id="adminMenuList adminList">
                 <Row className="justify-content-center">
                     {/* aside menu */}
                     <AdminAsideMenu/>
-                    <Col>
+                    <Col id="adminList">
                         {/* 유형선택 */}
                         <Form.Select aria-label="유형선택">
+                            <option value="all">전체</option>
                             <option value="normal">일반</option>
                             <option value="side">사이드디시</option>
                             <option value="drinkOrOthers">음료/기타</option>
                         </Form.Select>
+                        {/* 검색창 */}
                         <InputGroup className="mb-3">
                             <Form.Control
                                 placeholder="메뉴명 입력"
@@ -27,7 +29,7 @@ function adminMenuList() {
                             />
                             <Button variant="outline-secondary" id="button-addon2">검색</Button>
                         </InputGroup>
-                        <div className="adminMenuListTable">
+                        <div className="adminListTable">
                             <Table hover size="sm" className="text-center">
                                 <thead>
                                 <tr>
