@@ -1,7 +1,7 @@
 import React from "react";
-import '../../css/admin/adminCs.css';
+import '../../../css/admin/adminCs.css';
 import {Col, Container, Row,Accordion } from "react-bootstrap";
-import AdminAsideMenu from "./AdminAsideMenu";
+import AdminAsideMenu from "../AdminAsideMenu";
 import {Link} from "react-router-dom";
 
 function adminNoticeList() {
