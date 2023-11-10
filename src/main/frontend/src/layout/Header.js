@@ -9,8 +9,8 @@ import Image from "react-bootstrap/Image";
 import pepperImg from "../images/pepper.png";
 function Header() {
     return (
-        <header className="indexHeader">
-            <div className="mainHeader d-flex justify-content-center">
+        <header id="header">
+            <div className=" d-flex justify-content-center">
                 <Link to="/">
                     <div>
                         <img src={logo} alt="로고" className="logo"/>
@@ -42,15 +42,31 @@ function Header() {
                     </Navbar.Collapse>
                 </Navbar>
             </div>
-            <Nav as="ul">
+            <Nav as="ul" className="justify-content-center">
                 <Nav.Item as="li">
-                    <Nav.Link href="/home">Active</Nav.Link>
+                    <Nav.Link href="/menu/menuList">롬떡 메뉴</Nav.Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                    <Nav.Link eventKey="link-1">Link</Nav.Link>
+                    <Nav.Link href="/cs/CsEventList">이벤트</Nav.Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                    <Nav.Link eventKey="link-2">Link</Nav.Link>
+                    <NavDropdown title="고객안내" id="basic-nav-dropdown">
+                        <NavDropdown.Item href="/cs/CsNotice">
+                            공지사항
+                        </NavDropdown.Item>
+                        <NavDropdown.Item href="/cs/CsEventList">
+                            이벤트
+                        </NavDropdown.Item>
+                        <NavDropdown.Item href="/cs/CsFaq">
+                            자주묻는 질문
+                        </NavDropdown.Item>
+                        <NavDropdown.Item href="/cs/CsQnaList">
+                            고객의 소리
+                        </NavDropdown.Item>
+                    </NavDropdown>
+                </Nav.Item>
+                <Nav.Item as="li">
+                    <Nav.Link href="/brand/introduce">브랜드 소개</Nav.Link>
                 </Nav.Item>
             </Nav>
         </header>

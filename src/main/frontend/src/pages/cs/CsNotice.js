@@ -57,7 +57,7 @@ function Notice() {
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="2">
-                                <Accordion.Header>[공지] 쓰기 귀찮네 <span className="date">2023-11-01</span></Accordion.Header>
+                                <Accordion.Header>[공지] 롬복떡볶이 이용약관 변경 안내 <span className="date">2023-11-01</span></Accordion.Header>
                                 <Accordion.Body>
                                     <p>
                                         언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
