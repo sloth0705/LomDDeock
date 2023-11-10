@@ -1,28 +1,29 @@
 ul,li,ol {
     list-style: none;
 }
-#header a {
+#mainHeader a {
     text-decoration: none;
+    color: #111;
     font-family: SUITE-Regular;
     font-size: 18px;
 }
-#header .nav {
+#mainHeader .nav {
     --bs-link-color: white;
     --bs-nav-link-color: var(--bs-link-color);
 }
-#header .nav-link:hover {
+#mainHeader .nav-link:hover {
     color: #A21A24 !important;
 }
-#header > div > a > div {
+#mainHeader > div > a > div {
     width:440px;
     height:160px;
     position:relative;
     margin:0 auto;
 }
-#header > div{
+#mainHeader > div{
     position:relative;
 }
-#header > div > nav {
+#mainHeader > div > nav {
     position:absolute;
     right:200px;
     top:25%;
@@ -30,26 +31,26 @@ ul,li,ol {
 #basic-navbar-nav{
     display:inline-block;
 }
-#header > div > a > div > img.logo{
+#mainHeader > div > a > div > img.logo{
     width:400px;
     position:absolute;
     top:45px;
 }
-#header > div > a > div > img.character{
+#mainHeader > div > a > div > img.character{
     width: 130px;
     position: absolute;
     top: 0px;
     right: 5px;
 }
-#header > ul{
+#mainHeader > ul{
     background-color: #FF5B2D;
     border-bottom: 1px solid white;
 }
-#header > ul > li {
+#mainHeader > ul > li {
     padding-left:80px;
     padding-right:80px;
     border-right: 4px solid white;
 }
-#header > ul > li:nth-child(1) {
+#mainHeader > ul > li:nth-child(1) {
     border-left: 4px solid white;
 }
