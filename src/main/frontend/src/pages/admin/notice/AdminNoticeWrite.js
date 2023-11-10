@@ -22,7 +22,7 @@ function adminNoticeWrite() {
                                 <h4>내용 입력 <em>(필수)</em></h4>
                                 <textarea></textarea>
                                 <div className="links">
-                                    <Link to="/admin/adminNoticeList" className="btnWrite">취소</Link>
+                                    <Link to="/admin/notice/adminNoticeList" className="btnWrite">취소</Link>
                                     <button type="submit" className="btnWrite">작성</button>
                                 </div>
                             </form>

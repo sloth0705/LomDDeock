@@ -136,8 +136,8 @@ function App() {
                                 <Route path="/menu/AdminMenuRegister" element={<AdminMenuRegister />} />
                                 <Route path="/menu/AdminMenuModify" element={<AdminMenuModify />} />
                                 <Route path="/coupon/AdminCouponList" element={<AdminCouponList />} />
-                                <Route path="/AdminNoticeList" element={<AdminNoticeList />} />
-                                <Route path="/AdminNoticeWrite" element={<AdminNoticeWrite />} />
+                                <Route path="/notice/AdminNoticeList" element={<AdminNoticeList />} />
+                                <Route path="/notice/AdminNoticeWrite" element={<AdminNoticeWrite />} />
                             </Routes>
                         </AdminLayout>
                         <Footer/>

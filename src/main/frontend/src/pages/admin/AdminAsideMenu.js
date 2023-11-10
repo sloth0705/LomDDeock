@@ -26,7 +26,7 @@ const adminAsideMenu = ()=>{
                         <li><a href="/admin/adminCouponPayment">▶ 쿠폰지급</a></li>
                     </ul>
                 </ListGroup.Item>
-                <ListGroup.Item action variant="light" href="/admin/adminNoticeList">공지사항관리</ListGroup.Item>
+                <ListGroup.Item action variant="light" href="/admin/notice/adminNoticeList">공지사항관리</ListGroup.Item>
                 <ListGroup.Item action variant="light" href="/admin/adminFaqList">자주묻는질문</ListGroup.Item>
                 <ListGroup.Item action variant="light" href="/admin/adminQna">고객의소리</ListGroup.Item>
             </ListGroup>
