@@ -155,7 +155,7 @@ function App() {
                                 <Route path="/notice/AdminNoticeWrite" element={<AdminNoticeWrite />} />
                                 <Route path="/faq/AdminFaqList" element={<AdminFaqList />} />
                                 <Route path="/faq/AdminFaqRegister" element={<AdminFaqRegister />} />
-                                <Route path="/qna/AdminNoticeWrite" element={<AdminQna />} />
+                                <Route path="/qna/AdminQna" element={<AdminQna />} />
                             </Routes>
                         </AdminLayout>
                         <Footer/>
