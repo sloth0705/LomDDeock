@@ -54,10 +54,10 @@ const CsQnaView = lazy(() => import('./pages/cs/CsQnaView'))
 
 /* 관리자 페이지 */
 const AdminIndex = lazy(() => import('./pages/admin/AdminIndex'))
-const AdminMenuList = lazy(() => import('./pages/admin/AdminMenuList'))
-const AdminMenuRegister = lazy(()=>import('./pages/admin/AdminMenuRegister'))
-const AdminMenuModify = lazy(() => import('./pages/admin/AdminMenuModify'))
-const AdminCouponList = lazy(()=>import('./pages/admin/AdminCouponList'))
+const AdminMenuList = lazy(() => import('./pages/admin/menu/AdminMenuList'))
+const AdminMenuRegister = lazy(()=>import('./pages/admin/menu/AdminMenuRegister'))
+const AdminMenuModify = lazy(() => import('./pages/admin/menu/AdminMenuModify'))
+const AdminCouponList = lazy(()=>import('./pages/admin/coupon/AdminCouponList'))
 
 /* 로딩중 표시 */
 function fallBackData() {

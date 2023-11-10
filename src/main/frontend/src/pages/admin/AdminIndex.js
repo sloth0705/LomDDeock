@@ -3,12 +3,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Col, ListGroup, Row, Container} from "react-bootstrap";
 import React from "react";
 import AdminAsideMenu from "./AdminAsideMenu";
-import MenuSalesStatusData from "./chart/MenuSalesStatusChartData";
-import SideSalesStatusData from "./chart/SideSalesStatusChartData";
-import ToppingSalesStatusData from "./chart/ToppingSalesStatusChartData";
-import MenuSalesStatusChart from "./chart/MenuSalesStatusChart";
-import SideSalesStatusChart from "./chart/SideSalesStatusChart";
-import ToppingSalesStatusChart from "./chart/ToppingSalesStatusChart";
+import MenuSalesStatusData from "./chartOnIndex/MenuSalesStatusChartData";
+import SideSalesStatusData from "./chartOnIndex/SideSalesStatusChartData";
+import ToppingSalesStatusData from "./chartOnIndex/ToppingSalesStatusChartData";
+import MenuSalesStatusChart from "./chartOnIndex/MenuSalesStatusChart";
+import SideSalesStatusChart from "./chartOnIndex/SideSalesStatusChart";
+import ToppingSalesStatusChart from "./chartOnIndex/ToppingSalesStatusChart";
 
 function adminIndex() {
     return (
