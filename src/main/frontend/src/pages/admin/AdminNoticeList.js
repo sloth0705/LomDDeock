@@ -1,28 +1,19 @@
-import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
-import { Container,ListGroup, Col, Row, Button , Accordion } from 'react-bootstrap';
-import '../../css/cs/cs.css';
-function Notice() {
+import React from "react";
+import '../../css/admin/adminCs.css';
+import {Col, Container, Row,Accordion } from "react-bootstrap";
+import AdminAsideMenu from "./AdminAsideMenu";
+import {Link} from "react-router-dom";
+
+function adminNoticeList() {
     return (
-        <section className="cs">
-            <Container id="notice">
-                <div className="cs-title">
-                    <h3>고객센터</h3>
-                </div>
+        <section id="admin">
+            <Container id="adminNoticeList">
                 <Row className="justify-content-center">
-                    {/* aside */}
-                    <Col sm={2}>
-                        <ListGroup>
-                            <ListGroup.Item action variant="light" active href="/cs/csNotice">공지사항</ListGroup.Item>
-                            <ListGroup.Item action variant="light" href="/cs/CsEventList">이벤트</ListGroup.Item>
-                            <ListGroup.Item action variant="light" href="/cs/CsFaq">자주묻는 질문</ListGroup.Item>
-                            <ListGroup.Item action variant="light" href="/cs/CsQnaList">고객의 소리</ListGroup.Item>
-                        </ListGroup>
-                    </Col>
-                    {/* content */}
-                    <Col sm={9}>
-                        <div className="location">
-                            <span> 고객센터 > <strong>공지사항</strong> </span>
+                    {/* aside menu */}
+                    <AdminAsideMenu/>
+                    <Col>
+                        <div className="new-notice-write">
+                            <Link to="/admin/adminNoticeWrite" className="btnWrite">새 공지사항 작성</Link>
                         </div>
                         <Accordion>
                             <Accordion.Item eventKey="0">
@@ -43,6 +34,9 @@ function Notice() {
                                         <br/>
                                         ※ 상품이 정상적으로 지급되지 않거나, 사용에 문제가 발생했을 시 고객센터로 문의해주세요.
                                     </p>
+                                    <p>
+                                        <button className="btnDelete">삭제</button>
+                                    </p>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
@@ -54,37 +48,30 @@ function Notice() {
                                         <br/>
                                         롬복떡볶이의 서비스 이용약관이 아래와 같이 변경됩니다.
                                     </p>
+                                    <p>
+                                        <button className="btnDelete">삭제</button>
+                                    </p>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="2">
-                                <Accordion.Header>[공지] 롬복떡볶이 이용약관 변경 안내 <span className="date">2023-11-01</span></Accordion.Header>
+                                <Accordion.Header>[공지] 롬복떡볶이 사칭 제재 안내 <span className="date">2023-11-01</span></Accordion.Header>
                                 <Accordion.Body>
                                     <p>
                                         언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
                                         <br/>
                                         <br/>
                                     </p>
+                                    <p>
+                                        <button className="btnDelete">삭제</button>
+                                    </p>
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
-
-                        <div className="paging">
-                            <span className="num prev"><Link to="#">&lt;</Link></span>
-
-                            <span className="num on"><Link to="#">1</Link></span>
-                            <span className="num"><Link to="#">2</Link></span>
-                            <span className="num"><Link to="#">3</Link></span>
-                            <span className="num"><Link to="#">4</Link></span>
-                            <span className="num"><Link to="#">5</Link></span>
-
-                            <span className="num next"><Link to="#">&gt;</Link></span>
-                        </div>
                     </Col>
-                    {/* content end */}
                 </Row>
             </Container>
         </section>
-    )
+    );
 }
 
-export default Notice;
+export default adminNoticeList;
