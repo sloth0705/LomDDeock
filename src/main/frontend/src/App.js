@@ -4,6 +4,7 @@ import { Routes, Route, BrowserRouter, Link, useLocation } from "react-router-do
 
 /* 헤더, 푸터 */
 import Header from './layout/Header';
+import MainHeader from './layout/MainHeader';
 import AdminHeader from './layout/AdminHeader';
 import Footer from './layout/Footer';
 
@@ -69,7 +70,7 @@ function App() {
                 {/* 메인 페이지 */}
                 <Route path="/" element={
                 <Suspense fallback={fallBackData()}>
-                    <Header />
+                    <MainHeader />
                     <Main />
                     <Footer />
                 </Suspense>} />
