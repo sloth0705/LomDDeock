@@ -57,6 +57,7 @@ const AdminIndex = lazy(() => import('./pages/admin/AdminIndex'))
 const AdminMenuList = lazy(() => import('./pages/admin/AdminMenuList'))
 const AdminMenuRegister = lazy(()=>import('./pages/admin/AdminMenuRegister'))
 const AdminMenuModify = lazy(() => import('./pages/admin/AdminMenuModify'))
+const AdminCouponList = lazy(()=>import('./pages/admin/AdminCouponList'))
 
 /* 로딩중 표시 */
 function fallBackData() {
@@ -132,6 +133,7 @@ function App() {
                                 <Route path="/AdminMenuList" element={<AdminMenuList />} />
                                 <Route path="/AdminMenuRegister" element={<AdminMenuRegister />} />
                                 <Route path="/AdminMenuModify" element={<AdminMenuModify />} />
+                                <Route path="/AdminCouponList" element={<AdminCouponList />} />
                             </Routes>
                         </AdminLayout>
                         <Footer/>
