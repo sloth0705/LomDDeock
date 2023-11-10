@@ -39,6 +39,10 @@ a:hover {
     width: 1200px !important;
     margin: 0 auto;
 }
+#adminCouponList > div {
+    width: 1200px !important;
+    margin: 0 auto;
+}
 
 /* ========== aside menu ========== */
 #admin div.col-sm-2 {
@@ -142,46 +146,48 @@ a:hover {
     font-weight: bold;
 }
 
-/* ========== 메뉴목록(adminMenuList) ========== */
-#adminMenuList > div > div.col {
-    margin-top: 33px;
-}
-#adminMenuList > div > div.col > select {
+/* ========== 목록관련(adminMenuList, adminCouponList) ========== */
+#adminList > select {
     /* 유형선택 */
     display: inline-block;
     width: 150px;
 }
-#adminMenuList > div > div.col > div.mb-3.input-group {
+#adminList > div.mb-3.input-group {
     width: 200px;
     float: right;
 }
-#adminMenuList #button-addon2 {
+#adminCouponList #adminList > select {
+    /* 쿠폰지급내역 목록의 옵션선택창 우측정렬을 위해 */
+    width: 100px;
+    margin-left: 70%;
+}
+#adminList #button-addon2 {
     /* 검색버튼 */
     border: 1px solid #dee2e6;
     background-color: #F5F5F5;
 }
-#adminMenuList #button-addon2:hover {
+#adminList #button-addon2:hover {
     background-color: #dee1e6;
     color: #5c636a;
 }
-#adminMenuList .adminMenuListTable tr {
-    line-height: 25px;
+#adminList > .adminListTable tr {
+    line-height: 30px;
 }
-#adminMenuList .adminMenuListTable td {
-    line-height: 25px;
+#adminList > .adminListTable td {
+    line-height: 35px;
 }
 /* paging */
-#adminMenuList .paging {
+#adminList .paging {
     width: 100%;
     height: 60px;
     text-align: center;
     line-height: 80px;
 }
-#adminMenuList .paging > .num.on > a {
+#adminList .paging > .num.on > a {
     color: #ff744d;
     font-weight: bold;
 }
-#adminMenuList .paging > .num > a {
+#adminList .paging > .num > a {
     font-size: 15px;
     margin-left: 20px;
 }
