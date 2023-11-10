@@ -12,8 +12,8 @@ const adminAsideMenu = ()=>{
                 <ListGroup.Item action variant="light">
                     메뉴관리
                     <ul>
-                        <li><a href="/admin/adminMenuList">▶ 메뉴목록</a></li>
-                        <li><a href="/admin/adminMenuRegister">▶ 메뉴등록</a></li>
+                        <li><a href="/admin/menu/AdminMenuList">▶ 메뉴목록</a></li>
+                        <li><a href="/admin/menu/AdminMenuRegister">▶ 메뉴등록</a></li>
                     </ul>
                 </ListGroup.Item>
                 <ListGroup.Item action variant="light" href="/admin/adminOrderStatus">주문현황</ListGroup.Item>
@@ -22,7 +22,7 @@ const adminAsideMenu = ()=>{
                 <ListGroup.Item action variant="light">
                     쿠폰관리
                     <ul>
-                        <li><a href="/admin/adminCouponList">▶ 쿠폰지급내역</a></li>
+                        <li><a href="/admin/coupon/AdminCouponList">▶ 쿠폰지급내역</a></li>
                         <li><a href="/admin/adminCouponPayment">▶ 쿠폰지급</a></li>
                     </ul>
                 </ListGroup.Item>

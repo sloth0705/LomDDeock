@@ -1,11 +1,11 @@
-import React from "react";
-import '../../css/admin/admin.css';
 import {Col, Container, Row} from "react-bootstrap";
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import AdminAsideMenu from "./AdminAsideMenu";
+import AdminAsideMenu from "../AdminAsideMenu";
+import React from "react";
+import '../../../css/admin/admin.css';
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 
-function adminMenuRegister() {
+function adminMenuModify() {
     return (
         <section id="admin">
             <Container id="adminMenuManagement">
@@ -95,12 +95,12 @@ function adminMenuRegister() {
                                 </div>
                             </div>
                         </article>
-                        <button>등록</button>
+                        <button>수정완료</button>
                     </Col>
                 </Row>
             </Container>
         </section>
-    );
+    )
 }
 
-export default adminMenuRegister;
+export default adminMenuModify;
