@@ -339,7 +339,7 @@ a:hover {
     color: white;
 }
 
-/* ========== 자주묻는질문(adminFaqList) ========== */
+/* ========== 자주묻는질문 목록(adminFaqList) ========== */
 #adminFaqList .faqRegisterButton {
     display: flex;
     justify-content: center;
@@ -359,6 +359,7 @@ a:hover {
     background-color: #c2c2c2;
     color: #fff;
     text-decoration: none;
+    font-weight: normal;
 }
 
 #adminFaqList .AdminFaqCate {
@@ -431,6 +432,73 @@ a:hover {
 }
 #adminFaqList .accordion-body > p:nth-of-type(2) > button:hover {
     font-weight: bold;
+}
+
+/* ========== 자주묻는질문 등록(adminFaqRegister) ========== */
+#adminFaqRegister div.col > div {
+    width: 500px;
+    margin: 0 auto;
+}
+#adminFaqRegister div.col > div > div:nth-child(1) {
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 15px;
+}
+#adminFaqRegister h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #696969;
+}
+#adminFaqRegister > div > div.col div:nth-child(2) {
+    /* 유형선택 */
+    width: 180px;
+}
+#adminFaqRegister > div > div.col div:nth-child(3) {
+    /* 질문 */
+    width: 500px;
+}
+#adminFaqRegister > div > div.col div:nth-child(4) {
+    /* 답변 */
+    width: 500px;
+    height: 300px;
+}
+#adminFaqRegister > div > div.col div:nth-child(5) {
+    display: block;
+    text-align: center;
+    margin: 30px 0;
+}
+#adminFaqRegister div.col div:nth-child(5) > a {
+    border: none;
+    padding: 5px 10px;
+}
+#adminFaqRegister div.col div:nth-child(5) > .btnCancel {
+    height: 55px;
+    font-size: 15px;
+    border: none;
+    background-color: #f5f5f5;
+    padding: 10px 30px;
+    border-radius: 20px;
+}
+#adminFaqRegister div.col div:nth-child(5) > .btnCancel:hover {
+    background-color: #c9c8c8;
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+}
+#adminFaqRegister div.col div:nth-child(5) > .btnRegister {
+    margin-left: 3px;
+    height: 55px;
+    font-size: 15px;
+    border: none;
+    background-color: #ff744d;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 20px;
+}
+#adminFaqRegister div.col div:nth-child(5) > .btnRegister:hover {
+    background-color: #c9c8c8;
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
 }
 
 /* ========== 고객의소리(adminQna) ========== */
