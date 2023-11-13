@@ -54,7 +54,7 @@ public class MemberService implements UserDetailsService {
         return memberRepository.save(MemberEntity.builder()
                 .email(form.getEmail())
                 .role(MemberRole.USER)
-                .provider(MemberProvider.LOCAL)
+                .provider(MemberProvider.KAKAO)
                 .build()).toDTO();
     }
 
@@ -65,7 +65,7 @@ public class MemberService implements UserDetailsService {
             throw new BadCredentialsException("일치하는 정보가 없습니다.");
         }
 
-        return jwtIssuer.createToken(member.getEmail(), member.getRole().name());
+        return createToken(member);
     }
 
     public JwtDTO socialSignIn(SignUpForm form) {
@@ -80,6 +80,10 @@ public class MemberService implements UserDetailsService {
                     .build().toEntity()).toDTO();
         }
 
+        return createToken(member);
+    }
+
+    public JwtDTO createToken(MemberDTO member) {
         return jwtIssuer.createToken(member.getEmail(), member.getRole().name());
     }
 

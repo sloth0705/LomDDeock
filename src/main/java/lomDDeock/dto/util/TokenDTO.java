@@ -1,15 +1,15 @@
-package lomDDeock.dto.member;
+package lomDDeock.dto.util;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
-@NoArgsConstructor
+@Setter
 @AllArgsConstructor
-@Builder
-public class SignUpForm {
+@NoArgsConstructor
+public class TokenDTO {
     private String email;
-    private String password;
+    private String accessToken;
 }

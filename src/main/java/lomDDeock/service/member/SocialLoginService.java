@@ -87,7 +87,7 @@ public class SocialLoginService {
         HttpEntity<String> request = new HttpEntity<>(code, headers);
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<JwtDTO> response = restTemplate.postForEntity(
-                "http://localhost:8080/login/social/" + providerName,
+                "http://localhost:8080/api/social/" + providerName,
                 request, JwtDTO.class);
         return response;
     }

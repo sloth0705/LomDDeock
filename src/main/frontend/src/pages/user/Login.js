@@ -1,18 +1,13 @@
 import { Link } from "react-router-dom";
 import {Navbar, Container, Row, Col, Button, Form, Image} from "react-bootstrap";
-import axios from 'axios';
+import axios from '../../interceptor.js';
 import { useNavigate } from 'react-router';
-import { useDispatch, useSelector  } from 'react-redux';
 import '../../css/user/user.css';
 import logo from "../../images/LomDDeock-letterlogo-korean.png";
 import React from "react";
 import KakaoLogin from "react-kakao-login";
-import { setRefreshToken } from '../../storage/Cookie';
-import { SET_TOKEN } from '../../store/Auth';
-function Login() {
-    const accessToken2 = useSelector((state) => state.authToken.accessToken);
+function Login({isLoggedIn}) {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const kakaoClientId = '9169f348c8c5bb0b3fc8f2e08db92d78'
     const kakaoOnSuccess = async (data)=>{
         console.log(data)
@@ -31,7 +26,7 @@ function Login() {
         alert('로그인에 실패하였습니다. 잠시 후 다시 시도해주세요.')
     };
     const performCheck = async (email) => {
-        return axios.get(`http://localhost:8080/login/social/check/KAKAO?email=${email}`)
+        return axios.get('/api/social/check/KAKAO?email=' + email)
             .then((res) => {
                 return res.data; // 또는 원하는 처리를 반환할 수 있습니다.
             })
@@ -67,13 +62,20 @@ function Login() {
             const response = await axios.post('/api/social/signin', {
                 email: email
             });
-             localStorage.setItem("token", response.data.accessToken);
-            setRefreshToken(response.data.refreshToken);
-            dispatch(SET_TOKEN(response.data.accessToken));
-debugger;
+            localStorage.setItem("token", response.data.accessToken);
+            console.log('accessToken: ' + response.data.accessToken);
             return navigate("/");
             // 여기에서 response를 처리하거나 반환값을 가공할 수 있습니다.
             console.log(response.data);
+        } catch (error) {
+            // 오류가 발생한 경우의 추가 로직
+            console.error('Error during sign-in:', error);
+        }
+    }
+    const test = async () => {
+    console.log("isLoggedIn : " +  isLoggedIn);
+        try {
+            const response = await axios.get('/api/info');
         } catch (error) {
             // 오류가 발생한 경우의 추가 로직
             console.error('Error during sign-in:', error);
@@ -104,8 +106,8 @@ debugger;
                     <li id="ggLoginBtn">
                         <a href="#">구글 로그인</a>
                     </li>
-                        <button onClick={() => console.log('AccessToken:', accessToken2)}>asdf</button>
                         <strong>또는</strong>
+                        <button onClick={() => test()}>test</button>
                     </div>
                     <Form>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
