@@ -30,6 +30,10 @@ function adminEventList() {
                                 </li>
                                 <li>
                                     <h3><Link to="#">떡볶이 랜덤추첨 13차</Link></h3>
+                                    <div>
+                                        <button><Link to="/admin/event/adminEventModify">수정</Link></button>
+                                        <button><Link to="#">삭제</Link></button>
+                                    </div>
                                     <span className="date">기간: 2023.11.01 ~ 2023.11.07</span>
                                     <Link to="/cs/CsEventView">
                                         <img src="https://via.placeholder.com/171x180" alt="event_img" className="event-progress"/>
@@ -37,6 +41,10 @@ function adminEventList() {
                                 </li>
                                 <li>
                                     <h3><Link to="#">떡볶이 랜덤추첨 13차</Link></h3>
+                                    <div>
+                                        <button><Link to="/admin/event/adminEventModify">수정</Link></button>
+                                        <button><Link to="#">삭제</Link></button>
+                                    </div>
                                     <span className="date">기간: 2023.11.01 ~ 2023.11.07</span>
                                     <Link to="/cs/CsEventView">
                                         <img src="https://via.placeholder.com/171x180" alt="event_img" className="event-progress"/>
@@ -44,6 +52,10 @@ function adminEventList() {
                                 </li>
                                 <li>
                                     <h3><Link to="#">떡볶이 랜덤추첨 13차</Link></h3>
+                                    <div>
+                                        <button><Link to="/admin/event/adminEventModify">수정</Link></button>
+                                        <button><Link to="#">삭제</Link></button>
+                                    </div>
                                     <span className="date">기간: 2023.11.01 ~ 2023.11.07</span>
                                     <Link to="/cs/CsEventView">
                                         <img src="https://via.placeholder.com/171x180" alt="event_img" className="event-progress"/>
