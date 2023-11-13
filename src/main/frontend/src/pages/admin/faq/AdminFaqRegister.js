@@ -42,7 +42,7 @@ function adminFaqRegister() {
                             </InputGroup>
                             <div>
                                 <Link to="/admin/faq/adminFaqList" className="btnCancel">취소</Link>
-                                <Link to="#" className="btnRegister">등록완료</Link>
+                                <Link to="#" className="btnRegister">등록</Link>
                             </div>
                         </div>
                     </Col>
