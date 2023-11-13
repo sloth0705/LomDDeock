@@ -82,9 +82,6 @@ a:hover {
 }
 
 /* ========== adminNoticeList ========== */
-#adminNoticeList > div > .col {
-    margin-top: 33px;
-}
 #adminNoticeList .new-notice-write {
     display: flex;
     justify-content: center;
