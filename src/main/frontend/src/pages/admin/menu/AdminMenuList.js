@@ -47,7 +47,7 @@ function adminMenuList() {
                                     <td>
                                         <Link to="#">삭제</Link>
                                         <span>　|　</span>
-                                        <Link to="/admin/adminMenuModify">수정</Link>
+                                        <Link to="/admin/menu/adminMenuModify">수정</Link>
                                     </td>
                                 </tr>
                                 <tr>
@@ -57,7 +57,7 @@ function adminMenuList() {
                                     <td>
                                         <Link to="#">삭제</Link>
                                         <span>　|　</span>
-                                        <Link to="/admin/adminMenuModify">수정</Link>
+                                        <Link to="/admin/menu/adminMenuModify">수정</Link>
                                     </td>
                                 </tr>
                                 <tr>
@@ -67,7 +67,7 @@ function adminMenuList() {
                                     <td>
                                         <Link to="#">삭제</Link>
                                         <span>　|　</span>
-                                        <Link to="/admin/adminMenuModify">수정</Link>
+                                        <Link to="/admin/menu/adminMenuModify">수정</Link>
                                     </td>
                                 </tr>
                                 <tr>
@@ -77,7 +77,7 @@ function adminMenuList() {
                                     <td>
                                         <Link to="#">삭제</Link>
                                         <span>　|　</span>
-                                        <Link to="/admin/adminMenuModify">수정</Link>
+                                        <Link to="/admin/menu/adminMenuModify">수정</Link>
                                     </td>
                                 </tr>
                                 <tr>
@@ -87,7 +87,7 @@ function adminMenuList() {
                                     <td>
                                         <Link to="#">삭제</Link>
                                         <span>　|　</span>
-                                        <Link to="/admin/adminMenuModify">수정</Link>
+                                        <Link to="/admin/menu/adminMenuModify">수정</Link>
                                     </td>
                                 </tr>
                                 </tbody>
