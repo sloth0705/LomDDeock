@@ -1,17 +1,15 @@
 package lomDDeock.controller.member;
 
-import jakarta.servlet.http.HttpServletResponse;
 import lomDDeock.dto.member.MemberDTO;
 import lomDDeock.dto.member.SignUpForm;
 import lomDDeock.dto.util.JwtDTO;
 import lomDDeock.service.member.MemberService;
 import lomDDeock.service.member.SocialLoginService;
+import lomDDeock.util.JwtIssuer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.IOException;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,6 +17,7 @@ import java.io.IOException;
 public class MemberController {
     private final MemberService memberService;
     private final SocialLoginService socialLoginService;
+    private final JwtIssuer jwtIssuer;
 
     // 일반 회원가입
     @PostMapping("/local/signup")

@@ -1,6 +1,8 @@
 import React, {useEffect, useState, lazy, Suspense} from 'react';
 import axios from 'axios';
 import { Routes, Route, BrowserRouter, Link, useLocation } from "react-router-dom";
+import verifyToken from './verifyToken';
+import refreshToken from './refreshToken';
 
 /* 헤더, 푸터 */
 import Header from './layout/Header';
@@ -75,6 +77,37 @@ function fallBackData() {
 }
 
 function App() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const checkLoginStatus = async () => {
+            const loggedIn = await verifyToken();
+            setIsLoggedIn(loggedIn);
+            console.log("isLoggedIn : " + isLoggedIn)
+        };
+        checkLoginStatus();
+
+        // refreshToken을 이용하여 토큰을 재발급 받는 로직
+        const refreshAccessToken = async () => {
+            try {
+                const response = await refreshToken(); // refreshToken 함수는 서버에 refreshToken을 보내어 새로운 accessToken을 받아오는 함수일 것입니다.
+                // 받아온 새로운 accessToken을 사용하거나 저장할 수 있습니다.
+                console.log('New Access Token:', response.accessToken);
+            } catch (error) {
+                // 에러 처리
+                console.error('Error refreshing access token:', error);
+            }
+        };
+
+        // 예를 들어, 토큰이 만료되었을 때 재발급 받도록 설정
+        const tokenRefreshInterval = setInterval(() => {
+            refreshAccessToken();
+        }, 60 * 60 * 1000); // 1시간마다 토큰 재발급
+
+        // 컴포넌트 언마운트 시에 clearInterval을 호출하여 간격마다 실행되는 함수를 정리합니다.
+        return () => clearInterval(tokenRefreshInterval);
+
+    }, []);
     return (
         <BrowserRouter basename="/">
             <Routes>
@@ -107,7 +140,7 @@ function App() {
                         <Header/>
                         <UserLayout>
                             <Routes>
-                                <Route path="/login" element={<Login />} />
+                                <Route path="/login" element={<Login isLoggedIn={isLoggedIn}/>} />
                                 <Route path="/signup" element={<Signup />} />
                                 <Route path="/register" element={<Register />} />
                                 <Route path="/confirmEmail" element={<ConfirmEmail />} />
