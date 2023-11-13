@@ -63,6 +63,7 @@ function Login({isLoggedIn}) {
                 email: email
             });
             localStorage.setItem("token", response.data.accessToken);
+            localStorage.setItem("token", response.data.accessToken);
             console.log('accessToken: ' + response.data.accessToken);
             return navigate("/");
             // 여기에서 response를 처리하거나 반환값을 가공할 수 있습니다.
