@@ -16,6 +16,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class MemberService implements UserDetailsService {
@@ -23,12 +25,17 @@ public class MemberService implements UserDetailsService {
     private final PasswordEncoder passwordEncoder;
     private final JwtIssuer jwtIssuer;
 
+    public boolean checkMember(String email) {
+        Optional<MemberEntity> memberEntity = memberRepository.findByEmail(email);
+        return  memberEntity.isEmpty();
+    }
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return getMemberByEmail(email);
     }
 
-    public MemberDTO signUp(SignUpForm form) {
+    public MemberDTO localSignUp(SignUpForm form) {
         if(memberRepository.existsByEmail(form.getEmail())){
             throw new RuntimeException("사용중인 이메일입니다.");
         }
@@ -40,7 +47,18 @@ public class MemberService implements UserDetailsService {
                 .build()).toDTO();
     }
 
-    public JwtDTO signIn(SignUpForm form) {
+    public MemberDTO socialSignUp(SignUpForm form) {
+        if(memberRepository.existsByEmail(form.getEmail())){
+            throw new RuntimeException("사용중인 이메일입니다.");
+        }
+        return memberRepository.save(MemberEntity.builder()
+                .email(form.getEmail())
+                .role(MemberRole.USER)
+                .provider(MemberProvider.LOCAL)
+                .build()).toDTO();
+    }
+
+    public JwtDTO localSignIn(SignUpForm form) {
         MemberDTO member = getMemberByEmail(form.getEmail());
 
         if (!passwordEncoder.matches(form.getPassword(), member.getPassword())) {
@@ -48,11 +66,6 @@ public class MemberService implements UserDetailsService {
         }
 
         return jwtIssuer.createToken(member.getEmail(), member.getRole().name());
-    }
-
-    private MemberDTO getMemberByEmail(String email) {
-        return memberRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("일치하는 정보가 없습니다.")).toDTO();
     }
 
     public JwtDTO socialSignIn(SignUpForm form) {
@@ -68,5 +81,10 @@ public class MemberService implements UserDetailsService {
         }
 
         return jwtIssuer.createToken(member.getEmail(), member.getRole().name());
+    }
+
+    private MemberDTO getMemberByEmail(String email) {
+        return memberRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("일치하는 정보가 없습니다.")).toDTO();
     }
 }

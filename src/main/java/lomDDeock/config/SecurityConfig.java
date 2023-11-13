@@ -9,12 +9,22 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableWebSecurity
 @Configuration
 @RequiredArgsConstructor
-public class SecurityConfig {
+public class SecurityConfig implements WebMvcConfigurer {
     private final JwtFilter jwtFilter;
+
+    public void addCorsMapping(CorsRegistry registry) {
+        registry.addMapping("/**")
+            .allowedOrigins("http://localhost:3000") // 허용할 오리진 추가
+            .allowedMethods("GET", "POST", "PUT", "DELETE")
+            .allowCredentials(true)
+            .maxAge(3600);
+    }
 
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {

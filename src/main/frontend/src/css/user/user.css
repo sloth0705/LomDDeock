@@ -54,3 +54,9 @@ h2 {text-align: center; display:block; padding:0 2px 20px; margin-top:15px; line
     line-height:50px;
     margin-bottom: 50px;
 }
+
+.w100p {
+    width: 100% !important;
+}
+
+li#kkLoginBtn .kkLogin {display:block;  height:56px; padding-left:35px; background:#ffe812 url("../../images/user/ic-kakao-02.png") no-repeat 120px 19px; background-size:18px 17px; color:#262626; box-sizing:border-box; font-size:16px; line-height:56px; text-align:center;}
