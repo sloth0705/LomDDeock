@@ -12,7 +12,7 @@ function adminFaqList() {
                     {/* aside menu */}
                     <AdminAsideMenu/>
                     <Col>
-                        <div className="faqRegister">
+                        <div className="faqRegisterButton">
                             <Link to="/admin/faq/adminFaqRegister" className="btnWrite">자주묻는질문 등록</Link>
                         </div>
                         <div className="AdminFaqCate">
@@ -26,7 +26,7 @@ function adminFaqList() {
                         </div>
                         <Accordion>
                             <Accordion.Item eventKey="0">
-                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?</Accordion.Header>
+                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?<span className="date">2023-11-01</span></Accordion.Header>
                                 <Accordion.Body>
                                     <p>
                                         언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
@@ -39,12 +39,14 @@ function adminFaqList() {
                                         <br/>
                                         ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
                                     </p>
-                                    <button>수정</button>
-                                    <button>삭제</button>
+                                    <p>
+                                        <button className="btnModify">수정</button>
+                                        <button className="btnDelete">삭제</button>
+                                    </p>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
-                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?</Accordion.Header>
+                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?<span className="date">2023-11-01</span></Accordion.Header>
                                 <Accordion.Body>
                                     <p>
                                         언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
@@ -57,12 +59,14 @@ function adminFaqList() {
                                         <br/>
                                         ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
                                     </p>
-                                    <button>수정</button>
-                                    <button>삭제</button>
+                                    <p>
+                                        <button className="btnModify">수정</button>
+                                        <button className="btnDelete">삭제</button>
+                                    </p>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="2">
-                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?</Accordion.Header>
+                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?<span className="date">2023-11-01</span></Accordion.Header>
                                 <Accordion.Body>
                                     <p>
                                         언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
@@ -75,12 +79,14 @@ function adminFaqList() {
                                         <br/>
                                         ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
                                     </p>
-                                    <button>수정</button>
-                                    <button>삭제</button>
+                                    <p>
+                                        <button className="btnModify">수정</button>
+                                        <button className="btnDelete">삭제</button>
+                                    </p>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="3">
-                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?</Accordion.Header>
+                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?<span className="date">2023-11-01</span></Accordion.Header>
                                 <Accordion.Body>
                                     <p>
                                         언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
@@ -93,18 +99,21 @@ function adminFaqList() {
                                         <br/>
                                         ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
                                     </p>
-                                    <button>수정</button>
-                                    <button>삭제</button>
+                                    <p>
+                                        <button className="btnModify">수정</button>
+                                        <button className="btnDelete">삭제</button>
+                                    </p>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="4">
-                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?</Accordion.Header>
+                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?<span className="date">2023-11-01</span></Accordion.Header>
                                 <Accordion.Body>
                                     <p>
                                         <textarea></textarea>
                                     </p>
-                                    <button>취소</button>
-                                    <button>수정완료</button>
+                                    <p>
+                                        <button className="btnModify">완료</button>
+                                    </p>
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>

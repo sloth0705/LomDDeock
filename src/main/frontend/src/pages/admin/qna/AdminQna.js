@@ -26,7 +26,7 @@ function adminQna() {
                             <option value="etc">기타</option>
                         </Form.Select>
                         {/* 검색창 */}
-                        <InputGroup className="mb-3">
+                        <InputGroup>
                             <Form.Control
                                 placeholder="검색어 입력"
                             />
@@ -34,7 +34,7 @@ function adminQna() {
                         </InputGroup>
                         <Accordion>
                             <Accordion.Item eventKey="0">
-                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?</Accordion.Header>
+                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?<span className="date">2023-11-01</span></Accordion.Header>
                                 <Accordion.Body>
                                     <p>
                                         언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
@@ -47,25 +47,25 @@ function adminQna() {
                                         <br/>
                                         ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
                                     </p>
-                                    <label>
+                                    <p>
                                         작성자 : aaa<br/>
                                         작성일 : 2023.11.01
-                                    </label>
-                                    <button>답변하기</button>
-                                    <button>삭제</button>
+                                    </p>
+                                    <p>
+                                        <button>삭제</button>
+                                    </p>
                                     <p>
                                         언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
                                         <br/>
                                         ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
                                     </p>
-                                    <label>
+                                    <p>
                                         답변완료일 : 2023.11.02
-                                    </label>
-                                    <button>삭제</button>
+                                    </p>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
-                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?</Accordion.Header>
+                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?<span className="date">2023-11-01</span></Accordion.Header>
                                 <Accordion.Body>
                                     <p>
                                         언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
@@ -78,25 +78,25 @@ function adminQna() {
                                         <br/>
                                         ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
                                     </p>
-                                    <label>
+                                    <p>
                                         작성자 : aaa<br/>
                                         작성일 : 2023.11.01
-                                    </label>
-                                    <button>답변하기</button>
-                                    <button>삭제</button>
+                                    </p>
+                                    <p>
+                                        <button>삭제</button>
+                                    </p>
                                     <p>
                                         언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
                                         <br/>
                                         ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
                                     </p>
-                                    <label>
+                                    <p>
                                         답변완료일 : 2023.11.02
-                                    </label>
-                                    <button>삭제</button>
+                                    </p>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="2">
-                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?</Accordion.Header>
+                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?<span className="date">2023-11-01</span></Accordion.Header>
                                 <Accordion.Body>
                                     <p>
                                         언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
@@ -109,25 +109,25 @@ function adminQna() {
                                         <br/>
                                         ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
                                     </p>
-                                    <label>
+                                    <p>
                                         작성자 : aaa<br/>
                                         작성일 : 2023.11.01
-                                    </label>
-                                    <button>답변하기</button>
-                                    <button>삭제</button>
+                                    </p>
+                                    <p>
+                                        <button>삭제</button>
+                                    </p>
                                     <p>
                                         언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
                                         <br/>
                                         ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
                                     </p>
-                                    <label>
+                                    <p>
                                         답변완료일 : 2023.11.02
-                                    </label>
-                                    <button>삭제</button>
+                                    </p>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="3">
-                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?</Accordion.Header>
+                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?<span className="date">2023-11-01</span></Accordion.Header>
                                 <Accordion.Body>
                                     <p>
                                         언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
@@ -140,25 +140,18 @@ function adminQna() {
                                         <br/>
                                         ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
                                     </p>
-                                    <label>
+                                    <p>
                                         작성자 : aaa<br/>
                                         작성일 : 2023.11.01
-                                    </label>
-                                    <button>답변하기</button>
-                                    <button>삭제</button>
-                                    <p>
-                                        언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
-                                        <br/>
-                                        ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
                                     </p>
-                                    <label>
-                                        답변완료일 : 2023.11.02
-                                    </label>
-                                    <button>삭제</button>
+                                    <p>
+                                        <button>답변하기</button>
+                                        <button>삭제</button>
+                                    </p>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="4">
-                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?</Accordion.Header>
+                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?<span className="date">2023-11-01</span></Accordion.Header>
                                 <Accordion.Body>
                                     <p>
                                         언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
@@ -171,15 +164,23 @@ function adminQna() {
                                         <br/>
                                         ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
                                     </p>
-                                    <label>
+                                    <p>
                                         작성자 : aaa<br/>
                                         작성일 : 2023.11.01
-                                    </label>
+                                    </p>
+                                    <p>
+                                        <button>삭제</button>
+                                    </p>
                                     <p>
                                         <textarea></textarea>
                                     </p>
-                                    <button>취소</button>
-                                    <button>완료</button>
+                                    <p>
+                                        답변완료일 : 2023.11.02
+                                    </p>
+                                    <p>
+                                        <button>취소</button>
+                                        <button>완료</button>
+                                    </p>
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
