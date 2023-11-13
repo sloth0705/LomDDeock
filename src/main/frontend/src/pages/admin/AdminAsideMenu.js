@@ -18,17 +18,17 @@ const adminAsideMenu = ()=>{
                 </ListGroup.Item>
                 <ListGroup.Item action variant="light" href="/admin/adminOrderStatus">주문현황</ListGroup.Item>
                 <ListGroup.Item action variant="light" href="/admin/adminBanner">배너관리</ListGroup.Item>
-                <ListGroup.Item action variant="light" href="/admin/adminEventList">이벤트관리</ListGroup.Item>
+                <ListGroup.Item action variant="light" href="/admin/event/adminEventList">이벤트관리</ListGroup.Item>
                 <ListGroup.Item action variant="light">
                     쿠폰관리
                     <ul>
                         <li><a href="/admin/coupon/AdminCouponList">▶ 쿠폰지급내역</a></li>
-                        <li><a href="/admin/adminCouponPayment">▶ 쿠폰지급</a></li>
+                        <li><a href="/admin/coupon/adminCouponPayment">▶ 쿠폰지급</a></li>
                     </ul>
                 </ListGroup.Item>
-                <ListGroup.Item action variant="light" href="/admin/adminNoticeList">공지사항관리</ListGroup.Item>
-                <ListGroup.Item action variant="light" href="/admin/adminFaqList">자주묻는질문</ListGroup.Item>
-                <ListGroup.Item action variant="light" href="/admin/adminQna">고객의소리</ListGroup.Item>
+                <ListGroup.Item action variant="light" href="/admin/notice/adminNoticeList">공지사항관리</ListGroup.Item>
+                <ListGroup.Item action variant="light" href="/admin/faq/adminFaqList">자주묻는질문</ListGroup.Item>
+                <ListGroup.Item action variant="light" href="/admin/qna/adminQna">고객의소리</ListGroup.Item>
             </ListGroup>
         </Col>
     )

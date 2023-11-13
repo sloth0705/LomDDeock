@@ -13,7 +13,7 @@ function adminNoticeList() {
                     <AdminAsideMenu/>
                     <Col>
                         <div className="new-notice-write">
-                            <Link to="/admin/adminNoticeWrite" className="btnWrite">새 공지사항 작성</Link>
+                            <Link to="/admin/notice/adminNoticeWrite" className="btnWrite">새 공지사항 작성</Link>
                         </div>
                         <Accordion>
                             <Accordion.Item eventKey="0">

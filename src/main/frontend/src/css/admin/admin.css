@@ -177,25 +177,21 @@ a:hover {
     line-height: 35px;
 }
 /* paging */
-#adminList .paging {
+.paging {
     width: 100%;
-    height: 60px;
     text-align: center;
-    line-height: 80px;
+    line-height: 100px;
 }
-#adminList .paging > .num.on > a {
+.paging > .num.on > a {
     color: #ff744d;
     font-weight: bold;
 }
-#adminList .paging > .num > a {
+.paging > .num > a {
     font-size: 15px;
     margin-left: 20px;
 }
 
 /* ========== 메뉴등록 & 수정(adminMenuManagement) ========== */
-#adminMenuManagement > div > div.col {
-    margin-top: 33px;
-}
 #adminMenuManagement > div > div.col > select {
     /* 유형선택 */
     width: 150px;
@@ -286,4 +282,381 @@ a:hover {
 #adminMenuManagement .classification > .subcate > .inputSubcate {
     /* 소분류 input필드 */
     width: 300px;
+}
+
+/* ========== 이벤트목록(adminEventList) ========== */
+#adminEventList .eventRegisterButton {
+    display: flex;
+    justify-content: center;
+}
+#adminEventList .eventRegisterButton > a {
+    width: 300px;
+    text-align: center;
+    background-color: #f5f5f5;
+    font-size: 18px;
+    margin-bottom: 15px;
+    display: inline-block;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 12px;
+}
+#adminEventList .eventRegisterButton > a:hover {
+    background-color: #c2c2c2;
+    color: #fff;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+#adminEventList .eventList li:nth-of-type(1) {
+    border-top: 1px solid #c2c2c2;
+}
+#adminEventList .eventList li {
+    width: 96%;
+    height: auto;
+    border-bottom: 1px solid #c2c2c2;
+    padding: 15px;
+    box-sizing: border-box;
+}
+#adminEventList .eventList li > h3 {
+    display: inline;
+}
+#adminEventList .eventList li > h3 a {
+    font-size: 17px;
+}
+#adminEventList .eventList > ul div {
+    display: inline-block;
+    float: right;
+}
+#adminEventList .eventList > ul div > button {
+    border: none;
+    margin-left: 3px;
+    padding: 3px 10px;
+}
+#adminEventList .eventList > ul div > button:hover {
+    background-color: #c9c8c8;
+    color: #fff;
+}
+#adminEventList .eventList > ul div > button > a:hover {
+    font-weight: normal;
+    text-decoration: none;
+}
+#adminEventList .eventList li > .date {
+    display: block;
+    color: #818181;
+    margin: 10px 0;
+}
+#adminEventList .eventList li img {
+    width: 100%;
+    height: 120px;
+}
+
+/* ========== 쿠폰지급(adminCouponPayment) ========== */
+#adminCouponPayment > div > div.col > div {
+    margin: 33px auto;
+}
+#adminCouponPayment > div > div.col > div:nth-child(1) {
+    /* 쿠폰명 입력 필드 */
+    width: 350px;
+}
+#adminCouponPayment > div > div.col > div > div:nth-child(1) > span {
+    /* 쿠폰명 제목 */
+    width: 97px;
+}
+#adminCouponPayment > div > div.col > div:nth-child(2) {
+    /* 지급사유 입력 필드 */
+    width: 350px;
+}
+#adminCouponPayment > div > div.col > div > div:nth-child(3) > input[type=date] {
+    /* 유효기한 입력 필드 */
+    border: 1px solid #ececec;
+    padding-left: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+}
+#adminCouponPayment > div > div.col > div:nth-child(4) {
+    /* 적용기준 입력 필드 */
+    width: 300px;
+}
+#adminCouponPayment > div > div.col > div:nth-child(5) {
+    /* 제한조건 입력 필드 */
+    width: 300px;
+}
+#adminCouponPayment > div > div.col > div > div:nth-child(6) > p {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+#adminCouponPayment > div > div.col > div:nth-child(7) {
+    /* 고객이메일아이디 입력 필드 */
+    width: 350px;
+    height: 20px;
+}
+#adminCouponPayment > div > div.col > button {
+    /* 지급하기 버튼 */
+    height: 55px;
+    font-size: 15px;
+    display: block;
+    margin: 40px auto;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 20px;
+}
+#adminCouponPayment > div > div.col > button:hover {
+    background-color: #c9c8c8;
+    color: white;
+}
+
+/* ========== 자주묻는질문 목록(adminFaqList) ========== */
+#adminFaqList .faqRegisterButton {
+    display: flex;
+    justify-content: center;
+}
+#adminFaqList .faqRegisterButton > a {
+    width: 300px;
+    text-align: center;
+    background-color: #f5f5f5;
+    font-size: 16px;
+    margin-bottom: 15px;
+    display: inline-block;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+#adminFaqList .faqRegisterButton > a:hover {
+    background-color: #c2c2c2;
+    color: #fff;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+#adminFaqList .AdminFaqCate {
+    width: 100%;
+    height: 70px;
+    border-top: 1px solid #9f9f9f;
+    border-bottom: 1px solid #9f9f9f;
+    margin-bottom: 20px;
+}
+#adminFaqList .AdminFaqCate > a {
+    font-family: SUITE-Regular;
+    font-size: 16px;
+    display: inline-block;
+    width: 14%;
+    text-align: center;
+    line-height: 67px;
+}
+#adminFaqList .AdminFaqCate > a:hover {
+    background-color: #f1f1f1;
+    text-decoration: none;
+}
+#adminFaqList .AdminFaqCate > a:active{
+    background-color: #9f9f9f;
+    color: #fff;
+}
+#adminFaqList .AdminFaqCate > a.on {
+    font-weight: bold;
+    color: #ff744d;
+}
+#adminFaqList .AdminFaqCate > a.on:hover {
+    background-color: #fff;
+    text-decoration: none;
+}
+
+#adminFaqList .accordion .accordion-header {
+    line-height: 34px;
+}
+#adminFaqList .accordion h2 > button > .date {
+    position: absolute;
+    right: 48px;
+    color: #818181;
+}
+#adminFaqList .accordion .accordion-button:focus {
+    box-shadow: none;
+}
+#adminFaqList .accordion .accordion-button:not(.collapsed) {
+    background-color: #f5f5f5;
+}
+#adminFaqList .accordion-body > p:nth-of-type(1) {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #f6f6f6;
+}
+#adminFaqList div.accordion textarea {
+    width: 100%;
+    height: 150px;
+    border: none;
+}
+#adminFaqList .accordion-body > p:nth-of-type(2) {
+    display: flex;
+    justify-content: flex-end;
+}
+#adminFaqList .accordion-body > p:nth-of-type(2) > button {
+    margin-left: 5px;
+    border: none;
+    padding: 5px 10px;
+}
+#adminFaqList .accordion-body > p:nth-of-type(2) > button:hover {
+    font-weight: bold;
+}
+
+/* ========== 자주묻는질문 등록(adminFaqRegister) ========== */
+#adminFaqRegister div.col > div {
+    width: 500px;
+    margin: 0 auto;
+}
+#adminFaqRegister div.col > div > div:nth-child(1) {
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 15px;
+}
+#adminFaqRegister h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #696969;
+}
+#adminFaqRegister > div > div.col div:nth-child(2) {
+    /* 유형선택 */
+    width: 180px;
+}
+#adminFaqRegister > div > div.col div:nth-child(3) {
+    /* 질문 */
+    width: 500px;
+}
+#adminFaqRegister > div > div.col div:nth-child(4) {
+    /* 답변 */
+    width: 500px;
+    height: 300px;
+}
+#adminFaqRegister > div > div.col div:nth-child(5) {
+    display: block;
+    text-align: center;
+    margin: 30px 0;
+}
+#adminFaqRegister div.col div:nth-child(5) > a {
+    border: none;
+    padding: 5px 10px;
+}
+#adminFaqRegister div.col div:nth-child(5) > .btnCancel {
+    height: 55px;
+    font-size: 15px;
+    border: none;
+    background-color: #f5f5f5;
+    padding: 10px 30px;
+    border-radius: 20px;
+}
+#adminFaqRegister div.col div:nth-child(5) > .btnCancel:hover {
+    background-color: #c9c8c8;
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+}
+#adminFaqRegister div.col div:nth-child(5) > .btnRegister {
+    margin-left: 3px;
+    height: 55px;
+    font-size: 15px;
+    border: none;
+    background-color: #ff744d;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 20px;
+}
+#adminFaqRegister div.col div:nth-child(5) > .btnRegister:hover {
+    background-color: #c9c8c8;
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+/* ========== 고객의소리(adminQna) ========== */
+#adminQna select {
+    /* 유형선택 */
+    display: inline-block;
+    width: 150px;
+}
+#adminQna div.input-group {
+    width: 200px;
+    float: right;
+}
+#adminQna #button-addon2 {
+    /* 검색버튼 */
+    border: 1px solid #dee2e6;
+    background-color: #F5F5F5;
+}
+#adminQna #button-addon2:hover {
+    background-color: #dee1e6;
+    color: #5c636a;
+}
+
+#adminQna div.accordion {
+    margin-top: 10px;
+}
+#adminQna .accordion .accordion-header {
+    line-height: 34px;
+}
+#adminQna .accordion h2 > button > .date {
+    position: absolute;
+    right: 48px;
+    color: #818181;
+}
+#adminQna .accordion .accordion-button:focus {
+    box-shadow: none;
+}
+#adminQna .accordion .accordion-button:not(.collapsed) {
+    background-color: #f5f5f5;
+}
+#adminQna .accordion-body > p:nth-of-type(1) {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #f6f6f6;
+}
+#adminQna div.accordion textarea {
+    width: 100%;
+    height: 150px;
+    border: none;
+}
+#adminQna .accordion-body > p:nth-of-type(2) {
+    display: inline-block;
+    margin-top: -8px;
+}
+#adminQna .accordion-body > p:nth-of-type(3) {
+    display: inline-block;
+    float: right;
+    margin-top: -8px;
+}
+#adminQna .accordion-body > p:nth-of-type(3) > button {
+    margin-left: 5px;
+    border: none;
+    padding: 5px 10px;
+}
+#adminQna .accordion-body > p:nth-of-type(3) > button:hover {
+    font-weight: bold;
+}
+#adminQna .accordion-body > p:nth-of-type(4) {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #f6f6f6;
+    margin: 10px 0 0 0;
+}
+#adminQna .accordion-body > p:nth-of-type(5) {
+    display: inline-block;
+    margin-top: 5px;
+}
+#adminQna .accordion-body > p:nth-of-type(6) {
+    display: inline-block;
+    float: right;
+    margin-top: 5px;
+}
+#adminQna .accordion-body > p:nth-of-type(6) > button {
+    margin-left: 5px;
+    border: none;
+    padding: 5px 10px;
+}
+#adminQna .accordion-body > p:nth-of-type(6) > button:hover {
+    font-weight: bold;
 }
