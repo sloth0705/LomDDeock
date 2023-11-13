@@ -20,14 +20,28 @@ public class MemberController {
     private final MemberService memberService;
     private final SocialLoginService socialLoginService;
 
+    // 일반 회원가입
     @PostMapping("/local/signup")
-    public ResponseEntity<MemberDTO> signUp(@RequestBody SignUpForm form){
-        return ResponseEntity.ok(memberService.signUp(form));
+    public ResponseEntity<MemberDTO> localSignUp(@RequestBody SignUpForm form){
+        return ResponseEntity.ok(memberService.localSignUp(form));
     }
 
+    // 소셜 회원가입
+    @PostMapping("/social/signup")
+    public ResponseEntity<MemberDTO> socialSignUp(@RequestBody SignUpForm form){
+        return ResponseEntity.ok(memberService.socialSignUp(form));
+    }
+
+    // 일반 로그인
     @PostMapping("/local/signin")
-    public ResponseEntity<JwtDTO> signIn(@RequestBody SignUpForm form){
-        return ResponseEntity.ok(memberService.signIn(form));
+    public ResponseEntity<JwtDTO> localSignIn(@RequestBody SignUpForm form){
+        return ResponseEntity.ok(memberService.localSignIn(form));
+    }
+
+    // 소셜 로그인
+    @PostMapping("/social/signin")
+    public ResponseEntity<JwtDTO> socialSignIn(@RequestBody SignUpForm form){
+        return ResponseEntity.ok(memberService.socialSignIn(form));
     }
 
     @GetMapping("/info")
