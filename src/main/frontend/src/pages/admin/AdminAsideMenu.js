@@ -16,8 +16,8 @@ const adminAsideMenu = ()=>{
                         <li><a href="/admin/menu/AdminMenuRegister">▶ 메뉴등록</a></li>
                     </ul>
                 </ListGroup.Item>
-                <ListGroup.Item action variant="light" href="/admin/adminOrderStatus">주문현황</ListGroup.Item>
-                <ListGroup.Item action variant="light" href="/admin/adminBanner">배너관리</ListGroup.Item>
+                <ListGroup.Item action variant="light" href="/admin/order/adminOrderStatus">주문현황</ListGroup.Item>
+                <ListGroup.Item action variant="light" href="/admin/banner/adminBanner">배너관리</ListGroup.Item>
                 <ListGroup.Item action variant="light" href="/admin/event/adminEventList">이벤트관리</ListGroup.Item>
                 <ListGroup.Item action variant="light">
                     쿠폰관리
