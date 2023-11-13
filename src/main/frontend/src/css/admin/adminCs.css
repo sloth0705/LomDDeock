@@ -144,29 +144,29 @@ a:hover {
     padding-left: 10px;
     box-sizing: border-box;
 }
-#adminNoticeWrite .write-content > div:nth-of-type(2) textarea {
+/*#adminNoticeWrite .write-content > div:nth-of-type(2) textarea {
     resize: none;
     width: 90%;
     height: 120px;
     border:1px solid #bebebe;
     border-radius: 4px;
     padding: 10px;
-}
+}*/
 #adminNoticeWrite .write-content .links {
     width: 100%;
     display: flex;
     justify-content: center;
     padding: 10px 0;
 }
-#adminNoticeWrite .write-content .links > a, button{
+#adminNoticeWrite .write-content .links > .btnWrite.noticeList, .btnWrite.noticeReg {
     width: 70px;
     text-align: center;
     margin-left: 5px;
 }
-#adminNoticeWrite .write-content .links > button {
+#adminNoticeWrite .write-content .links > .btnWrite.noticeReg {
     background-color: #FF5B2D;
     color: white;
 }
-#adminNoticeWrite .write-content .links > button:hover {
+#adminNoticeWrite .write-content .links > .btnWrite.noticeReg:hover {
     background-color: #ff7b54;
 }
