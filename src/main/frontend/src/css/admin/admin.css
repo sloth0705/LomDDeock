@@ -284,6 +284,58 @@ a:hover {
     width: 300px;
 }
 
+/* ========== 파일업로드(FileUpload.js) ========== */
+#FileUpload > .img_contain {
+    display: block;
+    margin-bottom: 30px;
+}
+#FileUpload .img_box {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #DCDCDC;
+    cursor: pointer;
+}
+/* ========== 배너관리(adminBanner) ========== */
+#adminBanner div.col {
+    margin: 0 30px 0 30px;
+}
+#adminBanner div.col p {
+    margin-bottom: 0;
+}
+#adminBanner div.col p > label {
+    display: inline-block;
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+#adminBanner div.col p > button {
+    border: none;
+    float: right;
+    padding: 3px 10px;
+    margin-bottom: 5px;
+}
+#adminBanner div.col p > button:hover {
+    background-color: #c9c8c8;
+    color: #fff;
+}
+#adminBanner div.col > button {
+    border: none;
+    display: block;
+    margin: 50px auto;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+}
+#adminBanner div.col > button:hover {
+    background-color: #c9c8c8;
+    color: #fff;
+}
+
 /* ========== 이벤트목록(adminEventList) ========== */
 #adminEventList .eventRegisterButton {
     display: flex;
