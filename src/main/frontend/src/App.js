@@ -57,6 +57,7 @@ const AdminIndex = lazy(() => import('./pages/admin/AdminIndex'))
 const AdminMenuList = lazy(() => import('./pages/admin/menu/AdminMenuList'))
 const AdminMenuRegister = lazy(()=>import('./pages/admin/menu/AdminMenuRegister'))
 const AdminMenuModify = lazy(() => import('./pages/admin/menu/AdminMenuModify'))
+const AdminOrderStatus = lazy(() => import('./pages/admin/order/AdminOrderStatus'))
 const AdminBanner = lazy(()=>import('./pages/admin/banner/AdminBanner'))
 const AdminEventList = lazy(()=>import('./pages/admin/event/AdminEventList'))
 const AdminEventRegister = lazy(()=>import('./pages/admin/event/AdminEventRegister'))
@@ -143,6 +144,7 @@ function App() {
                                 <Route path="/menu/AdminMenuList" element={<AdminMenuList />} />
                                 <Route path="/menu/AdminMenuRegister" element={<AdminMenuRegister />} />
                                 <Route path="/menu/AdminMenuModify" element={<AdminMenuModify />} />
+                                <Route path="/order/AdminOrderStatus" element={<AdminOrderStatus />}></Route>
                                 <Route path="/banner/AdminBanner" element={<AdminBanner />} />
                                 <Route path="/event/AdminEventList" element={<AdminEventList />} />
                                 <Route path="/event/AdminEventRegister" element={<AdminEventRegister />} />
