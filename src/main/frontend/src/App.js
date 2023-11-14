@@ -1,8 +1,12 @@
 import React, {useEffect, useState, lazy, Suspense} from 'react';
-import axios from 'axios';
 import { Routes, Route, BrowserRouter, Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import axios from 'axios';
+
+/* 토큰 검증 및 갱신 */
 import verifyToken from './verifyToken';
 import refreshToken from './refreshToken';
+import getUserInfo from './getUserInfo';
 
 /* 헤더, 푸터 */
 import Header from './layout/Header';
@@ -78,6 +82,8 @@ function fallBackData() {
 }
 
 function App() {
+    const dispatch = useDispatch();
+    const state = useSelector((state) => state);
     // 사용자의 로그인 상태를 검증하는 변수와 해당 변수값을 변경하는 함수
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -86,7 +92,23 @@ function App() {
         const checkLoginStatus = async () => {
             const loggedIn = await verifyToken();
             setIsLoggedIn(loggedIn);
-            console.log("isLoggedIn : " + isLoggedIn)
+            console.log("isLoggedIn : " + loggedIn);
+            if (loggedIn) {
+                // 로그인 상태일 경우 store에 사용자 정보를 추가
+                const member = await getUserInfo();
+                const userInfo = {
+                    isLoggedIn : loggedIn,
+                    member : member
+                }
+                dispatch({type: "SET_INFO", payload: userInfo})
+            } else {
+                // 비 로그인 상태일 경우 store에 사용자 정보를 제거
+                const userInfo = {
+                    isLoggedIn : loggedIn,
+                    member : {}
+                }
+                dispatch({type: "SET_INFO", payload: userInfo})
+            }
         };
         checkLoginStatus();
 
@@ -141,7 +163,7 @@ function App() {
                         <Header/>
                         <UserLayout>
                             <Routes>
-                                <Route path="/login" element={<Login isLoggedIn={isLoggedIn}/>} />
+                                <Route path="/login" element={<Login />} />
                                 <Route path="/signup" element={<Signup />} />
                                 <Route path="/register" element={<Register />} />
                                 <Route path="/confirmEmail" element={<ConfirmEmail />} />

@@ -5,6 +5,7 @@ import lomDDeock.dto.member.MemberDTO;
 import lomDDeock.dto.member.MemberProvider;
 import lomDDeock.dto.member.MemberRole;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -29,6 +30,7 @@ public class MemberEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private MemberProvider provider;
+    @CreationTimestamp
     private LocalDateTime rdate;
     private LocalDateTime wdate;
 
