@@ -84,14 +84,11 @@ function fallBackData() {
 function App() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
-    // 사용자의 로그인 상태를 검증하는 변수와 해당 변수값을 변경하는 함수
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+    const isLoggedIn = state.isLoggedIn;
     useEffect(() => {
         // 사용자의 accessToken을 검증하여 해당 사용자의 로그인 여부를 체크
         const checkLoginStatus = async () => {
             const loggedIn = await verifyToken();
-            setIsLoggedIn(loggedIn);
             console.log("isLoggedIn : " + loggedIn);
             if (loggedIn) {
                 // 로그인 상태일 경우 store에 사용자 정보를 추가
