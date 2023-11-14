@@ -78,9 +78,11 @@ function fallBackData() {
 }
 
 function App() {
+    // 사용자의 로그인 상태를 검증하는 변수와 해당 변수값을 변경하는 함수
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
+        // 사용자의 accessToken을 검증하여 해당 사용자의 로그인 여부를 체크
         const checkLoginStatus = async () => {
             const loggedIn = await verifyToken();
             setIsLoggedIn(loggedIn);
@@ -91,23 +93,21 @@ function App() {
         // refreshToken을 이용하여 토큰을 재발급 받는 로직
         const refreshAccessToken = async () => {
             try {
-                const response = await refreshToken(); // refreshToken 함수는 서버에 refreshToken을 보내어 새로운 accessToken을 받아오는 함수일 것입니다.
-                // 받아온 새로운 accessToken을 사용하거나 저장할 수 있습니다.
-                console.log('New Access Token:', response.accessToken);
+                // refreshToken() 함수를 호출해 accessToken갱신
+                const response = await refreshToken();
             } catch (error) {
                 // 에러 처리
                 console.error('Error refreshing access token:', error);
             }
         };
 
-        // 예를 들어, 토큰이 만료되었을 때 재발급 받도록 설정
+        // 1시간마다 토큰을 재발급
         const tokenRefreshInterval = setInterval(() => {
             refreshAccessToken();
-        }, 60 * 60 * 1000); // 1시간마다 토큰 재발급
+        }, 60 * 60 * 1000);
 
         // 컴포넌트 언마운트 시에 clearInterval을 호출하여 간격마다 실행되는 함수를 정리합니다.
         return () => clearInterval(tokenRefreshInterval);
-
     }, []);
     return (
         <BrowserRouter basename="/">
