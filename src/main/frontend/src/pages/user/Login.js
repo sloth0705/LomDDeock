@@ -1,12 +1,19 @@
+import React from "react";
 import { Link } from "react-router-dom";
-import {Navbar, Container, Row, Col, Button, Form, Image} from "react-bootstrap";
-import axios from '../../interceptor.js';
 import { useNavigate } from 'react-router';
+import { useDispatch, useSelector } from "react-redux";
+import {Navbar, Container, Row, Col, Button, Form, Image} from "react-bootstrap";
+import KakaoLogin from "react-kakao-login";
+/* interceptor에서 헤더에 토큰을 자동으로 장착해주는 axios */
+import axios from '../../interceptor.js';
+import { setRefreshToken } from '../../storage/Cookie';
+import { SET_TOKEN } from '../../store/Auth';
 import '../../css/user/user.css';
 import logo from "../../images/LomDDeock-letterlogo-korean.png";
-import React from "react";
-import KakaoLogin from "react-kakao-login";
-function Login({isLoggedIn}) {
+
+function Login() {
+    const dispatch = useDispatch();
+    const state = useSelector((state) => state);
     const navigate = useNavigate();
     // 카카오 로그인 clientId
     const kakaoClientId = '9169f348c8c5bb0b3fc8f2e08db92d78'
@@ -60,6 +67,7 @@ function Login({isLoggedIn}) {
             });
             // localStorage에 token이라는 이름으로 accessToken을 발행
             localStorage.setItem("token", response.data.accessToken);
+            setRefreshToken(response.data.refreshToken);
             console.log('accessToken: ' + response.data.accessToken);
 
             // 로그인 성공 후 메인 페이지로 이동
@@ -72,7 +80,7 @@ function Login({isLoggedIn}) {
 
     // 각종 함수 테스트용으로 실행(현재 토큰을 넘겨 사용자 정보를 받는 용도로 사용중...)
     const test = async () => {
-    console.log("isLoggedIn : " +  isLoggedIn);
+    console.log(state)
         try {
             const response = await axios.get('/api/info');
         } catch (error) {
