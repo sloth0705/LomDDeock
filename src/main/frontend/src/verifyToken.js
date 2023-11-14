@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+// 사용자의 accessToken을 서버로 보내서 해당 토큰이 유효한지 검증
 const verifyToken = async () => {
   try {
+    // localStorage에 token이라는 이름으로 담긴 accessToken을 가져온다
     const token = localStorage.getItem('token');
     if (!token) {
       // 토큰이 없으면 로그인되어 있지 않은 것으로 판단

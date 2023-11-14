@@ -8,71 +8,69 @@ import React from "react";
 import KakaoLogin from "react-kakao-login";
 function Login({isLoggedIn}) {
     const navigate = useNavigate();
+    // 카카오 로그인 clientId
     const kakaoClientId = '9169f348c8c5bb0b3fc8f2e08db92d78'
+
+    // 카카오 로그인 API 성공 시 호출
     const kakaoOnSuccess = async (data)=>{
-        console.log(data)
         const idToken = data.response.access_token  // 엑세스 토큰 백엔드로 전달
         const email = data.profile.kakao_account.email;
         // 해당 메일로 만들어진 계정이 있는지 확인
         const check = await performCheck(email);
-        // 계정이 없을경우 새로 생성
         if (check) {
-            const signData = signUp(email);
+            // 계정이 없을경우 새로 생성
+            signUp(email);
         }
+        // 계정 로그인
         signIn(email);
     }
+    // 카카오 로그인 API 실패 시 호출
     const kakaoOnFailure = (error) => {
         console.log(error);
         alert('로그인에 실패하였습니다. 잠시 후 다시 시도해주세요.')
     };
+    // 카카오 로그인 시 해당 계정이 서버에 등록 된 계정인지 확인
     const performCheck = async (email) => {
         return axios.get('/api/social/check/KAKAO?email=' + email)
             .then((res) => {
-                return res.data; // 또는 원하는 처리를 반환할 수 있습니다.
+                // true or false를 리턴한다
+                return res.data;
             })
             .catch((error) => {
                 console.error("Error during check:", error);
-                // 오류 처리 로직을 추가할 수 있습니다.
                 throw error;
             });
     }
+    // 소셜 로그인 시 해당 메일로 등록된 계정이 없을 경우 계정 가입
     const signUp = async (email) => {
         try {
             const response = await axios.post('/api/social/signup', {
                 email: email
             });
-            return response.data.accessToken;
-            // 여기에서 response를 처리하거나 반환값을 가공할 수 있습니다.
-            console.log(response.data);
-            // 예시: 서버에서 성공적으로 처리되었을 때의 로직
-            if (response.data.success) {
-                // 성공적으로 가입된 경우의 추가 로직
-                console.log('Sign-up successful!');
-            } else {
-                // 가입이 실패한 경우의 추가 로직
-                console.log('Sign-up failed.');
-            }
         } catch (error) {
             // 오류가 발생한 경우의 추가 로직
             console.error('Error during sign-up:', error);
         }
     }
+    // 소셜 로그인 토큰 발행
     const signIn = async (email) => {
         try {
             const response = await axios.post('/api/social/signin', {
                 email: email
             });
-            localStorage.setItem("token", response.data.accessToken);
+            // localStorage에 token이라는 이름으로 accessToken을 발행
             localStorage.setItem("token", response.data.accessToken);
             console.log('accessToken: ' + response.data.accessToken);
+
+            // 로그인 성공 후 메인 페이지로 이동
             return navigate("/");
-            // 여기에서 response를 처리하거나 반환값을 가공할 수 있습니다.
-            console.log(response.data);
         } catch (error) {
             // 오류가 발생한 경우의 추가 로직
             console.error('Error during sign-in:', error);
         }
     }
+
+    // 각종 함수 테스트용으로 실행(현재 토큰을 넘겨 사용자 정보를 받는 용도로 사용중...)
     const test = async () => {
     console.log("isLoggedIn : " +  isLoggedIn);
         try {
