@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import '../../../css/admin/admin.css';
 import {Col, Container, Row} from "react-bootstrap";
 import AdminAsideMenu from "../AdminAsideMenu";
@@ -6,7 +6,17 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import {Link} from "react-router-dom";
 
-function adminFaqRegister() {
+function AdminFaqRegister() {
+    const [inputs, setInputs] = useState({});
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({...values, [name]: value}))
+    }
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(inputs);
+    }
     return (
         <section id="admin">
             <Container id="adminFaqRegister">
@@ -18,32 +28,34 @@ function adminFaqRegister() {
                             <div>
                                 <h3>자주묻는질문 등록</h3>
                             </div>
-                            {/* 유형선택 */}
-                            <InputGroup className="mb-3">
-                                <InputGroup.Text>유형</InputGroup.Text>
-                                <Form.Select aria-label="유형선택">
-                                    <option value="all">전체</option>
-                                    <option value="event">이벤트</option>
-                                    <option value="order">주문/결제</option>
-                                    <option value="cancel">취소/환불</option>
-                                    <option value="benefit">혜택</option>
-                                    <option value="inquiry">이용문의</option>
-                                    <option value="userInformation">회원정보</option>
-                                    <option value="coupon">쿠폰</option>
-                                </Form.Select>
-                            </InputGroup>
-                            <InputGroup className="mb-3">
-                                <InputGroup.Text>질문</InputGroup.Text>
-                                <Form.Control placeholder="질문을 입력해주세요."/>
-                            </InputGroup>
-                            <InputGroup className="mb-3">
-                                <InputGroup.Text>답변</InputGroup.Text>
-                                <Form.Control as="textarea" aria-label="With textarea" placeholder="답변을 입력해주세요."/>
-                            </InputGroup>
-                            <div>
-                                <Link to="/admin/faq/adminFaqList" className="btnCancel">취소</Link>
-                                <Link to="#" className="btnRegister">등록</Link>
-                            </div>
+                            <form onSubmit={handleSubmit}>
+                                {/* 유형선택 */}
+                                <InputGroup className="mb-3">
+                                    <InputGroup.Text>유형</InputGroup.Text>
+                                    <Form.Select aria-label="유형선택" name="cate" onChange={handleChange}>
+                                        <option value="0">전체</option>
+                                        <option value="10">이벤트</option>
+                                        <option value="11">주문/결제</option>
+                                        <option value="12">취소/환불</option>
+                                        <option value="13">혜택</option>
+                                        <option value="14">이용문의</option>
+                                        <option value="15">회원정보</option>
+                                        <option value="16">쿠폰</option>
+                                    </Form.Select>
+                                </InputGroup>
+                                <InputGroup className="mb-3">
+                                    <InputGroup.Text>질문</InputGroup.Text>
+                                    <Form.Control placeholder="질문을 입력해주세요." name="title" onChange={handleChange} />
+                                </InputGroup>
+                                <InputGroup className="mb-3">
+                                    <InputGroup.Text>답변</InputGroup.Text>
+                                    <Form.Control as="textarea" aria-label="With textarea" name="content" onChange={handleChange} placeholder="답변을 입력해주세요."/>
+                                </InputGroup>
+                                <div>
+                                    <Link to="/admin/faq/adminFaqList" className="btnCancel">취소</Link>
+                                    <button type="submit" className="btnRegister"/>
+                                </div>
+                            </form>
                         </div>
                     </Col>
                 </Row>
@@ -52,4 +64,4 @@ function adminFaqRegister() {
     )
 }
 
-export default adminFaqRegister;
+export default AdminFaqRegister;

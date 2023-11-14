@@ -666,29 +666,29 @@ a:hover {
     font-weight: bold;
     color: #696969;
 }
-#adminFaqRegister > div > div.col div:nth-child(2) {
+#adminFaqRegister > div > div.col form > div:nth-child(1) {
     /* 유형선택 */
     width: 180px;
 }
-#adminFaqRegister > div > div.col div:nth-child(3) {
+#adminFaqRegister > div > div.col form > div:nth-child(2) {
     /* 질문 */
     width: 500px;
 }
-#adminFaqRegister > div > div.col div:nth-child(4) {
+#adminFaqRegister > div > div.col form > div:nth-child(3) {
     /* 답변 */
     width: 500px;
     height: 300px;
 }
-#adminFaqRegister > div > div.col div:nth-child(5) {
+#adminFaqRegister > div > div.col form > div:nth-child(4) {
     display: block;
     text-align: center;
     margin: 30px 0;
 }
-#adminFaqRegister div.col div:nth-child(5) > a {
+#adminFaqRegister div.col form > div:nth-child(4) > a {
     border: none;
     padding: 5px 10px;
 }
-#adminFaqRegister div.col div:nth-child(5) > .btnCancel {
+#adminFaqRegister div.col form > div:nth-child(4) > .btnCancel {
     height: 55px;
     font-size: 15px;
     border: none;
@@ -696,13 +696,13 @@ a:hover {
     padding: 10px 30px;
     border-radius: 20px;
 }
-#adminFaqRegister div.col div:nth-child(5) > .btnCancel:hover {
+#adminFaqRegister div.col form > div:nth-child(4) > .btnCancel:hover {
     background-color: #c9c8c8;
     color: white;
     text-decoration: none;
     font-weight: normal;
 }
-#adminFaqRegister div.col div:nth-child(5) > .btnRegister {
+#adminFaqRegister div.col form > div:nth-child(4) > .btnRegister {
     margin-left: 3px;
     height: 55px;
     font-size: 15px;
@@ -712,7 +712,7 @@ a:hover {
     padding: 10px 30px;
     border-radius: 20px;
 }
-#adminFaqRegister div.col div:nth-child(5) > .btnRegister:hover {
+#adminFaqRegister div.col form > div:nth-child(5) > .btnRegister:hover {
     background-color: #c9c8c8;
     color: white;
     text-decoration: none;
