@@ -86,7 +86,10 @@ function App() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
     const isLoggedIn = state.isLoggedIn;
-    const [memberEmail] = useState(localStorage.getItem("email"));
+    const [memberEmail, setMemberEmail] = useState(localStorage.getItem("email"));
+    useEffect(()=>{
+        setMemberEmail(localStorage.getItem("email"))
+    },[useState(localStorage.getItem("email"))])
     useEffect(() => {
         // 사용자의 accessToken을 검증하여 해당 사용자의 로그인 여부를 체크
         const checkLoginStatus = async () => {
@@ -131,6 +134,10 @@ function App() {
         // 컴포넌트 언마운트 시에 clearInterval을 호출하여 간격마다 실행되는 함수를 정리합니다.
         return () => clearInterval(tokenRefreshInterval);
     }, []);
+    // 로그인 검증
+    const loginValidate = () => {
+        window.location.href = '/';
+    }
     return (
         <BrowserRouter basename="/">
             <Routes>
