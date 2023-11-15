@@ -710,15 +710,14 @@ a:hover {
 }
 #adminFaqRegister div.col form > div:nth-child(4) > .btnRegister {
     margin-left: 3px;
-    height: 55px;
     font-size: 15px;
     border: none;
     background-color: #ff744d;
     color: #fff;
-    padding: 10px 30px;
+    padding: 8px 30px;
     border-radius: 20px;
 }
-#adminFaqRegister div.col form > div:nth-child(5) > .btnRegister:hover {
+#adminFaqRegister div.col form > div:nth-child(4) > .btnRegister:hover {
     background-color: #c9c8c8;
     color: white;
     text-decoration: none;
