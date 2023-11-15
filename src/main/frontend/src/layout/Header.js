@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Button, Stack, Nav, Navbar, NavDropdown, Form, InputGroup, Container } from 'react-bootstrap';
@@ -14,7 +14,6 @@ import pepperImg from "../images/pepper.png";
 function Header () {
     const navigate = useNavigate();
     const [memberEmail] = useState(localStorage.getItem("email"));
-    console.log(memberEmail)
     return (
         <header id="header">
             <div className=" d-flex justify-content-center">
