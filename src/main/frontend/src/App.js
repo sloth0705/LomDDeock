@@ -86,9 +86,11 @@ function App() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
     const isLoggedIn = state.isLoggedIn;
+    const [memberEmail] = useState(localStorage.getItem("email"));
     useEffect(() => {
         // 사용자의 accessToken을 검증하여 해당 사용자의 로그인 여부를 체크
         const checkLoginStatus = async () => {
+            console.log(memberEmail === null)
             const loggedIn = await verifyToken();
             console.log("isLoggedIn : " + loggedIn);
             if (loggedIn) {
