@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Form, Button, Col, Container, Row, InputGroup, Image } from 'react-bootstrap';
+import PopupDom from '../../popup/PopupDom';
+import PopupPostCode from '../../popup/PopupPostCode';
 import '../../css/user/user.css';
-import { Form, Button, Col, Container, Row } from 'react-bootstrap';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Image from "react-bootstrap/Image";
 import logo from "../../images/LomDDeock-letterlogo-korean.png";
 function Register(){
+    // 팝업창 상태 관리
+    const [isPopupOpen, setIsPopupOpen] = useState(false)
+
+    // 팝업창 열기
+    const openPostCode = () => {
+        setIsPopupOpen(true)
+    }
+
+    // 팝업창 닫기
+    const closePostCode = (data) => {
+        const zip = document.getElementsByName('zip');
+        const addr1 = document.getElementsByName('addr1');
+        zip[0].value = data.zip;
+        addr1[0].value = data.addr;
+        setIsPopupOpen(false)
+    }
     return(
         <Container className="mt-4">
             <Row>
@@ -65,16 +81,24 @@ function Register(){
                                 placeholder="우편번호"
                                 aria-label="Recipient's username"
                                 aria-describedby="basic-addon2"
+                                name="zip"
                             />
-                            <Button variant="outline-secondary" id="button-addon2">
+                            <Button variant="outline-secondary" id="button-addon2" onClick={openPostCode}>
                                 우편번호 찾기
                             </Button>
+                            <div id='popupDom'>
+                                {isPopupOpen && (
+                                    <PopupDom>
+                                        <PopupPostCode onClose={closePostCode} />
+                                    </PopupDom>
+                                )}
+                            </div>
                         </InputGroup>
                         <InputGroup className="mb-3">
-                            <Form.Control type="text" placeholder="주소" />
+                            <Form.Control type="text" placeholder="주소" name='addr1'/>
                         </InputGroup>
                         <InputGroup className="mb-3">
-                            <Form.Control type="text" placeholder="상세주소 입력" />
+                            <Form.Control type="text" placeholder="상세주소 입력" name='addr2'/>
                         </InputGroup>
                         <div className="text-center">
                             <Button variant="danger" type="submit">
