@@ -1,11 +1,9 @@
 package lomDDeock.service.member;
 
-import lomDDeock.dto.member.MemberDTO;
-import lomDDeock.dto.member.MemberProvider;
-import lomDDeock.dto.member.MemberRole;
-import lomDDeock.dto.member.SignUpForm;
+import lomDDeock.dto.member.*;
 import lomDDeock.dto.util.JwtDTO;
 import lomDDeock.entity.member.MemberEntity;
+import lomDDeock.mapper.member.TermsMapper;
 import lomDDeock.repository.member.MemberRepository;
 import lomDDeock.util.JwtIssuer;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +22,7 @@ public class MemberService implements UserDetailsService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtIssuer jwtIssuer;
+    private final TermsMapper termsMapper;
 
     public boolean checkMember(String email) {
         Optional<MemberEntity> memberEntity = memberRepository.findByEmail(email);
@@ -90,5 +89,10 @@ public class MemberService implements UserDetailsService {
     private MemberDTO getMemberByEmail(String email) {
         return memberRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("일치하는 정보가 없습니다.")).toDTO();
+    }
+
+    // 약관 가져오기
+    public TermsDTO getTerms() {
+        return termsMapper.findTerms();
     }
 }
