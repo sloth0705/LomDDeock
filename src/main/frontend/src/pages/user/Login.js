@@ -22,6 +22,7 @@ function Login() {
     const kakaoOnSuccess = async (data)=>{
         const idToken = data.response.access_token  // 엑세스 토큰 백엔드로 전달
         const email = data.profile.kakao_account.email;
+        debugger;
         // 해당 메일로 만들어진 계정이 있는지 확인
         const check = await performCheck(email);
         if (check) {

@@ -192,13 +192,13 @@ a:hover {
 }
 
 /* ========== 메뉴등록 & 수정(adminMenuManagement) ========== */
-#adminMenuManagement > div > div.col > select {
+#adminMenuManagement > div > div.col > #registerForm > select {
     /* 유형선택 */
     width: 150px;
     margin-bottom: 10px;
     font-weight: bold;
 }
-#adminMenuManagement > div > div.col > div:nth-child(2) {
+#adminMenuManagement > div > div.col > #registerForm > div:nth-child(2) {
     /* 메뉴명 필드 */
     width: 350px;
 }
@@ -206,25 +206,31 @@ a:hover {
     /* 파일첨부 필드 */
     width: 200px;
 }
-#adminMenuManagement > div > div.col > div:nth-child(4) {
+#adminMenuManagement > div > div.col > #registerForm > div:nth-child(4) {
     /* 메뉴설명 필드 */
     width: 350px;
 }
-#adminMenuManagement > div > div.col > div:nth-child(5) {
+#adminMenuManagement > div > div.col > #registerForm > div:nth-child(5) {
     /* 사이즈옵션 필드 */
     width: 200px;
 }
-#adminMenuManagement > div > div.col > div:nth-child(6) {
+#adminMenuManagement > div > div.col > #registerForm > div:nth-child(6) {
     /* 사이즈입력 필드 */
     width: 200px;
 }
-#adminMenuManagement > div > div.col > div:nth-child(7) {
+#adminMenuManagement > div > div.col > #registerForm > div:nth-child(7) {
     /* 맵기옵션 필드 */
     width: 200px;
     float: left;
     margin-right: 15px;
 }
-#adminMenuManagement > div > div.col > div:nth-child(8) {
+#adminMenuManagement > div > div.col > #registerForm > div:nth-child(8) {
+    /* 맵기옵션 필드 */
+    width: 200px;
+    float: left;
+    margin-right: 15px;
+}
+#adminMenuManagement > div > div.col > #registerForm > div:nth-child(9) {
     /* 맵기 맛 입력 필드 */
     width: 730px;
 }
@@ -269,7 +275,7 @@ a:hover {
     background-color: #ececec;
     padding: 10px;
 }
-#adminMenuManagement > div > div.col > article > div > div:nth-child(2) {
+#adminMenuManagement > div > div.col > #registerForm > article > div > div:nth-child(1) {
     /* 소분류 개수 input필드 */
     width: 200px;
 }

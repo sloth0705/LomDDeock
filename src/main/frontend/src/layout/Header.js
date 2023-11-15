@@ -1,5 +1,9 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Button, Stack, Nav, Navbar, NavDropdown, Form, InputGroup, Container } from 'react-bootstrap';
+import { useDispatch, useSelector } from "react-redux";
+import logout from '../logout'
 import '../css/layout.css';
 import '../css/header.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,7 +11,10 @@ import logo from '../images/LomDDeock-letterlogo-korean.png';
 import character from '../images/LomDDeock-character.png';
 import Image from "react-bootstrap/Image";
 import pepperImg from "../images/pepper.png";
-function Header() {
+function Header () {
+    const navigate = useNavigate();
+    const [memberEmail] = useState(localStorage.getItem("email"));
+    console.log(memberEmail)
     return (
         <header id="header">
             <div className=" d-flex justify-content-center">
@@ -20,7 +27,13 @@ function Header() {
                 <Navbar>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/user/login">로그인</Nav.Link>
+                            {memberEmail === null ?
+                            <Nav.Link href="/user/login">로그인</Nav.Link> :
+                            <>
+                            <Nav.Link onClick={async ()=>{
+                                await logout();
+                                navigate(0)
+                            }}>로그아웃</Nav.Link>
                             <NavDropdown title="마이페이지" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="/my/myInfo">
                                     나의 정보
@@ -38,6 +51,8 @@ function Header() {
                                     나의 문의내역
                                 </NavDropdown.Item>
                             </NavDropdown>
+                            </>
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
