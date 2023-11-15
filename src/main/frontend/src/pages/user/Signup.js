@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { Row, Col, Form, Container, Card } from 'react-bootstrap';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import changeDTO from "../../store/changeDTO";
 import '../../css/user/user.css';
 import Button from 'react-bootstrap/Button';
 import Image from "react-bootstrap/Image";
