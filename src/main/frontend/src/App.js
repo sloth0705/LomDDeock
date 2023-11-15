@@ -34,6 +34,7 @@ const MyQnaView = lazy(() => import('./pages/my/QnaView'))
 
 /* 사용자 페이지 */
 const Login = lazy(() => import('./pages/user/Login'))
+const Logout = lazy(() => import('./pages/user/Logout'))
 const Signup = lazy(() => import('./pages/user/Signup'))
 const Register = lazy(() => import('./pages/user/Register'))
 const ConfirmEmail = lazy(() => import('./pages/user/ConfirmEmail'))
@@ -161,6 +162,7 @@ function App() {
                         <UserLayout>
                             <Routes>
                                 <Route path="/login" element={<Login />} />
+                                <Route path="/logout" element={<Logout />} />
                                 <Route path="/signup" element={<Signup />} />
                                 <Route path="/register" element={<Register />} />
                                 <Route path="/confirmEmail" element={<ConfirmEmail />} />
