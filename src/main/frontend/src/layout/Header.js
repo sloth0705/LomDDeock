@@ -31,8 +31,7 @@ function Header () {
                             <Nav.Link href="/user/login">로그인</Nav.Link> :
                             <>
                             <Nav.Link onClick={async ()=>{
-                                await logout();
-                                navigate(0)
+                                window.location.href ='https://kauth.kakao.com/oauth/logout?client_id=591789449e2da1495d41e7af46686eb7&logout_redirect_uri=http://localhost:3000/user/logout'
                             }}>로그아웃</Nav.Link>
                             <NavDropdown title="마이페이지" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="/my/myInfo">

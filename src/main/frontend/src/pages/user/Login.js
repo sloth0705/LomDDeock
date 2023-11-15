@@ -20,9 +20,9 @@ function Login() {
 
     // 카카오 로그인 API 성공 시 호출
     const kakaoOnSuccess = async (data)=>{
+        localStorage.setItem("kakao_token", data.response.access_token);
         const idToken = data.response.access_token  // 엑세스 토큰 백엔드로 전달
         const email = data.profile.kakao_account.email;
-        debugger;
         // 해당 메일로 만들어진 계정이 있는지 확인
         const check = await performCheck(email);
         if (check) {
