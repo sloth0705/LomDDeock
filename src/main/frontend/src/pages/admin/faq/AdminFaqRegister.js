@@ -5,6 +5,8 @@ import AdminAsideMenu from "../AdminAsideMenu";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import {Link} from "react-router-dom";
+import axios from 'axios';
+
 
 function AdminFaqRegister() {
     const [inputs, setInputs] = useState({});
@@ -12,10 +14,23 @@ function AdminFaqRegister() {
         const name = event.target.name;
         const value = event.target.value;
         setInputs(values => ({...values, [name]: value}))
+
     }
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(inputs);
+
+        const { cate: cateData } = inputs;
+        console.log(cateData);
+
+
+        /*axios.post('/api/admin/faq/adminFaqRegister', inputs)
+            .then(res => {
+                alert("등록되었습니다.");
+            })
+            .catch(err => {
+                console.log("전송에 문제가 발생했습니다.");
+            });*/
     }
     return (
         <section id="admin">
@@ -53,7 +68,7 @@ function AdminFaqRegister() {
                                 </InputGroup>
                                 <div>
                                     <Link to="/admin/faq/adminFaqList" className="btnCancel">취소</Link>
-                                    <button type="submit" className="btnRegister"/>
+                                    <button type="submit" className="btnRegister">등록</button>
                                 </div>
                             </form>
                         </div>

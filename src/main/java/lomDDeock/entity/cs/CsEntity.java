@@ -19,6 +19,7 @@ public class CsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cno;
+    @Column(name = "`group`")
     private String group;
     private int cate;
     private String title;
