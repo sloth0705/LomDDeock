@@ -59,12 +59,6 @@ public class MemberDTO implements UserDetails {
 
     @Override
     @JsonIgnore
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    @JsonIgnore
     public String getUsername() {
         return email;
     }
