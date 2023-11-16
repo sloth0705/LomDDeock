@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Button, Stack, Nav, Navbar, NavDropdown, Form, InputGroup, Container } from 'react-bootstrap';
@@ -14,7 +14,6 @@ import pepperImg from "../images/pepper.png";
 function Header () {
     const navigate = useNavigate();
     const [memberEmail] = useState(localStorage.getItem("email"));
-    console.log(memberEmail)
     return (
         <header id="header">
             <div className=" d-flex justify-content-center">
@@ -31,8 +30,7 @@ function Header () {
                             <Nav.Link href="/user/login">로그인</Nav.Link> :
                             <>
                             <Nav.Link onClick={async ()=>{
-                                await logout();
-                                navigate(0)
+                                window.location.href ='https://kauth.kakao.com/oauth/logout?client_id=591789449e2da1495d41e7af46686eb7&logout_redirect_uri=http://localhost:3000/user/logout'
                             }}>로그아웃</Nav.Link>
                             <NavDropdown title="마이페이지" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="/my/myInfo">

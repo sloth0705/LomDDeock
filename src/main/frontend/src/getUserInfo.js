@@ -4,9 +4,6 @@ import axios from './interceptor.js';
 const getUserInfo = async () => {
     try {
         const response = await axios.get('/api/info');
-        if (response.data.email != undefined) {
-            localStorage.setItem("email", response.data.email);
-        }
         return response.data;
     } catch (error) {
         // 오류가 발생한 경우의 추가 로직

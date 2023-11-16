@@ -34,6 +34,7 @@ const MyQnaView = lazy(() => import('./pages/my/QnaView'))
 
 /* 사용자 페이지 */
 const Login = lazy(() => import('./pages/user/Login'))
+const Logout = lazy(() => import('./pages/user/Logout'))
 const Signup = lazy(() => import('./pages/user/Signup'))
 const Register = lazy(() => import('./pages/user/Register'))
 const ConfirmEmail = lazy(() => import('./pages/user/ConfirmEmail'))
@@ -85,9 +86,14 @@ function App() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
     const isLoggedIn = state.isLoggedIn;
+    const [memberEmail, setMemberEmail] = useState(localStorage.getItem("email"));
+    useEffect(()=>{
+        setMemberEmail(localStorage.getItem("email"))
+    },[useState(localStorage.getItem("email"))])
     useEffect(() => {
         // 사용자의 accessToken을 검증하여 해당 사용자의 로그인 여부를 체크
         const checkLoginStatus = async () => {
+            console.log(memberEmail === null)
             const loggedIn = await verifyToken();
             console.log("isLoggedIn : " + loggedIn);
             if (loggedIn) {
@@ -128,6 +134,10 @@ function App() {
         // 컴포넌트 언마운트 시에 clearInterval을 호출하여 간격마다 실행되는 함수를 정리합니다.
         return () => clearInterval(tokenRefreshInterval);
     }, []);
+    // 로그인 검증
+    const loginValidate = () => {
+        window.location.href = '/';
+    }
     return (
         <BrowserRouter basename="/">
             <Routes>
@@ -161,6 +171,7 @@ function App() {
                         <UserLayout>
                             <Routes>
                                 <Route path="/login" element={<Login />} />
+                                <Route path="/logout" element={<Logout />} />
                                 <Route path="/signup" element={<Signup />} />
                                 <Route path="/register" element={<Register />} />
                                 <Route path="/confirmEmail" element={<ConfirmEmail />} />

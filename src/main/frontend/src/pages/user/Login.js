@@ -6,6 +6,7 @@ import {Navbar, Container, Row, Col, Button, Form, Image} from "react-bootstrap"
 import KakaoLogin from "react-kakao-login";
 /* interceptor에서 헤더에 토큰을 자동으로 장착해주는 axios */
 import axios from '../../interceptor.js';
+import getUserInfo from '../../getUserInfo';
 import { setRefreshToken } from '../../storage/Cookie';
 import { SET_TOKEN } from '../../store/Auth';
 import '../../css/user/user.css';
@@ -20,9 +21,9 @@ function Login() {
 
     // 카카오 로그인 API 성공 시 호출
     const kakaoOnSuccess = async (data)=>{
+        localStorage.setItem("kakao_token", data.response.access_token);
         const idToken = data.response.access_token  // 엑세스 토큰 백엔드로 전달
         const email = data.profile.kakao_account.email;
-        debugger;
         // 해당 메일로 만들어진 계정이 있는지 확인
         const check = await performCheck(email);
         if (check) {
@@ -66,13 +67,13 @@ function Login() {
             const response = await axios.post('/api/social/signin', {
                 email: email
             });
+            localStorage.setItem("email", email);
             // localStorage에 token이라는 이름으로 accessToken을 발행
             localStorage.setItem("token", response.data.accessToken);
             setRefreshToken(response.data.refreshToken);
             console.log('accessToken: ' + response.data.accessToken);
-
             // 로그인 성공 후 메인 페이지로 이동
-            return navigate("/");
+            navigate("/");
         } catch (error) {
             // 오류가 발생한 경우의 추가 로직
             console.error('Error during sign-in:', error);
