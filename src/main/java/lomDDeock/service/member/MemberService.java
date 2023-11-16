@@ -68,8 +68,8 @@ public class MemberService implements UserDetailsService {
     public JwtDTO localSignIn(SignUpForm form) {
         MemberDTO member = getMemberByEmail(form.getEmail());
 
-        if (!passwordEncoder.matches(form.getPassword(), member.getPassword())) {
-            throw new BadCredentialsException("일치하는 정보가 없습니다.");
+        if (member == null || !passwordEncoder.matches(form.getPassword(), member.getPassword())) {
+            return null;
         }
 
         return createToken(member);
@@ -96,7 +96,8 @@ public class MemberService implements UserDetailsService {
 
     private MemberDTO getMemberByEmail(String email) {
         return memberRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("일치하는 정보가 없습니다.")).toDTO();
+                .map(MemberEntity::toDTO)
+                .orElse(null);
     }
 
     // 약관 가져오기

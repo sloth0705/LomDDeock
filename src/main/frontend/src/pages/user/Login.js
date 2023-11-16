@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from "react-redux";
@@ -9,10 +9,13 @@ import axios from '../../interceptor.js';
 import getUserInfo from '../../getUserInfo';
 import { setRefreshToken } from '../../storage/Cookie';
 import { SET_TOKEN } from '../../store/Auth';
+import { loginForm } from '../../js/member/login.js';
 import '../../css/user/user.css';
 import logo from "../../images/LomDDeock-letterlogo-korean.png";
 
 function Login() {
+    const [loginEmail, setLoginEmail] = useState('');
+    const [loginPassword, setLoginPassword] = useState('');
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
     const navigate = useNavigate();
@@ -79,16 +82,17 @@ function Login() {
             console.error('Error during sign-in:', error);
         }
     }
-
-    // 각종 함수 테스트용으로 실행(현재 토큰을 넘겨 사용자 정보를 받는 용도로 사용중...)
-    const test = async () => {
-    console.log(state)
-        try {
-            const response = await axios.get('/api/info');
-        } catch (error) {
-            // 오류가 발생한 경우의 추가 로직
-            console.error('Error during sign-in:', error);
+    const localSignIn = async () => {
+        const token = await loginForm(loginEmail, loginPassword);
+        if (token === '') {
+            alert('이메일 혹은 비밀번호가 틀립니다.')
+            return false;
         }
+        localStorage.setItem("email", loginEmail);
+        // localStorage에 token이라는 이름으로 accessToken을 발행
+        localStorage.setItem("token", token.accessToken);
+        setRefreshToken(token.refreshToken);
+        navigate("/");
     }
     return (
         <Container className="mt-4">
@@ -116,18 +120,15 @@ function Login() {
                         <a href="#">구글 로그인</a>
                     </li>
                         <strong>또는</strong>
-                        <button onClick={() => test()}>test</button>
                     </div>
                     <Form>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Group className="mb-3" controlId="formBasicEmail" onChange={(event) => setLoginEmail(event.target.value)}>
                             <Form.Label>아이디</Form.Label>
                             <Form.Control type="email" placeholder="이메일 주소 입력" />
-                            <Form.Text className="text-muted">
-
+                            <Form.Text className="text-muted" >
                             </Form.Text>
                         </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Group className="mb-3" controlId="formBasicPassword" onChange={(event) => setLoginPassword(event.target.value)}>
                             <Form.Label>비밀번호</Form.Label>
                             <Form.Control type="password" placeholder="비밀번호 입력" />
                         </Form.Group>
@@ -135,7 +136,7 @@ function Login() {
                             <Form.Check type="checkbox" label="자동로그인" />
                         </Form.Group>
                         <div className="d-grid gap-2">
-                            <Button variant="danger" type="submit">
+                            <Button variant="danger" type="button" onClick={() => {localSignIn()}}>
                                 로그인
                             </Button>
                         </div>
