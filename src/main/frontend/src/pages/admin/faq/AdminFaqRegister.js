@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import '../../../css/admin/admin.css';
 import {Col, Container, Row} from "react-bootstrap";
 import AdminAsideMenu from "../AdminAsideMenu";
@@ -13,24 +13,25 @@ function AdminFaqRegister() {
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
-        setInputs(values => ({...values, [name]: value}))
 
-    }
+        // content 변환
+        if (name === 'content') {
+            const contentTxt = value.replaceAll("<br/>", "\r\n");
+            setInputs(values => ({ ...values, [name]: contentTxt }));
+        } else {
+            setInputs(values => ({ ...values, [name]: value }));
+        }
+
+    };
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(inputs);
-
-        const { cate: cateData } = inputs;
-        console.log(cateData);
-
-
-        /*axios.post('/api/admin/faq/adminFaqRegister', inputs)
+        axios.post('/api/admin/faq/adminFaqRegister', inputs)
             .then(res => {
                 alert("등록되었습니다.");
             })
             .catch(err => {
                 console.log("전송에 문제가 발생했습니다.");
-            });*/
+            });
     }
     return (
         <section id="admin">

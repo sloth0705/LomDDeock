@@ -31,11 +31,11 @@ const reducer = (state = userInfo, action) => {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const store = createStore(reducer);
 root.render(
-  <React.StrictMode>
+  /*<React.StrictMode>*/
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>
+  /*</React.StrictMode>*/
 );
 
 // If you want to start measuring performance in your app, pass a function
