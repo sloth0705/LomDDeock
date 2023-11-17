@@ -3,7 +3,27 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="lomDDeock.mapper.cs.CsMapper">
-    <select id="findAll" resultType="lomDDeock.dto.cs.CsDTO">
-        SELECT * FROM `cs`;
+
+
+    <select id="selectCountCs">
+        SELECT COUNT(*) FROM `cs` a
+        <include refid="sortBox"/>
     </select>
+
+    <select id="selectCs" resultType="lomDDeock.dto.cs.CsDTO">
+        SELECT * FROM `cs` a
+        JOIN `cs_cate` AS b ON a.cate = b.cateNo
+        <include refid="sortBox"/>
+    </select>
+    <sql id="sortBox">
+        <choose>
+            <!-- 자주묻는질문, 문의내역 -->
+            <when test="cate >= 10">
+                WHERE a.`cate`=#{cate} AND a.`group` IN ('faq', 'qna')
+            </when>
+            <when test="cate == null and cate == 0">
+                WHERE a.`cate` > 0 AND a.`group` IN ('faq', 'qna')
+            </when>
+        </choose>
+    </sql>
 </mapper>

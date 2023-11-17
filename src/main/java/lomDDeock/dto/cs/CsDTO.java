@@ -24,6 +24,10 @@ public class CsDTO {
     private int period;
     private int status;
 
+    // cs_cate
+    private int cateNo;
+    private String cateName;
+
     public CsEntity toEntity() {
         return CsEntity.builder()
                 .cno(cno)
