@@ -214,20 +214,17 @@ a:hover {
     /* 사이즈옵션 필드 */
     width: 200px;
 }
-#adminMenuManagement > div > div.col > #registerForm > div:nth-child(6) {
+#adminMenuManagement > div > div.col > #registerForm > .size {
     /* 사이즈입력 필드 */
     width: 200px;
 }
-#adminMenuManagement > div > div.col > #registerForm > div:nth-child(7) {
-    /* 맵기옵션 필드 */
+#adminMenuManagement > div > div.col > #registerForm > .price {
+    /* 사이즈입력 필드 */
     width: 200px;
-    float: left;
-    margin-right: 15px;
 }
-#adminMenuManagement > div > div.col > #registerForm > div:nth-child(8) {
+#adminMenuManagement > div > div.col > #registerForm > #spicyOption {
     /* 맵기옵션 필드 */
     width: 200px;
-    clear: both;
     margin-right: 15px;
 }
 #adminMenuManagement > div > div.col > #registerForm > .spicy {
