@@ -6,28 +6,65 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import AdminAsideMenu from "../AdminAsideMenu";
 import axios from "axios";
 
-function AdminMenuRegister() {
 
-    const [type, setType] = useState("normal");
+function AdminMenuRegister() {
+    const [inputs, setInputs] = useState({});
+    const handleChange = (e) => {
+
+        const name = e.target.name;
+        const value = e.target.value;
+        setInputs(values => ({...values, [name]: value}));
+    }
     //axios
     const registerMenu = (e)=>{
         e.preventDefault();
-        if(type === "normal"){
+        const type = document.getElementsByName("type")[0].value;
 
+        if (type === "normal") {
+            // axios를 사용한 폼 전송
+            axios.post('/api/menu/register', inputs)
+
+                .then((res)=>{
+                    const data = res.data;
+                    console.log("inputs : "+ Object.values(inputs));
+
+                    for(let i=0;i < data.sizeCount; i++) {
+                        const size = document.getElementsByName('size')[i];
+
+                        console.log("menuNo : "+res.data.menuNo);
+                        console.log("size : "+size.value);
+                        const sizeData = {
+                            "menuNo": res.data.menuNo*1,
+                            "size":size.value*1
+                        }
+                        axios.post('/api/menu/size/register', sizeData)
+                            .then((res)=>{
+                                console.log("전송성공!");
+                            })
+                            .catch((err)=>{
+                                console.log("전송 실패!");
+                            })
+                    }
+                    for (let i=0; i< data.sizeCount; i++) {
+                        const spicy = document.getElementsByName('spicy')[i];
+                        const spicyData = {
+                            "menuNo": res.data.menuNo*1,
+                            "spicy":spicy.value*1
+                        }
+                        axios.post('/api/menu/spicy/register', spicyData)
+                            .then((res)=>{
+                                console.log("전송성공!");
+                            })
+                            .catch((err)=>{
+                                console.log("전송 실패!");
+                            })
+                    }
+
+                })
+                .catch((err)=>{
+                    console.error("전송실패: "+err);
+                });
         }
-        // 폼 요소에 대한 참조 가져오기
-        const form = document.getElementById("registerForm");
-        const formData = new FormData(form);
-
-        // axios를 사용한 폼 전송
-        axios.post('/api/menu/register', formData)
-
-            .then((res)=>{
-                console.log("전송성공: "+res);
-            })
-            .catch((err)=>{
-                console.error("전송실패: "+err);
-            });
     };
 
     return (
@@ -39,7 +76,7 @@ function AdminMenuRegister() {
                     <Col>
                         <Form id="registerForm">
                             {/* 유형선택 */}
-                            <Form.Select aria-label="유형선택" name="type" onChange={(e) => setType(e.target.value)}>
+                            <Form.Select aria-label="유형선택" name="type" onChange={handleChange}>
                                 <option value="normal">일반</option>
                                 <option value="side">사이드디시</option>
                                 <option value="drinkOrOthers">음료/기타</option>
@@ -53,41 +90,38 @@ function AdminMenuRegister() {
                                     aria-label="Default"
                                     aria-describedby="inputGroup-sizing-default"
                                     placeholder="메뉴의 이름을 입력해주세요."
+                                    onChange={handleChange}
                                 />
                             </InputGroup>
                             <Form.Group controlId="formFile" className="mb-3">
                                 메뉴 이미지 첨부 (필수)
-                                <Form.Control type="file" name="thumb"/>
+                                <Form.Control type="file" name="thumb" onChange={handleChange}/>
                             </Form.Group>
                             <InputGroup className="mb-3">
                                 <InputGroup.Text>메뉴 설명<span>(선택)</span></InputGroup.Text>
-                                <Form.Control name="descript" as="textarea" aria-label="With textarea" placeholder="해당 메뉴에 대한 설명을 입력해주세요."/>
+                                <Form.Control name="descript" as="textarea" aria-label="With textarea" placeholder="해당 메뉴에 대한 설명을 입력해주세요." onChange={handleChange}/>
                             </InputGroup>
                             <InputGroup className="mb-3">
                                 <InputGroup.Text>사이즈 옵션</InputGroup.Text>
-                                <Form.Control name="sizeCount"/>
+                                <Form.Control name="sizeCount" onChange={handleChange}/>
                                 <InputGroup.Text>개</InputGroup.Text>
                             </InputGroup>
                             <InputGroup className="mb-3">
                                 <InputGroup.Text>사이즈</InputGroup.Text>
-                                <Form.Control />
+                                <Form.Control name="size" onChange={handleChange}/>
                             </InputGroup>
                             <InputGroup className="mb-3">
                                 <InputGroup.Text>가격</InputGroup.Text>
-                                <Form.Control name="price"/>
+                                <Form.Control name="price" onChange={handleChange}/>
                                 <InputGroup.Text>원</InputGroup.Text>
                             </InputGroup>
                             <InputGroup className="mb-3">
                                 <InputGroup.Text>맵기 옵션</InputGroup.Text>
-                                <Form.Control name="spicyCount"/>
+                                <Form.Control name="spicyCount" onChange={handleChange}/>
                                 <InputGroup.Text>개</InputGroup.Text>
                             </InputGroup>
-                            <InputGroup className="mb-3">
+                            <InputGroup className="mb-3 spicy">
                                 <Form.Control name="spicy"/>
-                                <InputGroup.Text>맛</InputGroup.Text>
-                                <Form.Control  name="spicy"/>
-                                <InputGroup.Text>맛</InputGroup.Text>
-                                <Form.Control  name="spicy"/>
                                 <InputGroup.Text>맛</InputGroup.Text>
                             </InputGroup>
                             <article className="addOption">
@@ -97,22 +131,22 @@ function AdminMenuRegister() {
                                 <div className="classification">
                                     <InputGroup className="mb-3">
                                         <InputGroup.Text>토핑 이름</InputGroup.Text>
-                                        <Form.Control name="topping"/>
+                                        <Form.Control name="topping" onChange={handleChange}/>
                                     </InputGroup>
                                     <div className="subcate">
                                         <Form.Group controlId="formFile" className="mb-3 formFile">
-                                            <Form.Control type="file" name="file"/>
+                                            <Form.Control type="file" name="file" onChange={handleChange}/>
                                         </Form.Group>
                                         <InputGroup className="mb-3 inputSubcate">
                                             <InputGroup.Text>금액</InputGroup.Text>
-                                            <Form.Control name="toppingPrice"/>
+                                            <Form.Control name="toppingPrice" onChange={handleChange}/>
                                             <InputGroup.Text>원</InputGroup.Text>
                                         </InputGroup>
                                     </div>
                                 </div>
                             </article>
+                            <button type="submit" onClick={registerMenu}>등록</button>
                         </Form>
-                        <button onClick={registerMenu}>등록</button>
                     </Col>
                 </Row>
             </Container>
