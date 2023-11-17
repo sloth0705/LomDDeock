@@ -25,7 +25,6 @@ function AdminMenuRegister() {
         const name = e.target.name;
         const value = e.target.value;
         setInputs(values => ({...values, [name]: value}));
-
         // Generate an array with the new count of size inputs
         const newSizes = Array.from({ length: count }, (_, index) => index + 1);
         setSizes(newSizes);
@@ -36,7 +35,6 @@ function AdminMenuRegister() {
         const name = e.target.name;
         const value = e.target.value;
         setInputs(values => ({...values, [name]: value}));
-
         // Generate an array with the new count of size inputs
         const newSpices = Array.from({ length: count }, (_, index) => index + 1);
         setSpicies(newSpices);
@@ -47,52 +45,51 @@ function AdminMenuRegister() {
         e.preventDefault();
         const type = document.getElementsByName("type")[0].value;
 
-        if (type === "normal") {
+        if (type === "normal")
+        {
             // axios를 사용한 폼 전송
             axios.post('/api/menu/register', inputs)
 
-                .then((res)=>{
+                .then((res) => {
                     const data = res.data;
-                    console.log("inputs : "+ Object.values(inputs));
+                    console.log("sizeCount : " + data.sizeCount);
 
-                    for(let i=0;i < data.sizeCount; i++) {
-                        const size = document.getElementsByName('size')[i];
-
-                        console.log("menuNo : "+res.data.menuNo);
-                        console.log("size : "+size.value);
+                    for (let i = 0; i < data.sizeCount; i++) {
+                        const size = document.getElementsByClassName('sizeValue')[i];
+                        console.log("menuNo : " + res.data.menuNo);
+                        console.log("size : " + size.value);
                         const sizeData = {
-                            "menuNo": res.data.menuNo*1,
-                            "size":size.value*1
+                            "menuNo": res.data.menuNo * 1,
+                            "size": size.value * 1
                         }
                         axios.post('/api/menu/size/register', sizeData)
-                            .then((res)=>{
+                            .then((res) => {
                                 console.log("전송성공!");
                             })
-                            .catch((err)=>{
+                            .catch((err) => {
                                 console.log("전송 실패!");
                             })
                     }
-                    for (let i=0; i< data.sizeCount; i++) {
-                        const spicy = document.getElementsByName('spicy')[i];
+                    for (let i = 0; i < data.spicyCount; i++) {
+                        const spicy = document.getElementsByClassName('spicyValue')[i];
                         const spicyData = {
-                            "menuNo": res.data.menuNo*1,
-                            "spicy":spicy.value*1
+                            "menuNo": res.data.menuNo * 1,
+                            "spicy": spicy.value * 1
                         }
                         axios.post('/api/menu/spicy/register', spicyData)
-                            .then((res)=>{
+                            .then((res) => {
                                 console.log("전송성공!");
                             })
-                            .catch((err)=>{
+                            .catch((err) => {
                                 console.log("전송 실패!");
                             })
                     }
 
-                })
-                .catch((err)=>{
-                    console.error("전송실패: "+err);
-                });
-        }else {
 
+                })
+                .catch((err) => {
+                    console.error("전송실패: " + err);
+                });
         }
     };
 
@@ -140,7 +137,7 @@ function AdminMenuRegister() {
                             {sizes.map((size) => (
                                 <InputGroup className="mb-3 size" key={size} >
                                     <InputGroup.Text>사이즈</InputGroup.Text>
-                                    <Form.Control name={`size${size}`} onChange={handleChange} />
+                                    <Form.Control className="sizeValue" name={`size${size}`} />
                                 </InputGroup>
                             ))}
                             <InputGroup className="mb-3 price">
@@ -158,7 +155,8 @@ function AdminMenuRegister() {
                             {spicies.map((spicy) => (
                                 <InputGroup className="mb-3 spicy" key={spicy} >
                                     <InputGroup.Text>맵기</InputGroup.Text>
-                                    <Form.Control name={`spicy${spicy}`} onChange={handleChange} />
+                                    <Form.Control className="spicyValue" name={`spicy${spicy}`} />
+                                    <InputGroup.Text>맛</InputGroup.Text>
                                 </InputGroup>
                             ))}
                             <article className="addOption">
