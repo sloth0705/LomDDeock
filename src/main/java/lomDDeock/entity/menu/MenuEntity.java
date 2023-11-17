@@ -1,18 +1,25 @@
-package lomDDeock.dto.menu;
+package lomDDeock.entity.menu;
 
+import jakarta.persistence.*;
+import lomDDeock.dto.menu.MenuDTO;
 import lomDDeock.entity.member.MemberEntity;
-import lomDDeock.entity.menu.MenuEntity;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
-@ToString
-public class MenuDTO {
+@AllArgsConstructor
+@NoArgsConstructor
+@DynamicInsert
+@Entity
+@Table(name = "menu")
+public class MenuEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int menuNo;
     private String menuName;
     private String thumb;
@@ -21,16 +28,14 @@ public class MenuDTO {
     private int price;
     private int spicyCount;
     private String ip;
+    @CreationTimestamp
     private LocalDateTime rdate;
     private String deleteYN;
     private int menuVersion;
     private String lastRevision;
 
-    // 추가
-    private int size;
-
-    public MenuEntity toEntity(){
-        return MenuEntity.builder()
+    public MenuDTO toDTO(){
+        return MenuDTO.builder()
                 .menuNo(menuNo)
                 .menuName(menuName)
                 .thumb(thumb)
