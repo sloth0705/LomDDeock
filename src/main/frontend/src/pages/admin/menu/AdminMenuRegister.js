@@ -6,15 +6,42 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import AdminAsideMenu from "../AdminAsideMenu";
 import axios from "axios";
 
-
 function AdminMenuRegister() {
     const [inputs, setInputs] = useState({});
+    const [sizeCount, setSizeCount] = useState(0);
+    const [spicyCount, setSpicyCount] = useState(0);
+    const [sizes, setSizes] = useState([]);
+    const [spicies, setSpicies] = useState([]);
     const handleChange = (e) => {
 
         const name = e.target.name;
         const value = e.target.value;
         setInputs(values => ({...values, [name]: value}));
+
     }
+    const handleSizeCountChange = (e) => {
+        const count = parseInt(e.target.value, 10) || 0;
+        setSizeCount(count);
+        const name = e.target.name;
+        const value = e.target.value;
+        setInputs(values => ({...values, [name]: value}));
+
+        // Generate an array with the new count of size inputs
+        const newSizes = Array.from({ length: count }, (_, index) => index + 1);
+        setSizes(newSizes);
+    };
+    const handleSpicyCountChange = (e) => {
+        const count = parseInt(e.target.value, 10) || 0;
+        setSpicyCount(count);
+        const name = e.target.name;
+        const value = e.target.value;
+        setInputs(values => ({...values, [name]: value}));
+
+        // Generate an array with the new count of size inputs
+        const newSpices = Array.from({ length: count }, (_, index) => index + 1);
+        setSpicies(newSpices);
+    };
+
     //axios
     const registerMenu = (e)=>{
         e.preventDefault();
@@ -64,6 +91,8 @@ function AdminMenuRegister() {
                 .catch((err)=>{
                     console.error("전송실패: "+err);
                 });
+        }else {
+
         }
     };
 
@@ -101,29 +130,37 @@ function AdminMenuRegister() {
                                 <InputGroup.Text>메뉴 설명<span>(선택)</span></InputGroup.Text>
                                 <Form.Control name="descript" as="textarea" aria-label="With textarea" placeholder="해당 메뉴에 대한 설명을 입력해주세요." onChange={handleChange}/>
                             </InputGroup>
-                            <InputGroup className="mb-3">
+                            <InputGroup className="mb-3" id="sizeOption">
                                 <InputGroup.Text>사이즈 옵션</InputGroup.Text>
-                                <Form.Control name="sizeCount" onChange={handleChange}/>
+                                <Form.Control name="sizeCount" onChange={handleSizeCountChange} />
                                 <InputGroup.Text>개</InputGroup.Text>
                             </InputGroup>
-                            <InputGroup className="mb-3">
-                                <InputGroup.Text>사이즈</InputGroup.Text>
-                                <Form.Control name="size" onChange={handleChange}/>
-                            </InputGroup>
-                            <InputGroup className="mb-3">
+
+                            {/* Render size inputs based on the sizeCount */}
+                            {sizes.map((size) => (
+                                <InputGroup className="mb-3 size" key={size} >
+                                    <InputGroup.Text>사이즈</InputGroup.Text>
+                                    <Form.Control name={`size${size}`} onChange={handleChange} />
+                                </InputGroup>
+                            ))}
+                            <InputGroup className="mb-3 price">
                                 <InputGroup.Text>가격</InputGroup.Text>
                                 <Form.Control name="price" onChange={handleChange}/>
                                 <InputGroup.Text>원</InputGroup.Text>
                             </InputGroup>
-                            <InputGroup className="mb-3">
+                            <InputGroup className="mb-3" id="spicyOption">
                                 <InputGroup.Text>맵기 옵션</InputGroup.Text>
-                                <Form.Control name="spicyCount" onChange={handleChange}/>
+                                <Form.Control name="spicyCount" onChange={handleSpicyCountChange} />
                                 <InputGroup.Text>개</InputGroup.Text>
                             </InputGroup>
-                            <InputGroup className="mb-3 spicy">
-                                <Form.Control name="spicy"/>
-                                <InputGroup.Text>맛</InputGroup.Text>
-                            </InputGroup>
+
+                            {/* Render size inputs based on the sizeCount */}
+                            {spicies.map((spicy) => (
+                                <InputGroup className="mb-3 spicy" key={spicy} >
+                                    <InputGroup.Text>맵기</InputGroup.Text>
+                                    <Form.Control name={`spicy${spicy}`} onChange={handleChange} />
+                                </InputGroup>
+                            ))}
                             <article className="addOption">
                                 <p>선택옵션 추가 (선택)</p>
                                 <button>+</button>
