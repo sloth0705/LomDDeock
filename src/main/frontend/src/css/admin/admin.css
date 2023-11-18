@@ -214,25 +214,22 @@ a:hover {
     /* 사이즈옵션 필드 */
     width: 200px;
 }
-#adminMenuManagement > div > div.col > #registerForm > div:nth-child(6) {
+#adminMenuManagement > div > div.col > #registerForm > .size {
     /* 사이즈입력 필드 */
     width: 200px;
 }
-#adminMenuManagement > div > div.col > #registerForm > div:nth-child(7) {
+#adminMenuManagement > div > div.col > #registerForm > .price {
+    /* 사이즈입력 필드 */
+    width: 200px;
+}
+#adminMenuManagement > div > div.col > #registerForm > #spicyOption {
     /* 맵기옵션 필드 */
     width: 200px;
-    float: left;
     margin-right: 15px;
 }
-#adminMenuManagement > div > div.col > #registerForm > div:nth-child(8) {
-    /* 맵기옵션 필드 */
-    width: 200px;
-    float: left;
-    margin-right: 15px;
-}
-#adminMenuManagement > div > div.col > #registerForm > div:nth-child(9) {
+#adminMenuManagement > div > div.col > #registerForm > .spicy {
     /* 맵기 맛 입력 필드 */
-    width: 730px;
+    width: 250px;
 }
 
 /* 선택옵션 */
@@ -255,7 +252,7 @@ a:hover {
     float: right;
     margin-left: 2px;
 }
-#adminMenuManagement > div > div.col > button {
+#adminMenuManagement > div > div.col > form > button {
     /* 최종등록 버튼 */
     height: 55px;
     font-size: 15px;
@@ -710,14 +707,15 @@ a:hover {
 }
 #adminFaqRegister div.col form > div:nth-child(4) > .btnRegister {
     margin-left: 3px;
+    height: 55px;
     font-size: 15px;
     border: none;
     background-color: #ff744d;
     color: #fff;
-    padding: 8px 30px;
+    padding: 10px 30px;
     border-radius: 20px;
 }
-#adminFaqRegister div.col form > div:nth-child(4) > .btnRegister:hover {
+#adminFaqRegister div.col form > div:nth-child(5) > .btnRegister:hover {
     background-color: #c9c8c8;
     color: white;
     text-decoration: none;
