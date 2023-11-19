@@ -8,41 +8,21 @@ import axios from "axios";
 
 function AdminMenuRegister() {
     const [inputs, setInputs] = useState({});
+    const [toppings, setToppings] = useState([]);
     const [sizeCount, setSizeCount] = useState(0);
     const [spicyCount, setSpicyCount] = useState(0);
     const [sizes, setSizes] = useState([]);
     const [spicies, setSpicies] = useState([]);
-    const [toppingCount, setToppingCount] = useState(1);
-
-    const toppingSections = [];
-    toppingSections.push(
-        <div className="classification">
-            <InputGroup className="mb-3">
-                <InputGroup.Text>토핑 이름</InputGroup.Text>
-                <Form.Control name="topping" onChange={handleChange}/>
-            </InputGroup>
-            <div className="subcate">
-                <Form.Group controlId="formFile" className="mb-3 formFile">
-                    <Form.Control type="file" name="file" onChange={handleChange}/>
-                </Form.Group>
-                <InputGroup className="mb-3 inputSubcate">
-                    <InputGroup.Text>금액</InputGroup.Text>
-                    <Form.Control name="toppingPrice" onChange={handleChange}/>
-                    <InputGroup.Text>원</InputGroup.Text>
-                </InputGroup>
-            </div>
-        </div>
-    );
-
     const handleAddTopping = () => {
-        const addOption = document.getElementsByClassName('addOption')[0];
-        addOption.append(renderToppingSections);
+        setToppings((prevToppings) => [...prevToppings, {}]);
     };
 
-    const handleRemoveTopping = () => {
-        if (toppingCount > 1) {
-            setToppingCount(toppingCount - 1);
-        }
+    const handleRemoveTopping = (index) => {
+        setToppings((prevToppings) => {
+            const newToppings = [...prevToppings];
+            newToppings.splice(index, 1);
+            return newToppings;
+        });
     };
     const handleChange = (e) => {
 
@@ -193,24 +173,26 @@ function AdminMenuRegister() {
                             ))}
                             <article className="addOption">
                                 <p>선택옵션 추가 (선택)</p>
-                                <button onClick={handleAddTopping}>+</button>
-                                <button onClick={handleRemoveTopping}>-</button>
-                                <div className="classification">
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Text>토핑 이름</InputGroup.Text>
-                                        <Form.Control name="topping" onChange={handleChange}/>
-                                    </InputGroup>
-                                    <div className="subcate">
-                                        <Form.Group controlId="formFile" className="mb-3 formFile">
-                                            <Form.Control type="file" name="file" onChange={handleChange}/>
-                                        </Form.Group>
-                                        <InputGroup className="mb-3 inputSubcate">
-                                            <InputGroup.Text>금액</InputGroup.Text>
-                                            <Form.Control name="toppingPrice" onChange={handleChange}/>
-                                            <InputGroup.Text>원</InputGroup.Text>
+                                <button type="button" onClick={handleAddTopping}>+</button>
+                                <button type="button" onClick={() => handleRemoveTopping(toppings.length - 1)}>-</button>
+                                {toppings.map((topping, index) => (
+                                    <div className="classification" key={index}>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Text>토핑 이름</InputGroup.Text>
+                                            <Form.Control name="topping"/>
                                         </InputGroup>
+                                        <div className="subcate">
+                                            <Form.Group controlId="formFile" className="mb-3 formFile">
+                                                <Form.Control type="file" name="file"/>
+                                            </Form.Group>
+                                            <InputGroup className="mb-3 inputSubcate">
+                                                <InputGroup.Text>금액</InputGroup.Text>
+                                                <Form.Control name="toppingPrice"/>
+                                                <InputGroup.Text>원</InputGroup.Text>
+                                            </InputGroup>
+                                        </div>
                                     </div>
-                                </div>
+                                ))}
                             </article>
                             <button type="submit" onClick={registerMenu}>등록</button>
                         </Form>
