@@ -12,10 +12,20 @@ import lombok.NoArgsConstructor;
 public class CsPageRequestDTO {
 
     @Builder.Default
+    private int pg = 1;
+
+    @Builder.Default
     private String group = "notice";
 
     @Builder.Default
-    private String cate1 = "101";
+    private int cate = 0;
+
+    @Builder.Default
+    private int cno = 0;
+
+    private String registant;
+    private String title;
+    private String content;
 
 
 }

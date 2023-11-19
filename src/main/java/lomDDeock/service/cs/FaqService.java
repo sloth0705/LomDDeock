@@ -31,8 +31,8 @@ public class FaqService {
         csRepository.save(csEntity);
     }
 
-    public List<CsDTO> csList(){
-        List<CsDTO> csDTO = csMapper.findAll();
+    public List<CsDTO> csList(String cate){
+        List<CsDTO> csDTO = csMapper.selectCs(cate);
         return csDTO;
     }
 }
