@@ -32,9 +32,6 @@ function AdminMenuRegister() {
         if(name === "type"){
             setSelectedType(value);
         }
-        if(){
-
-        }
         setInputs(values => ({...values, [name]: value}));
 
     }
