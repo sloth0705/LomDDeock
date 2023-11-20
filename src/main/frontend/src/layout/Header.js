@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Button, Stack, Nav, Navbar, NavDropdown, Form, InputGroup, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from "react-redux";
-import logout from '../logout'
+import { logout } from '../logout'
 import '../css/layout.css';
 import '../css/header.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -29,9 +29,9 @@ function Header () {
                             {memberEmail === null ?
                             <Nav.Link href="/user/login">로그인</Nav.Link> :
                             <>
-                            <Nav.Link onClick={async ()=>{
-                                window.location.href ='https://kauth.kakao.com/oauth/logout?client_id=591789449e2da1495d41e7af46686eb7&logout_redirect_uri=http://localhost:3000/user/logout'
-                            }}>로그아웃</Nav.Link>
+                            <Nav.Link onClick={async ()=>{logout()}}>
+                                로그아웃
+                            </Nav.Link>
                             <NavDropdown title="마이페이지" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="/my/myInfo">
                                     나의 정보

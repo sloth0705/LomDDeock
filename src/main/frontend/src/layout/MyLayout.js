@@ -8,7 +8,7 @@ function MyLayout({ children }) {
     return (
         <>
             {/* 로그인 사용자가 아닐경우 메인 페이지로 튕겨내기 */}
-            {memberEmail === null ? <Navigate to="/"/> : {children}}
+            {memberEmail === null ? <Navigate to="/"/> : children}
         </>
     )
 }
