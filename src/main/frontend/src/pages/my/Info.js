@@ -1,6 +1,7 @@
 import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container,ListGroup, Col, Row, Figure, Button , Modal  } from 'react-bootstrap';
+import getUserInfo from '../../getUserInfo.js';
 import '../../css/my/my.css';
 import sadLombok from '../../images/my/sad_pepper.png';
 
@@ -42,6 +43,18 @@ function Withdraw() { // 계정 삭제 modal
     );
 }
 function Info() {
+    const [userInfo, setUserInfo] = useState({
+        email: ''
+    });
+    useEffect(() => {
+        const fetchData = async () => {
+            const user = await getUserInfo();
+            setUserInfo(user);
+        };
+
+        fetchData();
+        console.log(userInfo)
+    }, []);
     return (
         <section className="my">
             <div className="myBanner">
@@ -70,35 +83,17 @@ function Info() {
                                     src="https://via.placeholder.com/171x180"
                                 />
                             </Figure> <br/>
-                            <div className="social-sign-in">
-                                <Link className="social" id="naver-login" to="https://nid.naver.com/nidlogin.login">
-                                    네이버 계정 연동
-                                </Link>
-                                <Link className="social" id="kakao-login" to="https://accounts.kakao.com/login/?continue=https%3A%2F%2Fcs.kakao.com%2F#login">
-                                    카카오 계정 연동
-                                </Link>
-                                <Link className="social" id="google-login" to="#">
-                                     구글 계정 연동
-                                </Link>
-                            </div>
                             <table className="myAccount">
-                                <tr>
-                                    <td>이름</td>
-                                    <td>홍길동</td>
-                                </tr>
                                 <tr>
                                     <td>이메일</td>
                                     <td>
-                                        <span>lombok@daum.net</span>
-                                    </td>
-                                    <td>
-                                        <button className="btn modify">수정</button>
+                                        <span>{userInfo.email}</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>휴대폰</td>
                                     <td>
-                                        <span>010-1234-1001</span>
+                                        <span>{userInfo.hp}</span>
                                     </td>
                                     <td>
                                         <button className="btn modify">인증</button>
@@ -108,7 +103,7 @@ function Info() {
                                 <tr>
                                     <td>주소</td>
                                     <td>
-                                        <span>경기도 수원시</span>&nbsp;&nbsp;
+                                        <span>{userInfo.addr1 + '  ' + userInfo.addr2}</span>&nbsp;&nbsp;
                                     </td>
                                     <td>
                                         <button className="btn modify">수정</button>
