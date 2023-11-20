@@ -1,8 +1,11 @@
 package lomDDeock.service.menu;
 
-import lomDDeock.dto.menu.MenuDTO;
-import lomDDeock.entity.menu.MenuEntity;
-import lomDDeock.repository.menu.MenuRepository;
+import lomDDeock.dto.menu.SpicyDTO;
+import lomDDeock.dto.menu.ToppingDTO;
+import lomDDeock.entity.menu.SpicyEntity;
+import lomDDeock.entity.menu.ToppingEntity;
+import lomDDeock.repository.menu.SpicyRepository;
+import lomDDeock.repository.menu.ToppingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,26 +22,25 @@ import java.util.UUID;
 @Log4j2
 @Service
 @RequiredArgsConstructor
-public class MenuService {
+public class ToppingService {
 
-    private final MenuRepository menuRepository;
+    private final ToppingRepository toppingRepository;
 
     @Value("${upload.path.thumbs}")
     private String filepath;
 
-    public MenuDTO save(MenuDTO menuDTO) {
+    public void save(ToppingDTO toppingDTO) {
         // 랜덤한 파일 이름 생성
-        String uuidThumb = generateRandomFilename(menuDTO.getFileThumb().getOriginalFilename());
-        MenuEntity menuEntity = menuDTO.toEntity();
-        menuEntity.setThumb(uuidThumb);
-        MenuEntity savedMenuEntity = menuRepository.save(menuEntity);
+        String uuidThumb = generateRandomFilename(toppingDTO.getToppingFile().getOriginalFilename());
+        ToppingEntity toppingEntity = toppingDTO.toEntity();
+        toppingEntity.setFile(uuidThumb);
+        toppingRepository.save(toppingEntity);
 
         // 파일을 경로에 저장
         String uploadPath = filepath+"/";
-        saveFile(uploadPath, menuDTO.getFileThumb(), uuidThumb);
-
-        return savedMenuEntity.toDTO();
+        saveFile(uploadPath, toppingDTO.getToppingFile(), uuidThumb);
     }
+
     // 파일을 실제 경로에 저장하는 메소드
     private void saveFile(String uploadPath, MultipartFile fileData, String fileName) {
         File uploadDir = new File(uploadPath);

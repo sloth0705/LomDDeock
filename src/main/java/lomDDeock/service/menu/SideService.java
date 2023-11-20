@@ -1,8 +1,11 @@
 package lomDDeock.service.menu;
 
 import lomDDeock.dto.menu.MenuDTO;
+import lomDDeock.dto.menu.SideDTO;
 import lomDDeock.entity.menu.MenuEntity;
+import lomDDeock.entity.menu.SideEntity;
 import lomDDeock.repository.menu.MenuRepository;
+import lomDDeock.repository.menu.SideRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,25 +22,23 @@ import java.util.UUID;
 @Log4j2
 @Service
 @RequiredArgsConstructor
-public class MenuService {
+public class SideService {
 
-    private final MenuRepository menuRepository;
+    private final SideRepository sideRepository;
 
     @Value("${upload.path.thumbs}")
     private String filepath;
 
-    public MenuDTO save(MenuDTO menuDTO) {
+    public void save(SideDTO sideDTO) {
         // 랜덤한 파일 이름 생성
-        String uuidThumb = generateRandomFilename(menuDTO.getFileThumb().getOriginalFilename());
-        MenuEntity menuEntity = menuDTO.toEntity();
-        menuEntity.setThumb(uuidThumb);
-        MenuEntity savedMenuEntity = menuRepository.save(menuEntity);
+        String uuidThumb = generateRandomFilename(sideDTO.getFileThumb().getOriginalFilename());
+        SideEntity sideEntity = sideDTO.toEntity();
+        sideEntity.setThumb(uuidThumb);
+        sideRepository.save(sideEntity);
 
         // 파일을 경로에 저장
         String uploadPath = filepath+"/";
-        saveFile(uploadPath, menuDTO.getFileThumb(), uuidThumb);
-
-        return savedMenuEntity.toDTO();
+        saveFile(uploadPath, sideDTO.getFileThumb(), uuidThumb);
     }
     // 파일을 실제 경로에 저장하는 메소드
     private void saveFile(String uploadPath, MultipartFile fileData, String fileName) {
