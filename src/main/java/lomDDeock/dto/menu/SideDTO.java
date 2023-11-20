@@ -1,5 +1,6 @@
 package lomDDeock.dto.menu;
 
+import lomDDeock.entity.menu.SideEntity;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,34 +12,33 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @ToString
-public class MenuDTO {
-    private int menuNo;
+public class SideDTO {
+    private int sideNo;
+    private String type;
     private String menuName;
     private MultipartFile fileThumb;
     private String descript;
-    private int sizeCount;
     private int price;
-    private int spicyCount;
     private String ip;
     private LocalDateTime rdate;
     private String deleteYN;
-    private int menuVersion;
+    private int sideVersion;
     private String lastRevision;
 
     private String thumb;
 
-    public MenuEntity toEntity(){
-        return MenuEntity.builder()
-                .menuNo(menuNo)
+    public SideEntity toEntity(){
+        return SideEntity.builder()
+                .sideNo(sideNo)
+                .type(type)
                 .menuName(menuName)
+                .thumb(thumb)
                 .descript(descript)
-                .sizeCount(sizeCount)
                 .price(price)
-                .spicyCount(spicyCount)
                 .ip(ip)
                 .rdate(rdate)
                 .deleteYN(deleteYN== null? "Y" : deleteYN)
-                .menuVersion(menuVersion==0? 1 : menuVersion)
+                .sideVersion(sideVersion==0? 1 : sideVersion)
                 .lastRevision(lastRevision== null? "Y" : lastRevision)
                 .build();
     }
