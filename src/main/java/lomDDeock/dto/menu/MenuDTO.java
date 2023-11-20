@@ -3,6 +3,7 @@ package lomDDeock.dto.menu;
 import lomDDeock.entity.member.MemberEntity;
 import lomDDeock.entity.menu.MenuEntity;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
 public class MenuDTO {
     private int menuNo;
     private String menuName;
-    private String thumb;
+    private MultipartFile fileThumb;
     private String descript;
     private int sizeCount;
     private int price;
@@ -26,14 +27,12 @@ public class MenuDTO {
     private int menuVersion;
     private String lastRevision;
 
-    // 추가
-    private int size;
+    private String thumb;
 
     public MenuEntity toEntity(){
         return MenuEntity.builder()
                 .menuNo(menuNo)
                 .menuName(menuName)
-                .thumb(thumb)
                 .descript(descript)
                 .sizeCount(sizeCount)
                 .price(price)

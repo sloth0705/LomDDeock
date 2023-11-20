@@ -6,6 +6,7 @@ import lomDDeock.entity.member.MemberEntity;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
