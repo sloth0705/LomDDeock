@@ -7,6 +7,7 @@ import axios from 'axios';
 import verifyToken from './verifyToken';
 import refreshToken from './refreshToken';
 import getUserInfo from './getUserInfo';
+import { logout } from './logout.js';
 
 /* 헤더, 푸터 */
 import Header from './layout/Header';
@@ -110,7 +111,7 @@ function App() {
                     isLoggedIn : loggedIn,
                     member : {}
                 }
-                dispatch({type: "SET_INFO", payload: userInfo})
+                dispatch({type: "SET_INFO", payload: userInfo});
             }
         };
         checkLoginStatus();

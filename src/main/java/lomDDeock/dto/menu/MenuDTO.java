@@ -1,5 +1,6 @@
 package lomDDeock.dto.menu;
 
+import lomDDeock.entity.menu.MenuEntity;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,7 +1,6 @@
 package lomDDeock.controller.member;
 
-import lomDDeock.dto.member.MemberDTO;
-import lomDDeock.dto.member.SignUpForm;
+import lomDDeock.dto.member.*;
 import lomDDeock.dto.util.JwtDTO;
 import lomDDeock.service.member.MemberService;
 import lomDDeock.service.member.SocialLoginService;
@@ -10,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -65,5 +66,18 @@ public class MemberController {
     @GetMapping("/info")
     public ResponseEntity<MemberDTO> info(@AuthenticationPrincipal MemberDTO member){
         return ResponseEntity.ok(member);
+    }
+
+    // 토큰기반으로 사용자의 보유 쿠폰 및 만료예정 쿠폰 수를 리턴
+    @GetMapping("/getMyCouponCount")
+    public ResponseEntity<MyCouponForm> getMyCouponCount(@AuthenticationPrincipal MemberDTO memberDTO){
+        return ResponseEntity.ok(memberService.getMyCouponCount(memberDTO));
+    }
+
+    // 토큰기반으로 사용자의 쿠폰리스트를 리턴
+    @GetMapping("/getMyCouponList")
+    public ResponseEntity<MyCouponPageResponse> getMyCouponList(@AuthenticationPrincipal MemberDTO memberDTO,
+                                                                @RequestParam(required = false, defaultValue = "1") int pg){
+        return ResponseEntity.ok(memberService.getMyCouponList(memberDTO, pg));
     }
 }
