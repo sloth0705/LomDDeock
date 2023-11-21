@@ -2,6 +2,8 @@ package lomDDeock.service.cs;
 
 import jakarta.transaction.Transactional;
 import lomDDeock.dto.cs.CsDTO;
+import lomDDeock.dto.cs.CsPageRequestDTO;
+import lomDDeock.dto.cs.CsPageResponseDTO;
 import lomDDeock.entity.cs.CsEntity;
 import lomDDeock.mapper.cs.CsMapper;
 import lomDDeock.repository.cs.CsRepository;
@@ -10,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Log4j2
 @Service
@@ -23,7 +25,7 @@ public class FaqService {
     private CsRepository csRepository;
 
     @Transactional
-    public void write(CsDTO dto){
+    public void insertCs(CsDTO dto){
         dto.setGroup("faq");
         dto.setRegistant("admin");
 
@@ -31,8 +33,15 @@ public class FaqService {
         csRepository.save(csEntity);
     }
 
-    public List<CsDTO> csList(String cate){
-        List<CsDTO> csDTO = csMapper.selectCs(cate);
-        return csDTO;
+    public CsPageResponseDTO selectCsBoards(String cate, CsPageRequestDTO csPageRequestDTO){
+        int start = (csPageRequestDTO.getPg() - 1) * csPageRequestDTO.getSize();
+        List<CsDTO> csDTO = csMapper.selectCss(cate, start);
+        int total = csMapper.selectCountCs(cate);
+
+        return CsPageResponseDTO.builder()
+                .csPageRequestDTO(csPageRequestDTO)
+                .csList(csDTO)
+                .total(total)
+                .build();
     }
 }
