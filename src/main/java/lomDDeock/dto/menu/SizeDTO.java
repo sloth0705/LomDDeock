@@ -1,5 +1,6 @@
 package lomDDeock.dto.menu;
 
+import lomDDeock.entity.menu.SizeEntity;
 import lombok.*;
 
 @Getter

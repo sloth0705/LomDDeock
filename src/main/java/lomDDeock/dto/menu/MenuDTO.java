@@ -1,9 +1,11 @@
 package lomDDeock.dto.menu;
 
+import lomDDeock.entity.menu.MenuEntity;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,20 +19,27 @@ public class MenuDTO {
     private MultipartFile fileThumb;
     private String descript;
     private int sizeCount;
+    private List<SizeDTO> sizeDTOs;
+
     private int price;
     private int spicyCount;
+    private List<SpicyDTO> spicyDTOs;
+
     private String ip;
     private LocalDateTime rdate;
     private String deleteYN;
     private int menuVersion;
     private String lastRevision;
-
     private String thumb;
+
+    private List<ToppingDTO> toppingDTOs;
+
 
     public MenuEntity toEntity(){
         return MenuEntity.builder()
                 .menuNo(menuNo)
                 .menuName(menuName)
+                .thumb(thumb)
                 .descript(descript)
                 .sizeCount(sizeCount)
                 .price(price)
