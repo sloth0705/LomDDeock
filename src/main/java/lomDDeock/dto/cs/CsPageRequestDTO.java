@@ -15,10 +15,13 @@ public class CsPageRequestDTO {
     private int pg = 1;
 
     @Builder.Default
+    private int size = 10;
+
+    @Builder.Default
     private String group = "notice";
 
     @Builder.Default
-    private int cate = 0;
+    private String cate = "0";
 
     @Builder.Default
     private int cno = 0;
@@ -26,6 +29,5 @@ public class CsPageRequestDTO {
     private String registant;
     private String title;
     private String content;
-
 
 }

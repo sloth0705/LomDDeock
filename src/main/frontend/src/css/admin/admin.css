@@ -182,13 +182,17 @@ a:hover {
     text-align: center;
     line-height: 100px;
 }
-.paging > .num.on > a {
+.paging > .num.on {
     color: #ff744d;
     font-weight: bold;
 }
-.paging > .num > a {
-    font-size: 15px;
+.paging > .num {
+    font-size: 18px;
     margin-left: 20px;
+    cursor: pointer;
+}
+.paging > .num.disabled {
+    display: none;
 }
 
 /* ========== 메뉴등록 & 수정(adminMenuManagement) ========== */
@@ -707,7 +711,6 @@ a:hover {
 }
 #adminFaqRegister div.col form > div:nth-child(4) > .btnRegister {
     margin-left: 3px;
-    height: 55px;
     font-size: 15px;
     border: none;
     background-color: #ff744d;

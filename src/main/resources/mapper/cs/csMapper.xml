@@ -10,10 +10,12 @@
         <include refid="sortBox"/>
     </select>
 
-    <select id="selectCs" resultType="lomDDeock.dto.cs.CsDTO">
+    <select id="selectCss" resultType="lomDDeock.dto.cs.CsDTO">
         SELECT * FROM `cs` a
         JOIN `cs_cate` AS b ON a.cate = b.cateNo
         <include refid="sortBox"/>
+        ORDER BY a.cno DESC
+        LIMIT #{start},10
     </select>
     <sql id="sortBox">
         <choose>
@@ -21,7 +23,7 @@
             <when test="cate >= 10">
                 WHERE a.`cate`=#{cate} AND a.`group` IN ('faq', 'qna')
             </when>
-            <when test="cate == null and cate == 0">
+            <when test="cate == null or cate == 0">
                 WHERE a.`cate` > 0 AND a.`group` IN ('faq', 'qna')
             </when>
         </choose>

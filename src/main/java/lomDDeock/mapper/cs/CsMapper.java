@@ -9,5 +9,7 @@ import java.util.List;
 @Mapper
 public interface CsMapper {
 
-    public List<CsDTO> selectCs(@Param("cate") String cate);
+    public List<CsDTO> selectCss(@Param("cate") String cate, int start);
+
+    public int selectCountCs(@Param("cate") String cate);
 }
