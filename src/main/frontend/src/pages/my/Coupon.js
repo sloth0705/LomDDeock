@@ -1,7 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container,ListGroup, Col, Row, Button , Table,Pagination } from 'react-bootstrap';
+import { getMyCouponCount, getMyCouponList } from '../../js/member/myCoupon.js';
 import '../../css/my/my.css';
 function Coupon(){
+    // 보유 쿠폰 수
+    const [myCouponCount, setMyCouponCount] = useState({});
+    // 쿠폰 리스트
+    const [myCouponList, setMyCouponList] = useState([]);
+    // 쿠폰 리스트 페이징
+    const [myCouponPage, setMyCouponPage] = useState({});
+    useEffect(()=>{
+        const fetchData = async () => {
+            const info = await getMyCouponCount();
+            setMyCouponCount(info);
+            const couponList = await getMyCouponList(1);
+            setMyCouponList(couponList.dtoList);
+            setMyCouponPage(couponList);
+        };
+        fetchData();
+    },[])
+    function formatDate(dateString) {
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        const formatter = new Intl.DateTimeFormat('en-US', options);
+        const date = formatter.formatToParts(new Date(dateString));
+        return `${date[4].value}-${date[0].value}-${date[2].value}`;
+    }
+    const handlePageClick = async (pageNumber) => {
+      const couponList = await getMyCouponList(pageNumber);
+      setMyCouponList(couponList.dtoList);
+      setMyCouponPage(couponList);
+    };
+    const renderPageNumbers = () => {
+        const pageNumbers = [];
+        for (let i = myCouponPage.start; i <= myCouponPage.end; i++) {
+          pageNumbers.push(
+            <Pagination.Item key={i} active={i === myCouponPage.pg} onClick={()=>{handlePageClick(i)}}>
+              {i}
+            </Pagination.Item>
+          );
+        }
+        return pageNumbers;
+    };
     return (
         <section className="my">
             <div className="myBanner">
@@ -24,9 +63,9 @@ function Coupon(){
                         <div className="pointBanner">
                             <p>
                                 <span>보유 쿠폰</span>
-                                <h3>5장</h3>
+                                <h3>{myCouponCount.couponCount}장</h3>
                             </p>
-                            <p>30일 내 <span className="coup-expires">2장</span>의 쿠폰이 만료될 예정이에요.</p>
+                            <p>30일 내 <span className="coup-expires">{myCouponCount.expireCount}장</span>의 쿠폰이 만료될 예정이에요.</p>
                         </div>
                         <div>
                             <div className="sort">
@@ -55,42 +94,37 @@ function Coupon(){
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>50% 할인 쿠폰</td>
-                                        <td>-</td>
-                                        <td>최대 5000원 할인 가능</td>
-                                        <td className="coup available">사용가능</td>
-                                        <td>~2024-04-01</td>
-                                    </tr>
-                                    <tr>
-                                        <td>메*플 콜라보 만원 할인 쿠폰</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td className="coup use">사용완료</td>
-                                        <td>~2024-02-12</td>
-                                    </tr>
-                                    <tr>
-                                        <td>회원가입 축하 5천원 할인 쿠폰</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td className="coup expiration">만료</td>
-                                        <td>~2023-11-01</td>
-                                    </tr>
+                                    {myCouponList.map((coupon) => (
+                                        <tr>
+                                            <td>{coupon.couponName}</td>
+                                            <td>{coupon.couponApply}</td>
+                                            <td>{coupon.discountLimit}</td>
+                                            <td className={`coup ${coupon.useYn === 'Y' ? 'available' : (coupon.useYn === 'N' ? 'use' : (coupon.useYn === 'Z' ? 'expiration' : ''))}`}>
+                                                {coupon.useYn === 'Y' ? '사용가능' : (coupon.useYn === 'N' ? '사용완료' : (coupon.useYn === 'Z' ? '만료' : ''))}
+                                            </td>
+                                             <td>
+                                                {coupon.couponExpireDate && formatDate(coupon.couponExpireDate)}
+                                            </td>
+                                        </tr>
+                                    ))}
                                     </tbody>
                                 </Table>
 
                                 {/* 페이징 */}
                                 <Pagination>
-                                    <Pagination.First />
-                                    <Pagination.Prev />
-                                    <Pagination.Item active>{1}</Pagination.Item>
-
-                                    <Pagination.Item>{2}</Pagination.Item>
-                                    <Pagination.Item>{3}</Pagination.Item>
-                                    <Pagination.Item>{4}</Pagination.Item>
-                                    <Pagination.Item>{5}</Pagination.Item>
-                                    <Pagination.Next />
-                                    <Pagination.Last />
+                                    {myCouponPage.prev && (
+                                        <>
+                                          <Pagination.First />
+                                          <Pagination.Prev />
+                                        </>
+                                    )}
+                                    {renderPageNumbers()}
+                                    {myCouponPage.prev && (
+                                        <>
+                                            <Pagination.Next />
+                                            <Pagination.Last />
+                                        </>
+                                    )}
                                 </Pagination>
                             </div>
                         </div>
