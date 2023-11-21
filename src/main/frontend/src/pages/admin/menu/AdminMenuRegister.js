@@ -7,13 +7,16 @@ import AdminAsideMenu from "../AdminAsideMenu";
 import axios from "axios";
 
 function AdminMenuRegister() {
-    const [inputs, setInputs] = useState({});
     const [toppings, setToppings] = useState([]);
     const [sizeCount, setSizeCount] = useState(0);
     const [spicyCount, setSpicyCount] = useState(0);
     const [sizes, setSizes] = useState([]);
     const [spicies, setSpicies] = useState([]);
     const [selectedType, setSelectedType] = useState("normal");
+
+    const handleChange = (e)=>{
+        setSelectedType(e.target.value);
+    }
     const handleAddTopping = () => {
         setToppings((prevToppings) => [...prevToppings, {}]);
     };
@@ -25,22 +28,9 @@ function AdminMenuRegister() {
             return newToppings;
         });
     };
-    const handleChange = (e) => {
-
-        const name = e.target.name;
-        const value = e.target.value;
-        if(name === "type"){
-            setSelectedType(value);
-        }
-        setInputs(values => ({...values, [name]: value}));
-
-    }
     const handleSizeCountChange = (e) => {
         const count = parseInt(e.target.value, 10) || 0;
         setSizeCount(count);
-        const name = e.target.name;
-        const value = e.target.value;
-        setInputs(values => ({...values, [name]: value}));
         // Generate an array with the new count of size inputs
         const newSizes = Array.from({ length: count }, (_, index) => index + 1);
         setSizes(newSizes);
@@ -48,9 +38,6 @@ function AdminMenuRegister() {
     const handleSpicyCountChange = (e) => {
         const count = parseInt(e.target.value, 10) || 0;
         setSpicyCount(count);
-        const name = e.target.name;
-        const value = e.target.value;
-        setInputs(values => ({...values, [name]: value}));
         // Generate an array with the new count of size inputs
         const newSpices = Array.from({ length: count }, (_, index) => index + 1);
         setSpicies(newSpices);
@@ -59,72 +46,24 @@ function AdminMenuRegister() {
     //axios
     const registerMenu = (e)=>{
         e.preventDefault();
+
         const type = document.getElementsByName("type")[0].value;
+
+        const registerForm = document.getElementById('registerForm');
+        const formData = new FormData(registerForm);
+
+        for (let pair of formData.entries()) {
+            console.log(pair[0]+ ', ' + pair[1]);
+        }
 
         if (type === "normal")
         {
             // axios를 사용한 폼 전송
-            axios.post('/api/menu/register', inputs,{
+            axios.post('/api/menu/register', formData,{
                 headers:{'Content-Type': 'multipart/form-data'}
             })
 
                 .then((res) => {
-                    const data = res.data;
-                    const classification = document.getElementsByClassName('classification').length;
-                    console.log("classification : "+ classification);
-
-                    for (let i = 0; i < data.sizeCount; i++) {
-                        const size = document.getElementsByClassName('sizeValue')[i];
-                        const sizeData = {
-                            "menuNo": res.data.menuNo * 1,
-                            "size": size.value
-                        }
-                        axios.post('/api/menu/size/register', sizeData)
-                            .then((res) => {
-                                console.log("전송성공!");
-                            })
-                            .catch((err) => {
-                                console.log("전송 실패!");
-                            })
-                    }
-                    for (let i = 0; i < data.spicyCount; i++) {
-                        const spicy = document.getElementsByClassName('spicyValue')[i];
-                        const spicyData = {
-                            "menuNo": res.data.menuNo * 1,
-                            "spicy": spicy.value
-                        }
-                        axios.post('/api/menu/spicy/register', spicyData)
-                            .then((res) => {
-                                console.log("전송성공!");
-                            })
-                            .catch((err) => {
-                                console.log("전송 실패!");
-                            })
-                    }
-                    for (let i = 0; i < classification; i++) {
-                        const topping = document.getElementsByName('topping')[i];
-                        const toppingFile = document.getElementsByName('toppingFile')[i];
-                        const toppingPrice = document.getElementsByName('toppingPrice')[i];
-                        console.log("menuNo : "+res.data.menuNo * 1);
-                        console.log("topping : "+topping.value);
-                        console.log("toppingFile : "+toppingFile.value);
-                        console.log("toppingPrice : "+toppingPrice.value * 1);
-                        const toppingData = {
-                            "menuNo": res.data.menuNo * 1,
-                            "topping": topping.value,
-                            "toppingFile": toppingFile.value,
-                            "toppingPrice": toppingPrice.value * 1
-                        }
-                        axios.post('/api/menu/topping/register', toppingData,{
-                            headers:{'Content-Type': 'multipart/form-data'}}
-                        )
-                            .then((res) => {
-                                console.log("전송성공!");
-                            })
-                            .catch((err) => {
-                                console.log("전송 실패!");
-                            })
-                    }
 
                     alert("등록완료");
                 })
@@ -133,7 +72,9 @@ function AdminMenuRegister() {
                 });
         }else {
             // axios를 사용한 폼 전송
-            axios.post('/api/side/register', inputs)
+            axios.post('/api/side/register', formData, {
+                headers:{'Content-Type': 'multipart/form-data'}
+            })
 
                 .then((res) => {
                     alert("등록완료");
@@ -167,16 +108,15 @@ function AdminMenuRegister() {
                                     aria-label="Default"
                                     aria-describedby="inputGroup-sizing-default"
                                     placeholder="메뉴의 이름을 입력해주세요."
-                                    onChange={handleChange}
                                 />
                             </InputGroup>
                             <Form.Group controlId="formFile" className="mb-3">
                                 메뉴 이미지 첨부 (필수)
-                                <Form.Control type="file" name="fileThumb" onChange={handleChange}/>
+                                <Form.Control type="file" name="fileThumb"/>
                             </Form.Group>
                             <InputGroup className="mb-3">
                                 <InputGroup.Text>메뉴 설명<span>(선택)</span></InputGroup.Text>
-                                <Form.Control name="descript" as="textarea" aria-label="With textarea" placeholder="해당 메뉴에 대한 설명을 입력해주세요." onChange={handleChange}/>
+                                <Form.Control name="descript" as="textarea" aria-label="With textarea" placeholder="해당 메뉴에 대한 설명을 입력해주세요."/>
                             </InputGroup>
                             {selectedType === "normal" && (
                                 <InputGroup className="mb-3" id="sizeOption">
@@ -189,12 +129,12 @@ function AdminMenuRegister() {
                             {sizes.map((size) => (
                                 <InputGroup className="mb-3 size" key={size} >
                                     <InputGroup.Text>사이즈</InputGroup.Text>
-                                    <Form.Control className="sizeValue" name={`size${size}`} />
+                                    <Form.Control className="sizeValue" name={`sizeDTOs[${size-1}].size`} />
                                 </InputGroup>
                             ))}
                             <InputGroup className="mb-3 price">
                                 <InputGroup.Text>가격</InputGroup.Text>
-                                <Form.Control name="price" onChange={handleChange}/>
+                                <Form.Control name="price"/>
                                 <InputGroup.Text>원</InputGroup.Text>
                             </InputGroup>
                             {selectedType === "normal" && (
@@ -208,7 +148,7 @@ function AdminMenuRegister() {
                             {spicies.map((spicy) => (
                                 <InputGroup className="mb-3 spicy" key={spicy} >
                                     <InputGroup.Text>맵기</InputGroup.Text>
-                                    <Form.Control className="spicyValue" name={`spicy${spicy}`} />
+                                    <Form.Control className="spicyValue" name={`spicyDTOs[${spicy-1}].spicy`} />
                                     <InputGroup.Text>맛</InputGroup.Text>
                                 </InputGroup>
                             ))}
@@ -221,15 +161,15 @@ function AdminMenuRegister() {
                                         <div className="classification" key={index}>
                                             <InputGroup className="mb-3">
                                                 <InputGroup.Text>토핑 이름</InputGroup.Text>
-                                                <Form.Control name="topping"/>
+                                                <Form.Control name={`toppingDTOs[${index-1}].topping`}/>
                                             </InputGroup>
                                             <div className="subcate">
                                                 <Form.Group controlId="formFile" className="mb-3 formFile">
-                                                    <Form.Control type="file" name="toppingFile"/>
+                                                    <Form.Control type="file" name={`toppingDTOs[${index-1}].toppingFile`}/>
                                                 </Form.Group>
                                                 <InputGroup className="mb-3 inputSubcate">
                                                     <InputGroup.Text>금액</InputGroup.Text>
-                                                    <Form.Control name="toppingPrice"/>
+                                                    <Form.Control name={`toppingDTOs[${index-1}].toppingPrice`}/>
                                                     <InputGroup.Text>원</InputGroup.Text>
                                                 </InputGroup>
                                             </div>
