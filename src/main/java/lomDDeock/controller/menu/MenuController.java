@@ -20,17 +20,20 @@ public class MenuController {
     public void register (HttpServletRequest request, MenuDTO menuDTO) {
 
         log.info("menuDTO : " + menuDTO);
-        menuDTO.setIp(request.getRemoteAddr());
-        menuService.save(menuDTO);
-        //log.info("savedMenu : "+savedMenu.toString());
+        if(menuDTO.getType().equals("normal")) {
+            menuDTO.setIp(request.getRemoteAddr());
+            menuService.save(menuDTO);
+        }else {
+            SideDTO sideDTO = new SideDTO();
+            sideDTO.setIp(request.getRemoteAddr());
+            sideDTO.setType(menuDTO.getType());
+            sideDTO.setMenuName(menuDTO.getMenuName());
+            sideDTO.setFileThumb(menuDTO.getFileThumb());
+            sideDTO.setDescript(menuDTO.getDescript());
+            sideDTO.setPrice(menuDTO.getPrice());
+            sideService.save(sideDTO);
+        }
 
-    }
-    @ResponseBody
-    @PostMapping("/side/register")
-    public void registerSide (HttpServletRequest request, @RequestBody SideDTO sideDTO) {
-        log.info(sideDTO.toString());
-        sideDTO.setIp(request.getRemoteAddr());
-        sideService.save(sideDTO);
     }
 
 }
