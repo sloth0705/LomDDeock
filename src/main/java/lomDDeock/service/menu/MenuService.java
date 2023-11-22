@@ -82,6 +82,7 @@ public class MenuService {
         String uploadPath = filepath;
         saveFile(uploadPath, menuDTO.getFileThumb(), uuidThumb);
     }
+
     // 파일을 실제 경로에 저장하는 메소드
     private void saveFile(String uploadPath, MultipartFile fileData, String fileName) {
         File uploadDir = new File(uploadPath);

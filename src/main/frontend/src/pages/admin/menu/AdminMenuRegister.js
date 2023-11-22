@@ -14,6 +14,9 @@ function AdminMenuRegister() {
     const [spicies, setSpicies] = useState([]);
     const [selectedType, setSelectedType] = useState("normal");
 
+    const handleChange = (e)=>{
+        setSelectedType(e.target.value);
+    }
     const handleAddTopping = () => {
         setToppings((prevToppings) => [...prevToppings, {}]);
     };
@@ -69,8 +72,9 @@ function AdminMenuRegister() {
                 });
         }else {
             // axios를 사용한 폼 전송
-            axios.post('/api/side/register', formData)
-
+            axios.post('/api/side/register', formData, {
+                headers:{'Content-Type': 'multipart/form-data'}
+            })
                 .then((res) => {
                     alert("등록완료");
                 })

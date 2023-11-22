@@ -5,6 +5,7 @@ import jakarta.mail.internet.MimeMessage;
 import lomDDeock.dto.member.*;
 import lomDDeock.dto.util.JwtDTO;
 import lomDDeock.entity.member.MemberEntity;
+import lomDDeock.mapper.member.MemberCouponHistoryMapper;
 import lomDDeock.mapper.member.TermsMapper;
 import lomDDeock.repository.member.MemberRepository;
 import lomDDeock.util.JwtIssuer;
@@ -19,19 +20,26 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Log4j2
 @Service
 @RequiredArgsConstructor
 public class MemberService implements UserDetailsService {
+    // Repository
     private final MemberRepository memberRepository;
+
+    // Mapper
+    private final TermsMapper termsMapper;
+    private final MemberCouponHistoryMapper memberCouponHistoryMapper;
+
+    // Utill
     private final PasswordEncoder passwordEncoder;
     private final JwtIssuer jwtIssuer;
-    private final TermsMapper termsMapper;
     private final JavaMailSender javaMailSender;
-
     private static String generatedCode; // 인증코드 생성 시 사용할 변수
 
     public boolean checkMember(String email) {
@@ -139,5 +147,58 @@ public class MemberService implements UserDetailsService {
         } else {
             return 0;
         }
+    }
+
+    // 로그인한 사용자의 보유 쿠폰 및 만료예정 쿠폰 수를 리턴
+    public MyCouponForm getMyCouponCount(MemberDTO memberDTO) {
+        // 검색조건을 담는 Map 생성
+        Map<String, Object> searchMap = new HashMap<>();
+
+        // 현재 날짜와 시간 가져오기
+        LocalDateTime today = LocalDateTime.now();
+
+        // 30일 뒤의 날짜 계산
+        LocalDateTime futureDate = today.plusDays(30);
+
+        // MySQL의 DateTime 형식으로 변환
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String todayFormatted = today.format(formatter);
+        String futureDateFormatted = futureDate.format(formatter);
+
+        // 검색조건 넣기
+        searchMap.put("today", todayFormatted);
+        searchMap.put("futureDate", futureDateFormatted);
+        searchMap.put("email", memberDTO.getEmail());
+        return memberCouponHistoryMapper.getMyCouponCount(searchMap);
+    }
+
+    // 로그인한 사용자의 쿠폰 목록 가져오기
+    public MyCouponPageResponse getMyCouponList(MemberDTO memberDTO, int pg) {
+        // 검색조건을 담는 Map 생성
+        Map<String, Object> searchMap = new HashMap<>();
+        
+        // 현재 날짜와 시간 가져오기
+        LocalDateTime today = LocalDateTime.now();
+
+        // 30일 뒤의 날짜 계산
+        LocalDateTime futureDate = today.plusDays(30);
+
+        // MySQL의 DateTime 형식으로 변환
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String todayFormatted = today.format(formatter);
+        String futureDateFormatted = futureDate.format(formatter);
+        
+        // 검색조건 넣기
+        searchMap.put("today", todayFormatted);
+        searchMap.put("futureDate", futureDateFormatted);
+        searchMap.put("pg", (pg - 1) * 10);
+        searchMap.put("email", memberDTO.getEmail());
+        List<MemberCouponHistoryDTO> dtoList = memberCouponHistoryMapper.getMyCouponList(searchMap);
+        int total = memberCouponHistoryMapper.getMyCouponTotal(searchMap);
+        return MyCouponPageResponse.builder()
+                .pg(pg)
+                .total(total)
+                .dtoList(dtoList)
+                .build();
     }
 }

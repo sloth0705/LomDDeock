@@ -7,6 +7,7 @@ import axios from 'axios';
 import verifyToken from './verifyToken';
 import refreshToken from './refreshToken';
 import getUserInfo from './getUserInfo';
+import { logout } from './logout.js';
 
 /* 헤더, 푸터 */
 import Header from './layout/Header';
@@ -45,6 +46,7 @@ const MenuView = lazy(() => import('./pages/menu/MenuView'))
 const MenuCart = lazy(() => import('./pages/menu/MenuCart'))
 const MenuOrder = lazy(() => import('./pages/menu/MenuOrder'))
 const MenuComplete = lazy(() => import('./pages/menu/MenuComplete'))
+const Payment = lazy(()=> import('./pages/payment/Checkout'))
 
 /* 브랜드 페이지 */
 const Introduce = lazy(() => import('./pages/brand/Introduce'))
@@ -110,7 +112,7 @@ function App() {
                     isLoggedIn : loggedIn,
                     member : {}
                 }
-                dispatch({type: "SET_INFO", payload: userInfo})
+                dispatch({type: "SET_INFO", payload: userInfo});
             }
         };
         checkLoginStatus();
@@ -159,6 +161,7 @@ function App() {
                                 <Route path="/menuCart" element={<MenuCart />} />
                                 <Route path="/menuOrder" element={<MenuOrder />} />
                                 <Route path="/menuComplete" element={<MenuComplete />} />
+                                <Route path="/payment" element={<Payment/>}/>
                             </Routes>
                         </MenuLayout>
                         <Footer />

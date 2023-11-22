@@ -14,6 +14,7 @@ import java.util.List;
 @Builder
 @ToString
 public class MenuDTO {
+    private String type;
     private int menuNo;
     private String menuName;
     private MultipartFile fileThumb;
@@ -33,8 +34,8 @@ public class MenuDTO {
     private String thumb;
 
     private List<ToppingDTO> toppingDTOs;
-
-
+    private SideDTO sideDTO;
+  
     public MenuEntity toEntity(){
         return MenuEntity.builder()
                 .menuNo(menuNo)

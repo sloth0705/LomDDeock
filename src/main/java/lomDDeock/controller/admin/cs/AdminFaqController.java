@@ -2,6 +2,8 @@ package lomDDeock.controller.admin.cs;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lomDDeock.dto.cs.CsDTO;
+import lomDDeock.dto.cs.CsPageRequestDTO;
+import lomDDeock.dto.cs.CsPageResponseDTO;
 import lomDDeock.service.cs.FaqService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -24,16 +26,25 @@ public class AdminFaqController {
         data.setRegip(request.getRemoteAddr());
         data.setContent(data.getContent().replaceAll("\r\n", "<br/>"));
 
-        faqService.write(data);
+        faqService.insertCs(data);
     }
 
     @ResponseBody
     @GetMapping("/admin/faq/adminFaqList")
-    public List<CsDTO> adminFaqList(@RequestParam(name = "cate", required = false) String cate){
+    public CsPageResponseDTO adminFaqList(@RequestParam(name = "cate", required = false) String cate,
+                                            @RequestParam(name = "page", defaultValue = "1") int page){
         log.info("adminFaqList...1 "+cate);
+
+        // 전체 조회 및 cate 구분
         String cateParam = (cate == null || cate.trim().isEmpty()) ? "0" : cate.trim();
         log.info("cateParam :"+cateParam);
-        List<CsDTO> dto = faqService.csList(cateParam);
+
+
+        CsPageRequestDTO csPageRequestDTO = new CsPageRequestDTO();
+        csPageRequestDTO.setCate(cateParam);
+        csPageRequestDTO.setPg(page);
+
+        CsPageResponseDTO dto = faqService.selectCsBoards(cateParam,csPageRequestDTO);
         log.info(dto);
 
         return dto;
