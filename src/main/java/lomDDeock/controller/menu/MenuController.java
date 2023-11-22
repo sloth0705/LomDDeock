@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 public class MenuController {
 
     private final MenuService menuService;
-    private final ToppingService toppingService;
     private final SideService sideService;
     @ResponseBody
     @PostMapping("/menu/register")
