@@ -39,7 +39,9 @@ public class MenuService {
     private String filepath;
 
     public void save(MenuDTO menuDTO) {
+        if(menuDTO.get){
 
+        }
         // 랜덤한 파일 이름 생성
         String uuidThumb = generateRandomFilename(menuDTO.getFileThumb().getOriginalFilename());
         MenuEntity menuEntity = menuDTO.toEntity();
@@ -79,7 +81,6 @@ public class MenuService {
         // 파일을 경로에 저장
         String uploadPath = filepath;
         saveFile(uploadPath, menuDTO.getFileThumb(), uuidThumb);
-
     }
 
     // 파일을 실제 경로에 저장하는 메소드

@@ -75,7 +75,6 @@ function AdminMenuRegister() {
             axios.post('/api/side/register', formData, {
                 headers:{'Content-Type': 'multipart/form-data'}
             })
-
                 .then((res) => {
                     alert("등록완료");
                 })
@@ -94,7 +93,7 @@ function AdminMenuRegister() {
                     <Col>
                         <Form id="registerForm">
                             {/* 유형선택 */}
-                            <Form.Select aria-label="유형선택" name="type" onChange={handleChange}>
+                            <Form.Select aria-label="유형선택" name="type">
                                 <option value="normal">일반</option>
                                 <option value="side">사이드디시</option>
                                 <option value="drinkOrOthers">음료/기타</option>

@@ -34,9 +34,8 @@ public class MenuDTO {
     private String thumb;
 
     private List<ToppingDTO> toppingDTOs;
-
     private SideDTO sideDTO;
-
+  
     public MenuEntity toEntity(){
         return MenuEntity.builder()
                 .menuNo(menuNo)
