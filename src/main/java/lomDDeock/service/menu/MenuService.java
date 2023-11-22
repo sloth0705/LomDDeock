@@ -39,9 +39,6 @@ public class MenuService {
     private String filepath;
 
     public void save(MenuDTO menuDTO) {
-        if(menuDTO.get){
-
-        }
         // 랜덤한 파일 이름 생성
         String uuidThumb = generateRandomFilename(menuDTO.getFileThumb().getOriginalFilename());
         MenuEntity menuEntity = menuDTO.toEntity();

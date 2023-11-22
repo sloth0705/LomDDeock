@@ -53,7 +53,7 @@ public class Payment {
                 .orderName(orderName)
                 .orderId(orderId)
                 .customerEmail(customer.getEmail())
-                .createdAt(String.valueOf(getCreatedAt()))
+//                .createdAt(String.valueOf(getCreatedAt()))
                 .cancelYN(cancelYN)
                 .failReason(failReason)
                 .build();
