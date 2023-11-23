@@ -28,4 +28,40 @@
             </when>
         </choose>
     </sql>
+
+
+    <select id="getMyQnaListTotal" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `cs`
+        WHERE `registant` = #{email}
+        <if test="cateNo != '' and cateNo != null and cateNo != 0">
+            AND `cate` = #{cateNo}
+        </if>
+    </select>
+    <select id="getMyQnaList" resultType="lomDDeock.dto.cs.CsDTO">
+        SELECT a.`cno` AS cno,
+        a.`group` AS `group`,
+        a.`cate` AS cate,
+        a.`title` AS title,
+        a.`content` AS content,
+        a.`registant` AS registant,
+        a.`regip` AS regip,
+        a.`rdate` AS rdate,
+        a.`beginDate` AS beginDate,
+        a.`period` AS period,
+        a.`status` AS status,
+        b.`cateName` AS cateName
+        FROM `cs` AS a
+        LEFT OUTER JOIN `cs_cate` AS b ON a.`cate` = b.`cateNo`
+        WHERE a.`registant` = #{email}
+        <if test="cateNo != '' and cateNo != null and cateNo != 0">
+            AND a.`cate` = #{cateNo}
+        </if>
+        LIMIT #{pg}, 10
+    </select>
+    <select id="getQnaCate" resultType="lomDDeock.dto.cs.CsCateDTO">
+        SELECT a.`cateNo` AS cateNo,
+        a.`cateName` AS cateName
+        FROM `cs_cate` AS a
+    </select>
 </mapper>

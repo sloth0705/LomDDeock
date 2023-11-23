@@ -1,5 +1,7 @@
 package lomDDeock.mapper.member;
 
+import lomDDeock.dto.cs.CsCateDTO;
+import lomDDeock.dto.cs.CsDTO;
 import lomDDeock.dto.member.MemberCouponHistoryDTO;
 import lomDDeock.dto.member.MemberDTO;
 import lomDDeock.dto.member.MyCouponForm;
