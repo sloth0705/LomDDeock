@@ -1,7 +1,6 @@
 package lomDDeock.controller.member;
 
 import lomDDeock.dto.cs.CsCateDTO;
-import lomDDeock.dto.cs.CsDTO;
 import lomDDeock.dto.member.*;
 import lomDDeock.dto.util.JwtDTO;
 import lomDDeock.service.member.MemberService;
@@ -85,9 +84,9 @@ public class MemberController {
 
     // 토큰기반으로 사용자의 문의내역을 리턴
     @GetMapping("/getMyQnaList")
-    public ResponseEntity<MyQnaListPageResponse> getMyQnaList(@AuthenticationPrincipal MemberDTO memberDTO,
-                                              @RequestParam(required = false, defaultValue = "1") int pg,
-                                              @RequestParam(required = false, defaultValue = "0") int cateNo){
+    public ResponseEntity<CsListPageResponse> getMyQnaList(@AuthenticationPrincipal MemberDTO memberDTO,
+                                                           @RequestParam(required = false, defaultValue = "1") int pg,
+                                                           @RequestParam(required = false, defaultValue = "0") int cateNo){
         return ResponseEntity.ok(memberService.getMyQnaList(memberDTO, pg, cateNo));
     }
 
