@@ -83,13 +83,18 @@ public class MenuService {
 
     }
 
-    public void selectMenu(MenuPageRequestDTO menuPageRequestDTO) {
+    public MenuPageResponseDTO selectMenu(MenuPageRequestDTO menuPageRequestDTO) {
+        MenuPageResponseDTO menuResponseDTO = null;
+        if(menuPageRequestDTO.getGroup() == null || menuPageRequestDTO.getGroup().equals("")){
 
-        if(menuPageRequestDTO.getGroup() == null){
-            List<MenuDTO> menues= menuMapper.selectMenues();
-            List<SideDTO> sides = menuMapper.selectSides();
-
+            int total = menuMapper.countMenu() + menuMapper.countSide();
+            menuResponseDTO = new MenuPageResponseDTO(menuPageRequestDTO, total);
+            List<MenuDTO> menues= menuMapper.selectMenues(menuResponseDTO.getStartNum());
+            List<SideDTO> sides = menuMapper.selectSides(menuResponseDTO.getStartNum());
+            menuResponseDTO.setMenues(menues);
+            menuResponseDTO.setSides(sides);
         }
+        return menuResponseDTO;
     }
 
     // 파일을 실제 경로에 저장하는 메소드
