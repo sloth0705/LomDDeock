@@ -22,4 +22,5 @@ public interface CsMapper {
     public int getFaqListTotal(Map<String, Object> searchMap);
     public List<CsDTO> getFaqList(Map<String, Object> searchMap);
     public List<CsCateDTO> getQnaCate();
+    public CsDTO getQnaView(Map<String, Object> searchMap);
 }

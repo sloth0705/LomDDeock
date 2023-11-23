@@ -194,7 +194,7 @@ function App() {
                                 <Route path="/myOrder" element={<MyOrder />} />
                                 <Route path="/myPick" element={<MyPick />} />
                                 <Route path="/myQnaList" element={<MyQnaList />} />
-                                <Route path="/myQnaView" element={<MyQnaView />} />
+                                <Route path="/myQnaView/:cno" element={<MyQnaView />} />
                             </Routes>
                         </MyLayout>
                         <Footer/>

@@ -104,7 +104,7 @@ function QnaList(){
                                          <tr>
                                             <td>{qna.cateName}</td>
                                             <td>
-                                                <Link to={`/my/MyQnaView?cno=${qna.cno}`}>
+                                                <Link to={`/my/myQnaView/${qna.cno}`}>
                                                     {qna.title}
                                                 </Link>
                                             </td>
