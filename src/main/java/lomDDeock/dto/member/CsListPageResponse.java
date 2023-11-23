@@ -9,7 +9,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MyQnaListPageResponse {
+public class CsListPageResponse {
     private List<CsDTO> dtoList;
     private int pg;
     private int total;
@@ -17,7 +17,7 @@ public class MyQnaListPageResponse {
     private boolean prev, next;
 
     @Builder
-    public MyQnaListPageResponse(int pg, int total, List<CsDTO> dtoList) {
+    public CsListPageResponse(int pg, int total, List<CsDTO> dtoList) {
         this.pg = pg;
         this.total = total;
         this.dtoList = dtoList;

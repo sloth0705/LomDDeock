@@ -16,7 +16,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -38,7 +37,6 @@ public class MemberService implements UserDetailsService {
     // Mapper
     private final TermsMapper termsMapper;
     private final MemberCouponHistoryMapper memberCouponHistoryMapper;
-    private final CsMapper csMapper;
 
     // Utill
     private final PasswordEncoder passwordEncoder;
@@ -204,27 +202,5 @@ public class MemberService implements UserDetailsService {
                 .total(total)
                 .dtoList(dtoList)
                 .build();
-    }
-
-    // 로그인한 사용자의 문의내역 가져오기
-    public MyQnaListPageResponse getMyQnaList(MemberDTO memberDTO, int pg, int cateNo) {
-        // 검색조건을 담는 Map 생성
-        Map<String, Object> searchMap = new HashMap<>();
-
-        // 검색조건 넣기
-        searchMap.put("pg", (pg - 1) * 10);
-        searchMap.put("cateNo", cateNo);
-        searchMap.put("email", memberDTO.getEmail());
-        List<CsDTO> dtoList = csMapper.getMyQnaList(searchMap);
-        int total = csMapper.getMyQnaListTotal(searchMap);
-        return MyQnaListPageResponse.builder()
-                .pg(pg)
-                .total(total)
-                .dtoList(dtoList)
-                .build();
-    }
-
-    public List<CsCateDTO> getQnaCate() {
-        return csMapper.getQnaCate();
     }
 }

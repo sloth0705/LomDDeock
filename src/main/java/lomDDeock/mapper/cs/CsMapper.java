@@ -17,5 +17,9 @@ public interface CsMapper {
 
     public int getMyQnaListTotal(Map<String, Object> searchMap);
     public List<CsDTO> getMyQnaList(Map<String, Object> searchMap);
+    public int getNoticeListTotal(Map<String, Object> searchMap);
+    public List<CsDTO> getNoticeList(Map<String, Object> searchMap);
+    public int getFaqListTotal(Map<String, Object> searchMap);
+    public List<CsDTO> getFaqList(Map<String, Object> searchMap);
     public List<CsCateDTO> getQnaCate();
 }

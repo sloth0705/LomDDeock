@@ -59,6 +59,52 @@
         </if>
         LIMIT #{pg}, 10
     </select>
+    <select id="getNoticeListTotal" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `cs`
+        WHERE 1 = 1
+        AND `group` = 'notice'
+    </select>
+    <select id="getNoticeList" resultType="lomDDeock.dto.cs.CsDTO">
+        SELECT a.`cno` AS cno,
+        a.`group` AS `group`,
+        a.`cate` AS cate,
+        a.`title` AS title,
+        a.`content` AS content,
+        a.`registant` AS registant,
+        a.`regip` AS regip,
+        a.`rdate` AS rdate,
+        a.`beginDate` AS beginDate,
+        a.`period` AS period,
+        a.`status` AS status
+        FROM `cs` AS a
+        WHERE 1 = 1
+        AND a.`group` = 'notice'
+        LIMIT #{pg}, 10
+    </select>
+    <select id="getFaqListTotal" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `cs`
+        WHERE 1 = 1
+        AND `group` = 'faq'
+    </select>
+    <select id="getFaqList" resultType="lomDDeock.dto.cs.CsDTO">
+        SELECT a.`cno` AS cno,
+        a.`group` AS `group`,
+        a.`cate` AS cate,
+        a.`title` AS title,
+        a.`content` AS content,
+        a.`registant` AS registant,
+        a.`regip` AS regip,
+        a.`rdate` AS rdate,
+        a.`beginDate` AS beginDate,
+        a.`period` AS period,
+        a.`status` AS status
+        FROM `cs` AS a
+        WHERE 1 = 1
+        AND a.`group` = 'faq'
+        LIMIT #{pg}, 10
+    </select>
     <select id="getQnaCate" resultType="lomDDeock.dto.cs.CsCateDTO">
         SELECT a.`cateNo` AS cateNo,
         a.`cateName` AS cateName
