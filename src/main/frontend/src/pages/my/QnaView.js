@@ -1,8 +1,18 @@
-import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import { Routes, Route, BrowserRouter, Link, useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import { Container,ListGroup, Col, Row, Button , Table, Pagination, Form } from 'react-bootstrap';
+import { getQnaView } from '../../js/cs/qnaView.js';
 import '../../css/my/my.css';
 function QnaList(){
+    const { cno } = useParams();
+    const [qnaView, setQnaView] = useState({});
+    useEffect(()=>{
+        const fetchData = async () => {
+            const qnaInfo = await getQnaView(cno);
+            setQnaView(qnaInfo);
+        };
+        fetchData();
+    },[])
     return (
         <section className="my">
             <div className="myBanner">
@@ -29,16 +39,16 @@ function QnaList(){
                                 <tbody>
                                 <tr>
                                     <td>유형</td>
-                                    <td>회원</td>
+                                    <td>{qnaView.cateName}</td>
                                 </tr>
                                 <tr>
                                     <td>제목</td>
-                                    <td>이메일을 변경하고 싶습니다.</td>
+                                    <td>{qnaView.title}</td>
                                 </tr>
                                 <tr>
                                     <td className="align-center">내용</td>
                                     <td>
-                                        <span>이전에 사용했던 이메일을 삭제해서 다른 이메일로 변경하고 싶은데 어떻게 해야 되나요?</span>
+                                        <span>{qnaView.content}</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -57,9 +67,11 @@ function QnaList(){
                                 <Button variant="secondary" size="lg" className="delete-myQna">
                                     삭제
                                 </Button>
-                                <Button size="lg" className="btn success" href="/my/myQnaList">
-                                    목록
-                                </Button>
+                                <Link to="/my/myQnaList">
+                                    <Button size="lg" className="btn success">
+                                        목록
+                                    </Button>
+                                </Link>
                             </div>
                         </div>
                     </Col>

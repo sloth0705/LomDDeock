@@ -87,6 +87,8 @@ upload:
     files: files/
     thumbs: thumbs/
     banners: banners/
+    toppings: toppings/
+    sides: sides/
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
 

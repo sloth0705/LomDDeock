@@ -1,8 +1,67 @@
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container,ListGroup, Col, Row, Button , Table, Pagination, Form } from 'react-bootstrap';
+import { getMyQnaList, getQnaCate } from '../../js/member/qnaList.js';
 import '../../css/my/my.css';
 function QnaList(){
+    // 문의내역 리스트
+    const [myQnaList, setMyQnaList] = useState([]);
+    // 문의내역 리스트 페이징
+    const [myQnaPage, setMyQnaPage] = useState({});
+    // 문의 카테고리
+    const [qnaCate, setQnaCate] = useState([]);
+    // 선택한 카테고리
+    const [selectedValue, setSelectedValue] = useState('0');
+    useEffect(() => {
+        const fetchData = async () => {
+            const qnaList = await getMyQnaList(1, selectedValue);
+            setMyQnaList(qnaList.dtoList);
+            setMyQnaPage(qnaList);
+            const qnaCateList = await getQnaCate();
+            setQnaCate(qnaCateList);
+        };
+        fetchData();
+    },[])
+
+    const handlePageClick = async (pageNumber) => {
+      const qnaList = await getMyQnaList(pageNumber, selectedValue);
+      setMyQnaList(qnaList.dtoList);
+      setMyQnaPage(qnaList);
+    };
+    const renderPageNumbers = () => {
+        const pageNumbers = [];
+        for (let i = myQnaPage.start; i <= myQnaPage.end; i++) {
+          pageNumbers.push(
+            <Pagination.Item key={i} active={i === myQnaPage.pg} onClick={()=>{handlePageClick(i)}}>
+              {i}
+            </Pagination.Item>
+          );
+        }
+        return pageNumbers;
+    };
+    // 날짜 yyy-mm-dd로 변환
+    function formatDate(dateString) {
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        const formatter = new Intl.DateTimeFormat('en-US', options);
+        const date = formatter.formatToParts(new Date(dateString));
+        return `${date[4].value}-${date[0].value}-${date[2].value}`;
+    }
+    // status 한글로 변환
+    const getStatus = (status) => {
+        if (status == 0) {
+            return "문의중";
+        } else if (status == 1) {
+            return "답변완료";
+        }
+    }
+    const handleChange = async (event) => {
+        const selectedVal = event.target.value;
+        setSelectedValue(selectedVal);
+        const qnaList = await getMyQnaList(1, selectedVal);
+        setMyQnaList(qnaList.dtoList);
+        setMyQnaPage(qnaList);
+      };
+
     return (
         <section className="my">
             <div className="myBanner">
@@ -23,57 +82,56 @@ function QnaList(){
                     {/* content */}
                     <Col sm={9}>
                         <div className="find-myQna">
-                            <select>
-                                <option>전체</option>
-                                <option>회원</option>
-                                <option>주문</option>
-                                <option>메뉴</option>
+                            <select value={selectedValue} onChange={handleChange}>
+                                <option value='0'>전체</option>
+                                {qnaCate.map((qna) => (
+                                    <option value={qna.cateNo}>{qna.cateName}</option>
+                                ))}
                             </select>
                         </div>
                         <div className="myQna-list">
                             <Table hover size="sm" className="text-center">
                                 <thead>
-                                <tr>
-                                    <th>유형</th>
-                                    <th>제목</th>
-                                    <th>작성일</th>
-                                    <th>상태</th>
-                                </tr>
+                                    <tr>
+                                        <th>유형</th>
+                                        <th>제목</th>
+                                        <th>작성일</th>
+                                        <th>상태</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>메뉴</td>
-                                    <td><Link to="/my/MyQnaView">사장님 개발자같은데 코딩 언어 추천...</Link></td>
-                                    <td>2024-10-10</td>
-                                    <td className="answer-complete">답변완료</td>
-                                </tr>
-                                <tr>
-                                    <td>회원</td>
-                                    <td><Link to="/my/MyQnaView">이메일 변경하고 싶어요</Link></td>
-                                    <td>2024-10-10</td>
-                                    <td>문의중</td>
-                                </tr>
-                                <tr>
-                                    <td>주문</td>
-                                    <td><Link to="/my/MyQnaView">포장주문시 할인 문의</Link></td>
-                                    <td>2024-10-10</td>
-                                    <td className="answer-complete">답변완료</td>
-                                </tr>
+                                    {myQnaList.map((qna) => (
+                                         <tr>
+                                            <td>{qna.cateName}</td>
+                                            <td>
+                                                <Link to={`/my/myQnaView/${qna.cno}`}>
+                                                    {qna.title}
+                                                </Link>
+                                            </td>
+                                            <td>
+                                                {formatDate(qna.rdate)}
+                                            </td>
+                                            <td className={`${qna.status === 1 ? 'answer-complete' : ''}`}>
+                                                {getStatus(qna.status)}
+                                            </td>
+                                         </tr>
+                                    ))}
                                 </tbody>
                             </Table>
 
                             {/* 페이징 */}
-                            <Pagination>
-                                <Pagination.First />
-                                <Pagination.Prev />
-                                <Pagination.Item active>{1}</Pagination.Item>
-
-                                <Pagination.Item>{2}</Pagination.Item>
-                                <Pagination.Item>{3}</Pagination.Item>
-                                <Pagination.Item>{4}</Pagination.Item>
-                                <Pagination.Item>{5}</Pagination.Item>
-                                <Pagination.Next />
-                                <Pagination.Last />
+                            <Pagination style={{justifyContent:'center'}}>
+                                {myQnaPage.prev && (
+                                    <>
+                                      <Pagination.Prev onClick={()=>{handlePageClick(myQnaPage.start - 1)}}/>
+                                    </>
+                                )}
+                                {renderPageNumbers()}
+                                {myQnaPage.next && (
+                                    <>
+                                        <Pagination.Next onClick={()=>{handlePageClick(myQnaPage.end + 1)}}/>
+                                    </>
+                                )}
                             </Pagination>
                         </div>
                     </Col>

@@ -47,17 +47,14 @@ function AdminMenuRegister() {
     const registerMenu = (e)=>{
         e.preventDefault();
 
-        const type = document.getElementsByName("type")[0].value;
-
         const registerForm = document.getElementById('registerForm');
         const formData = new FormData(registerForm);
+
 
         for (let pair of formData.entries()) {
             console.log(pair[0]+ ', ' + pair[1]);
         }
 
-        if (type === "normal")
-        {
             // axios를 사용한 폼 전송
             axios.post('/api/menu/register', formData,{
                 headers:{'Content-Type': 'multipart/form-data'}
@@ -66,22 +63,12 @@ function AdminMenuRegister() {
                 .then((res) => {
 
                     alert("등록완료");
+                    window.location.replace("/admin/menu/AdminMenuRegister")
                 })
                 .catch((err) => {
                     console.error("전송실패: " + err);
                 });
-        }else {
-            // axios를 사용한 폼 전송
-            axios.post('/api/side/register', formData, {
-                headers:{'Content-Type': 'multipart/form-data'}
-            })
-                .then((res) => {
-                    alert("등록완료");
-                })
-                .catch((err) => {
-                    console.error("전송실패: " + err);
-                });
-        }
+
     };
 
     return (
@@ -93,7 +80,7 @@ function AdminMenuRegister() {
                     <Col>
                         <Form id="registerForm">
                             {/* 유형선택 */}
-                            <Form.Select aria-label="유형선택" name="type">
+                            <Form.Select aria-label="유형선택" name="type" onChange={handleChange}>
                                 <option value="normal">일반</option>
                                 <option value="side">사이드디시</option>
                                 <option value="drinkOrOthers">음료/기타</option>
@@ -160,15 +147,15 @@ function AdminMenuRegister() {
                                         <div className="classification" key={index}>
                                             <InputGroup className="mb-3">
                                                 <InputGroup.Text>토핑 이름</InputGroup.Text>
-                                                <Form.Control name={`toppingDTOs[${index-1}].topping`}/>
+                                                <Form.Control name={`toppingDTOs[${index}].topping`}/>
                                             </InputGroup>
                                             <div className="subcate">
                                                 <Form.Group controlId="formFile" className="mb-3 formFile">
-                                                    <Form.Control type="file" name={`toppingDTOs[${index-1}].toppingFile`}/>
+                                                    <Form.Control type="file" name={`toppingDTOs[${index}].toppingFile`}/>
                                                 </Form.Group>
                                                 <InputGroup className="mb-3 inputSubcate">
                                                     <InputGroup.Text>금액</InputGroup.Text>
-                                                    <Form.Control name={`toppingDTOs[${index-1}].toppingPrice`}/>
+                                                    <Form.Control name={`toppingDTOs[${index}].toppingPrice`}/>
                                                     <InputGroup.Text>원</InputGroup.Text>
                                                 </InputGroup>
                                             </div>
