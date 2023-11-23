@@ -35,5 +35,11 @@ public class MenuController {
         }
 
     }
+    @ResponseBody
+    @GetMapping("/menu/AdminMenuList")
+    public void adminMenuList (@RequestBody MenuPageRequestDTO menuPageRequestDTO) {
+        menuService.selectMenu(menuPageRequestDTO);
+
+    }
 
 }

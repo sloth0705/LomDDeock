@@ -63,7 +63,7 @@ function AdminMenuRegister() {
                 .then((res) => {
 
                     alert("등록완료");
-                    registerForm.reset();
+                    window.location.replace("/admin/menu/AdminMenuRegister")
                 })
                 .catch((err) => {
                     console.error("전송실패: " + err);
