@@ -111,18 +111,16 @@ function Coupon(){
                                 </Table>
 
                                 {/* 페이징 */}
-                                <Pagination>
+                                <Pagination style={{justifyContent:'center'}}>
                                     {myCouponPage.prev && (
                                         <>
-                                          <Pagination.First />
-                                          <Pagination.Prev />
+                                          <Pagination.Prev onClick={()=>{handlePageClick(myCouponPage.start - 1)}}/>
                                         </>
                                     )}
                                     {renderPageNumbers()}
-                                    {myCouponPage.prev && (
+                                    {myCouponPage.next && (
                                         <>
-                                            <Pagination.Next />
-                                            <Pagination.Last />
+                                            <Pagination.Next onClick={()=>{handlePageClick(myCouponPage.end + 1)}}/>
                                         </>
                                     )}
                                 </Pagination>

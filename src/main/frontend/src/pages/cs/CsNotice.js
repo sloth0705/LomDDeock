@@ -10,17 +10,17 @@ function Notice() {
     const [noticePage, setNoticePage] = useState({});
     useEffect(() => {
         const fetchData = async () => {
-            const noticeList = await getNoticeList(1);
-            setNoticeList(noticeList.dtoList);
-            setNoticePage(noticeList);
+            const noticeInfo = await getNoticeList(1);
+            setNoticeList(noticeInfo.dtoList);
+            setNoticePage(noticeInfo);
         };
         fetchData();
     },[])
 
     const handlePageClick = async (pageNumber) => {
-      const noticeList = await getNoticeList(pageNumber);
-      setNoticeList(noticeList.dtoList);
-      setNoticePage(noticeList);
+      const noticeInfo = await getNoticeList(pageNumber);
+      setNoticeList(noticeInfo.dtoList);
+      setNoticePage(noticeInfo);
     };
     const renderPageNumbers = () => {
         const pageNumbers = [];
@@ -80,15 +80,13 @@ function Notice() {
                         <Pagination style={{justifyContent:'center'}}>
                             {noticePage.prev && (
                                 <>
-                                  <Pagination.First />
-                                  <Pagination.Prev />
+                                  <Pagination.Prev onClick={()=>{handlePageClick(noticePage.start - 1)}}/>
                                 </>
                             )}
                             {renderPageNumbers()}
-                            {noticePage.prev && (
+                            {noticePage.next && (
                                 <>
-                                    <Pagination.Next />
-                                    <Pagination.Last />
+                                    <Pagination.Next onClick={()=>{handlePageClick(noticePage.end + 1)}}/>
                                 </>
                             )}
                         </Pagination>

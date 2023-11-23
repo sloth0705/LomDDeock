@@ -81,18 +81,4 @@ public class MemberController {
                                                                 @RequestParam(required = false, defaultValue = "1") int pg){
         return ResponseEntity.ok(memberService.getMyCouponList(memberDTO, pg));
     }
-
-    // 토큰기반으로 사용자의 문의내역을 리턴
-    @GetMapping("/getMyQnaList")
-    public ResponseEntity<CsListPageResponse> getMyQnaList(@AuthenticationPrincipal MemberDTO memberDTO,
-                                                           @RequestParam(required = false, defaultValue = "1") int pg,
-                                                           @RequestParam(required = false, defaultValue = "0") int cateNo){
-        return ResponseEntity.ok(memberService.getMyQnaList(memberDTO, pg, cateNo));
-    }
-
-    // Qna 카테고리 반환
-    @GetMapping("/getQnaCate")
-    public ResponseEntity<List<CsCateDTO>> getQnaCate(){
-        return ResponseEntity.ok(memberService.getQnaCate());
-    }
 }

@@ -120,18 +120,16 @@ function QnaList(){
                             </Table>
 
                             {/* 페이징 */}
-                            <Pagination>
+                            <Pagination style={{justifyContent:'center'}}>
                                 {myQnaPage.prev && (
                                     <>
-                                      <Pagination.First />
-                                      <Pagination.Prev />
+                                      <Pagination.Prev onClick={()=>{handlePageClick(myQnaPage.start - 1)}}/>
                                     </>
                                 )}
                                 {renderPageNumbers()}
-                                {myQnaPage.prev && (
+                                {myQnaPage.next && (
                                     <>
-                                        <Pagination.Next />
-                                        <Pagination.Last />
+                                        <Pagination.Next onClick={()=>{handlePageClick(myQnaPage.end + 1)}}/>
                                     </>
                                 )}
                             </Pagination>
