@@ -67,4 +67,12 @@ public class CsService {
                 .dtoList(dtoList)
                 .build();
     }
+
+    public CsDTO getQnaView(int cno) {
+        // 검색조건을 담는 Map 생성
+        Map<String, Object> searchMap = new HashMap<>();
+        // 검색조건 넣기
+        searchMap.put("cno", cno);
+        return csMapper.getQnaView(searchMap);
+    }
 }

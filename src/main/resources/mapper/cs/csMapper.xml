@@ -110,4 +110,21 @@
         a.`cateName` AS cateName
         FROM `cs_cate` AS a
     </select>
+    <select id="getQnaView" resultType="lomDDeock.dto.cs.CsDTO">
+        SELECT a.`cno` AS cno,
+        a.`group` AS `group`,
+        a.`cate` AS cate,
+        a.`title` AS title,
+        a.`content` AS content,
+        a.`registant` AS registant,
+        a.`regip` AS regip,
+        a.`rdate` AS rdate,
+        a.`beginDate` AS beginDate,
+        a.`period` AS period,
+        a.`status` AS status,
+        b.`cateName` AS cateName
+        FROM `cs` AS a
+        LEFT OUTER JOIN `cs_cate` AS b ON a.`cate` = b.`cateNo`
+        WHERE a.`cno` = ${cno}
+    </select>
 </mapper>
