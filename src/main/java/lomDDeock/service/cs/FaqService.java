@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Log4j2
@@ -43,5 +44,24 @@ public class FaqService {
                 .csList(csDTO)
                 .total(total)
                 .build();
+    }
+
+    public CsDTO selectCsBoard(int cno){
+        Optional<CsEntity> csEntity = csRepository.findById(cno);
+        CsDTO dto = csEntity.get().toDTO();
+
+        return dto;
+    }
+
+    public void updateCs(CsDTO csDTO) {
+        CsEntity csEntity = csDTO.toEntity();
+        csRepository.save(csEntity);
+    }
+
+    public void hideCs(int cno){
+        csRepository.hideCs(cno);
+    }
+    public void deleteCs(int cno){
+        csRepository.deleteById(cno);
     }
 }

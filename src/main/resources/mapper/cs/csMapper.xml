@@ -21,10 +21,10 @@
         <choose>
             <!-- 자주묻는질문, 문의내역 -->
             <when test="cate >= 10">
-                WHERE a.`cate`=#{cate} AND a.`group` IN ('faq', 'qna')
+                WHERE a.`cate`=#{cate} AND a.`group`='faq'
             </when>
             <when test="cate == null or cate == 0">
-                WHERE a.`cate` > 0 AND a.`group` IN ('faq', 'qna')
+                WHERE a.`cate` > 0 AND a.`group`='faq'
             </when>
         </choose>
     </sql>
