@@ -1,11 +1,25 @@
 import {Button, Col, Container, InputGroup, Row, Table} from "react-bootstrap";
 import AdminAsideMenu from "../AdminAsideMenu";
-import React from "react";
+import React, {useState, useEffect} from "react";
 import '../../../css/admin/admin.css';
 import {Link} from "react-router-dom";
 import Form from "react-bootstrap/Form";
+import axios from "axios";
 
-function adminMenuList() {
+function AdminMenuList() {
+    const [menuData, setMenuData] = useState([]);
+    useEffect(() => {
+        // 데이터를 불러오는 비동기 함수 호출
+        menuList();
+    }, []); // 빈 배열을 전달하여 컴포넌트가 마운트될 때 한 번만 호출되게 함
+    const menuList = async () => {
+        try {
+            const response = await axios.get('/api/menu/AdminMenuList');
+            setMenuData(response.data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
     return (
         <section id="admin">
             <Container id="adminMenuList adminList">
@@ -109,4 +123,4 @@ function adminMenuList() {
     )
 }
 
-export default adminMenuList;
+export default AdminMenuList;

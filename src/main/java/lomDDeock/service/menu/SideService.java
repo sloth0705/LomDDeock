@@ -26,7 +26,7 @@ public class SideService {
 
     private final SideRepository sideRepository;
 
-    @Value("${upload.path.thumbs}")
+    @Value("${upload.path.sides}")
     private String filepath;
 
     public void save(SideDTO sideDTO) {
@@ -37,7 +37,7 @@ public class SideService {
         sideRepository.save(sideEntity);
 
         // 파일을 경로에 저장
-        String uploadPath = filepath+"/";
+        String uploadPath = filepath;
         saveFile(uploadPath, sideDTO.getFileThumb(), uuidThumb);
     }
     // 파일을 실제 경로에 저장하는 메소드

@@ -1,13 +1,11 @@
 package lomDDeock.service.menu;
 
-import lomDDeock.dto.menu.MenuDTO;
-import lomDDeock.dto.menu.SizeDTO;
-import lomDDeock.dto.menu.SpicyDTO;
-import lomDDeock.dto.menu.ToppingDTO;
+import lomDDeock.dto.menu.*;
 import lomDDeock.entity.menu.MenuEntity;
 import lomDDeock.entity.menu.SizeEntity;
 import lomDDeock.entity.menu.SpicyEntity;
 import lomDDeock.entity.menu.ToppingEntity;
+import lomDDeock.mapper.menu.MenuMapper;
 import lomDDeock.repository.menu.MenuRepository;
 import lomDDeock.repository.menu.SizeRepository;
 import lomDDeock.repository.menu.SpicyRepository;
@@ -23,6 +21,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.UUID;
 
 @Log4j2
@@ -34,9 +33,12 @@ public class MenuService {
     private final SizeRepository sizeRepository;
     private final SpicyRepository spicyRepository;
     private final ToppingRepository toppingRepository;
+    private final MenuMapper menuMapper;
 
     @Value("${upload.path.thumbs}")
     private String filepath;
+    @Value("${upload.path.toppings}")
+    private String toppingPath;
 
     public void save(MenuDTO menuDTO) {
         // 랜덤한 파일 이름 생성
@@ -70,7 +72,7 @@ public class MenuService {
             toppingEntity.setFile(uuidTopping);
             toppingRepository.save(toppingEntity);
             // 파일을 경로에 저장
-            String uploadPath = filepath;
+            String uploadPath = toppingPath;
             saveFile(uploadPath, menuDTO.getToppingDTOs().get(i).getToppingFile(), uuidTopping);
         }
 
@@ -79,6 +81,15 @@ public class MenuService {
         String uploadPath = filepath;
         saveFile(uploadPath, menuDTO.getFileThumb(), uuidThumb);
 
+    }
+
+    public void selectMenu(MenuPageRequestDTO menuPageRequestDTO) {
+
+        if(menuPageRequestDTO.getGroup() == null){
+            List<MenuDTO> menues= menuMapper.selectMenues();
+            List<SideDTO> sides = menuMapper.selectSides();
+
+        }
     }
 
     // 파일을 실제 경로에 저장하는 메소드
@@ -110,4 +121,5 @@ public class MenuService {
 
         return randomFilename;
     }
+
 }
