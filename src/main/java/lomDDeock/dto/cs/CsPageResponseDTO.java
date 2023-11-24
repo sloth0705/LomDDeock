@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 public class CsPageResponseDTO {
 
-    private int no;
+    private int cno;
 
     private String group;
     private String cate;
@@ -27,8 +27,8 @@ public class CsPageResponseDTO {
 
 
     @Builder
-    public CsPageResponseDTO(CsPageRequestDTO csPageRequestDTO, List<CsDTO> csList, int total, int no) {
-        this.no = no;
+    public CsPageResponseDTO(CsPageRequestDTO csPageRequestDTO, List<CsDTO> csList, int total, int cno) {
+        this.cno = cno;
 
         this.group  = csPageRequestDTO.getGroup();
         this.cate  = csPageRequestDTO.getCate();
