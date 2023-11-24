@@ -4,11 +4,12 @@ import {Col, Container, Row} from "react-bootstrap";
 import AdminAsideMenu from "../AdminAsideMenu";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import {Link} from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 
 function AdminFaqRegister() {
+    const navigate = useNavigate();
     const [inputs, setInputs] = useState({});
     const handleChange = (event) => {
         const name = event.target.name;
@@ -28,6 +29,7 @@ function AdminFaqRegister() {
         axios.post('/api/admin/faq/adminFaqRegister', inputs)
             .then(res => {
                 alert("등록되었습니다.");
+                navigate("/admin/faq/adminFaqList");
             })
             .catch(err => {
                 console.log("전송에 문제가 발생했습니다.");

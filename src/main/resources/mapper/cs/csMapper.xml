@@ -19,14 +19,15 @@
     </select>
     <sql id="sortBox">
         <choose>
-            <!-- 자주묻는질문, 문의내역 -->
+            <!-- 카테고리 구분 -->
             <when test="cate >= 10">
-                WHERE a.`cate`=#{cate} AND a.`group`='faq'
+                WHERE a.`cate`=#{cate}
             </when>
             <when test="cate == null or cate == 0">
-                WHERE a.`cate` > 0 AND a.`group`='faq'
+                WHERE a.`cate` > 0
             </when>
         </choose>
+        AND a.`group`='faq' AND a.`status` >= 0
     </sql>
 
 

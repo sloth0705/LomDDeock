@@ -25,6 +25,8 @@ function FasList(){
     // 수정될 데이터
     const [selectedItem, setSelectedItem] = useState(null);
     const [modifyData, setModifyData] = useState(null);
+    // 게시글 삭제 여부
+    const [activeKey, setActiveKey] = useState(null);
 
     // useEffect로 한번 실행된 데이터를 빈배열에 담게 해 무한반복 방지
     useEffect(() => {
@@ -97,7 +99,6 @@ function FasList(){
     );
 
     /* ------------ 삭제 -------------- */
-    const [deletedItems, setDeletedItems] = useState([]);
     const handleDelete = (item, index) => {
         console.log(item, index);
         const cno = item.cno;
@@ -106,10 +107,17 @@ function FasList(){
             axios.post(`/api/admin/faq/adminFaqDelete/${cno}`)
                 .then(res =>{
                     alert("정상적으로 게시글이 삭제되었습니다.");
-                    setDeletedItems((prevDeletedItems) => [...prevDeletedItems, index]);
+
+                    // 삭제가 성공하면 FAQ 목록에서 삭제된 항목을 지워서 상태를 업데이트
+                    setListData(prevListData => {
+                        const newListData = [...prevListData];
+                        newListData.splice(index, 1);
+                        return newListData;
+                    });
+
                 })
                 .catch(err => {
-                    alert("정상적으로 삭제되지 못하였습니다. 콘솔 로그를 확인해주세요.");
+                    alert("정상적으로 삭제되지 못하였습니다.");
                     console.log('error : '+err);
                 });
         }
@@ -118,15 +126,12 @@ function FasList(){
     return (
         <>
             <Accordion>
-                {listData.map((item, index) => {
-                    // 삭제된 아이템이면 렌더링하지 않음
-                    if (deletedItems.includes(item)) {
-                        return null;
-                    }
-                    return (
+                {listData.map((item, index) => (
                         <Accordion.Item key={index} eventKey={index.toString()}>
-                            <Accordion.Header>[{item.cateName}]{item.title}<span
-                                className="date">{formatDate(item.rdate)}</span></Accordion.Header>
+                            <Accordion.Header>
+                                [{item.cateName}]{item.title}
+                                <span className="date">{formatDate(item.rdate)}</span>
+                            </Accordion.Header>
                             {selectedItem && selectedItem.index === index ? modifyBoard : (
                                 <Accordion.Body>
                                     <p>
@@ -144,8 +149,7 @@ function FasList(){
                                 </Accordion.Body>
                             )}
                         </Accordion.Item>
-                    );
-                })}
+                ))}
             </Accordion>
             <FaqPagination
                 page={page}
