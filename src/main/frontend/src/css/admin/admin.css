@@ -182,16 +182,15 @@ a:hover {
     text-align: center;
     line-height: 100px;
 }
-.paging > .num.on {
+.paging > .num.on > a {
     color: #ff744d;
     font-weight: bold;
 }
-.paging > .num {
+.paging > .num > a {
     font-size: 18px;
     margin-left: 20px;
-    cursor: pointer;
 }
-.paging > .num.disabled {
+.paging > .num.disabled > a {
     display: none;
 }
 
@@ -658,6 +657,24 @@ a:hover {
 }
 #adminFaqList .accordion-body  p:nth-of-type(2) > button:hover {
     font-weight: bold;
+}
+
+#adminFaqList .paging {
+    width: 100%;
+    text-align: center;
+    line-height: 100px;
+}
+#adminFaqList .paging > .num.on {
+    color: #ff744d;
+    font-weight: bold;
+}
+#adminFaqList .paging > .num {
+    font-size: 18px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+#adminFaqList .paging > .num.disabled {
+    display: none;
 }
 
 /* ========== 자주묻는질문 등록(adminFaqRegister) ========== */
