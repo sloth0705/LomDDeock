@@ -13,9 +13,6 @@ public class MenuPageRequestDTO {
     @Builder.Default
     private int pg = 1;
 
-    @Builder.Default
-    private int size = 10;
-
-    private String group;
+    private String cate;
 
 }
