@@ -39,8 +39,9 @@ public class CsController {
     }
 
     @GetMapping("/getFaqList")
-    public ResponseEntity<CsListPageResponse> getFaqList(@RequestParam(required = false, defaultValue = "1") int pg){
-        return ResponseEntity.ok(csService.getFaqList(pg));
+    public ResponseEntity<CsListPageResponse> getFaqList(@RequestParam(required = false, defaultValue = "1") int pg,
+                                                         @RequestParam(required = false, defaultValue = "10") int cateNo){
+        return ResponseEntity.ok(csService.getFaqList(pg, cateNo));
     }
 
     @GetMapping("/getQnaView")
