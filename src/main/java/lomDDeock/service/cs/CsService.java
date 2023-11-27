@@ -3,6 +3,7 @@ package lomDDeock.service.cs;
 import lomDDeock.dto.cs.CsCateDTO;
 import lomDDeock.dto.cs.CsDTO;
 import lomDDeock.dto.cs.CsPageResponseDTO;
+import lomDDeock.dto.cs.CsReplyDTO;
 import lomDDeock.dto.member.CsListPageResponse;
 import lomDDeock.dto.member.MemberDTO;
 import lomDDeock.mapper.cs.CsMapper;
@@ -73,6 +74,9 @@ public class CsService {
         Map<String, Object> searchMap = new HashMap<>();
         // 검색조건 넣기
         searchMap.put("cno", cno);
-        return csMapper.getQnaView(searchMap);
+        CsDTO csDTO = csMapper.getQnaView(searchMap);
+        CsReplyDTO csReplyDTO = csMapper.getQnaReply(searchMap);
+        csDTO.setReplyForm(csReplyDTO);
+        return csDTO;
     }
 }

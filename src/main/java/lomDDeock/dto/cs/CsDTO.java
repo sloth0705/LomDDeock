@@ -28,6 +28,9 @@ public class CsDTO {
     private int cateNo;
     private String cateName;
 
+    // cs_reply
+    private CsReplyDTO replyForm;
+
     public CsEntity toEntity() {
         return CsEntity.builder()
                 .cno(cno)

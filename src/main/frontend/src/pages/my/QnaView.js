@@ -6,10 +6,12 @@ import '../../css/my/my.css';
 function QnaList(){
     const { cno } = useParams();
     const [qnaView, setQnaView] = useState({});
+    const [replyForm, setReplyForm] = useState({});
     useEffect(()=>{
         const fetchData = async () => {
             const qnaInfo = await getQnaView(cno);
             setQnaView(qnaInfo);
+            setReplyForm(qnaInfo.replyForm);
         };
         fetchData();
     },[])
@@ -51,16 +53,16 @@ function QnaList(){
                                         <span>{qnaView.content}</span>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td className="align-center">답변</td>
-                                    <td>
-                                        <span>
-                                        언제나 맛있는 음식을 제공하는 롬복떡볶이입니다! <br/>
-                                        이메일 변경은 우측 상단의 '마이페이지' -&gt; '내 정보'에서 바로 변경하실 수 있습니다. <br/>
-                                        만일 이메일이 정상적으로 변경되지 않을시 고객센터에 다시 문의해주시길 바랍니다.
-                                        </span>
-                                    </td>
-                                </tr>
+                                {replyForm === null ? null : (
+                                    <tr>
+                                        <td className="align-center">답변</td>
+                                        <td>
+                                            <span>
+                                                {replyForm.reply}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                )}
                                 </tbody>
                             </Table>
                             <div className="btn-qna">
