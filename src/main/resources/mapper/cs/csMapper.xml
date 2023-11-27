@@ -128,4 +128,13 @@
         LEFT OUTER JOIN `cs_cate` AS b ON a.`cate` = b.`cateNo`
         WHERE a.`cno` = ${cno}
     </select>
+    <select id="getQnaReply" resultType="lomDDeock.dto.cs.CsReplyDTO">
+        SELECT a.`qno` AS qno,
+        a.`cno` AS cno,
+        a.`manager` AS manager,
+        a.`reply` AS reply,
+        a.`rdate` AS rdate
+        FROM `cs_reply` AS a
+        WHERE a.`cno` = ${cno}
+    </select>
 </mapper>

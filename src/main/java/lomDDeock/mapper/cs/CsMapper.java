@@ -2,6 +2,7 @@ package lomDDeock.mapper.cs;
 
 import lomDDeock.dto.cs.CsCateDTO;
 import lomDDeock.dto.cs.CsDTO;
+import lomDDeock.dto.cs.CsReplyDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -23,4 +24,5 @@ public interface CsMapper {
     public List<CsDTO> getFaqList(Map<String, Object> searchMap);
     public List<CsCateDTO> getQnaCate();
     public CsDTO getQnaView(Map<String, Object> searchMap);
+    public CsReplyDTO getQnaReply(Map<String, Object> searchMap);
 }
