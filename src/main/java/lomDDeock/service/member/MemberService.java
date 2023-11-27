@@ -175,7 +175,7 @@ public class MemberService implements UserDetailsService {
     }
 
     // 로그인한 사용자의 쿠폰 목록 가져오기
-    public MyCouponPageResponse getMyCouponList(MemberDTO memberDTO, int pg) {
+    public MyCouponPageResponse getMyCouponList(MemberDTO memberDTO, int pg, String useYn) {
         // 검색조건을 담는 Map 생성
         Map<String, Object> searchMap = new HashMap<>();
         
@@ -194,6 +194,7 @@ public class MemberService implements UserDetailsService {
         searchMap.put("today", todayFormatted);
         searchMap.put("futureDate", futureDateFormatted);
         searchMap.put("pg", (pg - 1) * 10);
+        searchMap.put("useYn", useYn);
         searchMap.put("email", memberDTO.getEmail());
         List<MemberCouponHistoryDTO> dtoList = memberCouponHistoryMapper.getMyCouponList(searchMap);
         int total = memberCouponHistoryMapper.getMyCouponTotal(searchMap);

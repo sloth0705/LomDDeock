@@ -78,7 +78,8 @@ public class MemberController {
     // 토큰기반으로 사용자의 쿠폰리스트를 리턴
     @GetMapping("/getMyCouponList")
     public ResponseEntity<MyCouponPageResponse> getMyCouponList(@AuthenticationPrincipal MemberDTO memberDTO,
-                                                                @RequestParam(required = false, defaultValue = "1") int pg){
-        return ResponseEntity.ok(memberService.getMyCouponList(memberDTO, pg));
+                                                                @RequestParam(required = false, defaultValue = "1") int pg,
+                                                                @RequestParam(required = false, defaultValue = "A") String useYn){
+        return ResponseEntity.ok(memberService.getMyCouponList(memberDTO, pg, useYn));
     }
 }

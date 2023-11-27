@@ -13,6 +13,9 @@
         SELECT COUNT(*)
         FROM `memberCouponHistory`
         WHERE `email` = #{email}
+        <if test='useYn != "" and useYn != null and useYn != "A"'>
+            AND `useYn` = #{useYn}
+        </if>
     </select>
     <select id="getMyCouponList" resultType="lomDDeock.dto.member.MemberCouponHistoryDTO">
         SELECT a.`historySeq` AS historySeq,
@@ -32,6 +35,9 @@
         FROM `memberCouponHistory` AS a
         LEFT OUTER JOIN `coupon` AS b ON a.`couponId` = b.`couponId`
         WHERE a.`email` = #{email}
+        <if test='useYn != "" and useYn != null and useYn != "A"'>
+            AND a.`useYn` = #{useYn}
+        </if>
         LIMIT #{pg}, 10
     </select>
 </mapper>
