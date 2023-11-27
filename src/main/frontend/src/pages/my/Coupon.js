@@ -9,11 +9,13 @@ function Coupon(){
     const [myCouponList, setMyCouponList] = useState([]);
     // 쿠폰 리스트 페이징
     const [myCouponPage, setMyCouponPage] = useState({});
+    // 검색조건
+    const [useYn, setUseYn] = useState('A');
     useEffect(()=>{
         const fetchData = async () => {
             const info = await getMyCouponCount();
             setMyCouponCount(info);
-            const couponList = await getMyCouponList(1);
+            const couponList = await getMyCouponList(1, useYn);
             setMyCouponList(couponList.dtoList);
             setMyCouponPage(couponList);
         };
@@ -25,16 +27,17 @@ function Coupon(){
         const date = formatter.formatToParts(new Date(dateString));
         return `${date[4].value}-${date[0].value}-${date[2].value}`;
     }
-    const handlePageClick = async (pageNumber) => {
-      const couponList = await getMyCouponList(pageNumber);
-      setMyCouponList(couponList.dtoList);
-      setMyCouponPage(couponList);
+    const handlePageClick = async (pageNumber, useYnInfo) => {
+        setUseYn(useYnInfo)
+        const couponList = await getMyCouponList(pageNumber, useYnInfo);
+        setMyCouponList(couponList.dtoList);
+        setMyCouponPage(couponList);
     };
     const renderPageNumbers = () => {
         const pageNumbers = [];
         for (let i = myCouponPage.start; i <= myCouponPage.end; i++) {
           pageNumbers.push(
-            <Pagination.Item key={i} active={i === myCouponPage.pg} onClick={()=>{handlePageClick(i)}}>
+            <Pagination.Item key={i} active={i === myCouponPage.pg} onClick={()=>{handlePageClick(i, useYn)}}>
               {i}
             </Pagination.Item>
           );
@@ -69,16 +72,16 @@ function Coupon(){
                         </div>
                         <div>
                             <div className="sort">
-                                <Button variant="danger" size="lg" className="all">
+                                <Button variant="danger" size="lg" className="all" onClick={()=>{handlePageClick(1, 'A')}}>
                                     전체
                                 </Button>
-                                <Button variant="danger" size="lg" className="accumulate">
+                                <Button variant="danger" size="lg" className="accumulate" onClick={()=>{handlePageClick(1, 'Y')}}>
                                     사용가능
                                 </Button>
-                                <Button variant="danger" size="lg" className="use">
+                                <Button variant="danger" size="lg" className="use" onClick={()=>{handlePageClick(1, 'N')}}>
                                     사용완료
                                 </Button>
-                                <Button variant="danger" size="lg" className="expiration">
+                                <Button variant="danger" size="lg" className="expiration" onClick={()=>{handlePageClick(1, 'Z')}}>
                                     만료
                                 </Button>
                             </div>

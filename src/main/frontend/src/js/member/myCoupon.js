@@ -5,8 +5,8 @@ const getMyCouponCount = async () => {
     return resp.data;
 }
 
-const getMyCouponList = async (pg) => {
-    const resp = await axios.get(`/api/getMyCouponList?pg=${pg}`);
+const getMyCouponList = async (pg, useYn) => {
+    const resp = await axios.get(`/api/getMyCouponList?pg=${pg}&useYn=${useYn}`);
     return resp.data;
 }
 
