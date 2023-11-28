@@ -11,6 +11,8 @@ import java.util.List;
 public interface MenuMapper {
     public List<MenuDTO> selectMenues(int start);
     public List<SideDTO> selectSides(int start);
+    public List<SideDTO> selectDrinks(int start);
     public int countMenu();
     public int countSide();
+    public int countDrink();
 }

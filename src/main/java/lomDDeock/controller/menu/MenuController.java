@@ -37,9 +37,16 @@ public class MenuController {
     }
     @ResponseBody
     @GetMapping("/menu/AdminMenuList")
-    public void adminMenuList (@RequestBody MenuPageRequestDTO menuPageRequestDTO) {
-        menuService.selectMenu(menuPageRequestDTO);
+    public MenuPageResponseDTO adminMenuList (@RequestParam(name = "cate", defaultValue = "normal") String cate,
+                                              @RequestParam(name = "page", defaultValue = "1") int page) {
+        MenuPageRequestDTO menuPageRequestDTO = new MenuPageRequestDTO();
+        menuPageRequestDTO.setCate(cate);
+        menuPageRequestDTO.setPg(page);
+        log.info("menuPageRequestDTO: " + menuPageRequestDTO);
+        MenuPageResponseDTO menuPageResponseDTO = menuService.selectMenu(menuPageRequestDTO);
+        log.info("menuPageResponseDTO: " + menuPageResponseDTO);
 
+        return menuPageResponseDTO;
     }
 
 }

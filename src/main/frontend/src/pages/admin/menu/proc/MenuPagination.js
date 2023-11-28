@@ -16,7 +16,7 @@ function MenuPagination({page, setPage, pageData}) {
 
     const renderPaginationNumbers = () => {
         const pages = [];
-        for (let i = pageData.start; i <= pageData.end; i++) {
+        for (let i = pageData.pageGroupStart; i <= pageData.pageGroupEnd; i++) {
             pages.push(
                 <span
                     key={i}
@@ -35,14 +35,14 @@ function MenuPagination({page, setPage, pageData}) {
         <div className="paging">
             <span
                 className={`num prev ${!pageData.prev ? ' disabled' : ''}`}
-                onClick={() => handlePageChange(pageData.start - 1)}
+                onClick={() => handlePageChange(pageData.pageGroupStart  - 1)}
             >
                 &lt;
             </span>
             {renderPaginationNumbers()}
             <span
                 className={`num next ${!pageData.next ? ' disabled' : ''}`}
-                onClick={() => handlePageChange(pageData.end + 1)}
+                onClick={() => handlePageChange(pageData.pageGroupEnd + 1)}
             >
                 &gt;
             </span>

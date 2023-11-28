@@ -194,6 +194,7 @@ a:hover {
     display: none;
 }
 
+
 /* ========== 메뉴등록 & 수정(adminMenuManagement) ========== */
 #adminMenuManagement > div > div.col > #registerForm > select {
     /* 유형선택 */
@@ -289,6 +290,26 @@ a:hover {
     /* 소분류 input필드 */
     width: 300px;
 }
+
+/* adminMenuList 페이징 */
+#adminMenuListTable .paging {
+    width: 100%;
+    text-align: center;
+    line-height: 100px;
+}
+#adminMenuListTable .paging > .num.on {
+    color: #ff744d;
+    font-weight: bold;
+}
+#adminMenuListTable .paging > .num {
+    font-size: 18px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+#adminMenuListTable .paging > .num.disabled {
+    display: none;
+}
+
 
 /* ========== 주문현황(adminOrderStatus) ========== */
 #adminOrderStatus select {

@@ -13,6 +13,7 @@ public class MenuPageRequestDTO {
     @Builder.Default
     private int pg = 1;
 
-    private String cate;
+    @Builder.Default
+    private String cate = "normal";
 
 }
