@@ -60,6 +60,29 @@
         </if>
         LIMIT #{pg}, 10
     </select>
+    <select id="getEventListTotal" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `cs`
+        WHERE 1 = 1
+        AND `group` = 'event'
+    </select>
+    <select id="getEventList" resultType="lomDDeock.dto.cs.CsDTO">
+        SELECT a.`cno` AS cno,
+        a.`group` AS `group`,
+        a.`cate` AS cate,
+        a.`title` AS title,
+        a.`content` AS content,
+        a.`registant` AS registant,
+        a.`regip` AS regip,
+        a.`rdate` AS rdate,
+        a.`beginDate` AS beginDate,
+        a.`period` AS period,
+        a.`status` AS status
+        FROM `cs` AS a
+        WHERE 1 = 1
+        AND a.`group` = 'event'
+        LIMIT #{pg}, 10
+    </select>
     <select id="getNoticeListTotal" resultType="java.lang.Integer">
         SELECT COUNT(*)
         FROM `cs`
@@ -82,6 +105,23 @@
         WHERE 1 = 1
         AND a.`group` = 'notice'
         LIMIT #{pg}, 10
+    </select>
+    <select id="getEventView" resultType="lomDDeock.dto.cs.CsDTO">
+        SELECT a.`cno` AS cno,
+        a.`group` AS `group`,
+        a.`cate` AS cate,
+        a.`title` AS title,
+        a.`content` AS content,
+        a.`registant` AS registant,
+        a.`regip` AS regip,
+        a.`rdate` AS rdate,
+        a.`beginDate` AS beginDate,
+        a.`period` AS period,
+        a.`status` AS status,
+        b.`cateName` AS cateName
+        FROM `cs` AS a
+        LEFT OUTER JOIN `cs_cate` AS b ON a.`cate` = b.`cateNo`
+        WHERE a.`cno` = ${cno}
     </select>
     <select id="getFaqListTotal" resultType="java.lang.Integer">
         SELECT COUNT(*)

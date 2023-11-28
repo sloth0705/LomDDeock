@@ -248,7 +248,7 @@ function App() {
                             <Routes>
                                 <Route path="/CsNotice" element={<CsNotice />} />
                                 <Route path="/CsEventList" element={<CsEventList />} />
-                                <Route path="/CsEventView" element={<CsEventView />} />
+                                <Route path="/CsEventView/:cno" element={<CsEventView />} />
                                 <Route path="/CsFaq" element={<CsFaq />} />
                                 <Route path="/CsQnaList" element={<CsQnaList />} />
                                 <Route path="/CsQnaWrite" element={<CsQnaWrite />} />
