@@ -17,14 +17,10 @@ public class CsPageRequestDTO {
     @Builder.Default
     private int size = 10;
 
-    @Builder.Default
-    private String group = "notice";
+    private String group;
 
     @Builder.Default
     private String cate = "0";
-
-    @Builder.Default
-    private int cno = 0;
 
     private String registant;
     private String title;

@@ -6,7 +6,7 @@ function Main() {
     return(
         <section className="main">
             <div className="banner">
-                <img src={blankImage} alt="배너"/>
+                <img src="/test/27_pc.jpg" alt="배너"/>
             </div>
             {/* subMenu 시작 */}
             <div className="subMenu">
