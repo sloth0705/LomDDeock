@@ -85,13 +85,24 @@ public class MenuService {
 
     public MenuPageResponseDTO selectMenu(MenuPageRequestDTO menuPageRequestDTO) {
         MenuPageResponseDTO menuResponseDTO = null;
-        if(menuPageRequestDTO.getGroup() == null || menuPageRequestDTO.getGroup().equals("")){
+        if(menuPageRequestDTO.getCate().equals("normal")){
 
-            int total = menuMapper.countMenu() + menuMapper.countSide();
+            int total = menuMapper.countMenu();
             menuResponseDTO = new MenuPageResponseDTO(menuPageRequestDTO, total);
             List<MenuDTO> menues= menuMapper.selectMenues(menuResponseDTO.getStartNum());
-            List<SideDTO> sides = menuMapper.selectSides(menuResponseDTO.getStartNum());
+            log.info("menues : "+menues);
             menuResponseDTO.setMenues(menues);
+        }else if(menuPageRequestDTO.getCate().equals("side")){
+            int total = menuMapper.countSide();
+            menuResponseDTO = new MenuPageResponseDTO(menuPageRequestDTO, total);
+            List<SideDTO> sides = menuMapper.selectSides(menuResponseDTO.getStartNum());
+            log.info("sides : "+sides);
+            menuResponseDTO.setSides(sides);
+        }else {
+            int total = menuMapper.countDrink();
+            menuResponseDTO = new MenuPageResponseDTO(menuPageRequestDTO, total);
+            List<SideDTO> sides = menuMapper.selectSides(menuResponseDTO.getStartNum());
+            log.info("sides : "+sides);
             menuResponseDTO.setSides(sides);
         }
         return menuResponseDTO;
