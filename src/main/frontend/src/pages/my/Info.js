@@ -95,18 +95,11 @@ function Info() {
                                     <td>
                                         <span>{userInfo.hp}</span>
                                     </td>
-                                    <td>
-                                        <button className="btn modify">인증</button>
-                                        <button className="btn modify">수정</button>
-                                    </td>
                                 </tr>
                                 <tr>
                                     <td>주소</td>
                                     <td>
                                         <span>{userInfo.addr1 + '  ' + userInfo.addr2}</span>&nbsp;&nbsp;
-                                    </td>
-                                    <td>
-                                        <button className="btn modify">수정</button>
                                     </td>
                                 </tr>
                             </table>

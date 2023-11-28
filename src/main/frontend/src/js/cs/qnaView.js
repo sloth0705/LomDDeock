@@ -5,4 +5,9 @@ const getQnaView = async (cno) => {
     return resp.data;
 }
 
-export { getQnaView }
+const deleteCs = async (cno) => {
+    const resp = await axios.post('/api/deleteCs', { cno: cno });
+    return resp.data;
+}
+
+export { getQnaView, deleteCs }

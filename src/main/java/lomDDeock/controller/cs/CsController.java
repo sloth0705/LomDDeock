@@ -33,6 +33,16 @@ public class CsController {
         return ResponseEntity.ok(csService.getQnaCate());
     }
 
+    @GetMapping("/getEventList")
+    public ResponseEntity<CsListPageResponse> getEventList(@RequestParam(required = false, defaultValue = "1") int pg){
+        return ResponseEntity.ok(csService.getEventList(pg));
+    }
+
+    @GetMapping("/getEventView")
+    public ResponseEntity<CsDTO> getEventView(@RequestParam int cno){
+        return ResponseEntity.ok(csService.getEventView(cno));
+    }
+
     @GetMapping("/getNoticeList")
     public ResponseEntity<CsListPageResponse> getNoticeList(@RequestParam(required = false, defaultValue = "1") int pg){
         return ResponseEntity.ok(csService.getNoticeList(pg));
@@ -47,5 +57,10 @@ public class CsController {
     @GetMapping("/getQnaView")
     public ResponseEntity<CsDTO> getQnaView(@RequestParam int cno){
         return ResponseEntity.ok(csService.getQnaView(cno));
+    }
+
+    @PostMapping("/deleteCs")
+    public ResponseEntity<Boolean> deleteCs(@RequestBody CsDTO csDTO) {
+        return ResponseEntity.ok(csService.deleteCs(csDTO));
     }
 }
