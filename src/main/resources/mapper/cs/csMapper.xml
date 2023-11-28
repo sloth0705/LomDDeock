@@ -60,6 +60,35 @@
         </if>
         LIMIT #{pg}, 10
     </select>
+    <select id="getQnaListTotal" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `cs`
+        WHERE 1 = 1
+        <if test="cateNo != '' and cateNo != null and cateNo != 0">
+            AND `cate` = #{cateNo}
+        </if>
+    </select>
+    <select id="getQnaList" resultType="lomDDeock.dto.cs.CsDTO">
+        SELECT a.`cno` AS cno,
+        a.`group` AS `group`,
+        a.`cate` AS cate,
+        a.`title` AS title,
+        a.`content` AS content,
+        a.`registant` AS registant,
+        a.`regip` AS regip,
+        a.`rdate` AS rdate,
+        a.`beginDate` AS beginDate,
+        a.`period` AS period,
+        a.`status` AS status,
+        b.`cateName` AS cateName
+        FROM `cs` AS a
+        LEFT OUTER JOIN `cs_cate` AS b ON a.`cate` = b.`cateNo`
+        WHERE 1 = 1
+        <if test="cateNo != '' and cateNo != null and cateNo != 0">
+            AND a.`cate` = #{cateNo}
+        </if>
+        LIMIT #{pg}, 10
+    </select>
     <select id="getEventListTotal" resultType="java.lang.Integer">
         SELECT COUNT(*)
         FROM `cs`

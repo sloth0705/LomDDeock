@@ -1,8 +1,30 @@
-import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import {Container, ListGroup, Col, Row, Button, Accordion, Table, Pagination} from 'react-bootstrap';
+import { getQnaView, deleteCs } from '../../js/cs/qnaView.js';
 import '../../css/cs/cs.css';
 function QnaView() {
+    const { cno } = useParams();
+    const [qnaView, setQnaView] = useState({});
+    const [replyForm, setReplyForm] = useState({});
+    useEffect(()=>{
+        const fetchData = async () => {
+            const qnaInfo = await getQnaView(cno);
+            setQnaView(qnaInfo);
+            setReplyForm(qnaInfo.replyForm);
+        };
+        fetchData();
+    },[])
+    const qnaDelete = async () => {
+        if (window.confirm('해당 문의글을 삭제하시겠습니까?')) {
+            const flag = await deleteCs(cno);
+            if (flag) {
+                window.location.href = '/my/myQnaList';
+            } else {
+                alert('문제가 발생하였습니다.');
+            }
+        }
+    }
     return (
         <section className="cs">
             <Container id="qna-view">
@@ -32,35 +54,37 @@ function QnaView() {
                                 <tbody>
                                 <tr>
                                     <td>유형</td>
-                                    <td>회원</td>
+                                    <td>{qnaView.cateName}</td>
                                 </tr>
                                 <tr>
                                     <td>제목</td>
-                                    <td>이메일을 변경하고 싶습니다.</td>
+                                    <td>{qnaView.title}</td>
                                 </tr>
                                 <tr>
                                     <td className="align-center">내용</td>
-                                    <td>
-                                        <span>이전에 사용했던 이메일을 삭제해서 다른 이메일로 변경하고 싶은데 어떻게 해야 되나요?</span>
-                                    </td>
+                                    <td>{qnaView.content}</td>
                                 </tr>
-                                <tr>
-                                    <td className="align-center">답변</td>
-                                    <td>
-                                        <span>
-                                        언제나 맛있는 음식을 제공하는 롬복떡볶이입니다! <br/>
-                                        이메일 변경은 우측 상단의 '마이페이지' -&gt; '내 정보'에서 바로 변경하실 수 있습니다. <br/>
-                                        만일 이메일이 정상적으로 변경되지 않을시 고객센터에 다시 문의해주시길 바랍니다.
-                                        </span>
-                                    </td>
-                                </tr>
+                                {replyForm === null ? null : (
+                                    <tr>
+                                        <td className="align-center">답변</td>
+                                        <td>
+                                            <span>
+                                                {replyForm.reply}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                )}
                                 </tbody>
                             </Table>
                             <div className="btn-qna">
-                                <button className="btn">삭제</button><button className="btn">목록</button>
+                                <button className="btn" onClick={()=>{qnaDelete()}}>
+                                    삭제
+                                </button>
+                                <button className="btn" onClick={()=>{window.location.href='/cs/CsQnaList'}}>
+                                    목록
+                                </button>
                             </div>
                         </div>
-
                     </Col>
                     {/* content end */}
                 </Row>

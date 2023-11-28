@@ -252,7 +252,7 @@ function App() {
                                 <Route path="/CsFaq" element={<CsFaq />} />
                                 <Route path="/CsQnaList" element={<CsQnaList />} />
                                 <Route path="/CsQnaWrite" element={<CsQnaWrite />} />
-                                <Route path="/CsQnaView" element={<CsQnaView />} />
+                                <Route path="/CsQnaView/:cno" element={<CsQnaView />} />
                             </Routes>
                         </BrandLayout>
                         <Footer/>
