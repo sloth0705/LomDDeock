@@ -58,4 +58,9 @@ public class CsController {
     public ResponseEntity<CsDTO> getQnaView(@RequestParam int cno){
         return ResponseEntity.ok(csService.getQnaView(cno));
     }
+
+    @PostMapping("/deleteCs")
+    public ResponseEntity<Boolean> deleteCs(@RequestBody CsDTO csDTO) {
+        return ResponseEntity.ok(csService.deleteCs(csDTO));
+    }
 }

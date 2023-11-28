@@ -1,7 +1,7 @@
 import { Routes, Route, BrowserRouter, Link, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { Container,ListGroup, Col, Row, Button , Table, Pagination, Form } from 'react-bootstrap';
-import { getQnaView } from '../../js/cs/qnaView.js';
+import { getQnaView, deleteCs } from '../../js/cs/qnaView.js';
 import '../../css/my/my.css';
 function QnaList(){
     const { cno } = useParams();
@@ -15,6 +15,16 @@ function QnaList(){
         };
         fetchData();
     },[])
+    const qnaDelete = async () => {
+        if (window.confirm('해당 문의글을 삭제하시겠습니까?')) {
+            const flag = await deleteCs(cno);
+            if (flag) {
+                window.location.href = '/my/myQnaList';
+            } else {
+                alert('문제가 발생하였습니다.');
+            }
+        }
+    }
     return (
         <section className="my">
             <div className="myBanner">
@@ -66,7 +76,7 @@ function QnaList(){
                                 </tbody>
                             </Table>
                             <div className="btn-qna">
-                                <Button variant="secondary" size="lg" className="delete-myQna">
+                                <Button variant="secondary" size="lg" className="delete-myQna" onClick={()=>{qnaDelete()}}>
                                     삭제
                                 </Button>
                                 <Link to="/my/myQnaList">
