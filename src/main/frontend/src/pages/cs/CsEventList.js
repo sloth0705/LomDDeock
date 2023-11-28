@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { Container,ListGroup, Col, Row, Button , Accordion } from 'react-bootstrap';
+import { getEventList } from '../../js/cs/eventList.js';
 import '../../css/cs/cs.css';
 function EventList() {
     return (
