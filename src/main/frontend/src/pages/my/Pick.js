@@ -3,9 +3,9 @@ import { Container,ListGroup, Col, Row, Figure, Button , Table,Pagination,Card }
 import { getWishList } from '../../js/member/myPick.js'
 import '../../css/my/my.css';
 function Pick(){
-    // 문의내역 리스트
-    const [WishList, setWishList] = useState([]);
-    // 문의내역 리스트 페이징
+    // 찜목록 리스트
+    const [wishList, setWishList] = useState([]);
+    // 찜목록 리스트 페이징
     const [wishPage, setWishPage] = useState({});
     useEffect(() => {
         const fetchData = async () => {
@@ -52,7 +52,7 @@ function Pick(){
                     {/* content */}
                     <Col sm={9}>
                         <div className="pick-list">
-                            {WishList.map((wish) => (
+                            {wishList.map((wish) => (
                             <Card>
                                 <Card.Img variant="top" src={`/thumbs/${wish.thumb}`} className="my-order-img"/>
                                 <Card.Body style={{maxWidth: '548px'}}>

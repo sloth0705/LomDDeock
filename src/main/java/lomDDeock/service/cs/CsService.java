@@ -41,6 +41,28 @@ public class CsService {
         return csMapper.getQnaCate();
     }
 
+    public CsListPageResponse getEventList(int pg) {
+        // 검색조건을 담는 Map 생성
+        Map<String, Object> searchMap = new HashMap<>();
+        // 검색조건 넣기
+        searchMap.put("pg", (pg - 1) * 10);
+        int total = csMapper.getEventListTotal(searchMap);
+        List<CsDTO> dtoList = csMapper.getEventList(searchMap);
+        return CsListPageResponse.builder()
+                .pg(pg)
+                .total(total)
+                .dtoList(dtoList)
+                .build();
+    }
+
+    public CsDTO getEventView(int cno) {
+        // 검색조건을 담는 Map 생성
+        Map<String, Object> searchMap = new HashMap<>();
+        // 검색조건 넣기
+        searchMap.put("cno", cno);
+        return csMapper.getEventView(searchMap);
+    }
+
     public CsListPageResponse getNoticeList(int pg) {
         // 검색조건을 담는 Map 생성
         Map<String, Object> searchMap = new HashMap<>();
