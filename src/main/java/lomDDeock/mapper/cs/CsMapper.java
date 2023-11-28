@@ -18,6 +18,8 @@ public interface CsMapper {
 
     public int getMyQnaListTotal(Map<String, Object> searchMap);
     public List<CsDTO> getMyQnaList(Map<String, Object> searchMap);
+    public int getQnaListTotal(Map<String, Object> searchMap);
+    public List<CsDTO> getQnaList(Map<String, Object> searchMap);
     public int getEventListTotal(Map<String, Object> searchMap);
     public List<CsDTO> getEventList(Map<String, Object> searchMap);
     public CsDTO getEventView(Map<String, Object> searchMap);

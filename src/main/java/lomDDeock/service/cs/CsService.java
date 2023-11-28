@@ -40,6 +40,22 @@ public class CsService {
                 .build();
     }
 
+    public CsListPageResponse getQnaList(int pg, int cateNo) {
+        // 검색조건을 담는 Map 생성
+        Map<String, Object> searchMap = new HashMap<>();
+
+        // 검색조건 넣기
+        searchMap.put("pg", (pg - 1) * 10);
+        searchMap.put("cateNo", cateNo);
+        List<CsDTO> dtoList = csMapper.getQnaList(searchMap);
+        int total = csMapper.getQnaListTotal(searchMap);
+        return CsListPageResponse.builder()
+                .pg(pg)
+                .total(total)
+                .dtoList(dtoList)
+                .build();
+    }
+
     public List<CsCateDTO> getQnaCate() {
         return csMapper.getQnaCate();
     }

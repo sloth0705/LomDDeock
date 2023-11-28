@@ -1,8 +1,75 @@
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Container, ListGroup, Col, Row, Button, Accordion, Table, Pagination} from 'react-bootstrap';
+import { getQnaList, getQnaCate } from '../../js/cs/qnaList.js';
 import '../../css/cs/cs.css';
 function QnaList() {
+     // 문의내역 리스트
+     const [qnaList, setQnaList] = useState([]);
+     // 문의내역 리스트 페이징
+     const [qnaPage, setQnaPage] = useState({});
+     // 문의 카테고리
+     const [qnaCate, setQnaCate] = useState([]);
+     // 선택한 카테고리
+     const [selectedValue, setSelectedValue] = useState('0');
+     useEffect(() => {
+        const fetchData = async () => {
+            const qnaInfo = await getQnaList(1, selectedValue);
+            setQnaList(qnaInfo.dtoList);
+            setQnaPage(qnaInfo);
+            const qnaCateList = await getQnaCate();
+            setQnaCate(qnaCateList);
+        };
+        fetchData();
+     },[])
+
+     const handlePageClick = async (pageNumber) => {
+        const qnaInfo = await getQnaList(pageNumber, selectedValue);
+        setQnaList(qnaInfo.dtoList);
+        setQnaPage(qnaInfo);
+     };
+     const renderPageNumbers = () => {
+         const pageNumbers = [];
+         for (let i = qnaPage.start; i <= qnaPage.end; i++) {
+            pageNumbers.push(
+            <Pagination.Item key={i} active={i === qnaPage.pg} onClick={()=>{handlePageClick(i)}}>
+                {i}
+            </Pagination.Item>
+            );
+         }
+         return pageNumbers;
+     };
+     // 날짜 yyy-mm-dd로 변환
+     function formatDate(dateString) {
+         const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+         const formatter = new Intl.DateTimeFormat('en-US', options);
+         const date = formatter.formatToParts(new Date(dateString));
+         return `${date[4].value}-${date[0].value}-${date[2].value}`;
+     }
+     function filtering(name) {
+       if (name.length < 3) {
+         return name;
+       }
+       const firstChar = name.charAt(0);
+       const lastChar = name.charAt(name.length - 1);
+       const filteredName = firstChar + '*'.repeat(name.length - 2) + lastChar;
+       return filteredName;
+     }
+     // status 한글로 변환
+     const getStatus = (status) => {
+         if (status == 0) {
+            return "문의중";
+         } else if (status == 1) {
+            return "답변완료";
+         }
+     }
+     const handleChange = async (event) => {
+         const selectedVal = event.target.value;
+         setSelectedValue(selectedVal);
+         const qnaInfo = await getQnaList(1, selectedVal);
+         setQnaList(qnaInfo.dtoList);
+         setQnaPage(qnaInfo);
+     };
     return (
         <section className="cs">
             <Container id="qna-list">
@@ -25,16 +92,11 @@ function QnaList() {
                             <span> 고객센터 > <strong>고객의 소리</strong> </span>
                         </div>
                         <div className="find-csQna">
-                            <select>
-                                <option>전체</option>
-                                <option>이벤트</option>
-                                <option>주문/결제</option>
-                                <option>취소/환불</option>
-                                <option>혜택</option>
-                                <option>이용문의</option>
-                                <option>회원정보</option>
-                                <option>쿠폰</option>
-                                <option>기타</option>
+                            <select value={selectedValue} onChange={handleChange}>
+                                <option value='0'>전체</option>
+                                {qnaCate.map((qna) => (
+                                    <option value={qna.cateNo}>{qna.cateName}</option>
+                                ))}
                             </select>
                         </div>
                         <div className="csQna-list">
@@ -50,61 +112,40 @@ function QnaList() {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>14</td>
-                                    <td>메뉴</td>
-                                    <td><Link to="/cs/CsQnaView">마라떡볶이인데 안 매워요</Link></td>
-                                    <td>manman97</td>
-                                    <td>2024-10-10</td>
-                                    <td className="answer">문의중</td>
-                                </tr>
-                                <tr>
-                                    <td>13</td>
-                                    <td>혜택</td>
-                                    <td><Link to="/cs/CsQnaView">멤버쉽 같은 시스템은 없는건가요</Link></td>
-                                    <td>mini9012</td>
-                                    <td>2024-10-10</td>
-                                    <td className="answer">문의중</td>
-                                </tr>
-                                <tr>
-                                    <td>12</td>
-                                    <td>메뉴</td>
-                                    <td><Link to="/cs/CsQnaView">맛에 특유의 카레향이 나던데 레시피...</Link></td>
-                                    <td>imposter</td>
-                                    <td>2024-10-10</td>
-                                    <td className="answer">문의중</td>
-                                </tr>
-                                <tr>
-                                    <td>11</td>
-                                    <td>회원정보</td>
-                                    <td><Link to="/cs/CsQnaView">이거 방법이 없을까요?</Link></td>
-                                    <td>id1234</td>
-                                    <td>2024-10-10</td>
-                                    <td className="answer complete">답변완료</td>
-                                </tr>
-                                <tr>
-                                    <td>10</td>
-                                    <td>쿠폰</td>
-                                    <td><Link to="/cs/CsQnaView">쿠폰 사용하려는데 적용이 되지 않습...</Link></td>
-                                    <td>mariadb</td>
-                                    <td>2024-10-10</td>
-                                    <td className="answer complete">답변완료</td>
-                                </tr>
+                                    {qnaList.map((qna) => (
+                                        <tr>
+                                            <td>{qna.cno}</td>
+                                            <td>{qna.cateName}</td>
+                                            <td><Link to={`/cs/CsQnaView/${qna.cno}`}>{qna.title}</Link></td>
+                                            <td>
+                                                {filtering(qna.registant)}
+                                            </td>
+                                            <td>
+                                                {formatDate(qna.rdate)}
+                                            </td>
+                                            <td className={`${qna.status === 1 ? 'answer-complete' : ''}`}>
+                                                {getStatus(qna.status)}
+                                            </td>
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </Table>
                             <div className="buttons">
                                 <Link to="/cs/CsQnaWrite" className="btn cs-write">작성</Link>
                             </div>
-                            <div className="paging">
-                                <span className="num prev"><Link to="#">&lt;</Link></span>
-
-                                <span className="num on"><Link to="#">1</Link></span>
-                                <span className="num"><Link to="#">2</Link></span>
-                                <span className="num"><Link to="#">3</Link></span>
-                                <span className="num"><Link to="#">4</Link></span>
-                                <span className="num"><Link to="#">5</Link></span>
-                                <span className="num next"><Link to="#">&gt;</Link></span>
-                            </div>
+                            <Pagination style={{justifyContent:'center'}}>
+                                {qnaPage.prev && (
+                                    <>
+                                      <Pagination.Prev onClick={()=>{handlePageClick(qnaPage.start - 1)}}/>
+                                    </>
+                                )}
+                                {renderPageNumbers()}
+                                {qnaPage.next && (
+                                    <>
+                                        <Pagination.Next onClick={()=>{handlePageClick(qnaPage.end + 1)}}/>
+                                    </>
+                                )}
+                            </Pagination>
                         </div>
                     </Col>
                     {/* content end */}

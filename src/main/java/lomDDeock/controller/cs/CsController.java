@@ -33,6 +33,12 @@ public class CsController {
         return ResponseEntity.ok(csService.getQnaCate());
     }
 
+    @GetMapping("/getQnaList")
+    public ResponseEntity<CsListPageResponse> getQnaList(@RequestParam(required = false, defaultValue = "1") int pg,
+                                                        @RequestParam(required = false, defaultValue = "0") int cateNo){
+        return ResponseEntity.ok(csService.getQnaList( pg, cateNo));
+    }
+
     @GetMapping("/getEventList")
     public ResponseEntity<CsListPageResponse> getEventList(@RequestParam(required = false, defaultValue = "1") int pg){
         return ResponseEntity.ok(csService.getEventList(pg));
