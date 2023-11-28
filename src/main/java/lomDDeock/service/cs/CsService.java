@@ -6,7 +6,9 @@ import lomDDeock.dto.cs.CsPageResponseDTO;
 import lomDDeock.dto.cs.CsReplyDTO;
 import lomDDeock.dto.member.CsListPageResponse;
 import lomDDeock.dto.member.MemberDTO;
+import lomDDeock.entity.cs.CsEntity;
 import lomDDeock.mapper.cs.CsMapper;
+import lomDDeock.repository.cs.CsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class CsService {
     private final CsMapper csMapper;
+    private final CsRepository csRepository;
 
     // 로그인한 사용자의 문의내역 가져오기
     public CsListPageResponse getMyQnaList(MemberDTO memberDTO, int pg, int cateNo) {
@@ -101,5 +104,10 @@ public class CsService {
         CsReplyDTO csReplyDTO = csMapper.getQnaReply(searchMap);
         csDTO.setReplyForm(csReplyDTO);
         return csDTO;
+    }
+
+    public boolean deleteCs(CsDTO csDTO) {
+        csRepository.deleteById(csDTO.getCno());
+        return true;
     }
 }
