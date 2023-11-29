@@ -214,7 +214,7 @@ function App() {
                                 <Route path="/banner/AdminBanner" element={<AdminBanner />} />
                                 <Route path="/event/AdminEventList" element={<AdminEventList />} />
                                 <Route path="/event/AdminEventRegister" element={<AdminEventRegister />} />
-                                <Route path="/event/AdminEventModify" element={<AdminEventModify />} />
+                                <Route path="/event/AdminEventModify/:cno" element={<AdminEventModify />} />
                                 <Route path="/coupon/AdminCouponList" element={<AdminCouponList />} />
                                 <Route path="/coupon/AdminCouponPayment" element={<AdminCouponPayment />} />
                                 <Route path="/notice/AdminNoticeList" element={<AdminNoticeList />} />

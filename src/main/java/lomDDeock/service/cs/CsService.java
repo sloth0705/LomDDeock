@@ -154,4 +154,21 @@ public class CsService {
                 .build();
         return csRepository.save(cs).getCno() > 0;
     }
+
+    public boolean sendEvent(MemberDTO memberDTO, CsDTO csDTO) {
+        CsEntity cs = CsEntity.builder()
+                .group(csDTO.getGroup())
+                .title(csDTO.getTitle())
+                .content(csDTO.getContent())
+                .registant(memberDTO.getEmail())
+                .build();
+        return csRepository.save(cs).getCno() > 0;
+    }
+
+    public boolean modifyEvent(MemberDTO memberDTO, CsDTO csDTO) {
+        CsEntity cs = csRepository.findById(csDTO.getCno()).get();
+        cs.setTitle(csDTO.getTitle());
+        cs.setContent(csDTO.getContent());
+        return csRepository.save(cs).getCno() > 0;
+    }
 }
