@@ -81,4 +81,14 @@ public class CsController {
     public ResponseEntity<Boolean> sendQna(@AuthenticationPrincipal MemberDTO memberDTO, @RequestBody CsDTO csDTO) {
         return ResponseEntity.ok(csService.sendQna(memberDTO, csDTO));
     }
+
+    @PostMapping("/sendEvent")
+    public ResponseEntity<Boolean> sendEvent(@AuthenticationPrincipal MemberDTO memberDTO, @RequestBody CsDTO csDTO) {
+        return ResponseEntity.ok(csService.sendEvent(memberDTO, csDTO));
+    }
+
+    @PostMapping("/modifyEvent")
+    public ResponseEntity<Boolean> modifyEvent(@AuthenticationPrincipal MemberDTO memberDTO, @RequestBody CsDTO csDTO) {
+        return ResponseEntity.ok(csService.modifyEvent(memberDTO, csDTO));
+    }
 }
