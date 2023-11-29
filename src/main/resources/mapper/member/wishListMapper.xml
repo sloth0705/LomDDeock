@@ -17,8 +17,10 @@
         b.`descript` AS descript,
         b.`price` AS price
         FROM `wishList` AS a
-        LEFT OUTER JOIN `menu` AS b ON a.`menuNo` = b.`menuNo` AND b.`deleteYN` = 'Y' AND b.`lastRevision` = 'Y'
+        LEFT OUTER JOIN `menu` AS b ON a.`menuNo` = b.`menuNo`
         WHERE a.`email` = #{email}
+        AND b.`deleteYN` = 'Y'
+        AND b.`lastRevision` = 'Y'
         LIMIT #{pg}, 10
     </select>
 </mapper>

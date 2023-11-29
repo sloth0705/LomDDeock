@@ -126,4 +126,15 @@ public class CsService {
         csRepository.deleteById(csDTO.getCno());
         return true;
     }
+
+    public boolean sendQna(MemberDTO memberDTO, CsDTO csDTO) {
+        CsEntity cs = CsEntity.builder()
+                .group(csDTO.getGroup())
+                .cate(csDTO.getCate())
+                .title(csDTO.getTitle())
+                .content(csDTO.getContent())
+                .registant(memberDTO.getEmail())
+                .build();
+        return csRepository.save(cs).getCno() > 0;
+    }
 }
