@@ -69,4 +69,9 @@ public class CsController {
     public ResponseEntity<Boolean> deleteCs(@RequestBody CsDTO csDTO) {
         return ResponseEntity.ok(csService.deleteCs(csDTO));
     }
+
+    @PostMapping("/sendQna")
+    public ResponseEntity<Boolean> sendQna(@AuthenticationPrincipal MemberDTO memberDTO, @RequestBody CsDTO csDTO) {
+        return ResponseEntity.ok(csService.sendQna(memberDTO, csDTO));
+    }
 }
