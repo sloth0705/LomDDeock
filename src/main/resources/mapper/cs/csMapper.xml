@@ -67,6 +67,9 @@
         <if test="cateNo != '' and cateNo != null and cateNo != 0">
             AND `cate` = #{cateNo}
         </if>
+        <if test="search != '' and search != null">
+            AND (`title` LIKE  CONCAT('%', #{search}, '%') OR `content` LIKE  CONCAT('%', #{search}, '%'))
+        </if>
     </select>
     <select id="getQnaList" resultType="lomDDeock.dto.cs.CsDTO">
         SELECT a.`cno` AS cno,
@@ -80,12 +83,20 @@
         a.`beginDate` AS beginDate,
         a.`period` AS period,
         a.`status` AS status,
-        b.`cateName` AS cateName
+        b.`cateName` AS cateName,
+        c.`qno` AS qno,
+        c.`manager` AS manager,
+        c.`reply` AS reply,
+        c.`rdate` AS replyDate
         FROM `cs` AS a
         LEFT OUTER JOIN `cs_cate` AS b ON a.`cate` = b.`cateNo`
+        LEFT OUTER JOIN `cs_reply` AS c ON a.`cno` = c.`cno`
         WHERE 1 = 1
         <if test="cateNo != '' and cateNo != null and cateNo != 0">
             AND a.`cate` = #{cateNo}
+        </if>
+        <if test="search != '' and search != null">
+            AND (a.`title` LIKE  CONCAT('%', #{search}, '%') OR a.`content` LIKE  CONCAT('%', #{search}, '%'))
         </if>
         LIMIT #{pg}, 10
     </select>
