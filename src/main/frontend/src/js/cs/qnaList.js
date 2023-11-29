@@ -10,4 +10,9 @@ const getQnaCate = async () => {
     return resp.data;
 }
 
-export { getQnaList, getQnaCate }
+const getQnaListAdmin = async(pg, cateNo, search) => {
+    const resp = await axios.get(`/api/getQnaListAdmin?pg=${pg}&cateNo=${cateNo}&search=${search}`);
+    return resp.data;
+}
+
+export { getQnaList, getQnaCate, getQnaListAdmin }

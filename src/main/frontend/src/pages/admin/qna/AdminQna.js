@@ -1,11 +1,68 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import '../../../css/admin/admin.css';
-import {Accordion, Button, Col, Container, InputGroup, Row} from "react-bootstrap";
+import {Accordion, Button, Col, Container, InputGroup, Row, Pagination} from "react-bootstrap";
 import AdminAsideMenu from "../AdminAsideMenu";
 import Form from "react-bootstrap/Form";
 import {Link} from "react-router-dom";
+import { getQnaList, getQnaCate, getQnaListAdmin } from '../../../js/cs/qnaList.js';
+import { deleteCs } from '../../../js/cs/qnaView.js';
 
-function adminQna() {
+function AdminQna() {
+    // 문의내역 리스트
+     const [qnaList, setQnaList] = useState([]);
+     // 문의내역 리스트 페이징
+     const [qnaPage, setQnaPage] = useState({});
+    // 문의 카테고리
+     const [qnaCate, setQnaCate] = useState([]);
+     // 선택한 카테고리
+     const [selectedValue, setSelectedValue] = useState('0');
+     // 검색조건
+     const [search, setSearch] = useState('');
+     useEffect(() => {
+         const fetchData = async () => {
+             const qnaInfo = await getQnaListAdmin(1, selectedValue, '');
+             setQnaList(qnaInfo.dtoList);
+             setQnaPage(qnaInfo);
+             const qnaCateList = await getQnaCate();
+             setQnaCate(qnaCateList);
+         };
+         fetchData();
+     },[])
+     const handlePageClick = async (pageNumber) => {
+         const qnaInfo = await getQnaListAdmin(pageNumber, selectedValue, search);
+         setQnaList(qnaInfo.dtoList);
+         setQnaPage(qnaInfo);
+      };
+      const renderPageNumbers = () => {
+          const pageNumbers = [];
+          for (let i = qnaPage.start; i <= qnaPage.end; i++) {
+             pageNumbers.push(
+             <Pagination.Item key={i} active={i === qnaPage.pg} onClick={()=>{handlePageClick(i)}}>
+                 {i}
+             </Pagination.Item>
+             );
+          }
+          return pageNumbers;
+      };
+      // 날짜 yyy-mm-dd로 변환
+       function formatDate(dateString) {
+           const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+           const formatter = new Intl.DateTimeFormat('en-US', options);
+           const date = formatter.formatToParts(new Date(dateString));
+           return `${date[4].value}-${date[0].value}-${date[2].value}`;
+       }
+     const handleChange = async (event) => {
+          const selectedVal = event.target.value;
+          setSelectedValue(selectedVal);
+          const qnaInfo = await getQnaListAdmin(1, selectedVal, search);
+          setQnaList(qnaInfo.dtoList);
+          setQnaPage(qnaInfo);
+      };
+      const sendDeleteCs = async (cno) => {
+        await deleteCs(cno);
+        alert('삭제되었습니다.');
+        handlePageClick(1);
+      }
     return (
         <section id="admin">
             <Container id="adminQna">
@@ -14,185 +71,70 @@ function adminQna() {
                     <AdminAsideMenu/>
                     <Col>
                         {/* 유형선택 */}
-                        <Form.Select aria-label="유형선택">
-                            <option value="all">전체</option>
-                            <option value="event">이벤트</option>
-                            <option value="order">주문/결제</option>
-                            <option value="cancel">취소/환불</option>
-                            <option value="benefit">혜택</option>
-                            <option value="inquiry">이용문의</option>
-                            <option value="userInformation">회원정보</option>
-                            <option value="coupon">쿠폰</option>
-                            <option value="etc">기타</option>
+                        <Form.Select aria-label="유형선택" value={selectedValue} onChange={handleChange}>
+                            <option value='0'>전체</option>
+                            {qnaCate.map((qna) => (
+                                <option value={qna.cateNo}>{qna.cateName}</option>
+                            ))}
                         </Form.Select>
                         {/* 검색창 */}
                         <InputGroup>
                             <Form.Control
                                 placeholder="검색어 입력"
+                                value={search}
+                                onChange={(e)=>{setSearch(e.target.value)}}
                             />
-                            <Button variant="outline-secondary" id="button-addon2">검색</Button>
+                            <Button variant="outline-secondary" id="button-addon2" onClick={()=>{handlePageClick(1)}}>검색</Button>
                         </InputGroup>
                         <Accordion>
-                            <Accordion.Item eventKey="0">
-                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?<span className="date">2023-11-01</span></Accordion.Header>
+                            {qnaList.map((qna, index) => (
+                            <Accordion.Item eventKey={`${qna.cno}`}>
+                                <Accordion.Header>
+                                    {qna.title}
+                                    <span className="date">
+                                        {formatDate(qna.rdate)}
+                                    </span>
+                                </Accordion.Header>
                                 <Accordion.Body>
                                     <p>
-                                        언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
-                                        <br/>
-                                        <br/>
-                                        비회원이신 고객님께서는 당첨자 발표 페이지에서 비회원 전용 상품 수령 링크로 이동하시면<br/>
-                                        이메일 혹은 휴대폰번호 입력을 통하여 3일 내로 쿠폰을 수령하실 수 있습니다.<br/>
-                                        당첨 상품 유형이 제품일시 이에 맞게 주소 입력도 가능하니 해당 페이지를 확인해주시길 바랍니다.
-                                        <br/>
+                                        {qna.content}
+                                    </p>
+                                    <p>
+                                        작성자 : {qna.registant}<br/>
+                                        작성일 : {formatDate(qna.rdate)}
+                                    </p>
+                                    <p>
+                                        <button onClick={()=>{sendDeleteCs(qna.cno)}}>삭제</button>
+                                    </p>
+                                    {qna.qno > 0 ? (
+                                    <>
+                                    <p>
+                                        {qna.reply}
                                         <br/>
                                         ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
                                     </p>
                                     <p>
-                                        작성자 : aaa<br/>
-                                        작성일 : 2023.11.01
+                                        답변완료일 : {qna.replyDate}
                                     </p>
-                                    <p>
-                                        <button>삭제</button>
-                                    </p>
-                                    <p>
-                                        언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
-                                        <br/>
-                                        ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
-                                    </p>
-                                    <p>
-                                        답변완료일 : 2023.11.02
-                                    </p>
+                                    </>
+                                    ): null}
                                 </Accordion.Body>
                             </Accordion.Item>
-                            <Accordion.Item eventKey="1">
-                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?<span className="date">2023-11-01</span></Accordion.Header>
-                                <Accordion.Body>
-                                    <p>
-                                        언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
-                                        <br/>
-                                        <br/>
-                                        비회원이신 고객님께서는 당첨자 발표 페이지에서 비회원 전용 상품 수령 링크로 이동하시면<br/>
-                                        이메일 혹은 휴대폰번호 입력을 통하여 3일 내로 쿠폰을 수령하실 수 있습니다.<br/>
-                                        당첨 상품 유형이 제품일시 이에 맞게 주소 입력도 가능하니 해당 페이지를 확인해주시길 바랍니다.
-                                        <br/>
-                                        <br/>
-                                        ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
-                                    </p>
-                                    <p>
-                                        작성자 : aaa<br/>
-                                        작성일 : 2023.11.01
-                                    </p>
-                                    <p>
-                                        <button>삭제</button>
-                                    </p>
-                                    <p>
-                                        언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
-                                        <br/>
-                                        ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
-                                    </p>
-                                    <p>
-                                        답변완료일 : 2023.11.02
-                                    </p>
-                                </Accordion.Body>
-                            </Accordion.Item>
-                            <Accordion.Item eventKey="2">
-                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?<span className="date">2023-11-01</span></Accordion.Header>
-                                <Accordion.Body>
-                                    <p>
-                                        언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
-                                        <br/>
-                                        <br/>
-                                        비회원이신 고객님께서는 당첨자 발표 페이지에서 비회원 전용 상품 수령 링크로 이동하시면<br/>
-                                        이메일 혹은 휴대폰번호 입력을 통하여 3일 내로 쿠폰을 수령하실 수 있습니다.<br/>
-                                        당첨 상품 유형이 제품일시 이에 맞게 주소 입력도 가능하니 해당 페이지를 확인해주시길 바랍니다.
-                                        <br/>
-                                        <br/>
-                                        ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
-                                    </p>
-                                    <p>
-                                        작성자 : aaa<br/>
-                                        작성일 : 2023.11.01
-                                    </p>
-                                    <p>
-                                        <button>삭제</button>
-                                    </p>
-                                    <p>
-                                        언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
-                                        <br/>
-                                        ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
-                                    </p>
-                                    <p>
-                                        답변완료일 : 2023.11.02
-                                    </p>
-                                </Accordion.Body>
-                            </Accordion.Item>
-                            <Accordion.Item eventKey="3">
-                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?<span className="date">2023-11-01</span></Accordion.Header>
-                                <Accordion.Body>
-                                    <p>
-                                        언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
-                                        <br/>
-                                        <br/>
-                                        비회원이신 고객님께서는 당첨자 발표 페이지에서 비회원 전용 상품 수령 링크로 이동하시면<br/>
-                                        이메일 혹은 휴대폰번호 입력을 통하여 3일 내로 쿠폰을 수령하실 수 있습니다.<br/>
-                                        당첨 상품 유형이 제품일시 이에 맞게 주소 입력도 가능하니 해당 페이지를 확인해주시길 바랍니다.
-                                        <br/>
-                                        <br/>
-                                        ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
-                                    </p>
-                                    <p>
-                                        작성자 : aaa<br/>
-                                        작성일 : 2023.11.01
-                                    </p>
-                                    <p>
-                                        <button>답변하기</button>
-                                        <button>삭제</button>
-                                    </p>
-                                </Accordion.Body>
-                            </Accordion.Item>
-                            <Accordion.Item eventKey="4">
-                                <Accordion.Header>[이용문의] 매장에서 몇 명까지 식사가 가능한가요?<span className="date">2023-11-01</span></Accordion.Header>
-                                <Accordion.Body>
-                                    <p>
-                                        언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
-                                        <br/>
-                                        <br/>
-                                        비회원이신 고객님께서는 당첨자 발표 페이지에서 비회원 전용 상품 수령 링크로 이동하시면<br/>
-                                        이메일 혹은 휴대폰번호 입력을 통하여 3일 내로 쿠폰을 수령하실 수 있습니다.<br/>
-                                        당첨 상품 유형이 제품일시 이에 맞게 주소 입력도 가능하니 해당 페이지를 확인해주시길 바랍니다.
-                                        <br/>
-                                        <br/>
-                                        ※ 전화문의 : 1234-1234 (상담시간 : 오전 9시~익일 3시)
-                                    </p>
-                                    <p>
-                                        작성자 : aaa<br/>
-                                        작성일 : 2023.11.01
-                                    </p>
-                                    <p>
-                                        <button>삭제</button>
-                                    </p>
-                                    <p>
-                                        <textarea></textarea>
-                                    </p>
-                                    <p>
-                                        답변완료일 : 2023.11.02
-                                    </p>
-                                    <p>
-                                        <button>취소</button>
-                                        <button>완료</button>
-                                    </p>
-                                </Accordion.Body>
-                            </Accordion.Item>
+                            ))}
                         </Accordion>
-                        <div className="paging">
-                            <span className="num prev"><Link to="#">&lt;</Link></span>
-                            <span className="num on"><Link to="#">1</Link></span>
-                            <span className="num"><Link to="#">2</Link></span>
-                            <span className="num"><Link to="#">3</Link></span>
-                            <span className="num"><Link to="#">4</Link></span>
-                            <span className="num"><Link to="#">5</Link></span>
-                            <span className="num next"><Link to="#">&gt;</Link></span>
-                        </div>
+                        <Pagination style={{justifyContent:'center'}}>
+                            {qnaPage.prev && (
+                                <>
+                                  <Pagination.Prev onClick={()=>{handlePageClick(qnaPage.start - 1)}}/>
+                                </>
+                            )}
+                            {renderPageNumbers()}
+                            {qnaPage.next && (
+                                <>
+                                    <Pagination.Next onClick={()=>{handlePageClick(qnaPage.end + 1)}}/>
+                                </>
+                            )}
+                        </Pagination>
                     </Col>
                 </Row>
             </Container>
@@ -200,4 +142,4 @@ function adminQna() {
     )
 }
 
-export default adminQna;
+export default AdminQna;
