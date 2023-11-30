@@ -2,85 +2,30 @@ import { Button, Card } from 'react-bootstrap';
 import blank from '../../../images/menu/blank.svg';
 import spicy9 from '../../../images/menu/img_spicystep9.png';
 import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
+import React from "react";
 
 
-function MainMenu() {
+function MainMenu(listData) {
     return (
         <section className="tabMenuList">
             <h1 className="tabCategory">
                 MAIN MENU
             </h1>
-
-            <Card style={{ width: '18rem' }} className="item-card">
-                <Card.Img variant="top" src={blank}/>
-                <Card.Body>
-                    <Card.Title className="menuTitle">
-                        <Link to="/menu/menuView" className="reset-a">
-                            떡볶이
-                        </Link>
-                    </Card.Title>
-                    <Card.Img src={spicy9} className="menuImg"/>
-                    <Card.Text className="menuPrice">
-                        30000원
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-            <Card style={{ width: '18rem' }} className="item-card">
-                <Card.Img variant="top" src={blank}/>
-                <Card.Body>
-                    <Card.Title className="menuTitle">
-                        <Link to="/menu/menuView" className="reset-a">
-                            떡볶이
-                        </Link>
-                    </Card.Title>
-                    <Card.Img src={spicy9} className="menuImg"/>
-                    <Card.Text className="menuPrice">
-                        30000원
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-            <Card style={{ width: '18rem' }} className="item-card">
-                <Card.Img variant="top" src={blank}/>
-                <Card.Body>
-                    <Card.Title className="menuTitle">
-                        <Link to="/menu/menuView" className="reset-a">
-                            떡볶이
-                        </Link>
-                    </Card.Title>
-                    <Card.Img src={spicy9} className="menuImg"/>
-                    <Card.Text className="menuPrice">
-                        30000원
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-            <Card style={{ width: '18rem' }} className="item-card">
-                <Card.Img variant="top" src={blank}/>
-                <Card.Body>
-                    <Card.Title className="menuTitle">
-                        <Link to="/menu/menuView" className="reset-a">
-                            떡볶이
-                        </Link>
-                    </Card.Title>
-                    <Card.Img src={spicy9} className="menuImg"/>
-                    <Card.Text className="menuPrice">
-                        30000원
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-            <Card style={{ width: '18rem' }} className="item-card">
-                <Card.Img variant="top" src={blank}/>
-                <Card.Body>
-                    <Card.Title className="menuTitle">
-                        <Link to="/menu/menuView" className="reset-a">
-                            떡볶이
-                        </Link>
-                    </Card.Title>
-                    <Card.Img src={spicy9} className="menuImg"/>
-                    <Card.Text className="menuPrice">
-                        30000원
-                    </Card.Text>
-                </Card.Body>
-            </Card>
+            {listData.map((item, index)=>(
+                <Card key={index} style={{ width: '18rem' }} className="item-card">
+                    <Link to="/menu/menuView" className="reset-a">
+                        <Card.Img variant="top" src={`/thumbs/${item.thumb}`}/>
+                        <Card.Body>
+                            <Card.Title className="menuTitle">
+                                {item.menuName}
+                            </Card.Title>
+                            <Card.Text className="menuPrice">
+                                {item.price}원
+                            </Card.Text>
+                        </Card.Body>
+                    </Link>
+                </Card>
+            ))}
         </section>
     )
 }

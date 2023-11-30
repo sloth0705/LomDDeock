@@ -10,13 +10,15 @@ import SideMenu from './category/SideMenu';
 import ToppingMenu from './category/ToppingMenu';
 import MealKitMenu from './category/MealKitMenu';
 import blank from "../../images/menu/blank.svg";
-function Card (){
+
+function MenuList() {
     // 데이터 호출
     const [listData, setListData] = useState([]); // 현재 게시글 목록
+    const [cate, setCate] = useState([]); // 현재 게시글 목록
 
     // useEffect로 한번 실행된 데이터를 빈배열에 담게 해 무한반복 방지
     useEffect(()=>{
-        axios.get(`/api/main/list`)
+        axios.get(`/api/menu/list?cate=${cate}`)
             .then(response=>{
                 setListData(response.data);
             })
@@ -24,26 +26,6 @@ function Card (){
                 console.error("데이터를 찾을 수 없습니다. error : " + err);
             });
     },[]);
-    return (
-        <>
-            <Card style={{ width: '18rem' }} className="item-card">
-                <Link to="/menu/menuView" className="reset-a">
-                    <Card.Img variant="top" src={blank}/>
-                    <Card.Body>
-                        <Card.Title className="menuTitle">
-                            떡볶이
-                        </Card.Title>
-                        <Card.Text className="menuPrice">
-                            30000원
-                        </Card.Text>
-                    </Card.Body>
-                </Link>
-            </Card>
-        </>
-    );
-
-}
-function MenuList() {
     return (
         <section className="menuList">
             <Tabs
