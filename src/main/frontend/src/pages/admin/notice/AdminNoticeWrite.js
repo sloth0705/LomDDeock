@@ -4,9 +4,11 @@ import {Col, Container, Row,Accordion } from "react-bootstrap";
 import { useState } from "react";
 import AdminAsideMenu from "../AdminAsideMenu";
 import {Link, useNavigate} from "react-router-dom";
-import ReactQuill from "react-quill";
+import ReactQuill, { Quill } from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import axios from "axios";
+import ImageResize from 'quill-image-resize';
+Quill.register('modules/ImageResize', ImageResize);
 
 function Write() {
     const navigate = useNavigate();
@@ -18,7 +20,7 @@ function Write() {
     const quillRef = useRef(null);
 
     // 최종 전송
-    const formData = new FormData();
+    const [formData, setFormData] = useState(new FormData());
 
     // 제목 내용 수집
     const handleTitleChange = (e) => {
@@ -33,68 +35,50 @@ function Write() {
         }
     },[]);
 
-    // 이미지 처리
-    const handleImage = () => {
-        try {
-            // Quill 에디터에서 현재 내용을 가져옴
-            const editor = quillRef.current.getEditor();
-
-            // 이미지 파일을 선택하면 이미지를 FormData에 추가
-            const input = document.createElement('input');
-            input.setAttribute('type', 'file');
-            input.setAttribute('accept', 'image/*');
-            input.click();
-            input.onchange = async function () {
-                const file = input.files[0];
-
-                formData.append('title', title);
-                formData.append('content', content);
-                formData.append('registant', registant);
-                formData.append('image', file, file.name);
-
-
-                // 이미지를 base64로 변환
-                const reader = new FileReader();
-                reader.onloadend = () => {
-                    const base64 = reader.result;
-
-                    // 이미지를 base64로 변환된 문자열로 삽입
-                    const range = editor.getSelection(true);
-                    editor.insertEmbed(range.index, 'image', base64);
-                };
-                reader.readAsDataURL(file);
-            };
-        } catch (error) {
-            console.error('Error saving content:', error);
-        }
-    }
-    
-    // 전송
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
+    // 전송준비
+    const submitForm  = (formData) => {
+        formData = formData || new FormData();
+        
         formData.append('title', title);
         formData.append('content', content);
         formData.append('registant', registant);
-
-        console.log("formData:");
-        for (let pair of formData.entries()) {
-            console.log(pair[0] + ': ' + pair[1]);
+        formData.append('group', 'notice');
+        
+        // 빈칸확인
+        function isFieldEmpty(value) {
+            return !value || value.trim() === '';
         }
-        /*axios.post('/api/admin/notice/adminNoticeWrite', formData,{
+
+        if (isFieldEmpty(title) && isFieldEmpty(content) && isFieldEmpty(registant)) {
+            alert('빈칸이 없는지 다시 확인해주세요.');
+            setFormData(null);
+            return;
+        }
+
+        axios.post('/api/admin/notice/adminNoticeWrite', formData,{
               headers: {
                 'Content-Type': 'multipart/form-data',
               },
-            });
+            })
             .then(res => {
                 alert("등록되었습니다.");
-                navigate("/admin/faq/adminFaqList");
+                navigate("/admin/notice/adminNoticeList");
+
+                setFormData(null);
             })
             .catch(err => {
-                console.log("전송에 문제가 발생했습니다.");
-            });*/
+                alert("전송에 문제가 발생했습니다 로그를 확인해주세요.");
+                console.log("error : ",err);
+                setFormData(null);
+            });
     }
+    
+    // 전송 결정
+    const handleSubmit = (event) => {
+        event.preventDefault();
 
+        submitForm(formData);
+    }
 
 
     // 에디터 설정
@@ -103,7 +87,6 @@ function Write() {
             toolbar: {
                 container: [
                     [{'header': [1, 2, 3, 4, 5, 6, false]}],
-                    [{'font': []}],
                     [{'align': []}],
                     ['bold', 'italic', 'underline', 'strike', 'blockquote'],
                     [{'list': 'ordered'}, {'list': 'bullet'}, 'link'],
@@ -111,29 +94,29 @@ function Write() {
                     ['image', 'video'],
                     ['clean'],
                 ],
-                handlers: {
-                    // 이미지 처리는 우리가 직접 imageHandler라는 함수로 처리할 것이다.
-                    image: handleImage,
-                },
             }, // toolbar
+            /* 추가된 코드 */
+            ImageResize: {
+                parchment: Quill.import('parchment')
+            }
         }; // return
     }, []);
 
 
     const formats = [
-        'header',
+        'header','align',
         'bold', 'italic', 'underline', 'strike', 'blockquote',
         'list', 'bullet',
-        'link', 'image',
+        'link', 'image','color','background','video','clean'
     ];
 
     return (
         <>
             <div>
                 <form encType="multipart/form-data">
-                    <h4>공지사항 제목 <em>(필수)</em></h4>
+                    <h4>공지사항 제목 <em className="write-required">(필수)</em></h4>
                     <input type="text" name="title" placeholder="제목을 작성해주세요." onChange={handleTitleChange}/>
-                    <h4>내용 입력 <em>(필수)</em></h4>
+                    <h4>내용 입력 <em className="write-required">(필수)</em></h4>
                     <ReactQuill
                         ref={quillRef}
                         style={{ width: "100%", height: "300px" }}

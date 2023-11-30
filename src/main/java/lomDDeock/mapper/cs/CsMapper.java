@@ -13,8 +13,9 @@ import java.util.Map;
 public interface CsMapper {
 
     public List<CsDTO> selectCss(@Param("cate") String cate, int start);
-
     public int selectCountCs(@Param("cate") String cate);
+    public List<CsDTO> selectNotice(int start);
+    public int selectCountNotice();
 
     public int getMyQnaListTotal(Map<String, Object> searchMap);
     public List<CsDTO> getMyQnaList(Map<String, Object> searchMap);

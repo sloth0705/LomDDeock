@@ -105,13 +105,49 @@ a:hover {
     width: 100%;
     height: auto;
     padding: 10px;
+    border: 1px solid #d0d0d0;
+    border-radius: 5px;
     box-sizing: border-box;
-    background-color: #f6f6f6;
+
 }
 #adminNoticeList .accordion-body > p:nth-of-type(2) {
     display: flex;
     justify-content: flex-end;
 }
+
+#adminNoticeList .paging {
+    width: 100%;
+    text-align: center;
+    line-height: 100px;
+}
+#adminNoticeList .paging > .num.on {
+    color: #ff744d;
+    font-weight: bold;
+}
+#adminNoticeList .paging > .num {
+    font-size: 18px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+#adminNoticeList .paging > .num.disabled {
+    display: none;
+}
+
+/* content css type reset */
+#adminNoticeList .accordion-body > .typeReset a {color: #0a53be;}
+#adminNoticeList .accordion-body > .typeReset ol > li {list-style: decimal inside; padding: 0;}
+#adminNoticeList .accordion-body > .typeReset ul > li {list-style: disc inside;}
+#adminNoticeList .accordion-body > .typeReset blockquote {
+    border-left: 4px solid #ccc;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding-left: 16px;
+}
+#adminNoticeList .accordion-body > .typeReset .ql-align-center {text-align: center;}
+#adminNoticeList .accordion-body > .typeReset .ql-align-right {text-align: right;}
+#adminNoticeList .accordion-body > .typeReset img {cursor: default !important;}
+#adminNoticeList .accordion-body > .typeReset iframe {width: 80%; height: 300px;}
+
 /* ========== adminNoticeWrite ========== */
 #adminNoticeWrite .write-content > div:nth-of-type(1) {
     border-bottom: 1px solid black;
@@ -125,7 +161,7 @@ a:hover {
 #adminNoticeWrite .write-content > div:nth-of-type(2) h4 {
     margin-left: 10px;
 }
-#adminNoticeWrite .write-content > div:nth-of-type(2) em {
+#adminNoticeWrite .write-content > div:nth-of-type(2) .write-required {
     font-style: normal;
     color: #FF0000;
     font-weight: bold;
@@ -158,10 +194,15 @@ a:hover {
 #adminNoticeWrite .write-content .links > .btnWrite.noticeReg:hover {
     background-color: #ff7b54;
 }
+
 /* react-quill overriding */
 .ql-snow .ql-tooltip {
     left: 313px !important;
     top: 66px !important;
     white-space: normal !important;
     margin: 0 !important;
+}
+.quill iframe {
+    width: 80%;
+    height: 300px;
 }

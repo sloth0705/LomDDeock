@@ -2,7 +2,10 @@ package lomDDeock.dto.cs;
 
 import lomDDeock.entity.cs.CsEntity;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -34,6 +37,10 @@ public class CsDTO {
     private String reply;
     private LocalDateTime replyDate;
     private CsReplyDTO replyForm;
+
+    // 파일 등록
+    private MultipartFile fname;
+    private List<MultipartFile> fnames; // 다중파일
 
     public CsEntity toEntity() {
         return CsEntity.builder()
