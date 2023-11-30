@@ -30,6 +30,17 @@
         AND a.`group`='faq' AND a.`status` >= 0
     </sql>
 
+    <select id="selectCountNotice">
+        SELECT COUNT(*) FROM `cs` a WHERE `group`='notice' AND a.`status` >= 0
+    </select>
+
+    <select id="selectNotice" resultType="lomDDeock.dto.cs.CsDTO">
+        SELECT * FROM `cs` a
+        WHERE a.`group`='notice' AND a.`status` >= 0
+        ORDER BY a.cno DESC
+        LIMIT #{start},10
+    </select>
+
 
     <select id="getMyQnaListTotal" resultType="java.lang.Integer">
         SELECT COUNT(*)

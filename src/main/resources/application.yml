@@ -89,6 +89,7 @@ upload:
     banners: banners/
     toppings: toppings/
     sides: sides/
+    notices: notices/
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
 
