@@ -214,7 +214,7 @@ function App() {
                                 <Route path="/banner/AdminBanner" element={<AdminBanner />} />
                                 <Route path="/event/AdminEventList" element={<AdminEventList />} />
                                 <Route path="/event/AdminEventRegister" element={<AdminEventRegister />} />
-                                <Route path="/event/AdminEventModify" element={<AdminEventModify />} />
+                                <Route path="/event/AdminEventModify/:cno" element={<AdminEventModify />} />
                                 <Route path="/coupon/AdminCouponList" element={<AdminCouponList />} />
                                 <Route path="/coupon/AdminCouponPayment" element={<AdminCouponPayment />} />
                                 <Route path="/notice/AdminNoticeList" element={<AdminNoticeList />} />
@@ -252,7 +252,7 @@ function App() {
                                 <Route path="/CsFaq" element={<CsFaq />} />
                                 <Route path="/CsQnaList" element={<CsQnaList />} />
                                 <Route path="/CsQnaWrite" element={<CsQnaWrite />} />
-                                <Route path="/CsQnaView" element={<CsQnaView />} />
+                                <Route path="/CsQnaView/:cno" element={<CsQnaView />} />
                             </Routes>
                         </BrandLayout>
                         <Footer/>

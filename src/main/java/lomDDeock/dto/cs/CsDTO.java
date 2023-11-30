@@ -32,6 +32,10 @@ public class CsDTO {
     private String cateName;
 
     // cs_reply
+    private int qno;
+    private String manager;
+    private String reply;
+    private LocalDateTime replyDate;
     private CsReplyDTO replyForm;
 
     // 파일 등록
