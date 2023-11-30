@@ -11,7 +11,9 @@ function MenuPagination({page, setPage, pageData}) {
 
     const handlePageChange = (newPage) => {
         setPage(newPage);
-        navigate(`/api/menu/AdminMenuList${pageData.cate ? `?cate=${pageData.cate}` : ''}&page=${newPage}`);
+        console.log("pageData.cate : "+pageData.cate);
+        console.log("newPage : "+newPage);
+        navigate(`/admin/menu/AdminMenuList${pageData.cate ? `?cate=${pageData.cate}` : ''}&page=${newPage}`);
     };
 
     const renderPaginationNumbers = () => {

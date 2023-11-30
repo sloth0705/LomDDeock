@@ -12,16 +12,22 @@
 }
 .subMenu {
     width: 985px;
-    background-color: #e9e9e9;
+    background-color: #FF5B2D;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
     display: flex;
     justify-content: center;
 }
-
 .subMenu .nav-item {
     flex: 1;
+}
+.subMenu .nav {
+    --bs-link-color: white;
+    --bs-nav-link-color: var(--bs-link-color);
+}
+.subMenu .nav-link:hover {
+    color: #A21A24 !important;
 }
 
 .subMenu .nav-item:not(:last-child) {

@@ -37,8 +37,8 @@ public class MenuController {
     }
     @ResponseBody
     @GetMapping("/menu/AdminMenuList")
-    public MenuPageResponseDTO adminMenuList (@RequestParam(name = "cate", defaultValue = "normal") String cate,
-                                              @RequestParam(name = "page", defaultValue = "1") int page) {
+    public MenuPageResponseDTO adminMenuList (@RequestParam(name = "cate") String cate,
+                                              @RequestParam(name = "page") int page) {
         MenuPageRequestDTO menuPageRequestDTO = new MenuPageRequestDTO();
         menuPageRequestDTO.setCate(cate);
         menuPageRequestDTO.setPg(page);
