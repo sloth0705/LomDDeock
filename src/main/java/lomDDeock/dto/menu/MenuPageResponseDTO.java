@@ -37,7 +37,7 @@ public class MenuPageResponseDTO {
         this.pageGroupEnd = pager.getPageGroupNum(currentPage, lastPageNum)[1];
         this.pageStartNum = pager.getPageStartNum(total, currentPage);
         this.startNum = pager.getStartNum(currentPage);
-        this.prev = this.startNum > 1;
-        this.next = pageGroupEnd > lastPageNum;
+        this.prev = pageGroupStart > 1;
+        this.next = pageGroupEnd < lastPageNum;
     }
 }
