@@ -67,7 +67,7 @@ function NoticeList(){
 
     return (
         <>
-            <Accordion>
+            <Accordion activeKey={activeItem !== null ? activeItem.toString() : null}>
                 {listData.map((item,index) => (
                     <Accordion.Item key={index} eventKey={index.toString()}>
                         <Accordion.Header onClick={() => handleItemClick(index)}>
