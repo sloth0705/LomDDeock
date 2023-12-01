@@ -48,7 +48,7 @@ function Main() {
             <div className="banner">
                 <img src="/test/27_pc.jpg" alt="배너"/>
             </div>
-            {/* subMenu 시작 */}
+            {/* subMenu  시작 */}
             <div className="subMenu">
                 <Container>
                     <Nav
