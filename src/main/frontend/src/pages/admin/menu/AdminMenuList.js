@@ -25,7 +25,7 @@ function ListMenu ({cate}) {
     console.log("ListMenu page: "+page);
     // useEffect로 한번 실행된 데이터를 빈배열에 담게 해 무한반복 방지
     useEffect(() => {
-        axios.get(`/api/menu/AdminMenuList?cate=${cate || ''}&page=${page || ''}`)
+        axios.get(`/api/menu/MenuList?cate=${cate || ''}&page=${page || ''}&size=10`)
             .then(res => {
                 const data = res.data;
                 if(data.cate === "normal"){

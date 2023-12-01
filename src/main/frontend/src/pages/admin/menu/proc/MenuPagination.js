@@ -13,7 +13,7 @@ function MenuPagination({page, setPage, pageData}) {
         setPage(newPage);
         console.log("pageData.cate : "+pageData.cate);
         console.log("newPage : "+newPage);
-        navigate(`/admin/menu/AdminMenuList${pageData.cate ? `?cate=${pageData.cate}` : ''}&page=${newPage}`);
+        navigate(`/admin/menu/AdminMenuList${pageData.cate ? `?cate=${pageData.cate}` : ''}&page=${newPage}&size=10`);
     };
 
     const renderPaginationNumbers = () => {
