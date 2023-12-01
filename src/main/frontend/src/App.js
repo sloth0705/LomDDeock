@@ -45,8 +45,7 @@ const MenuList = lazy(() => import('./pages/menu/MenuList'))
 const MenuView = lazy(() => import('./pages/menu/MenuView'))
 const MenuCart = lazy(() => import('./pages/menu/MenuCart'))
 const MenuOrder = lazy(() => import('./pages/menu/MenuOrder'))
-const MenuComplete = lazy(() => import('./pages/menu/MenuComplete'))
-const Payment = lazy(()=> import('./pages/payment/Checkout'))
+const MenuOrderComplete = lazy(() => import('./pages/menu/MenuOrderComplete'))
 
 /* 브랜드 페이지 */
 const Introduce = lazy(() => import('./pages/brand/Introduce'))
@@ -160,8 +159,7 @@ function App() {
                                 <Route path="/menuView" element={<MenuView />} />
                                 <Route path="/menuCart" element={<MenuCart />} />
                                 <Route path="/menuOrder" element={<MenuOrder />} />
-                                <Route path="/menuComplete" element={<MenuComplete />} />
-                                <Route path="/payment" element={<Payment/>}/>
+                                <Route path="/menuOrderComplete" element={<MenuOrderComplete />} />
                             </Routes>
                         </MenuLayout>
                         <Footer />
