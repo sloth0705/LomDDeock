@@ -26,7 +26,7 @@ function FaqList(){
     const [selectedItem, setSelectedItem] = useState(null);
     const [modifyData, setModifyData] = useState(null);
     // 게시글 삭제 여부
-    const [activeKey, setActiveKey] = useState(null);
+    const [activeItem, setActiveItem] = useState(null);
 
     // useEffect로 한번 실행된 데이터를 빈배열에 담게 해 무한반복 방지
     useEffect(() => {
@@ -99,6 +99,16 @@ function FaqList(){
     );
 
     /* ------------ 삭제 -------------- */
+    const handleItemClick = (index) => {
+        if (activeItem === index) {
+            // 현재 아이템이 열려있으면 닫기
+            setActiveItem(null);
+        } else {
+            // 다른 아이템을 클릭하면 해당 아이템 열기
+            setActiveItem(index);
+        }
+    };
+
     const handleDelete = (item, index) => {
         console.log(item, index);
         const cno = item.cno;
@@ -115,6 +125,8 @@ function FaqList(){
                         return newListData;
                     });
 
+                    setActiveItem(null);
+
                 })
                 .catch(err => {
                     alert("정상적으로 삭제되지 못하였습니다.");
@@ -128,7 +140,7 @@ function FaqList(){
             <Accordion>
                 {listData.map((item, index) => (
                         <Accordion.Item key={index} eventKey={index.toString()}>
-                            <Accordion.Header>
+                            <Accordion.Header onClick={() => handleItemClick(index)}>
                                 [{item.cateName}]{item.title}
                                 <span className="date">{formatDate(item.rdate)}</span>
                             </Accordion.Header>

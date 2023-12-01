@@ -43,8 +43,8 @@ public class AdminNoticeController {
 
     @DeleteMapping("/admin/notice/adminNoticeDelete/{cno}")
     public void AdminNoticeDelete(@PathVariable int cno){
-        log.info("AdminNoticeDelete...1"+cno);
+        log.info("AdminNoticeDelete...1 cno : "+cno);
 
-
+        noticeService.deleteNotice(cno);
     }
 }
