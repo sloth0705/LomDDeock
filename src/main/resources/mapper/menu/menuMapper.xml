@@ -7,13 +7,13 @@
         SELECT * FROM `menu` WHERE `deleteYN` = 'Y' ORDER BY `hit` DESC LIMIT 4;
     </select>
     <select id="selectMenues" resultType="lomDDeock.dto.menu.MenuDTO">
-        SELECT * FROM `menu` WHERE `deleteYN` = 'Y' ORDER BY `menuNo` DESC LIMIT #{start}, 10;
+        SELECT * FROM `menu` WHERE `deleteYN` = 'Y' ORDER BY `menuNo` DESC LIMIT #{start}, #{size};
     </select>
     <select id="selectSides" resultType="lomDDeock.dto.menu.SideDTO">
-        SELECT * FROM `menu_side_drink` WHERE `deleteYN` = 'Y' AND `type` = "side" ORDER BY `sideNo` DESC LIMIT #{start}, 10;
+        SELECT * FROM `menu_side_drink` WHERE `deleteYN` = 'Y' AND `type` = "side" ORDER BY `sideNo` DESC LIMIT #{start}, #{size};
     </select>
     <select id="selectDrinks" resultType="lomDDeock.dto.menu.SideDTO">
-        SELECT * FROM `menu_side_drink` WHERE `deleteYN` = 'Y' AND `type` = "drinkOrOthers" ORDER BY `sideNo` DESC LIMIT #{start}, 10;
+        SELECT * FROM `menu_side_drink` WHERE `deleteYN` = 'Y' AND `type` = "drinkOrOthers" ORDER BY `sideNo` DESC LIMIT #{start}, #{size};
     </select>
     <select id="countMenu" resultType="int">
         SELECT COUNT(*) FROM `menu` WHERE `deleteYN` = 'Y';

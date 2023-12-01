@@ -93,19 +93,19 @@ public class MenuService {
 
             int total = menuMapper.countMenu();
             menuResponseDTO = new MenuPageResponseDTO(menuPageRequestDTO, total);
-            List<MenuDTO> menues= menuMapper.selectMenues(menuResponseDTO.getStartNum());
+            List<MenuDTO> menues= menuMapper.selectMenues(menuResponseDTO.getStartNum(), menuPageRequestDTO.getSize());
             log.info("menues : "+menues);
             menuResponseDTO.setMenues(menues);
         }else if(menuPageRequestDTO.getCate().equals("side")){
             int total = menuMapper.countSide();
             menuResponseDTO = new MenuPageResponseDTO(menuPageRequestDTO, total);
-            List<SideDTO> sides = menuMapper.selectSides(menuResponseDTO.getStartNum());
+            List<SideDTO> sides = menuMapper.selectSides(menuResponseDTO.getStartNum(), menuPageRequestDTO.getSize());
             log.info("sides : "+sides);
             menuResponseDTO.setSides(sides);
         }else {
             int total = menuMapper.countDrink();
             menuResponseDTO = new MenuPageResponseDTO(menuPageRequestDTO, total);
-            List<SideDTO> sides = menuMapper.selectDrinks(menuResponseDTO.getStartNum());
+            List<SideDTO> sides = menuMapper.selectDrinks(menuResponseDTO.getStartNum(), menuPageRequestDTO.getSize());
             log.info("sides : "+sides);
             menuResponseDTO.setSides(sides);
         }

@@ -23,7 +23,7 @@ function MainList () {
         <>
             {listData.map((item, index)=>(
                 <article className="hit-item" key={index}>
-                    <Link to="/" className="reset-a">
+                    <Link to="/menu/menuView" className="reset-a">
                         <img src={`/thumbs/${item.thumb}`} className="thumb" alt={item.menuName}/>
                         <div className="item-info">
                             <h5 className="item-name">

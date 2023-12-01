@@ -114,9 +114,6 @@ filePath:
   #banners: file:/C:/Users/Java/Desktop/Workspace/LotteON2/banners/
   banners: file:/home/LotteON/banners/
 
-payment:
-  toss:
-    test_client_api_key : test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm
-    test_secret_api_key : test_gsk_docs_OaPz8L5KdmQXkzRz3y47BMw6
-    success_url : "http://localhost:8080/api/v1/payments/toss/success"
-    fail_url : "http://localhost:8080/api/v1/payments/toss/fail"
+iamport:
+  rest_api_key : 8278588564002236
+  rest_api_secret : fQupFdlK7mmfb8H2igRe8RnMMlQBxVR1gWT2ZTS0Zz2dVUP3PoNLbv0TOMuYNwK3B0tcivxPi7mymnJX

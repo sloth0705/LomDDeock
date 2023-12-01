@@ -32,11 +32,11 @@ public class MenuPageResponseDTO {
         this.cate = menuPageRequestDTO.getCate();
         this.currentPage = pager.getCurrentPage(menuPageRequestDTO.getPg());
         this.total = total;
-        this.lastPageNum = pager.getLastPageNum(total);
+        this.lastPageNum = pager.getLastPageNum(total, menuPageRequestDTO.getSize());
         this.pageGroupStart = pager.getPageGroupNum(currentPage, lastPageNum)[0];
         this.pageGroupEnd = pager.getPageGroupNum(currentPage, lastPageNum)[1];
-        this.pageStartNum = pager.getPageStartNum(total, currentPage);
-        this.startNum = pager.getStartNum(currentPage);
+        this.pageStartNum = pager.getPageStartNum(total, currentPage, menuPageRequestDTO.getSize());
+        this.startNum = pager.getStartNum(currentPage, menuPageRequestDTO.getSize());
         this.prev = pageGroupStart > 1;
         this.next = pageGroupEnd < lastPageNum;
     }

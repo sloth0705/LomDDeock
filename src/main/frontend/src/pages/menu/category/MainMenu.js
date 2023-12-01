@@ -3,9 +3,10 @@ import blank from '../../../images/menu/blank.svg';
 import spicy9 from '../../../images/menu/img_spicystep9.png';
 import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
 import React from "react";
+import MenuPagination from "../../admin/menu/proc/MenuPagination";
 
 
-function MainMenu(listData) {
+function MainMenu({listData}) {
     return (
         <section className="tabMenuList">
             <h1 className="tabCategory">
@@ -27,6 +28,7 @@ function MainMenu(listData) {
                 </Card>
             ))}
         </section>
+
     )
 }
 

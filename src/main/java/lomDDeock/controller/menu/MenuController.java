@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Log4j2
 @RestController
 @RequiredArgsConstructor
@@ -36,12 +38,14 @@ public class MenuController {
 
     }
     @ResponseBody
-    @GetMapping("/menu/AdminMenuList")
+    @GetMapping("/menu/MenuList")
     public MenuPageResponseDTO adminMenuList (@RequestParam(name = "cate") String cate,
-                                              @RequestParam(name = "page") int page) {
+                                              @RequestParam(name = "page") int page,
+                                              @RequestParam(name = "size") int size) {
         MenuPageRequestDTO menuPageRequestDTO = new MenuPageRequestDTO();
         menuPageRequestDTO.setCate(cate);
         menuPageRequestDTO.setPg(page);
+        menuPageRequestDTO.setSize(size);
         log.info("menuPageRequestDTO: " + menuPageRequestDTO);
         MenuPageResponseDTO menuPageResponseDTO = menuService.selectMenu(menuPageRequestDTO);
         log.info("menuPageResponseDTO: " + menuPageResponseDTO);
