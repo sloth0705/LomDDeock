@@ -10,6 +10,7 @@ import lomDDeock.entity.member.MemberEntity;
 import lomDDeock.mapper.cs.CsMapper;
 import lomDDeock.mapper.member.MemberCouponHistoryMapper;
 import lomDDeock.mapper.member.TermsMapper;
+import lomDDeock.mapper.member.WishListMapper;
 import lomDDeock.repository.member.MemberRepository;
 import lomDDeock.util.JwtIssuer;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,7 @@ public class MemberService implements UserDetailsService {
     // Mapper
     private final TermsMapper termsMapper;
     private final MemberCouponHistoryMapper memberCouponHistoryMapper;
+    private final WishListMapper wishListMapper;
 
     // Utill
     private final PasswordEncoder passwordEncoder;
@@ -175,7 +177,7 @@ public class MemberService implements UserDetailsService {
     }
 
     // 로그인한 사용자의 쿠폰 목록 가져오기
-    public MyCouponPageResponse getMyCouponList(MemberDTO memberDTO, int pg) {
+    public MyCouponPageResponse getMyCouponList(MemberDTO memberDTO, int pg, String useYn) {
         // 검색조건을 담는 Map 생성
         Map<String, Object> searchMap = new HashMap<>();
         
@@ -194,10 +196,27 @@ public class MemberService implements UserDetailsService {
         searchMap.put("today", todayFormatted);
         searchMap.put("futureDate", futureDateFormatted);
         searchMap.put("pg", (pg - 1) * 10);
+        searchMap.put("useYn", useYn);
         searchMap.put("email", memberDTO.getEmail());
         List<MemberCouponHistoryDTO> dtoList = memberCouponHistoryMapper.getMyCouponList(searchMap);
         int total = memberCouponHistoryMapper.getMyCouponTotal(searchMap);
         return MyCouponPageResponse.builder()
+                .pg(pg)
+                .total(total)
+                .dtoList(dtoList)
+                .build();
+    }
+    // 로그인한 사용자의 찜목록 가져오기
+    public MyWishListPageResponse getMyWishList(MemberDTO memberDTO, int pg) {
+        // 검색조건을 담는 Map 생성
+        Map<String, Object> searchMap = new HashMap<>();
+
+        // 검색조건 넣기
+        searchMap.put("pg", (pg - 1) * 10);
+        searchMap.put("email", memberDTO.getEmail());
+        List<WishListDTO> dtoList = wishListMapper.getMyWishList(searchMap);
+        int total = wishListMapper.getMyWishListTotal(searchMap);
+        return MyWishListPageResponse.builder()
                 .pg(pg)
                 .total(total)
                 .dtoList(dtoList)

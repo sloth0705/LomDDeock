@@ -9,7 +9,40 @@ import SetMenu from './category/SetMenu';
 import SideMenu from './category/SideMenu';
 import ToppingMenu from './category/ToppingMenu';
 import MealKitMenu from './category/MealKitMenu';
+import blank from "../../images/menu/blank.svg";
+function Card (){
+    // 데이터 호출
+    const [listData, setListData] = useState([]); // 현재 게시글 목록
 
+    // useEffect로 한번 실행된 데이터를 빈배열에 담게 해 무한반복 방지
+    useEffect(()=>{
+        axios.get(`/api/main/list`)
+            .then(response=>{
+                setListData(response.data);
+            })
+            .catch(err=>{
+                console.error("데이터를 찾을 수 없습니다. error : " + err);
+            });
+    },[]);
+    return (
+        <>
+            <Card style={{ width: '18rem' }} className="item-card">
+                <Link to="/menu/menuView" className="reset-a">
+                    <Card.Img variant="top" src={blank}/>
+                    <Card.Body>
+                        <Card.Title className="menuTitle">
+                            떡볶이
+                        </Card.Title>
+                        <Card.Text className="menuPrice">
+                            30000원
+                        </Card.Text>
+                    </Card.Body>
+                </Link>
+            </Card>
+        </>
+    );
+
+}
 function MenuList() {
     return (
         <section className="menuList">
@@ -20,20 +53,11 @@ function MenuList() {
                 <Tab eventKey="main" title="메인메뉴">
                     <MainMenu/>
                 </Tab>
-                <Tab eventKey="chicken" title="닭발메뉴">
-                    <ChickenMenu/>
-                </Tab>
-                <Tab eventKey="set" title="세트메뉴">
-                    <SetMenu/>
-                </Tab>
-                <Tab eventKey="side" title="사이드/음료">
+                <Tab eventKey="side" title="사이드">
                     <SideMenu/>
                 </Tab>
-                <Tab eventKey="topping" title="토핑">
+                <Tab eventKey="topping" title="음료">
                     <ToppingMenu/>
-                </Tab>
-                <Tab eventKey="mealKit" title="밀키트">
-                    <MealKitMenu/>
                 </Tab>
             </Tabs>
         </section>

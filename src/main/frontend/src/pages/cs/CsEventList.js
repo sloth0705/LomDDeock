@@ -1,8 +1,38 @@
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
-import { Container,ListGroup, Col, Row, Button , Accordion } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Container,ListGroup, Col, Row, Button , Accordion, Pagination } from 'react-bootstrap';
+import { getEventList } from '../../js/cs/eventList.js';
 import '../../css/cs/cs.css';
 function EventList() {
+    // 이벤트 리스트
+    const [eventList, setEventList] = useState([]);
+    // 이벤트 리스트 페이징
+    const [eventPage, setEventPage] = useState({});
+    useEffect(() => {
+        const fetchData = async () => {
+            const eventInfo = await getEventList(1);
+            setEventList(eventInfo.dtoList);
+            setEventPage(eventInfo);
+        };
+        fetchData();
+    },[])
+
+    const handlePageClick = async (pageNumber) => {
+      const eventInfo = await getEventList(pageNumber);
+      setEventList(eventInfo.dtoList);
+      setEventPage(eventInfo);
+    };
+    const renderPageNumbers = () => {
+        const pageNumbers = [];
+        for (let i = eventPage.start; i <= eventPage.end; i++) {
+          pageNumbers.push(
+            <Pagination.Item key={i} active={i === eventPage.pg} onClick={()=>{handlePageClick(i)}}>
+              {i}
+            </Pagination.Item>
+          );
+        }
+        return pageNumbers;
+    };
     return (
         <section className="cs">
             <Container id="event-list">
@@ -26,48 +56,33 @@ function EventList() {
                         </div>
                         <div className="event-div">
                             <ul>
+                                {eventList.map((event) => (
                                 <li>
-                                    <h3><Link to="#">떡볶이 랜덤추첨 13차</Link></h3>
-                                    <span className="date">기간: 2023.11.01 ~ 2023.11.07</span>
-                                    <Link to="/cs/CsEventView">
+                                    <h3>
+                                        <Link to={`/cs/CsEventView/${event.cno}`}>
+                                            {event.title}
+                                        </Link>
+                                    </h3>
+                                    <Link to={`/cs/CsEventView/${event.cno}`}>
                                         <img src="https://via.placeholder.com/171x180" alt="event_img" className="event-progress"/>
                                     </Link>
                                 </li>
-                                <li>
-                                    <h3><Link to="#">떡볶이 랜덤추첨 13차</Link></h3>
-                                    <span className="date">기간: 2023.11.01 ~ 2023.11.07</span>
-                                    <Link to="/cs/CsEventView">
-                                        <img src="https://via.placeholder.com/171x180" alt="event_img" className="event-progress"/>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <h3><Link to="#">떡볶이 랜덤추첨 13차</Link></h3>
-                                    <span className="date">기간: 2023.11.01 ~ 2023.11.07</span>
-                                    <Link to="/cs/CsEventView">
-                                        <img src="https://via.placeholder.com/171x180" alt="event_img" className="event-progress"/>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <h3><Link to="#">떡볶이 랜덤추첨 13차</Link></h3>
-                                    <span className="date">기간: 2023.11.01 ~ 2023.11.07</span>
-                                    <Link to="/cs/CsEventView">
-                                        <img src="https://via.placeholder.com/171x180" alt="event_img" className="event-progress"/>
-                                    </Link>
-                                </li>
+                                ))}
                             </ul>
                         </div>
-
-                        <div className="paging">
-                            <span className="num prev"><Link to="#">&lt;</Link></span>
-
-                            <span className="num on"><Link to="#">1</Link></span>
-                            <span className="num"><Link to="#">2</Link></span>
-                            <span className="num"><Link to="#">3</Link></span>
-                            <span className="num"><Link to="#">4</Link></span>
-                            <span className="num"><Link to="#">5</Link></span>
-
-                            <span className="num next"><Link to="#">&gt;</Link></span>
-                        </div>
+                        <Pagination style={{justifyContent:'center'}}>
+                            {eventPage.prev && (
+                                <>
+                                  <Pagination.Prev onClick={()=>{handlePageClick(eventPage.start - 1)}}/>
+                                </>
+                            )}
+                            {renderPageNumbers()}
+                            {eventPage.next && (
+                                <>
+                                    <Pagination.Next onClick={()=>{handlePageClick(eventPage.end + 1)}}/>
+                                </>
+                            )}
+                        </Pagination>
                     </Col>
                     {/* content end */}
                 </Row>

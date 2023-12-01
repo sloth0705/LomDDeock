@@ -1,6 +1,12 @@
 package lomDDeock.dto.util;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+
 public class Pager {
+    public Pager(){
+
+    }
     // 현재 페이지 번호
     public int getCurrentPage(int pg) {
         int currentPage = 1;

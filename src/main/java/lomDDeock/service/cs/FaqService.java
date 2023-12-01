@@ -28,7 +28,6 @@ public class FaqService {
     @Transactional
     public void insertCs(CsDTO dto){
         dto.setGroup("faq");
-        dto.setRegistant("admin");
 
         CsEntity csEntity = dto.toEntity();
         csRepository.save(csEntity);

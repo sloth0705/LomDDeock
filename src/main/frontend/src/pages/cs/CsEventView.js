@@ -1,11 +1,21 @@
-import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import { Container,ListGroup, Col, Row, Button , Accordion } from 'react-bootstrap';
+import { getEventView } from '../../js/cs/eventView.js';
 import '../../css/cs/cs.css';
 import Icon from '@mdi/react';
 import { mdiChevronUp } from '@mdi/js';
 import { mdiChevronDown } from '@mdi/js';
 function EventView() {
+    const { cno } = useParams();
+    const [eventView, setEventView] = useState({});
+    useEffect(()=>{
+        const fetchData = async () => {
+            const eventInfo = await getEventView(cno);
+            setEventView(eventInfo);
+        };
+        fetchData();
+    },[])
     return (
         <section className="cs">
             <Container id="event-view">
@@ -29,32 +39,16 @@ function EventView() {
                         </div>
                         <article className="event-now">
                             <div className="event-title">
-                                <h3>[마라 떡볶이 출시 기념 레시피 공개]</h3>
-                                <span className="date">기간 : 2023-10-20 ~ 2023-12-01</span>
+                                <h3>{eventView.title}</h3>
                             </div>
                             <div className="event-content">
                                 <p>
-                                    <img src="https://dookki.co.kr/data/editor/2308/thumb-03f7942e6240bfb15e2061621659d093_1691024871_5852_1400x1980.jpg" alt="바이럴"/>
+                                    {eventView.content}
                                 </p>
                             </div>
                         </article>
                         <div className="goto-event">
-                            <table>
-                                <tr>
-                                    <td>
-                                        이전글<Icon path={mdiChevronUp} size={1} />
-                                    </td>
-                                    <td><Link to="/cs/CsEventView">떡볶이를 주문하시면 에너지 드링크를 드려요!</Link></td>
-                                    <td>기간: 2023.11.01 ~ 2023.11.07</td>
-                                </tr>
-                                <tr>
-                                    <td>다음글<Icon path={mdiChevronDown} size={1} /></td>
-                                    <td><Link to="/cs/CsEventView">11월 신한카드 할인 - 신용카드</Link></td>
-                                    <td>기간: 2023.11.01 ~ 2023.11.07</td>
-                                </tr>
-                            </table>
                             <Link to="/cs/CsEventList" className="btn">목록</Link>
-
                         </div>
                     </Col>
                     {/* content end */}

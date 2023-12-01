@@ -1,18 +1,30 @@
 import { Routes, Route, BrowserRouter, Link, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { Container,ListGroup, Col, Row, Button , Table, Pagination, Form } from 'react-bootstrap';
-import { getQnaView } from '../../js/cs/qnaView.js';
+import { getQnaView, deleteCs } from '../../js/cs/qnaView.js';
 import '../../css/my/my.css';
 function QnaList(){
     const { cno } = useParams();
     const [qnaView, setQnaView] = useState({});
+    const [replyForm, setReplyForm] = useState({});
     useEffect(()=>{
         const fetchData = async () => {
             const qnaInfo = await getQnaView(cno);
             setQnaView(qnaInfo);
+            setReplyForm(qnaInfo.replyForm);
         };
         fetchData();
     },[])
+    const qnaDelete = async () => {
+        if (window.confirm('해당 문의글을 삭제하시겠습니까?')) {
+            const flag = await deleteCs(cno);
+            if (flag) {
+                window.location.href = '/my/myQnaList';
+            } else {
+                alert('문제가 발생하였습니다.');
+            }
+        }
+    }
     return (
         <section className="my">
             <div className="myBanner">
@@ -51,20 +63,20 @@ function QnaList(){
                                         <span>{qnaView.content}</span>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td className="align-center">답변</td>
-                                    <td>
-                                        <span>
-                                        언제나 맛있는 음식을 제공하는 롬복떡볶이입니다! <br/>
-                                        이메일 변경은 우측 상단의 '마이페이지' -&gt; '내 정보'에서 바로 변경하실 수 있습니다. <br/>
-                                        만일 이메일이 정상적으로 변경되지 않을시 고객센터에 다시 문의해주시길 바랍니다.
-                                        </span>
-                                    </td>
-                                </tr>
+                                {replyForm === null ? null : (
+                                    <tr>
+                                        <td className="align-center">답변</td>
+                                        <td>
+                                            <span>
+                                                {replyForm.reply}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                )}
                                 </tbody>
                             </Table>
                             <div className="btn-qna">
-                                <Button variant="secondary" size="lg" className="delete-myQna">
+                                <Button variant="secondary" size="lg" className="delete-myQna" onClick={()=>{qnaDelete()}}>
                                     삭제
                                 </Button>
                                 <Link to="/my/myQnaList">

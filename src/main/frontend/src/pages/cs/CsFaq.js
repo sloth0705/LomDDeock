@@ -8,17 +8,20 @@ function Faq() {
      const [faqList, setFaqList] = useState([]);
      // 문의내역 리스트 페이징
      const [faqPage, setFaqPage] = useState({});
+     // 자주묻는 질문 카테고리 값 (이벤트로 고정)
+     const [cateNo, setCateNo] = useState(10);
      useEffect(() => {
         const fetchData = async () => {
-            const faqInfo = await getFaqList(1);
+            const faqInfo = await getFaqList(1, cateNo);
             setFaqList(faqInfo.dtoList);
             setFaqPage(faqInfo);
         };
         fetchData();
      },[])
 
-     const handlePageClick = async (pageNumber) => {
-        const faqInfo = await getFaqList(pageNumber);
+     const handlePageClick = async (pageNumber, cate) => {
+        setCateNo(cate);
+        const faqInfo = await getFaqList(pageNumber, cate);
         setFaqList(faqInfo.dtoList);
         setFaqPage(faqInfo);
      };
@@ -26,7 +29,7 @@ function Faq() {
         const pageNumbers = [];
         for (let i = faqPage.start; i <= faqPage.end; i++) {
             pageNumbers.push(
-            <Pagination.Item key={i} active={i === faqPage.pg} onClick={()=>{handlePageClick(i)}}>
+            <Pagination.Item key={i} active={i === faqPage.pg} onClick={()=>{handlePageClick(i, cateNo)}}>
                 {i}
             </Pagination.Item>
             );
@@ -62,13 +65,34 @@ function Faq() {
                             <span> 고객센터 > <strong>자주묻는질문</strong> </span>
                         </div>
                         <div className="faq-cate">
-                            <Link to="#" className="on">이벤트</Link>
-                            <Link to="#">주문/결제</Link>
-                            <Link to="#">취소/환불</Link>
-                            <Link to="#">혜택</Link>
-                            <Link to="#">이용문의</Link>
-                            <Link to="#">회원정보</Link>
-                            <Link to="#">쿠폰</Link>
+                            <Link to="#" className={`${cateNo === 10 ? 'on' : ''}`}
+                            onClick={()=>{handlePageClick(1, 10)}}>
+                                이벤트
+                            </Link>
+                            <Link to="#" className={`${cateNo === 11 ? 'on' : ''}`}
+                            onClick={()=>{handlePageClick(1, 11)}}>
+                                주문/결제
+                            </Link>
+                            <Link to="#" className={`${cateNo === 12 ? 'on' : ''}`}
+                            onClick={()=>{handlePageClick(1, 12)}}>
+                                취소/환불
+                            </Link>
+                            <Link to="#" className={`${cateNo === 13 ? 'on' : ''}`}
+                            onClick={()=>{handlePageClick(1, 13)}}>
+                                혜택
+                            </Link>
+                            <Link to="#" className={`${cateNo === 14 ? 'on' : ''}`}
+                             onClick={()=>{handlePageClick(1, 14)}}>
+                                이용문의
+                            </Link>
+                            <Link to="#" className={`${cateNo === 15 ? 'on' : ''}`}
+                             onClick={()=>{handlePageClick(1, 15)}}>
+                                회원정보
+                            </Link>
+                            <Link to="#" className={`${cateNo === 16 ? 'on' : ''}`}
+                            onClick={()=>{handlePageClick(1, 16)}}>
+                                쿠폰
+                            </Link>
                         </div>
                         <Accordion>
                             {faqList.map((faq, index) => (

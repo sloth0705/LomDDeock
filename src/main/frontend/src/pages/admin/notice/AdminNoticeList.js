@@ -1,8 +1,126 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import '../../../css/admin/adminCs.css';
 import {Col, Container, Row,Accordion } from "react-bootstrap";
 import AdminAsideMenu from "../AdminAsideMenu";
-import {Link} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
+import axios from "axios";
+import {formatDate} from "../../../js/cs/formatData";
+
+function NoticeList(){
+    // 데이터 호출
+    const [listData, setListData] = useState([]); // 현재 게시글 목록
+    const [pageData, setPageData ] =useState({}); // 페이지네이션
+    const [page, setPage] = useState(1); // 페이지 번호
+
+    // useEffect로 한번 실행된 데이터를 빈배열에 담게 해 무한반복 방지
+    useEffect(() => {
+        axios.get(`/api/admin/notice/adminNoticeList?&page=${page}`)
+            .then(res => {
+                setListData(res.data.csList);
+                setPageData(res.data);
+                setPage(res.data.pg);
+            })
+            .catch(err => {
+                console.error("데이터를 찾을 수 없습니다. error : " + err);
+            });
+    }, [page]);
+
+
+
+    /* ------------ 삭제 -------------- */
+    const handleDelete = (item, index) => {
+        console.log(item, index);
+        const cno = item.cno;
+
+        if(window.confirm('해당 게시글을 삭제하시겠습니까?')){
+            axios.post(`/api/admin/notice/adminNoticeDelete/${cno}`)
+                .then(res =>{
+                    alert("정상적으로 게시글이 삭제되었습니다.");
+
+                    // 삭제가 성공하면 FAQ 목록에서 삭제된 항목을 지워서 상태를 업데이트
+                    setListData(prevListData => {
+                        const newListData = [...prevListData];
+                        newListData.splice(index, 1);
+                        return newListData;
+                    });
+
+                })
+                .catch(err => {
+                    alert("정상적으로 삭제되지 못하였습니다.");
+                    console.log('error : '+err);
+                });
+        }
+    }
+
+    return (
+        <>
+            <Accordion>
+                {listData.map((item,index) => (
+                    <Accordion.Item key={index} eventKey={index.toString()}>
+                        <Accordion.Header>{item.title}<span className="date">{formatDate(item.rdate)}</span></Accordion.Header>
+                        <Accordion.Body>
+                            <p className="typeReset" dangerouslySetInnerHTML={{ __html: item.content }} />
+                            <p>
+                                <button className="btnDelete" onClick={() => handleDelete(item, index)}>삭제</button>
+                            </p>
+                        </Accordion.Body>
+                    </Accordion.Item>
+                ))}
+            </Accordion>
+            <NoticePagination
+                page={page}
+                setPage={setPage}
+                pageData={pageData}
+            />
+        </>
+    )
+
+}
+
+function NoticePagination({page, setPage, pageData}) {
+    const navigate = useNavigate();
+
+    const handlePageChange = (newPage) => {
+        setPage(newPage);
+        navigate(`/admin/notice/adminNoticeList?page=${newPage}`);
+    };
+
+    const renderPaginationNumbers = () => {
+        const pages = [];
+        for (let i = pageData.start; i <= pageData.end; i++) {
+            pages.push(
+                <span
+                    key={i}
+                    className={`num${page === i ? ' on' : ''}`}
+                    onClick={() => handlePageChange(i)}
+                >
+                    {i}
+                </span>
+            );
+        }
+        return pages;
+    };
+
+
+    return (
+        <div className="paging">
+            <span
+                className={`num prev ${!pageData.prev ? ' disabled' : ''}`}
+                onClick={() => handlePageChange(pageData.start - 1)}
+            >
+                &lt;
+            </span>
+            {renderPaginationNumbers()}
+            <span
+                className={`num next ${!pageData.next ? ' disabled' : ''}`}
+                onClick={() => handlePageChange(pageData.end + 1)}
+            >
+                &gt;
+            </span>
+        </div>
+    );
+
+}
 
 function adminNoticeList() {
     return (
@@ -15,58 +133,7 @@ function adminNoticeList() {
                         <div className="new-notice-write">
                             <Link to="/admin/notice/adminNoticeWrite" className="btnWrite">새 공지사항 작성</Link>
                         </div>
-                        <Accordion>
-                            <Accordion.Item eventKey="0">
-                                <Accordion.Header>[발표] 코딩문제 풀고 떡볶이 먹자! 이벤트 당첨자 발표 <span className="date">2023-11-01</span></Accordion.Header>
-                                <Accordion.Body>
-                                    <p>
-                                        언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
-                                        <br/>
-                                        <br/>
-                                        이번 이벤트 대회 당첨자 발표입니다. <br/>
-                                        <Link to="#">당첨자 발표</Link>
-                                        <br/>
-                                        <br/>
-                                        당첨되신 고객님께서는 마이페이지 > 쿠폰함에 자동적으로 지급되며, <br/>
-                                        비회원이신 고객분들은 당첨자 발표 페이지에서 비회원 전용 쿠폰받기에서 <br/>
-                                        이메일 혹은 휴대폰번호를 입력하시면 최대 3일내로 기프티콘이 전송되오니 확인해주시길 바랍니다.
-                                        <br/>
-                                        <br/>
-                                        ※ 상품이 정상적으로 지급되지 않거나, 사용에 문제가 발생했을 시 고객센터로 문의해주세요.
-                                    </p>
-                                    <p>
-                                        <button className="btnDelete">삭제</button>
-                                    </p>
-                                </Accordion.Body>
-                            </Accordion.Item>
-                            <Accordion.Item eventKey="1">
-                                <Accordion.Header>[공지] 롬복떡볶이 이용약관 변경 안내 <span className="date">2023-11-01</span></Accordion.Header>
-                                <Accordion.Body>
-                                    <p>
-                                        언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
-                                        <br/>
-                                        <br/>
-                                        롬복떡볶이의 서비스 이용약관이 아래와 같이 변경됩니다.
-                                    </p>
-                                    <p>
-                                        <button className="btnDelete">삭제</button>
-                                    </p>
-                                </Accordion.Body>
-                            </Accordion.Item>
-                            <Accordion.Item eventKey="2">
-                                <Accordion.Header>[공지] 롬복떡볶이 사칭 제재 안내 <span className="date">2023-11-01</span></Accordion.Header>
-                                <Accordion.Body>
-                                    <p>
-                                        언제나 맛있는 떡볶이를 만드는 롬복 떡볶이입니다.
-                                        <br/>
-                                        <br/>
-                                    </p>
-                                    <p>
-                                        <button className="btnDelete">삭제</button>
-                                    </p>
-                                </Accordion.Body>
-                            </Accordion.Item>
-                        </Accordion>
+                        <NoticeList/>
                     </Col>
                 </Row>
             </Container>

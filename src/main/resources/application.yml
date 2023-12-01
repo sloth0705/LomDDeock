@@ -85,10 +85,10 @@ spring:
 upload:
   path:
     files: files/
-    thumbs: thumbs/
+    thumbs: src/main/frontend/public/thumbs/
     banners: banners/
-    toppings: toppings/
-    sides: sides/
+    toppings: src/main/frontend/public/toppings/
+    sides: src/main/frontend/public/sides/
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
 

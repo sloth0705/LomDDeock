@@ -13,7 +13,7 @@ function formatDate(dateString) {
     const formattedDate = new Date(dateString).toLocaleDateString(undefined, options);
     return formattedDate;
 }
-function FasList(){
+function FaqList(){
     // 데이터 호출
     const [listData, setListData] = useState([]); // 현재 게시글 목록
     const [pageData, setPageData ] =useState({}); // 페이지네이션
@@ -171,7 +171,7 @@ function AdminFaqList() {
                             <Link to="/admin/faq/adminFaqRegister" className="btnWrite">자주묻는질문 등록</Link>
                         </div>
                         <FaqCate/>
-                        <FasList/>
+                        <FaqList/>
                     </Col>
                 </Row>
             </Container>

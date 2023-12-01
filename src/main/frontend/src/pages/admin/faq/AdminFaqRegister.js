@@ -11,6 +11,16 @@ import axios from 'axios';
 function AdminFaqRegister() {
     const navigate = useNavigate();
     const [inputs, setInputs] = useState({});
+    const [registant, setRegistant] = useState('');
+    
+    // 로그인 된 이메일 가져오기
+    useEffect(()=>{
+        const email = localStorage.getItem('email');
+        if (email) {
+            setRegistant(email.slice(0, 3) + '***');
+        }
+    },[]);
+
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
@@ -26,7 +36,16 @@ function AdminFaqRegister() {
     };
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('/api/admin/faq/adminFaqRegister', inputs)
+
+        const jsonData = {
+            cate: inputs.cate,
+            registant: registant,
+            title: inputs.title,
+            content: inputs.content,
+        };
+
+        console.log("jsonData : ",jsonData);
+        axios.post('/api/admin/faq/adminFaqRegister', jsonData)
             .then(res => {
                 alert("등록되었습니다.");
                 navigate("/admin/faq/adminFaqList");

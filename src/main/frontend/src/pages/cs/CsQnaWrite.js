@@ -1,8 +1,59 @@
-import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import { Link, useNavigate  } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import {Container, ListGroup, Col, Row, Button, Accordion, Table, Pagination} from 'react-bootstrap';
+import axios from 'axios';
+import { getQnaCate } from '../../js/member/qnaList.js';
 import '../../css/cs/cs.css';
 function QnaWrite() {
+    const navigate = useNavigate ();
+    // 문의 카테고리
+    const [qnaCate, setQnaCate] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            const qnaCateList = await getQnaCate();
+            setQnaCate(qnaCateList);
+        };
+        fetchData();
+    },[])
+    const handleSelectChange = (event) => {
+      const selectedValue = event.target.value;
+      setSelectedValue(selectedValue);
+    }
+    // 선택한 카테고리
+    const [selectedValue, setSelectedValue] = useState('0');
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+    function checkQna() {
+        const qnaCateFlag = (selectedValue === '' || selectedValue === undefined || selectedValue === '0');
+        const titleFlag = (title === '' || title === undefined);
+        const contentFlag = (content === '' || content === undefined);
+        if (qnaCateFlag) {
+            alert('유형을 선택해주세요.');
+            return false;
+        }
+        if (titleFlag) {
+            alert('제목을 입력해주세요.');
+            return false;
+        }
+        if (contentFlag) {
+            alert('내용을 입력해주세요.');
+            return false;
+        }
+        if (window.confirm('해당 문의를 작성하시겠습니까?')) {
+            sendQna();
+        }
+    }
+    const sendQna = async () => {
+        const resp = await axios.post('/api/sendQna', {
+            group: 'qna',
+            cate: selectedValue,
+            title: title,
+            content, content
+        });
+        if (resp.data === true) {
+            navigate('/cs/csQnaList');
+        }
+    }
     return (
         <section className="cs">
             <Container id="qna-write">
@@ -30,31 +81,18 @@ function QnaWrite() {
                             <form action="#" method="post">
                                 <h5>유형</h5>
                                 <div className="find-csQna">
-                                    <select>
-                                        <option>전체</option>
-                                        <option>이벤트</option>
-                                        <option>주문/결제</option>
-                                        <option>취소/환불</option>
-                                        <option>혜택</option>
-                                        <option>이용문의</option>
-                                        <option>회원정보</option>
-                                        <option>쿠폰</option>
-                                        <option>기타</option>
+                                    <select value={selectedValue} onChange={handleSelectChange}>
+                                        <option value='0'>-</option>
+                                        {qnaCate.map((qna) => (
+                                            <option value={qna.cateNo}>{qna.cateName}</option>
+                                        ))}
                                     </select>
                                 </div>
-
-                                <h4>휴대폰 번호</h4>
-                                <input type="text" name="email" placeholder="선택사항입니다."/>
-                                <h4>이메일</h4>
-                                <input type="text" name="hp" placeholder="선택사항입니다."/>
-
                                 <h4>제목</h4>
-                                <input type="text" name="title" placeholder="문의 제목을 입력해주세요."/>
+                                <input type="text" name="title" placeholder="문의 제목을 입력해주세요." onChange={(e)=>{setTitle(e.target.value)}}/>
                                 <h4>내용</h4>
-                                <textarea></textarea>
-                                <h4>파일</h4>
-                                <input type="file" name="file" className="qna-file"/> <br/>
-                                <button type="submit" className="btn">등록</button>
+                                <textarea onChange={(e)=>{setContent(e.target.value)}}></textarea>
+                                <button type="button" className="btn" onClick={()=>{checkQna()}}>등록</button>
                             </form>
                         </div>
                     </Col>
