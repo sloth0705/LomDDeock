@@ -12,6 +12,8 @@ function NoticeList(){
     const [pageData, setPageData ] =useState({}); // 페이지네이션
     const [page, setPage] = useState(1); // 페이지 번호
 
+    const [activeItem, setActiveItem] = useState(null);
+
     // useEffect로 한번 실행된 데이터를 빈배열에 담게 해 무한반복 방지
     useEffect(() => {
         axios.get(`/api/admin/notice/adminNoticeList?&page=${page}`)
@@ -28,12 +30,22 @@ function NoticeList(){
 
 
     /* ------------ 삭제 -------------- */
+    const handleItemClick = (index) => {
+        if (activeItem === index) {
+            // 현재 아이템이 열려있으면 닫기
+            setActiveItem(null);
+        } else {
+            // 다른 아이템을 클릭하면 해당 아이템 열기
+            setActiveItem(index);
+        }
+    };
+
     const handleDelete = (item, index) => {
         console.log(item, index);
         const cno = item.cno;
 
         if(window.confirm('해당 게시글을 삭제하시겠습니까?')){
-            axios.post(`/api/admin/notice/adminNoticeDelete/${cno}`)
+            axios.delete(`/api/admin/notice/adminNoticeDelete/${cno}`)
                 .then(res =>{
                     alert("정상적으로 게시글이 삭제되었습니다.");
 
@@ -44,6 +56,7 @@ function NoticeList(){
                         return newListData;
                     });
 
+                        setActiveItem(null);
                 })
                 .catch(err => {
                     alert("정상적으로 삭제되지 못하였습니다.");
@@ -57,7 +70,10 @@ function NoticeList(){
             <Accordion>
                 {listData.map((item,index) => (
                     <Accordion.Item key={index} eventKey={index.toString()}>
-                        <Accordion.Header>{item.title}<span className="date">{formatDate(item.rdate)}</span></Accordion.Header>
+                        <Accordion.Header onClick={() => handleItemClick(index)}>
+                            {item.title}
+                            <span className="date">{formatDate(item.rdate)}</span>
+                        </Accordion.Header>
                         <Accordion.Body>
                             <p className="typeReset" dangerouslySetInnerHTML={{ __html: item.content }} />
                             <p>

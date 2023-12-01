@@ -135,8 +135,9 @@ a:hover {
 
 /* content css type reset */
 #adminNoticeList .accordion-body > .typeReset a {color: #0a53be;}
+#adminNoticeList .accordion-body > .typeReset ol {padding: 0px;}
 #adminNoticeList .accordion-body > .typeReset ol > li {list-style: decimal inside; padding: 0;}
-#adminNoticeList .accordion-body > .typeReset ul > li {list-style: disc inside;}
+#adminNoticeList .accordion-body > .typeReset ul > li {list-style: disc inside; padding: 0;}
 #adminNoticeList .accordion-body > .typeReset blockquote {
     border-left: 4px solid #ccc;
     margin-bottom: 5px;

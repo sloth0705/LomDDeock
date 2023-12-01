@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
 import { Tab, Tabs, Button, Stack, Nav, Navbar, NavDropdown, Form, InputGroup, Container, Row, Col } from 'react-bootstrap';
 import '../../css/menu/menuList.css';
@@ -10,6 +10,8 @@ import SideMenu from './category/SideMenu';
 import ToppingMenu from './category/ToppingMenu';
 import MealKitMenu from './category/MealKitMenu';
 import blank from "../../images/menu/blank.svg";
+import axios from "axios";
+
 function Card (){
     // 데이터 호출
     const [listData, setListData] = useState([]); // 현재 게시글 목록
