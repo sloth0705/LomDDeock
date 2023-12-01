@@ -16,4 +16,7 @@ public class MenuPageRequestDTO {
     @Builder.Default
     private String cate = "normal";
 
+    @Builder.Default
+    private int size = 10;
+
 }

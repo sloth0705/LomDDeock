@@ -1,11 +1,11 @@
 import { Button, Card } from 'react-bootstrap';
 import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
 import React from "react";
-function SideMenu({listData}) {
+function DrinkMenu({listData}) {
     return (
         <section className="tabMenuList">
             <h1 className="tabCategory">
-                SIDE MENU
+                DRINK MENU
             </h1>
             {listData.map((item, index)=>(
                 <Card key={index} style={{ width: '18rem' }} className="item-card">
@@ -22,8 +22,9 @@ function SideMenu({listData}) {
                     </Link>
                 </Card>
             ))}
+
         </section>
     )
 }
 
-export default SideMenu;
+export default DrinkMenu;

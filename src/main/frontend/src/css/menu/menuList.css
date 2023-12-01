@@ -7,7 +7,9 @@
     box-sizing: border-box;
     text-align: center;
 }
-
+.menuList .card-img-top {
+    height:300px;
+}
 .menuList .nav-item {
     flex: 1;
 }
@@ -32,4 +34,22 @@
 
 .menuPrice {
     text-align: right;
+}
+/* MenuList 페이징 */
+.menuList .paging {
+    width: 100%;
+    text-align: center;
+    line-height: 100px;
+}
+.menuList .paging > .num.on {
+    color: #ff744d;
+    font-weight: bold;
+}
+.menuList .paging > .num {
+    font-size: 18px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.menuList .paging > .num.disabled {
+    display: none;
 }
