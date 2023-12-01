@@ -20,16 +20,15 @@ public class Pager {
 
 
     // 페이지 마지막 번호
-    public int getLastPageNum(int total) {
+    public int getLastPageNum(int total, int size) {
 
         int lastPageNum = 0;
 
-        if(total % 10 == 0){
-            lastPageNum = total / 10;
-        }else{
-            lastPageNum = total / 10 + 1;
+        if (total % size == 0) {
+            return (int) (Math.ceil(total / (double) size));
+        } else {
+            return total / size + 1;
         }
-        return lastPageNum;
 
     }
 
@@ -49,13 +48,13 @@ public class Pager {
     }
 
     // 페이지 시작번호
-    public int getPageStartNum(int total, int currentPage) {
-        int start = (currentPage - 1) * 10;
+    public int getPageStartNum(int total, int currentPage, int size) {
+        int start = (currentPage - 1) * size;
         return total - start;
     }
 
     // Limit 시작번호
-    public int getStartNum(int currentPage) {
-        return (currentPage - 1) * 10;
+    public int getStartNum(int currentPage, int size) {
+        return (currentPage - 1) * size;
     }
 }

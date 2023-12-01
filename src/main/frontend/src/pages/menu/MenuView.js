@@ -74,68 +74,68 @@ function MenuView() {
                         </p>
                         <Table className="toppingTable">
                             <tbody>
-                                <tr>
-                                    <td className="toppingThumbArea">
-                                        <Image src={topping1} roundedCircle className="toppingThumb"/>
-                                    </td>
-                                    <td className="toppingInfoArea">
-                                        <p>
-                                            치즈 100g
-                                        </p>
-                                        <h5>
-                                            3,000
-                                        </h5>
-                                    </td>
-                                    <td className="toppingCountArea">
-                                        <InputGroup className="topping">
-                                            <Button variant="outline-secondary" id="button-addon1" className="toppingButton">
-                                                -
-                                            </Button>
-                                            <Form.Control
-                                                type="text"
-                                                aria-label="1"
-                                                aria-describedby="basic-addon1"
-                                                className="toppingCount"
-                                                disabled
-                                                readOnly
-                                            />
-                                            <Button variant="outline-secondary" id="button-addon2" className="toppingButton">
-                                                +
-                                            </Button>
-                                        </InputGroup>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="toppingThumbArea">
-                                        <Image src={topping2} roundedCircle className="toppingThumb"/>
-                                    </td>
-                                    <td className="toppingInfoArea">
-                                        <p>
-                                            올리브
-                                        </p>
-                                        <h5>
-                                            500
-                                        </h5>
-                                    </td>
-                                    <td className="toppingCountArea">
-                                        <InputGroup className="topping">
-                                            <Button variant="outline-secondary" id="button-addon1" className="toppingButton">
-                                                -
-                                            </Button>
-                                            <Form.Control
-                                                type="text"
-                                                aria-label="1"
-                                                aria-describedby="basic-addon1"
-                                                className="toppingCount"
-                                                disabled
-                                                readOnly
-                                            />
-                                            <Button variant="outline-secondary" id="button-addon2" className="toppingButton">
-                                                +
-                                            </Button>
-                                        </InputGroup>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td className="toppingThumbArea">
+                                    <Image src={topping1} roundedCircle className="toppingThumb"/>
+                                </td>
+                                <td className="toppingInfoArea">
+                                    <p>
+                                        치즈 100g
+                                    </p>
+                                    <h5>
+                                        3,000
+                                    </h5>
+                                </td>
+                                <td className="toppingCountArea">
+                                    <InputGroup className="topping">
+                                        <Button variant="outline-secondary" id="button-addon1" className="toppingButton">
+                                            -
+                                        </Button>
+                                        <Form.Control
+                                            type="text"
+                                            aria-label="1"
+                                            aria-describedby="basic-addon1"
+                                            className="toppingCount"
+                                            disabled
+                                            readOnly
+                                        />
+                                        <Button variant="outline-secondary" id="button-addon2" className="toppingButton">
+                                            +
+                                        </Button>
+                                    </InputGroup>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className="toppingThumbArea">
+                                    <Image src={topping2} roundedCircle className="toppingThumb"/>
+                                </td>
+                                <td className="toppingInfoArea">
+                                    <p>
+                                        올리브
+                                    </p>
+                                    <h5>
+                                        500
+                                    </h5>
+                                </td>
+                                <td className="toppingCountArea">
+                                    <InputGroup className="topping">
+                                        <Button variant="outline-secondary" id="button-addon1" className="toppingButton">
+                                            -
+                                        </Button>
+                                        <Form.Control
+                                            type="text"
+                                            aria-label="1"
+                                            aria-describedby="basic-addon1"
+                                            className="toppingCount"
+                                            disabled
+                                            readOnly
+                                        />
+                                        <Button variant="outline-secondary" id="button-addon2" className="toppingButton">
+                                            +
+                                        </Button>
+                                    </InputGroup>
+                                </td>
+                            </tr>
                             </tbody>
                         </Table>
                     </article>
@@ -167,39 +167,39 @@ function MenuView() {
                         <div className="toppingTableArea">
                             <Table className="toppingTable">
                                 <tbody>
-                                    {spicyLevels.map((spicy, index) => (
-                                        <tr>
-                                            <td className="sideThumbArea">
-                                                <Image src={special1} className="toppingThumb"/>
-                                            </td>
-                                            <td className="sideInfoArea">
-                                                <p>
-                                                    사이드 메뉴{index + 1}
-                                                </p>
-                                                <strong className="sideSpecialStrong">
-                                                    3,000
-                                                </strong>
-                                            </td>
-                                            <td className="sideCountArea">
-                                                <InputGroup className="side">
-                                                    <Button variant="outline-secondary" id="button-addon1" className="sideButton">
-                                                        -
-                                                    </Button>
-                                                    <Form.Control
-                                                        type="text"
-                                                        aria-label="1"
-                                                        aria-describedby="basic-addon1"
-                                                        className="sideCount"
-                                                        disabled
-                                                        readOnly
-                                                    />
-                                                    <Button variant="outline-secondary" id="button-addon2" className="sideButton">
-                                                        +
-                                                    </Button>
-                                                </InputGroup>
-                                            </td>
-                                        </tr>
-                                    ))}
+                                {spicyLevels.map((spicy, index) => (
+                                    <tr>
+                                        <td className="sideThumbArea">
+                                            <Image src={special1} className="toppingThumb"/>
+                                        </td>
+                                        <td className="sideInfoArea">
+                                            <p>
+                                                사이드 메뉴{index + 1}
+                                            </p>
+                                            <strong className="sideSpecialStrong">
+                                                3,000
+                                            </strong>
+                                        </td>
+                                        <td className="sideCountArea">
+                                            <InputGroup className="side">
+                                                <Button variant="outline-secondary" id="button-addon1" className="sideButton">
+                                                    -
+                                                </Button>
+                                                <Form.Control
+                                                    type="text"
+                                                    aria-label="1"
+                                                    aria-describedby="basic-addon1"
+                                                    className="sideCount"
+                                                    disabled
+                                                    readOnly
+                                                />
+                                                <Button variant="outline-secondary" id="button-addon2" className="sideButton">
+                                                    +
+                                                </Button>
+                                            </InputGroup>
+                                        </td>
+                                    </tr>
+                                ))}
                                 </tbody>
                             </Table>
                         </div>
@@ -209,57 +209,57 @@ function MenuView() {
             <section className="orderProgress">
                 <Table className="orderProgressTable">
                     <thead>
-                        <tr>
-                            <th className="orderProgressCol1"></th>
-                            <th className="orderProgressCol2"></th>
-                            <th className="orderProgressCol3"></th>
-                            <th className="orderProgressCol4"></th>
-                        </tr>
+                    <tr>
+                        <th className="orderProgressCol1"></th>
+                        <th className="orderProgressCol2"></th>
+                        <th className="orderProgressCol3"></th>
+                        <th className="orderProgressCol4"></th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <tr className="orderProgressRow1">
-                            <td>
-                                <strong>
-                                    떡볶이
-                                </strong>
-                            </td>
-                            <td>
-                                <strong>
-                                    사이드디시
-                                </strong>
-                            </td>
-                            <td>
-                                <strong>
-                                    음료 & 기타
-                                </strong>
-                            </td>
-                            <td>
-                                <p>
-                                    총 금액
-                                    <strong className="orderTotalPrice">
-                                        30,000
-                                    </strong>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr  className="orderProgressRow2">
-                            <td>
+                    <tr className="orderProgressRow1">
+                        <td>
+                            <strong>
                                 떡볶이
-                            </td>
-                            <td>
-                                없음
-                            </td>
-                            <td>
-                                없음
-                            </td>
-                            <td>
-                                <Link to="/menu/menuCart">
-                                    <Button variant="danger" className="orderButton">
-                                        주문하기
-                                    </Button>
-                                </Link>
-                            </td>
-                        </tr>
+                            </strong>
+                        </td>
+                        <td>
+                            <strong>
+                                사이드디시
+                            </strong>
+                        </td>
+                        <td>
+                            <strong>
+                                음료 & 기타
+                            </strong>
+                        </td>
+                        <td>
+                            <p>
+                                총 금액
+                                <strong className="orderTotalPrice">
+                                    30,000
+                                </strong>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr  className="orderProgressRow2">
+                        <td>
+                            떡볶이
+                        </td>
+                        <td>
+                            없음
+                        </td>
+                        <td>
+                            없음
+                        </td>
+                        <td>
+                            <Link to="/menu/menuCart">
+                                <Button variant="danger" className="orderButton">
+                                    주문하기
+                                </Button>
+                            </Link>
+                        </td>
+                    </tr>
                     </tbody>
                 </Table>
             </section>
