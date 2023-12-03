@@ -63,16 +63,20 @@ function MenuList() {
                 className="mb-3">
                 <Tab eventKey="main" title="메인메뉴" onClick={()=>setCate("normal")}>
                     <MainMenu
-                        listData={listData}/>
+                        listData={listData}
+                        cate={cate}
+                    />
                 </Tab>
                 <Tab eventKey="side" title="사이드" onClick={()=>setCate("side")}>
                     <SideMenu
                         listData={listData}
+                        cate={cate}
                     />
                 </Tab>
                 <Tab eventKey="drinkOrOthers" title="음료" onClick={()=>setCate("drinkOrOthers")}>
                     <DrinkMenu
                         listData={listData}
+                        cate={cate}
                     />
                 </Tab>
             </Tabs>

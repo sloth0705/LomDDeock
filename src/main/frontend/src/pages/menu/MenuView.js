@@ -1,24 +1,33 @@
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import {Link, useParams} from "react-router-dom";
 import { Button, ButtonGroup, ToggleButton, Form, Image, InputGroup, Table } from 'react-bootstrap';
 import '../../css/menu/menuView.css';
 import blank from '../../images/blank.png';
 import topping1 from '../../images/menu/Topping1.jpg';
 import topping2 from '../../images/menu/Topping2.jpg';
 import special1 from '../../images/menu/special1.jpg';
+import axios from "axios";
 function MenuView() {
+    const { cate, menuNo } = useParams();
+
     const [radioValue, setRadioValue] = useState('1');
-    const radios = [
-        { name: 'L 40,000', value: '1' },
-        { name: 'M 35,000', value: '2' },
-    ];
-    const spicyLevels = [
-        {name: '어린이맛', value: '1'},
-        {name: '착한맛', value: '2'},
-        {name: '오리지널', value: '3'},
-        {name: '쏘핫', value: '4'},
-        {name: '쏘쏘핫', value: '5'}
-    ];
+    const [radios, setRadios] = useState([]);
+    const [spicyLevels, setSpicyLevels] = useState([]);
+
+    // useEffect로 한번 실행된 데이터를 빈배열에 담게 해 무한반복 방지
+    useEffect(()=>{
+        console.log("cate : "+cate, "menuNo : "+menuNo);
+        axios.get(`/api/menu/MenuView?cate=${cate}&menuNo=${menuNo}`)
+            .then(res=>{
+                const data = res.data;
+                if(data.cate === "normal"){
+                }else {
+                }
+            })
+            .catch(err=>{
+                console.error("데이터를 찾을 수 없습니다. error : " + err);
+            });
+    },[cate, menuNo]);
 
     return (
         <>
