@@ -83,6 +83,17 @@ ul, ol {
     font-size: 20px;
     margin-left: 20px;
 }
+.pagination {
+    margin-top: 10px;
+}
+.pagination .active>.page-link, .page-link.active {
+    color: #fff;
+    background-color: #ff744d;
+    border-color: #ff744d;
+}
+.pagination .page-link {
+    color:#ff744d;
+}
 /* notice */
 #notice .accordion .accordion-header {
     line-height: 30px;
@@ -101,9 +112,21 @@ ul, ol {
     height: auto;
     padding: 10px;
     box-sizing: border-box;
-    background-color: #fff7f3;
 }
-
+#notice .accordion-body > .typeReset a {color: #0a53be;}
+#notice .accordion-body > .typeReset ol {padding: 0px;}
+#notice .accordion-body > .typeReset ol > li {list-style: decimal inside; padding: 0;}
+#notice .accordion-body > .typeReset ul > li {list-style: disc inside; padding: 0;}
+#notice .accordion-body > .typeReset blockquote {
+    border-left: 4px solid #ccc;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding-left: 16px;
+}
+#notice .accordion-body > .typeReset .ql-align-center {text-align: center;}
+#notice .accordion-body > .typeReset .ql-align-right {text-align: right;}
+#notice .accordion-body > .typeReset img {cursor: default !important;}
+#notice .accordion-body > .typeReset iframe {width: 80%; height: 300px;}
 /* event - list */
 #event-list .event-div li:nth-of-type(1) {border-top: 1px solid black;}
 #event-list .event-div li {
@@ -123,7 +146,7 @@ ul, ol {
 }
 #event-list .event-div li img {
     width: 100%;
-    height: 120px;
+    height: 140px;
 }
 /* event - view */
 #event-view .event-now {

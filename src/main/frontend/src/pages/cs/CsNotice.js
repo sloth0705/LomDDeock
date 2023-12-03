@@ -69,9 +69,7 @@ function Notice() {
                                         <span className="date">{formatDate(notice.rdate)}</span>
                                     </Accordion.Header>
                                     <Accordion.Body>
-                                        <p>
-                                            {notice.content}
-                                        </p>
+                                        <p className="typeReset" dangerouslySetInnerHTML={{ __html: notice.content }} />
                                     </Accordion.Body>
                                 </Accordion.Item>
                             ))}
@@ -80,7 +78,8 @@ function Notice() {
                         <Pagination style={{justifyContent:'center'}}>
                             {noticePage.prev && (
                                 <>
-                                  <Pagination.Prev onClick={()=>{handlePageClick(noticePage.start - 1)}}/>
+                                  <Pagination.Prev
+                                      onClick={()=>{handlePageClick(noticePage.start - 1)}}/>
                                 </>
                             )}
                             {renderPageNumbers()}
