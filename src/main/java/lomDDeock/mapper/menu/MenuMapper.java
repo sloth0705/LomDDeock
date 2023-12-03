@@ -10,6 +10,7 @@ import java.util.List;
 @Mapper
 public interface MenuMapper {
     public List<MenuDTO> selectMains();
+    public MenuDTO selectMenuView(String cate, int menuNo);
     public List<MenuDTO> selectMenues(int start, int size);
     public List<SideDTO> selectSides(int start, int size);
     public List<SideDTO> selectDrinks(int start, int size);

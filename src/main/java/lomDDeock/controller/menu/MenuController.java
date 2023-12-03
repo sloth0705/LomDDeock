@@ -39,7 +39,7 @@ public class MenuController {
     }
     @ResponseBody
     @GetMapping("/menu/MenuList")
-    public MenuPageResponseDTO adminMenuList (@RequestParam(name = "cate") String cate,
+    public MenuPageResponseDTO menuList (@RequestParam(name = "cate") String cate,
                                               @RequestParam(name = "page") int page,
                                               @RequestParam(name = "size") int size) {
         MenuPageRequestDTO menuPageRequestDTO = new MenuPageRequestDTO();
@@ -51,6 +51,17 @@ public class MenuController {
         log.info("menuPageResponseDTO: " + menuPageResponseDTO);
 
         return menuPageResponseDTO;
+    }
+    @ResponseBody
+    @GetMapping("/menu/MenuView")
+    public MenuDTO menuView (@RequestParam(name = "cate") String cate,
+                            @RequestParam(name = "menuNo") int menuNo) {
+        log.info("cate : "+cate);
+        log.info("menuNo : "+menuNo);
+        MenuDTO menuDTO = menuService.selectMenuView(cate, menuNo);
+        log.info("menuDTO: " + menuDTO);
+
+        return menuDTO;
     }
 
 }

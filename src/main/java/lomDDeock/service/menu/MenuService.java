@@ -82,7 +82,10 @@ public class MenuService {
         saveFile(uploadPath, menuDTO.getFileThumb(), uuidThumb);
 
     }
-
+    public MenuDTO selectMenuView(String cate, int menuNo){
+        MenuDTO menuDTO = menuMapper.selectMenuView(cate, menuNo);
+        return null;
+    }
     public List<MenuDTO> selectMains(){
         List<MenuDTO> mains = menuMapper.selectMains();
         return mains;
