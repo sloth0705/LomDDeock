@@ -64,7 +64,7 @@ function EventList() {
                                         </Link>
                                     </h3>
                                     <Link to={`/cs/CsEventView/${event.cno}`}>
-                                        <img src="https://via.placeholder.com/171x180" alt="event_img" className="event-progress"/>
+                                        <img src="/events/thumbnail/mara.png" alt="event_img" className="event-progress"/>
                                     </Link>
                                 </li>
                                 ))}

@@ -69,7 +69,7 @@ function AdminEventList() {
                                         </button>
                                     </div>
                                     <Link to="/cs/CsEventView">
-                                        <img src="https://via.placeholder.com/171x180" alt="event_img" className="event-progress"/>
+                                        <img src="/events/thumbnail/mara.png" alt="event_img" className="event-progress"/>
                                     </Link>
                                 </li>
                                 ))}

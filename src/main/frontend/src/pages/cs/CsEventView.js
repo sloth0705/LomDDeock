@@ -43,6 +43,7 @@ function EventView() {
                             </div>
                             <div className="event-content">
                                 <p>
+                                    <img src="/events/view/event.jpg" alt={eventView.title}/><br/>
                                     {eventView.content}
                                 </p>
                             </div>
