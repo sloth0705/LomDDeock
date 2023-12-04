@@ -17,7 +17,7 @@ function MainMenu({listData, cate}) {
             </h1>
             {listData.map((item, index)=>(
                 <Card key={index} style={{ width: '18rem' }} className="item-card">
-                    <Link to={`/menu/menuView?cate=${cate}&menuNo=${item.menuNo}`} className="reset-a">
+                    <Link to={`/menu/menuView/${cate}/${item.menuNo}`} className="reset-a">
                         <Card.Img variant="top" src={`/thumbs/${item.thumb}`}/>
                         <Card.Body>
                             <Card.Title className="menuTitle">

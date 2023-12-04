@@ -82,9 +82,15 @@ public class MenuService {
         saveFile(uploadPath, menuDTO.getFileThumb(), uuidThumb);
 
     }
-    public MenuDTO selectMenuView(String cate, int menuNo){
-        MenuDTO menuDTO = menuMapper.selectMenuView(cate, menuNo);
-        return null;
+    public MenuViewDTO selectMenuView(int menuNo){
+        MenuDTO menuDTO = menuMapper.selectMenuMenuNo(menuNo);
+        List<SizeDTO> sizeDTO = menuMapper.selectSizeMenuNo(menuNo);
+        List<SpicyDTO> spicyDTO = menuMapper.selectSpicyMenuNo(menuNo);
+        List<ToppingDTO> toppingDTO = menuMapper.selectToppingMenuNo(menuNo);
+        List<SideDTO> sideDTO = menuMapper.selectSide();
+
+        MenuViewDTO menuViewDTO = new MenuViewDTO(menuDTO, sizeDTO, spicyDTO, toppingDTO, sideDTO);
+        return menuViewDTO;
     }
     public List<MenuDTO> selectMains(){
         List<MenuDTO> mains = menuMapper.selectMains();
