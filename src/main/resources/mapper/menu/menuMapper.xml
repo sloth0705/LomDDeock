@@ -6,12 +6,21 @@
     <select id="selectMains" resultType="lomDDeock.dto.menu.MenuDTO">
         SELECT * FROM `menu` WHERE `deleteYN` = 'Y' ORDER BY `hit` DESC LIMIT 4;
     </select>
-    <select id="selectMenuView" resultType="lomDDeock.dto.menu.MenuDTO">
-        SELECT * FROM `menu` AS A
-        JOIN `menu_size` AS B ON a.`menuNo`=b.`menuNo`
-        JOIN `menu_spicy` AS C ON a.`menuNo`=c.`menuNo`
-        JOIN `menu_topping` AS D ON a.`menuNo`=d.`menuNo`
-        WHERE `deleteYN` = 'Y' AND menuNo = #{menuNo};
+    <select id="selectMenuMenuNo" resultType="lomDDeock.dto.menu.MenuDTO">
+        SELECT * FROM `menu`
+        WHERE `deleteYN` = 'Y' AND `menuNo` = #{menuNo};
+    </select>
+    <select id="selectSizeMenuNo" resultType="lomDDeock.dto.menu.SizeDTO">
+        SELECT * FROM `menu_size` WHERE `menuNo` = #{menuNo};
+    </select>
+    <select id="selectSpicyMenuNo" resultType="lomDDeock.dto.menu.SpicyDTO">
+        SELECT * FROM `menu_spicy` WHERE `menuNo` = #{menuNo};
+    </select>
+    <select id="selectToppingMenuNo" resultType="lomDDeock.dto.menu.ToppingDTO">
+        SELECT * FROM `menu_topping` WHERE `menuNo` = #{menuNo};
+    </select>
+    <select id="selectSide" resultType="lomDDeock.dto.menu.SideDTO">
+        SELECT * FROM `menu_side_drink` WHERE `deleteYN` = 'Y';
     </select>
     <select id="selectMenues" resultType="lomDDeock.dto.menu.MenuDTO">
         SELECT * FROM `menu` WHERE `deleteYN` = 'Y' ORDER BY `menuNo` DESC LIMIT #{start}, #{size};

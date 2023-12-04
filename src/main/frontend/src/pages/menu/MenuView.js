@@ -2,27 +2,39 @@ import React, { useState, useEffect } from 'react';
 import {Link, useParams} from "react-router-dom";
 import { Button, ButtonGroup, ToggleButton, Form, Image, InputGroup, Table } from 'react-bootstrap';
 import '../../css/menu/menuView.css';
-import blank from '../../images/blank.png';
 import topping1 from '../../images/menu/Topping1.jpg';
 import topping2 from '../../images/menu/Topping2.jpg';
 import special1 from '../../images/menu/special1.jpg';
 import axios from "axios";
 function MenuView() {
     const { cate, menuNo } = useParams();
+    console.log("cate : "+cate, "menuNo : "+menuNo);
 
-    const [radioValue, setRadioValue] = useState('1');
-    const [radios, setRadios] = useState([]);
-    const [spicyLevels, setSpicyLevels] = useState([]);
+    const [listData, setListData] = useState([]);
+    const [sizeList, setSizeList] = useState([]);
+    const [radioValue, setRadioValue] = useState([]);
+    const [spicyList, setSpicyList] = useState([]);
+    const [toppingList, setToppingList] = useState([]);
+    const [sideList, setSideList] = useState([]);
 
     // useEffect로 한번 실행된 데이터를 빈배열에 담게 해 무한반복 방지
     useEffect(()=>{
-        console.log("cate : "+cate, "menuNo : "+menuNo);
+
         axios.get(`/api/menu/MenuView?cate=${cate}&menuNo=${menuNo}`)
             .then(res=>{
                 const data = res.data;
-                if(data.cate === "normal"){
-                }else {
-                }
+                console.log("data : ", Object.entries(data));
+                    setListData(data.menu);
+                    setSizeList(data.sizes);
+                    setSpicyList(data.spicies);
+                    setToppingList(data.toppings);
+                    setSideList(data.side);
+                    console.log("listData : ", Object.entries(listData));
+                    console.log("sizeList : ", Object.entries(sizeList));
+                    console.log("spicyList : ", Object.entries(spicyList));
+                    console.log("toppingList : ", Object.entries(toppingList));
+                    console.log("sideList : ", Object.entries(sideList));
+
             })
             .catch(err=>{
                 console.error("데이터를 찾을 수 없습니다. error : " + err);
@@ -32,31 +44,31 @@ function MenuView() {
     return (
         <>
             <section className="menuView">
-                <img src={blank} className="thumb"/>
+                <img src={`/thumbs/${listData.thumb}`} className="thumb"/>
                 <section className="menuSelection">
                     <h2 className="menuName">
-                        떡볶이
+                        {listData.menuName}
                     </h2>
                     <p className="menuDescription">
-                        설명떡볶이떡볶이설명설명떡볶이
+                        {listData.descript}
                     </p>
                     <article className="selectSize">
                         <p className="description">
                             사이즈 선택
                         </p>
                         <ButtonGroup>
-                            {radios.map((radio, idx) => (
+                            {sizeList.map((size, idx) => (
                                 <ToggleButton
                                     key={idx}
-                                    id={`radio-${idx}`}
+                                    id={`size-${idx}`}
                                     type="radio"
                                     variant={idx % 2 ? 'outline-success' : 'outline-danger'}
                                     name="radio"
                                     className="menuSizeButton"
-                                    value={radio.value}
-                                    checked={radioValue === radio.value}
+                                    value={size.size}
+                                    checked={radioValue === size.value}
                                     onChange={(e) => setRadioValue(e.currentTarget.value)}>
-                                    {radio.name}
+                                    {size.size}
                                 </ToggleButton>
                             ))}
                         </ButtonGroup>
@@ -66,12 +78,12 @@ function MenuView() {
                             맵기 선택
                         </p>
                         <Form>
-                            {spicyLevels.map((spicy, index) => (
+                            {spicyList.map((spicy, index) => (
                                 <Form.Check
                                     type={'radio'}
-                                    id={'spicy-' + spicy.value}
+                                    id={'spicy-' + spicy.spicy}
                                     name='spicyLevel'
-                                    label={spicy.name}
+                                    label={spicy.spicy+"맛"}
                                     defaultChecked={index === 0}>
                                 </Form.Check>
                             ))}
@@ -83,68 +95,37 @@ function MenuView() {
                         </p>
                         <Table className="toppingTable">
                             <tbody>
-                            <tr>
-                                <td className="toppingThumbArea">
-                                    <Image src={topping1} roundedCircle className="toppingThumb"/>
-                                </td>
-                                <td className="toppingInfoArea">
-                                    <p>
-                                        치즈 100g
-                                    </p>
-                                    <h5>
-                                        3,000
-                                    </h5>
-                                </td>
-                                <td className="toppingCountArea">
-                                    <InputGroup className="topping">
-                                        <Button variant="outline-secondary" id="button-addon1" className="toppingButton">
-                                            -
-                                        </Button>
-                                        <Form.Control
-                                            type="text"
-                                            aria-label="1"
-                                            aria-describedby="basic-addon1"
-                                            className="toppingCount"
-                                            disabled
-                                            readOnly
-                                        />
-                                        <Button variant="outline-secondary" id="button-addon2" className="toppingButton">
-                                            +
-                                        </Button>
-                                    </InputGroup>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="toppingThumbArea">
-                                    <Image src={topping2} roundedCircle className="toppingThumb"/>
-                                </td>
-                                <td className="toppingInfoArea">
-                                    <p>
-                                        올리브
-                                    </p>
-                                    <h5>
-                                        500
-                                    </h5>
-                                </td>
-                                <td className="toppingCountArea">
-                                    <InputGroup className="topping">
-                                        <Button variant="outline-secondary" id="button-addon1" className="toppingButton">
-                                            -
-                                        </Button>
-                                        <Form.Control
-                                            type="text"
-                                            aria-label="1"
-                                            aria-describedby="basic-addon1"
-                                            className="toppingCount"
-                                            disabled
-                                            readOnly
-                                        />
-                                        <Button variant="outline-secondary" id="button-addon2" className="toppingButton">
-                                            +
-                                        </Button>
-                                    </InputGroup>
-                                </td>
-                            </tr>
+                                {toppingList.map((topping, index) => (
+                                    <tr>
+                                        <td className="toppingThumbArea">
+                                            <Image src={`/toppings/${topping.file}`}  roundedCircle className="toppingThumb"/>
+                                        </td>
+                                        <td className="toppingInfoArea">
+                                        <p>
+                                            {topping.topping}
+                                        </p>
+                                        <h5>
+                                            {topping.toppingPrice}
+                                        </h5>
+                                        </td>
+                                        <td className="toppingCountArea">
+                                            <InputGroup className="topping">
+                                                <Button variant="outline-secondary" id="button-addon1" className="toppingButton">
+                                                    -
+                                                </Button>
+                                                <Form.Control
+                                                    type="text"
+                                                    aria-label="1"
+                                                    aria-describedby="basic-addon1"
+                                                    className="toppingCount"
+                                                />
+                                                <Button variant="outline-secondary" id="button-addon2" className="toppingButton">
+                                                    +
+                                                </Button>
+                                            </InputGroup>
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </Table>
                     </article>
@@ -161,8 +142,6 @@ function MenuView() {
                                 aria-label="1"
                                 aria-describedby="basic-addon1"
                                 className="itemCount"
-                                disabled
-                                readOnly
                             />
                             <Button variant="outline-secondary" id="button-addon2" className="itemButton">
                                 +
@@ -176,17 +155,17 @@ function MenuView() {
                         <div className="toppingTableArea">
                             <Table className="toppingTable">
                                 <tbody>
-                                {spicyLevels.map((spicy, index) => (
+                                {sideList.map((side, index) => (
                                     <tr>
                                         <td className="sideThumbArea">
-                                            <Image src={special1} className="toppingThumb"/>
+                                            <Image src={`/sides/${side.thumb}`} className="toppingThumb"/>
                                         </td>
                                         <td className="sideInfoArea">
                                             <p>
-                                                사이드 메뉴{index + 1}
+                                                {side.menuName}
                                             </p>
                                             <strong className="sideSpecialStrong">
-                                                3,000
+                                                {side.price}
                                             </strong>
                                         </td>
                                         <td className="sideCountArea">
@@ -199,8 +178,6 @@ function MenuView() {
                                                     aria-label="1"
                                                     aria-describedby="basic-addon1"
                                                     className="sideCount"
-                                                    disabled
-                                                    readOnly
                                                 />
                                                 <Button variant="outline-secondary" id="button-addon2" className="sideButton">
                                                     +
@@ -246,14 +223,14 @@ function MenuView() {
                             <p>
                                 총 금액
                                 <strong className="orderTotalPrice">
-                                    30,000
+                                    8,500
                                 </strong>
                             </p>
                         </td>
                     </tr>
                     <tr  className="orderProgressRow2">
                         <td>
-                            떡볶이
+                            짜장 떡볶이
                         </td>
                         <td>
                             없음

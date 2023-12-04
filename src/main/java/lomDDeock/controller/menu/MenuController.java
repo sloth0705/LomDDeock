@@ -54,14 +54,18 @@ public class MenuController {
     }
     @ResponseBody
     @GetMapping("/menu/MenuView")
-    public MenuDTO menuView (@RequestParam(name = "cate") String cate,
+    public MenuViewDTO menuView (@RequestParam(name = "cate") String cate,
                             @RequestParam(name = "menuNo") int menuNo) {
+        MenuViewDTO menuViewDTO = null;
         log.info("cate : "+cate);
         log.info("menuNo : "+menuNo);
-        MenuDTO menuDTO = menuService.selectMenuView(cate, menuNo);
-        log.info("menuDTO: " + menuDTO);
+        if(cate.equals("normal")) {
+            menuViewDTO = menuService.selectMenuView(menuNo);
+        }
 
-        return menuDTO;
+        log.info("menuViewDTO: " + menuViewDTO);
+
+        return menuViewDTO;
     }
 
 }

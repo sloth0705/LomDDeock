@@ -156,7 +156,7 @@ function App() {
                         <MenuLayout>
                             <Routes>
                                 <Route path="/menuList" element={<MenuList />} />
-                                <Route path="/menuView" element={<MenuView />} />
+                                <Route path="/menuView/:cate/:menuNo" element={<MenuView />} />
                                 <Route path="/menuCart" element={<MenuCart />} />
                                 <Route path="/menuOrder" element={<MenuOrder />} />
                                 <Route path="/menuOrderComplete" element={<MenuOrderComplete />} />
