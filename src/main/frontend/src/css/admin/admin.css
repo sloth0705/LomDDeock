@@ -25,7 +25,17 @@ a:hover {
     padding: 20px 30px;
     box-sizing: border-box;
 }
-
+.pagination {
+    margin-top: 10px;
+}
+.pagination .active>.page-link, .page-link.active {
+    color: #fff;
+    background-color: #ff744d;
+    border-color: #ff744d;
+}
+.pagination .page-link {
+    color:#ff744d;
+}
 /* ========== 레이아웃 설정 ========== */
 #adminIndex > div {
     width: 1200px !important;
@@ -470,6 +480,14 @@ a:hover {
     width: 700px;
     margin: 0 auto;
 }
+#adminEventManagement .event-thumb {
+    margin-top: 10px;
+}
+#adminEventManagement .event-thumb .thumb-image {
+    width: auto;
+    height: 50px;
+    margin-top: 10px;
+}
 #adminEventManagement div.col > div > div:nth-child(1) {
     border-bottom: 1px solid #dee2e6;
     margin-bottom: 15px;
@@ -489,7 +507,7 @@ a:hover {
 #adminEventManagement div.col textarea {
     height: 80px;
 }
-#adminEventManagement div.col div:nth-child(8) {
+#adminEventManagement div.col .event-btns {
     display: block;
     text-align: center;
     margin: 30px 0;
@@ -498,7 +516,7 @@ a:hover {
     border: none;
     padding: 5px 10px;
 }
-#adminEventManagement div.col div:nth-child(8) > .btnCancel {
+#adminEventManagement div.col div .btnCancel {
     height: 55px;
     font-size: 15px;
     border: none;
@@ -506,13 +524,13 @@ a:hover {
     padding: 10px 30px;
     border-radius: 20px;
 }
-#adminEventManagement div.col div:nth-child(8) > .btnCancel:hover {
+#adminEventManagement div.col div .btnCancel:hover {
     background-color: #c9c8c8;
     color: white;
     text-decoration: none;
     font-weight: normal;
 }
-#adminEventManagement div.col div:nth-child(8) > .btnRegister {
+#adminEventManagement div.col div .btnRegister {
     margin-left: 3px;
     height: 55px;
     font-size: 15px;
@@ -522,7 +540,7 @@ a:hover {
     padding: 10px 30px;
     border-radius: 20px;
 }
-#adminEventManagement div.col div:nth-child(8) > .btnRegister:hover {
+#adminEventManagement div.col div:nth-child(9) .btnRegister:hover {
     background-color: #c9c8c8;
     color: white;
     text-decoration: none;

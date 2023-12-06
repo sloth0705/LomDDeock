@@ -44,7 +44,10 @@
     padding: 10px;
     margin-left: auto;
 }
-
+.btn-so {
+    background-color: green;
+    color: white;
+}
 .menuSizeButton {
     border-radius: 50px !important;
     margin: 0px 20px;

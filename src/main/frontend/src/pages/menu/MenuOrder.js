@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Table, Form, Image, Button } from 'react-bootstrap';
 import '../../css/menu/menuOrder.css';
 import blank from '../../images/blank.png';
 
 const MenuOrder = (effect, deps) => {
+    const navigate = useNavigate();
+
     useEffect(() => {
         const jquery = document.createElement("script");
         jquery.src = "http://code.jquery.com/jquery-1.12.4.min.js";
@@ -42,6 +44,7 @@ const MenuOrder = (effect, deps) => {
         if (success) {
             alert("결제성공");
             // 서버 검증 요청 부분
+            navigate("/menu/menuOrderComplete");
         } else {
             // alert("결제에 실패하였습니다. 에러 내용: " + error_msg);
             alert(`결제 실패 : ${error_msg}`);
@@ -69,7 +72,6 @@ const MenuOrder = (effect, deps) => {
                         <th className="price">상품금액</th>
                         <th className="count">수량</th>
                         <th className="delivery">배송비</th>
-                        <th className="price">할인금액</th>
                         <th className="price">주문금액</th>
                     </tr>
                     </thead>
@@ -82,17 +84,15 @@ const MenuOrder = (effect, deps) => {
                             />
                         </td>
                         <td className="cartItemInfo">
-                            <Image src={blank} className="cartThumb"/>
+                            <Image src="/thumbs/b782e611-e8ff-4d25-95ee-b2f86c7ce674.jpg" className="cartThumb"/>
                             <p>
-                                    <span>
-                                        떡볶이
-                                    </span>
-                                <br/>
-                                떡볶이설명설명
+                                <span>
+                                    짜장떡볶이
+                                </span>
                             </p>
                         </td>
                         <td>
-                            40,000
+                            8,500
                         </td>
                         <td>
                             1
@@ -100,11 +100,8 @@ const MenuOrder = (effect, deps) => {
                         <td>
                             무료배송
                         </td>
-                        <td>
-                            -4,000
-                        </td>
                         <td className="total">
-                            36,000
+                            8,500
                         </td>
                     </tr>
                     </tbody>
@@ -128,6 +125,7 @@ const MenuOrder = (effect, deps) => {
                                     type="text"
                                     name="zip"
                                     placeholder="우편번호 찾기 클릭"
+                                    value="33616"
                                 />
                             </td>
                             <td>
@@ -144,6 +142,7 @@ const MenuOrder = (effect, deps) => {
                                     type="text"
                                     name="addr1"
                                     placeholder="기본주소 상세"
+                                    value="충남 서천군 판교면 등고리 166"
                                 />
                             </td>
                             <td>
@@ -157,6 +156,7 @@ const MenuOrder = (effect, deps) => {
                                     type="text"
                                     name="addr2"
                                     placeholder="상세주소 입력"
+                                    value="1층"
                                 />
                             </td>
                             <td>
@@ -179,6 +179,7 @@ const MenuOrder = (effect, deps) => {
                                 <Form.Control
                                     type="text"
                                     name="receiver"
+                                    value="관리자"
                                 />
                             </td>
                             <td>
@@ -192,6 +193,7 @@ const MenuOrder = (effect, deps) => {
                                 <Form.Control
                                     type="text"
                                     name="hp"
+                                    value="010-1111-2222"
                                 />
                             </td>
                             <td>
@@ -199,40 +201,17 @@ const MenuOrder = (effect, deps) => {
                         </tr>
                         </tbody>
                     </Table>
-                    <div className="borderLine"/>
+                    {/*<div className="borderLine"/>
                     <Table className="discountInfoArea">
                         <tbody>
                         <tr>
-                            <td>
-                                    <span className="bold">
-                                        할인 수단 선택
-                                    </span>
-                            </td>
-                            <td></td>
-                            <td></td>
                         </tr>
                         <tr>
-                            <td>
-                                구매 총액
-                            </td>
-                            <td></td>
-                            <td>
-                                58,000원
-                            </td>
                         </tr>
                         <tr>
-                            <td>
-                                <Button variant="secondary">
-                                    사용 가능 쿠폰 2장
-                                </Button>
-                            </td>
-                            <td></td>
-                            <td>
-                                4,000원
-                            </td>
                         </tr>
                         </tbody>
-                    </Table>
+                    </Table>*/}
                     <div className="borderLine"/>
                     <article className="paymentInfoArea">
                         <span className="bold">
@@ -245,10 +224,10 @@ const MenuOrder = (effect, deps) => {
                             <option value="3">무통장입금</option>
                             <option value="4">카카오페이</option>
                         </Form.Select>
-                        <Form.Check
+                        {/*<Form.Check
                             type={'checkbox'}
                             label={'전체동의'}
-                        />
+                        />*/}
                         <Form.Check
                             type={'checkbox'}
                             label={<span>취소/환불규정 동의 {required}</span>}
@@ -267,38 +246,24 @@ const MenuOrder = (effect, deps) => {
                     <h5 className="menuOrderText">
                         전체합계
                     </h5>
-                    <article className="menuOrderForm">
+                    <article className="menuOrderForm" style={{backgroundColor:"#e5e5e5"}}>
                         <Table className="menuOrderTable">
                             <tbody>
                             <tr>
                                 <td>
                                     상품금액
                                 </td>
-                                <td>
-                                    40,000원
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    할인금액
-                                </td>
-                                <td>
-                                    (-) 4,000원
+                                <td style={{color: 'white'}}>
+                                    8,500원
                                 </td>
                             </tr>
                             <tr className="gray-font">
-                                <td>
-                                    ㄴ 쿠폰
-                                </td>
-                                <td>
-                                    (-) 4,000원
-                                </td>
                             </tr>
                             <tr>
                                 <td>
                                     배송비
                                 </td>
-                                <td>
+                                <td style={{color: 'white'}}>
                                     0원
                                 </td>
                             </tr>
@@ -307,10 +272,9 @@ const MenuOrder = (effect, deps) => {
                                     총 결제금액
                                 </td>
                                 <td>
-                                        <span style={{color: 'red'}}>
-                                            40,000
+                                        <span style={{color: 'white'}}>
+                                            8,500원
                                         </span>
-                                    원
                                 </td>
                             </tr>
                             </tbody>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import '../../../css/admin/admin.css';
 import {Col, Container, Row} from "react-bootstrap";
 import AdminAsideMenu from "../AdminAsideMenu";
@@ -37,6 +37,42 @@ function AdminEventRegister() {
         alert('저장되었습니다.');
         navigate('/admin/event/adminEventList');
     }
+
+    const [imgFile, setImgFile] = useState("");
+    const imgRef = useRef();
+    const [displayImage, setDisplayImage] = useState(false);
+
+    // 이미지 업로드 input의 onChange
+    const saveImgFile = () => {
+        if (!imgRef.current || !imgRef.current.files || imgRef.current.files.length === 0) {
+            console.error("No file selected");
+            return;
+        }
+
+        console.log(imgRef.current);
+        const file = imgRef.current.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setImgFile(reader.result);
+            setDisplayImage(true);
+        };
+    };
+
+    useEffect(() => {
+        console.log(imgRef.current);
+        if (imgRef.current && imgRef.current.files.length > 0) {
+            const file = imgRef.current.files[0];
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = () => {
+                setImgFile(reader.result);
+            };
+        }
+    }, [imgRef]);
+
+
+
     return (
         <section id="admin">
             <Container id="adminEventManagement">
@@ -52,13 +88,31 @@ function AdminEventRegister() {
                             <InputGroup className="mb-3">
                                 <Form.Control placeholder="제목을 입력해주세요." onChange={(e)=>{setTitle(e.target.value)}}/>
                             </InputGroup>
+                            <label>썸네일 이미지 업로드</label> <br/>
+                            <div className="event-thumb">
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    id="profileImg"
+                                    onChange={saveImgFile}
+                                    ref={imgRef}
+                                />
+                                <br/>
+                                <img
+                                    style={{ display: displayImage ? "block" : "none" }}
+                                    src={imgFile ? imgFile : null }
+                                    alt="프로필 이미지"
+                                    className="thumb-image"
+                                />
+                            </div>
+                            <br/>
                             <label>이미지 업로드</label>
                             <FileUpload/>
                             <label>설명추가</label>
                             <InputGroup className="mb-3">
                                 <Form.Control as="textarea" aria-label="With textarea" placeholder="답변을 입력해주세요." onChange={(e)=>{setContent(e.target.value)}}/>
                             </InputGroup>
-                            <div>
+                            <div className="event-btns">
                                 <Link to="/admin/event/adminEventList" className="btnCancel">취소</Link>
                                 <Link to="#" className="btnRegister" onClick={()=>{checkQna()}}>등록</Link>
                             </div>

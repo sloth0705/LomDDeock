@@ -23,33 +23,29 @@ function MenuOrderComplete() {
                         <th className="name">상품명</th>
                         <th className="price">상품금액</th>
                         <th className="count">수량</th>
-                        <th className="price">할인금액</th>
                         <th className="price">주문금액</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td className="cartItemInfo">
-                            <Image src={blank} className="cartThumb"/>
+                            <Image src="/thumbs/b782e611-e8ff-4d25-95ee-b2f86c7ce674.jpg" className="cartThumb"/>
                             <p>
                                 <span>
-                                    떡볶이
+                                    짜장떡볶이
                                 </span>
                                 <br/>
                                 떡볶이설명설명
                             </p>
                         </td>
                         <td>
-                            40,000
+                            8,500
                         </td>
                         <td>
                             1
                         </td>
-                        <td>
-                            -4,000
-                        </td>
                         <td className="total">
-                            36,000
+                            8,500
                         </td>
                     </tr>
                 </tbody>
@@ -62,15 +58,7 @@ function MenuOrderComplete() {
                                 상품금액
                             </td>
                             <td>
-                                40,000원
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                할인금액
-                            </td>
-                            <td>
-                                (-) 4,000원
+                                8,500원
                             </td>
                         </tr>
                         <tr className="gray-font">
@@ -95,7 +83,7 @@ function MenuOrderComplete() {
                             </td>
                             <td>
                                 <span style={{color: 'red'}}>
-                                    40,000
+                                    8,500
                                 </span>
                                 원
                             </td>
@@ -123,7 +111,7 @@ function MenuOrderComplete() {
                                 결제방법
                             </td>
                             <td>
-                                신용카드
+                                카카오페이
                             </td>
                             <td></td>
                         </tr>
@@ -132,12 +120,12 @@ function MenuOrderComplete() {
                                 주문자/연락처
                             </td>
                             <td>
-                                홍길동 / 010-1234-1234
+                                관리자 / 010-1111-2222
                             </td>
                             <td>
                                 총 결제금액 &nbsp;
                                 <span className="red">
-                                    36.000
+                                    8.500
                                 </span>
                                 원
                             </td>
@@ -156,21 +144,21 @@ function MenuOrderComplete() {
                                 수취인/연락처
                             </td>
                             <td>
-                                홍길동 / 010-1234-1234
+                                관리자 / 010-1111-2222
                             </td>
-                            <td>
+                            {/*<td>
                                 <div>{`주문 아이디: ${searchParams.get("orderId")}`}</div>
                                 <div>{`결제 금액: ${Number(
                                     searchParams.get("amount")
                                 ).toLocaleString()}원`}</div>
-                            </td>
+                            </td>*/}
                         </tr>
                         <tr>
                             <td>
                                 배송지 주소
                             </td>
                             <td>
-                                부산광역시 광안동 123-1234 22층
+                                충남 서천군 판교면 등고리 166 1층
                             </td>
                         </tr>
                     </tbody>

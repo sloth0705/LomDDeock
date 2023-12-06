@@ -26,18 +26,17 @@ function MenuCart() {
                             <th className="price">상품금액</th>
                             <th className="count">수량</th>
                             <th className="delivery">배송비</th>
-                            <th className="price">할인금액</th>
                             <th className="price">주문금액</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {!flag ? (
+                        {/*{!flag ? (
                             <tr>
                                 <td colspan="7">
                                     장바구니에 상품이 없습니다.
                                 </td>
                             </tr>
-                        ) : null}
+                        ) : null}*/}
                         <tr>
                             <td>
                                 <Form.Check
@@ -46,17 +45,15 @@ function MenuCart() {
                                 />
                             </td>
                             <td className="cartItemInfo">
-                                <Image src={blank} className="cartThumb"/>
+                                <Image src="/thumbs/b782e611-e8ff-4d25-95ee-b2f86c7ce674.jpg" className="cartThumb"/>
                                 <p>
                                     <span>
-                                        떡볶이
+                                        짜장떡볶이
                                     </span>
-                                    <br/>
-                                    떡볶이설명설명
                                 </p>
                             </td>
                             <td>
-                                40,000
+                                8,500
                             </td>
                             <td>
                                 1
@@ -64,11 +61,8 @@ function MenuCart() {
                             <td>
                                 무료배송
                             </td>
-                            <td>
-                                -4,000
-                            </td>
                             <td className="total">
-                                36,000
+                                8,500
                             </td>
                         </tr>
                     </tbody>
@@ -87,15 +81,7 @@ function MenuCart() {
                                     상품금액
                                 </td>
                                 <td>
-                                    40,000원
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    할인금액
-                                </td>
-                                <td>
-                                    (-) 4,000원
+                                    8,500원
                                 </td>
                             </tr>
                             <tr>
@@ -112,7 +98,7 @@ function MenuCart() {
                                 </td>
                                 <td>
                                     <span style={{color: 'red'}}>
-                                        40,000
+                                        8,500
                                     </span>
                                     원
                                 </td>

@@ -62,7 +62,7 @@ function MenuView() {
                                     key={idx}
                                     id={`size-${idx}`}
                                     type="radio"
-                                    variant={idx % 2 ? 'outline-success' : 'outline-danger'}
+                                    variant={idx == 2 ? 'so':'outline-danger'}
                                     name="radio"
                                     className="menuSizeButton"
                                     value={size.size}
@@ -118,6 +118,7 @@ function MenuView() {
                                                     aria-label="1"
                                                     aria-describedby="basic-addon1"
                                                     className="toppingCount"
+                                                    value="0"
                                                 />
                                                 <Button variant="outline-secondary" id="button-addon2" className="toppingButton">
                                                     +
@@ -142,6 +143,7 @@ function MenuView() {
                                 aria-label="1"
                                 aria-describedby="basic-addon1"
                                 className="itemCount"
+                                value="1"
                             />
                             <Button variant="outline-secondary" id="button-addon2" className="itemButton">
                                 +
@@ -178,6 +180,7 @@ function MenuView() {
                                                     aria-label="1"
                                                     aria-describedby="basic-addon1"
                                                     className="sideCount"
+                                                    value="0"
                                                 />
                                                 <Button variant="outline-secondary" id="button-addon2" className="sideButton">
                                                     +

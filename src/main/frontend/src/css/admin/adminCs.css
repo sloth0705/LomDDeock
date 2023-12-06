@@ -146,7 +146,7 @@ a:hover {
 }
 #adminNoticeList .accordion-body > .typeReset .ql-align-center {text-align: center;}
 #adminNoticeList .accordion-body > .typeReset .ql-align-right {text-align: right;}
-#adminNoticeList .accordion-body > .typeReset img {cursor: default !important;}
+#adminNoticeList .accordion-body > .typeReset img {cursor: default !important; max-width: 100%;}
 #adminNoticeList .accordion-body > .typeReset iframe {width: 80%; height: 300px;}
 
 /* ========== adminNoticeWrite ========== */
